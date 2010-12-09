@@ -1,0 +1,31 @@
+{
+"update_url":"http://clients2.google.com/service/update2/crx",
+  "name": "Foxish live RSS",
+  "version": "2.4",
+  "description": "RSS feed reader in the style of Firefox's live bookmarks.",
+  "background_page": "background.html",
+  "content_scripts": [ {
+		"js": [ "scripts/sniff_common.js", "scripts/doc_start.js" ],
+		"matches": [ "http://*/*", "https://*/*" ],
+		"run_at": "document_start" 
+	}, {
+		"js": [ "scripts/sniff_common.js", "scripts/feed_finder.js" ],
+		"matches": [ "http://*/*", "https://*/*" ]
+	} ],
+  "options_page": "options.html",
+  "default_locale": "en",
+  "icons": {
+	"16": "icons/icon_16.png",
+	"48": "icons/icon_48.png",
+	"128": "icons/icon_128.png"},
+   "page_action": {
+	"default_icon": "icons/icon_16.png",
+	"default_title": "__MSG_rss_subscription_default_title__",
+	"popup": "popup.html"
+  },
+  "permissions": [
+    "bookmarks",
+	"http://*/",
+	"tabs"
+  ]
+}

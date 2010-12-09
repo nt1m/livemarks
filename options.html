@@ -1,0 +1,69 @@
+<html>
+	<head>
+		<script src='scripts/jquery-1.4.2.min.js'> </script>
+		<script src='scripts/options.js'> </script>
+		<title>Foxish Live RSS - Options</title>
+		<link rel='stylesheet' href='styles/main.css' type='text/css' />
+		<link rel='stylesheet' href='styles/options.css' type='text/css' />
+		<script>
+			function init()
+			{	
+				$('#add').click(function() { addFeed();});
+				$('#save').click(validateAndSaveFeeds);
+                $('#files').bind('change', handleFileSelect);
+                chrome.bookmarks.getTree(function(topNode) {
+                    var folders = getAllBookmarkFolder(topNode[0].children);
+                    //add folders to the options drop down
+                    populateParentFolders(folders);
+                    loadFeedConfig();
+                });                
+			}
+		</script>
+	</head>
+	<body onload='init()'>
+		<div id='header'>
+			<div id='blurb'>
+				<div id='logo'>
+					<img src='icons/icon_128.png'/>
+					<div class='title'> Foxish Live RSS </div>
+				</div>
+				<h1>Welcome to Foxish Live RSS </h1>
+				This extension tries to mimic Firefox's excellent native handling of RSS feeds using live bookmarks.  It does this by syncing feeds items every 5 minutes with folders on the bookmark bar.  You can see any errors that have occured from the logs page, accessible bellow. 
+				<div class='subheading'>To get started click the <span class='important'>add feed</span> button bellow and enter your feeds info.</div>
+			</div>
+		</div>
+        <div id='poll_interval_area'>
+            <span title=''> poll time(minutes): </span> 
+            <input type="text" id="poll_interval" class='short' /> 
+        </div>
+        <span id='poll_interval_status' class='message'> </span> 
+        <div id='import_area'>
+            <span title='OPML files can be exported by most RSS readers'> import feeds(<a href='http://en.wikipedia.org/wiki/OPML'>OPML</a>): </span> 
+            <input type="file" id="files" name="files[]" /> 
+        </div>
+        <span id='import_status'> </span> 
+        
+		<a id='add' href='#' title='add a new feed to the list'> add feed </a>		
+		<div class='spacer'></div>
+		<div class='feed' style='display:none;'>
+			<div>
+				Feed Name <input type='text' class='name required'/><br>
+				Feed URL <input type='text' class='feedUrl required url'/>
+			</div>
+			<div>
+                                Parent Folder <select class='parentFolder'> </select>
+				Max Feed Items<input type='text' class='maxItems' value='25'/><br>
+				Site URL <input type='text' class='siteUrl required url'/>
+			</div>
+			<a class='button delete' href='#' title='remove this feed'> - </a>
+			<ul class='feed_errors left'></ul>
+			<ul class='feed_errors right'></ul>
+		</div>
+		<a href='log.html' id='error_log'> <img src='icons/icon_19_error.png'/>error logs </a>
+		<div id='save_status' class='message'></div>
+		<input type='button' id='save' value='Save' title='save the current settings'/>
+        <div id='save_message'> 
+            Your changes will be applied the next time the feeds are polled.
+        </div>
+	</body>
+</html>

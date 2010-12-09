@@ -1,0 +1,93 @@
+<!--
+ * Copyright (c) 2009 The Chromium Authors. All rights reserved.  Use of this
+ * source code is governed by a BSD-style license that can be found in the
+ * LICENSE file.
+-->
+<html>
+<head>
+  <title></title>
+  <link rel="stylesheet" href="styles/style.css" type="text/css" />
+  <link rel="stylesheet" href="styles/main.css" type="text/css" />
+  <link rel="stylesheet" href="styles/subscribe.css" type="text/css" />
+  <link rel="stylesheet" href="styles/subscribe_foxish.css" type="text/css" />
+  <script type="text/javascript" src="scripts/common.js"></script>
+  <script type="text/javascript" src="scripts/subscribe.js"></script>
+  <script src='scripts/jquery-1.4.2.min.js'> </script>
+  <script src='scripts/options.js'> </script>
+  <script>
+    function init() {
+      document.title =
+          chrome.i18n.getMessage("rss_subscription_default_title");
+      i18nReplace('rss_subscription_feed_preview');
+      i18nReplaceImpl('feedUrl', 'rss_subscription_feed_link', '');
+      
+        chrome.bookmarks.getTree(function(topNode) {
+          var folders = getAllBookmarkFolder(topNode[0].children);
+          //add folders to the options drop down
+          populateParentFolders(folders);
+          loadFeedConfig();
+        });
+      
+      main();
+    }
+  </script>
+</head>
+
+<body onload="init();">
+	<table>
+		<tr>
+			<td width=100%>
+				<div id='header'>
+					<div id='blurb'>
+						<div id='logo'>
+							<img src='icons/icon_128.png'/>
+							<div class='title'> Foxish Live RSS </div>
+						</div>
+							<h1> Subscribe to this feed using Foxish RSS </h1>
+							Feeds that you have subscribed to will be polled every 5 minutes to stay in sync with the corresponding folder.  Keep in mind that the feed may take up to five minutes to be polled the first time and you wont see the folder until that time.
+							<div class='subheading'>You can manage the currently configured feeds from the <a href='options.html'>options page</a></div>
+					</div>
+				</div>
+				<div class='feed'>
+					<div class='left_labels'>
+						<div class='label'>Feed Name</div>
+                                                <div class='label'>Parent Folder</div>
+						<div class='label'>Max Feed Items</div>
+					</div>
+					<div class='left_inputs'>
+						<input type='text' class='name required'/>
+                                                <select class='parentFolder'> </select>
+                                                <input type='text' class='maxItems' value='25'/>
+                                                
+					</div>
+					<div class='right_labels'>
+						<div class='label'>Feed URL</div>
+						<div class='label'>Site URL</div>
+					</div>
+					<div class='right_inputs'>
+						<input type='text' class='feedUrl required url longer'/>						
+						<input type='text' class='siteUrl required url longer'/>
+					</div>
+					<input type='button' id='save' value='Subscribe' title='save the current settings' onclick='validateAndSaveFeeds(true);'/>
+					<ul class='feed_errors left'></ul>
+					<ul class='feed_errors right'></ul>
+				</div>
+				
+				<div class='spacer'></div>
+				<div id='save_status'></div> </td><td>
+			</td>
+		</tr>	
+	</table>
+
+  <div>&nbsp;</div>
+  <div class="splitter">
+    <span class="feedUrlSpan" id="feedUrlSpan">
+      <span class="feedUrl"
+        >[ <a id="feedUrl" class="feedUrl" target="_blank"
+              title="The feed page currently being previewed."
+           ></a> ]</span></span>
+    <span><b id="rss_subscription_feed_preview"></b></span>
+  </div>
+  <div id="items"></div>
+</body>
+</html>

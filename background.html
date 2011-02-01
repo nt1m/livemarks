@@ -20,12 +20,12 @@
 				feeds = updatedFeeds;
 			}
             
-            //sets the polling interval
-            function setPollInterval(interval)
-            {
-                window.clearInterval(intervalId);
-                intervalId = window.setInterval(pollFeeds, 1000 * 60 * interval);
-            }
+      //sets the polling interval
+      function setPollInterval(interval)
+      {
+          window.clearInterval(intervalId);
+          intervalId = window.setInterval(pollFeeds, 1000 * 60 * interval);
+      }
 			
 			//sets up the feeds and starts polling
 			function init()
@@ -41,10 +41,8 @@
 			function pollFeeds()
 			{
 				for(var i=0 ; feeds != undefined && i < feeds.length ; i++)
-				{
 					//poll the feeds off set by a delay for quota and for load
 					pollFeed(feeds[i], i * 1000 * 10);
-				}
 			}
 			
 			//updates the feeds bookmarks(folder and items)
@@ -66,9 +64,9 @@
 	
 			//updates the feeds items if things have changed by removing non-existant, sorting and adding items
 			function updateFeedItems(feedFolder, feed, jFeed)
-			{				
+			{					
 				//if the feed isn't updated then we don't need to do anything
-				if(feed.updated != '' && jFeed.updated != '' && feed.updated == jFeed.updated)
+				if(feed.updated != '' && jFeed.updated != '' && feed.updated === jFeed.updated)
 					return;
 				else
 					feed.updated = jFeed.updated;
@@ -85,10 +83,10 @@
 				for(var i in children)
 				  //check that the title matches and also that the node isn't a bookmark by 
 				  //checking if children returns undefined
-				  if(children[i].title == feed.name && children[i].children != undefined)
+				  if(children[i].title === feed.name && children[i].children != undefined)
 						feedFolder = children[i];
 
-				if(feedFolder == undefined)
+				if(feedFolder === undefined)
 					chrome.bookmarks.create({'parentId': parentNode.id,
 						'title': feed.name},
 						function(newFolder) {
@@ -106,19 +104,19 @@
 			//exist already
 			function syncFeedBookmarksByUpdatingFeedOptions(feedFolder, feed, jFeed, iter)
 			{				
-				if(iter == undefined)
+				if(iter === undefined)
 					iter = 0;
 				
-				if(iter == feedOptionCount)
+				if(iter === feedOptionCount)
 					syncFeedBookmarksByRemoving(feedFolder, feed, jFeed, 0);
 				else 
 				{
 					var title, url;
-					if(iter == 0 && !bookmarkExistsByTitle({'title': seperator}, feedFolder))
+					if(iter === 0 && !bookmarkExistsByTitle({'title': seperator}, feedFolder))
 					{
 						title = seperator;
 						url = 'about:blank';
-					}else if(iter == 1 && !bookmarkExistsByTitle({'title': 'Open "' + feed.name + '"'}, feedFolder))
+					}else if(iter === 1 && !bookmarkExistsByTitle({'title': 'Open "' + feed.name + '"'}, feedFolder))
 					{
 						title = 'Open "' + feed.name + '"';
 						url = feed.siteUrl
@@ -190,7 +188,7 @@
 			//checks if there is an error and displays the error if so
 			function isError(result)
 			{
-				if (result == undefined)
+				if (result === undefined)
 				{
 					//there was a quota limit exception
 					displayError("The bookmark API limit was hit");
@@ -207,37 +205,30 @@
 			}
 			
 			// pulls the feed after waiting for the passed in delay
-			function pollFeed(feed, waitDelay)
+			function pollFeed(feedToPoll, waitDelay)
 			{
-				var poll = function()
-				{
-                     var currentTime = new Date()
-                      var hours = currentTime.getHours()
-                      var minutes = currentTime.getMinutes()
-
-                      if (minutes < 10)
-                      minutes = "0" + minutes
-                    
+        var feed = feedToPoll;  
+        var poll = function()
+        {
+					//poll the feed using the JQuery library
 					jQuery.getFeed({ 
 						url: feed.feedUrl, 
 						success: success,
 						error: error});
 				}
-				
-				var success = function(jFeed)
+
+        var success = function(jFeed)
 				{
-					if(jFeed.items == undefined)
-					{
+					if(jFeed.items === undefined)
 						displayError(feed.name + ' was polled but contained no entries');
-						break;
-					}
-					updateFeedBookmarks(feed, jFeed);
-				}
+					else
+						updateFeedBookmarks(feed, jFeed);
+				};
 				
 				var error = function(errorText)
 				{
 					displayError('feed "' + feed.feedUrl + '" couldn\'t be pulled.  The error was: ' + errorText);
-				}
+				};
 				
 				//delay and then poll the feeds
 				window.setTimeout(poll, waitDelay);

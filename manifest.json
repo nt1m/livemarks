@@ -1,7 +1,7 @@
 {
 "update_url":"http://clients2.google.com/service/update2/crx",
   "name": "Foxish live RSS",
-  "version": "2.4",
+  "version": "2.6",
   "description": "RSS feed reader in the style of Firefox's live bookmarks.",
   "background_page": "background.html",
   "content_scripts": [ {

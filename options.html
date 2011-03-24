@@ -2,6 +2,7 @@
 	<head>
 		<script src='scripts/jquery-1.4.2.min.js'> </script>
 		<script src='scripts/options.js'> </script>
+    <script src='scripts/settings.js'> </script>
 		<title>Foxish Live RSS - Options</title>
 		<link rel='stylesheet' href='styles/main.css' type='text/css' />
 		<link rel='stylesheet' href='styles/options.css' type='text/css' />
@@ -12,7 +13,8 @@
 				$('#save').click(validateAndSaveFeeds);
                 $('#files').bind('change', handleFileSelect);
                 chrome.bookmarks.getTree(function(topNode) {
-                    var folders = getAllBookmarkFolder(topNode[0].children);
+					var feeds = getFeedConfig();
+                    var folders = getAllBookmarkFolders(topNode[0].children, feeds);
                     //add folders to the options drop down
                     populateParentFolders(folders);
                     loadFeedConfig();
@@ -51,10 +53,12 @@
 				Feed URL <input type='text' class='feedUrl required url'/>
 			</div>
 			<div>
-                                Parent Folder <select class='parentFolder'> </select>
+                Parent Folder <select class='parentFolderId'> </select>
 				Max Feed Items<input type='text' class='maxItems' value='25'/><br>
 				Site URL <input type='text' class='siteUrl required url'/>
 			</div>
+			<input type='hidden' class='folderId'/>
+      <input type='hidden' class='id'/>
 			<a class='button delete' href='#' title='remove this feed'> - </a>
 			<ul class='feed_errors left'></ul>
 			<ul class='feed_errors right'></ul>

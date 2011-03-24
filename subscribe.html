@@ -14,6 +14,7 @@
   <script type="text/javascript" src="scripts/subscribe.js"></script>
   <script src='scripts/jquery-1.4.2.min.js'> </script>
   <script src='scripts/options.js'> </script>
+  <script src='scripts/settings.js'> </script>
   <script>
     function init() {
       document.title =
@@ -22,7 +23,7 @@
       i18nReplaceImpl('feedUrl', 'rss_subscription_feed_link', '');
       
         chrome.bookmarks.getTree(function(topNode) {
-          var folders = getAllBookmarkFolder(topNode[0].children);
+          var folders = getAllBookmarkFolders(topNode[0].children);
           //add folders to the options drop down
           populateParentFolders(folders);
           loadFeedConfig();
@@ -51,13 +52,13 @@
 				<div class='feed'>
 					<div class='left_labels'>
 						<div class='label'>Feed Name</div>
-                                                <div class='label'>Parent Folder</div>
+                         <div class='label'>Parent Folder</div>
 						<div class='label'>Max Feed Items</div>
 					</div>
 					<div class='left_inputs'>
 						<input type='text' class='name required'/>
-                                                <select class='parentFolder'> </select>
-                                                <input type='text' class='maxItems' value='25'/>
+						<select class='parentFolderId'> </select>
+						<input type='text' class='maxItems' value='25'/>
                                                 
 					</div>
 					<div class='right_labels'>

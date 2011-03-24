@@ -105,7 +105,8 @@ JAtom.prototype = {
         var channel = $('feed', xml).eq(0);
 
         this.version = '1.0';
-        this.title = $(channel).find('title:first').text();
+		//atom supports a html type field which we need to handle
+		this.title = $(channel).find('title:first').text();
         this.url = this._getAtomUrl(channel);
         this.description = $(channel).find('subtitle:first').text();
         this.language = $(channel).attr('xml:lang');
@@ -119,9 +120,14 @@ JAtom.prototype = {
         
             var item = new JFeedItem();
             
-            item.title = $(this).find('title').eq(0).text();
-			
-	    //try get the link with rel=alternate, if not found then use the first link
+            var title = $(this).find('title:first').eq(0);
+			if(title.attr('type') === 'html')
+				//don't like doing it this way but I was having trouble 
+				//calling html() but nodeValue was returning undefined... but text() works
+				item.title = $(title.text()).text();
+			else 
+				item.title = title.text();
+			//try get the link with rel=alternate, if not found then use the first link
             item.url = feed._getAtomUrl(this);
 				
             item.description = $(this).find('content').eq(0).text();
@@ -160,7 +166,6 @@ JRss.prototype  = {
         else this.version = $('rss', xml).eq(0).attr('version');
 
         var channel = $('channel:first', xml);
-
         this.title = $(channel).find('title:first').text();
         this.url = $(channel).find('link:first').text();
         this.description = $(channel).find('description:first').text();
@@ -181,7 +186,7 @@ JRss.prototype  = {
             item.id = $(this).find('guid:first').text();
 
 	    if(isItemValid(item))
-		feed.items.push(item);
+			feed.items.push(item);
         });
     }
 };
@@ -193,3 +198,28 @@ function isItemValid(item) {
 	return true;
 }
 
+var escapedLessThan = '&lt;'
+var escapeGreaterThan = '&gt;'
+//cleans out any escaped html from the passed in text
+function cleanEscapedHtml(text) {
+	if(text === undefined)
+		return '';
+		
+	var cleanedText = '';
+	for(var i = 0 ; i < text.length ; i++) {
+		console.log(text[i]);
+		if(text[i] === '&')
+			console.log(text.substr(i, escapedLessThan.length) );
+		if(text[i] === '&' && text.substr(i, escapedLessThan.length) === escapedLessThan) {
+			i += 4;
+			for( ; i < text.length ; i++)
+				if(text[i] === '&' && text.substr(i, escapedGreaterThan.length) === escapedGreaterThan) {
+					i += 4;
+					break;
+				}
+		}else
+			cleanedText += text[i];
+	}
+	console.log('-> ' + cleanedText);
+	return cleanedText;
+}

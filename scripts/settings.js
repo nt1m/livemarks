@@ -107,7 +107,7 @@ function getFeedConfig() {
     		feedChanges = true;
 		  }
 
-      if(feedConfig[i].id === undefined || feedConfig[i].id === null) {
+      if(feedConfig[i].id === undefined) {
         feedConfig[i].id = getUniqueFeedId(feedConfig[i]);
         feedChanges = true;
       }
@@ -182,8 +182,7 @@ function addParentIdToFeedSettings(feed) {
 }
 
 //creates a unique feed id 
-function getUniqueFeedId(feed) {
-  console.log('getUniqueFeedId');
+function getUniqueFeedId() {
   return new Date().getTime() + '-' + Math.random(); 
 }
 

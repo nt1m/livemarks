@@ -25,10 +25,8 @@ function addFeed(feed) {
             $(newFeed.find('.' + field)[0]).val(feed[field]);
 
     //if we are adding a new empty feed then assign a feed id
-    if(feed === undefined) {
-      console.log('adding');
+    if(feed === undefined)
       $(newFeed.find('.id')[0]).val(getUniqueFeedId());
-	  }
 
     newFeed.toggle();
     lastSpacer.after(newFeed);
@@ -60,7 +58,7 @@ function validateAndSaveFeeds(appendFeeds) {
 		                
   	//validate the feed input
     var hasErrors = validateAndAddFeeds(config);
-        
+       
     //check if we are on the options page
     var pollInterval = null;
     if($('#poll_interval').length > 0)
@@ -69,10 +67,7 @@ function validateAndSaveFeeds(appendFeeds) {
 	
     var saveStatus = $('#save_status');
     if(!hasErrors && pollInterval !== undefined) {
-      //get any folder ids that have been set since page load
-      getExistingFolderIds(config);
-	
-  		//save the poll interval if set or get the existing if not
+			//save the poll interval if set or get the existing if not
 			if(pollInterval !== null)
 				localStorage['poll_interval'] = pollInterval;
 			else
@@ -81,6 +76,9 @@ function validateAndSaveFeeds(appendFeeds) {
 			//reset the interval to use the new setting or if no change then just 
 			//to restart the interval so it doesn't start before our change actions can complete
 			chrome.extension.getBackgroundPage().setPollInterval(pollInterval);
+
+      //get any folder ids that have been set since page load
+      getExistingFolderIds(config);
 			
 			//before we update the background process we may need to preform some 
 			//actions like requesting the initital pull of feeds or moving folders
@@ -123,10 +121,14 @@ function validateAndAddFeeds(config) {
 						//display errors
 						for(var j=0 ; j < errors.length ; j++)
 								$(feedErrors[j%2]).append('<li>' + errors[j]);
-				}
+				}        
+
+        //set a unique feed id if not set
+        if(feedInput.id === null) 
+          feedInput.id = getUniqueFeedId();
 
 				//add the current settings to save
-				config[config.length] = feedInput;		
+				config.push(feedInput);
 		}
 	}
 	return hasErrors;

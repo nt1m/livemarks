@@ -26,6 +26,8 @@
           var folders = getAllBookmarkFolders(topNode[0].children);
           //add folders to the options drop down
           populateParentFolders(folders);
+          //add a feed id to the possiable new entry
+          $('.feed .id:first').val(getUniqueFeedId());
         });
       
       main();
@@ -68,6 +70,7 @@
 						<input type='text' class='feedUrl required url longer'/>						
 						<input type='text' class='siteUrl required url longer'/>
 					</div>
+          <input type='hidden' class='id'/>
 					<input type='button' id='save' value='Subscribe' title='save the current settings' onclick='validateAndSaveFeeds(true);'/>
 					<ul class='feed_errors left'></ul>
 					<ul class='feed_errors right'></ul>

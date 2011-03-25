@@ -105,8 +105,8 @@ JAtom.prototype = {
         var channel = $('feed', xml).eq(0);
 
         this.version = '1.0';
-		//atom supports a html type field which we need to handle
-		this.title = $(channel).find('title:first').text();
+		    //atom supports a html type field which we need to handle
+		    this.title = $(channel).find('title:first').text();
         this.url = this._getAtomUrl(channel);
         this.description = $(channel).find('subtitle:first').text();
         this.language = $(channel).attr('xml:lang');
@@ -116,26 +116,23 @@ JAtom.prototype = {
         
         var feed = this;
         
-        $('entry', xml).each( function() {
-        
-            var item = new JFeedItem();
-            
-            var title = $(this).find('title:first').eq(0);
-			if(title.attr('type') === 'html')
-				//don't like doing it this way but I was having trouble 
-				//calling html() but nodeValue was returning undefined... but text() works
-				item.title = $(title.text()).text();
-			else 
-				item.title = title.text();
-			//try get the link with rel=alternate, if not found then use the first link
-            item.url = feed._getAtomUrl(this);
-				
-            item.description = $(this).find('content').eq(0).text();
-            item.updated = $(this).find('updated').eq(0).text();
-            item.id = $(this).find('id').eq(0).text();
-            
-            if(isItemValid(item))
-		feed.items.push(item);
+        $('entry', xml).each( function() { 
+          var item = new JFeedItem();
+          var title = $(this).find('title:first')[0];
+			    if(title.getAttribute('type') === 'html') {
+            //crazy atom feeds can have html based titles
+				    item.title = title.childNodes[0].nodeValue.replace(/<.*?>/g, '');
+			    } else 
+				    item.title = title.childNodes[0].nodeValue;
+			    //try get the link with rel=alternate, if not found then use the first link
+          item.url = feed._getAtomUrl(this);
+	
+          item.description = $(this).find('content').eq(0).text();
+          item.updated = $(this).find('updated').eq(0).text();
+          item.id = $(this).find('id').eq(0).text();
+          
+          if(isItemValid(item))
+		        feed.items.push(item);
         });
     },
 	

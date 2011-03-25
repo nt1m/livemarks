@@ -60,9 +60,6 @@ function validateAndSaveFeeds(appendFeeds) {
 		                
   	//validate the feed input
     var hasErrors = validateAndAddFeeds(config);
-
-    //get any folder ids that have been set since page load
-    getExistingFolderIds(config);
         
     //check if we are on the options page
     var pollInterval = null;
@@ -72,7 +69,10 @@ function validateAndSaveFeeds(appendFeeds) {
 	
     var saveStatus = $('#save_status');
     if(!hasErrors && pollInterval !== undefined) {
-			//save the poll interval if set or get the existing if not
+      //get any folder ids that have been set since page load
+      getExistingFolderIds(config);
+	
+  		//save the poll interval if set or get the existing if not
 			if(pollInterval !== null)
 				localStorage['poll_interval'] = pollInterval;
 			else

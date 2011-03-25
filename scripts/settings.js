@@ -107,7 +107,7 @@ function getFeedConfig() {
     		feedChanges = true;
 		  }
 
-      if(feedConfig[i].id === undefined) {
+      if(feedConfig[i].id === undefined || feedConfig[i].id === null) {
         feedConfig[i].id = getUniqueFeedId(feedConfig[i]);
         feedChanges = true;
       }

@@ -5,14 +5,29 @@ var fieldNames = ['name', 'parentFolderId', 'maxItems', 'feedUrl', 'siteUrl', 'f
 //loads the feed configuration in the options page
 function loadFeedConfig() {
     var feedConfig = getFeedConfig()
-    for(var i=0 ; i < feedConfig.length ; i++) {
-        var feed = feedConfig[i];
-        addFeed(feed);
-    }
+	
+	setupExportLink(feedConfig);
+	
+    for(var i=0, len = feedConfig.length; i < len ; i++)
+        addFeed(feedConfig[i]);
     
     $('#poll_interval').val(getPollInterval());
 }
 
+function setupExportLink(feedConfig) {
+	var exportData = 'data:text/xml;charset=utf-8,<?xml version="1.0" encoding="UTF-8"?><opml version="1.0"><head><title>Foxish RSS Subscriptions</title></head><body><outline title="RSS Feeds" text="RSS Feeds">';
+	
+	for(var i=0, len = feedConfig.length; i < len ; i++) {
+		var feed = feedConfig[i];
+		exportData += '<outline text="' + escapeXML(feed.name) + '" title="' + escapeXML(feed.name) + '" type="rss" xmlUrl="' + escapeXML(feed.feedUrl) + '" htmlUrl="' + escapeXML(feed.siteUrl) + '"/>';
+	}
+	exportData += '</outline></body></opml>';
+	$('#export_area a').attr('href', exportData);
+}
+
+function escapeXML(str) {
+	return str.replace(/"/g, '&quot;');
+}
 //appends a feed to the options page
 function addFeed(feed) {
     var lastSpacer = $('.spacer:last');
@@ -86,6 +101,7 @@ function validateAndSaveFeeds(appendFeeds) {
 			
       //save the settings back to local storage
       saveFeedConfig(config);
+	  setupExportLink(config)
       saveStatus.removeClass('error').addClass('success');
       saveStatus.html('settings were saved');
       $('#save_message').show();
@@ -216,20 +232,17 @@ function handleFileSelect(evt) {
     var file = evt.target.files[0]; // FileList object
     var reader = new FileReader();
     
-    if(file.type !== 'text/xml')
-        importError('incorrect file format');
-        
-    // Closure to capture the file information.
-    reader.onload = function(e) { readImportFile(e.target.result); };
+    // call back to capture the file information.
+    reader.onload = readImportFile;
     reader.onerror = importErrorHandler;
 
     // Read the xml
-    reader.readAsText(file.slice(0, file.size));
+    reader.readAsText(file);
   }
   
 //read the import file and add any feeds it contains
-function readImportFile(importFile) {
-    var importFeeds = $(importFile).find('outline');
+function readImportFile(e) {
+    var importFeeds = $(e.target.result).find('outline[type="rss"]');
     if(importFeeds.length === 0)
     {
         importError('no feeds were found');
@@ -237,15 +250,15 @@ function readImportFile(importFile) {
     }
     
     //add each feed item to the page
-    for(var i=0; i < importFeeds.length ; i++)
+    for(var i=0, len = importFeeds.length; i < len ; i++)
         addFeed(parseFeedInfoFromXml(importFeeds[i]));
     
-    importSuccess();
+    importSuccess(importFeeds.length);
 }
 
 //parses a feed object from a feed defined by an xml outline 
 function parseFeedInfoFromXml(xmlOutline) {
-    return {'name': xmlOutline.title,
+    return {'name': xmlOutline.getAttribute('text'),
         'feedUrl': xmlOutline.getAttribute('xmlUrl'),
         'siteUrl': xmlOutline.getAttribute('htmlUrl')};
 }
@@ -273,10 +286,28 @@ function importError(error) {
 }
 
 //clear the error area
-function importSuccess() {
-    $('#import_status')[0].setAttribute('class', 'success');
-    $('#import_status').html('feeds loaded, make any changes and click save');
-    hideImportStatus();
+function importSuccess(feedsAdded) {
+    
+	var msg, status;
+	if(feedsAdded > 5) {
+		status = 'error';
+		if(feedsAdded > 30) 
+			msg = 'Hold your horses!! Your adding WAY too many feeds!';
+		else if(feedsAdded > 10)
+			msg = 'Wow you\'ve got a lot of feeds there!';
+		else
+			msg = 'No need to panic but you might have too many feeds there.\n\n';
+			
+		msg += '<br><br>Chrome enforces bookmark creation limits that prevent Foxish from keeping so many feeds up to date at once.  In most cases Foxish can usually handle updating about 7 feeds and can handle importing three or four an hour before it hits those limits. <br><br>Sorry but for now this is the best we can do.<br><br>You can try to import all your feeds but keep in mind that it will take some time before Chrome lets Foxish catch up and things may get a bit dated or buggy.';
+	}else {
+		status = 'success';
+		msg = 'feeds loaded, make any changes and click save';
+	}
+	
+	$('#import_status')[0].setAttribute('class', status);
+    $('#import_status').html(msg);
+    if(status == 'success')
+		hideImportStatus();
 }
 
 //hide the feed bookmark status area

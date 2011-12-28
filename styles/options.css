@@ -134,14 +134,16 @@ div#save_status.success
 	width:150px;
 }
 
-div#import_area, div#poll_interval_area
+div#export_area, div#import_area, div#poll_interval_area
 {
     border: solid 3px rgb(200,200,255);
 	background:rgb(240,245,255);
     float:left;
-    padding:5px;
+    padding:0 5px;
     font-size: 15px;
-    margin-right:3px;
+    margin:5px;
+	height: 30px;
+	line-height:30px;
  }
 
 input[type=file] {width:90px;}
@@ -152,7 +154,6 @@ input[type=file] {width:90px;}
     background:rgb(210,235,210);
     float:left;
     display:block;
-    margin:5px;
 }
 
 #import_status.error , #import_status.success , #poll_interval_status.error {padding:7px;}

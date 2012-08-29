@@ -1,3 +1,22 @@
+document.addEventListener('DOMContentLoaded', function () {
+  document.title =
+      chrome.i18n.getMessage("rss_subscription_default_title");
+      i18nReplace('rss_subscription_feed_preview');
+      i18nReplaceImpl('feedUrl', 'rss_subscription_feed_link', '');
+      
+    $('#save').click(function() {validateAndSaveFeeds(true);});
+    
+    chrome.bookmarks.getTree(function(topNode) {
+      var folders = getAllBookmarkFolders(topNode[0].children);
+      //add folders to the options drop down
+      populateParentFolders(folders);
+      //add a feed id to the possiable new entry
+      $('.feed .id:first').val(getUniqueFeedId());
+    });
+  
+  main();
+});
+
 // Copyright (c) 2010 The Chromium Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.

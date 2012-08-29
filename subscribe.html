@@ -1,3 +1,4 @@
+<!doctype html>
 <!--
  * Copyright (c) 2009 The Chromium Authors. All rights reserved.  Use of this
  * source code is governed by a BSD-style license that can be found in the
@@ -12,30 +13,12 @@
   <link rel="stylesheet" href="styles/subscribe_foxish.css" type="text/css" />
   <script type="text/javascript" src="scripts/common.js"></script>
   <script type="text/javascript" src="scripts/subscribe.js"></script>
-  <script src='scripts/jquery-1.4.2.min.js'> </script>
-  <script src='scripts/options.js'> </script>
-  <script src='scripts/settings.js'> </script>
-  <script>
-    function init() {
-      document.title =
-          chrome.i18n.getMessage("rss_subscription_default_title");
-      i18nReplace('rss_subscription_feed_preview');
-      i18nReplaceImpl('feedUrl', 'rss_subscription_feed_link', '');
-      
-        chrome.bookmarks.getTree(function(topNode) {
-          var folders = getAllBookmarkFolders(topNode[0].children);
-          //add folders to the options drop down
-          populateParentFolders(folders);
-          //add a feed id to the possiable new entry
-          $('.feed .id:first').val(getUniqueFeedId());
-        });
-      
-      main();
-    }
-  </script>
+  <script type="text/javascript" src='scripts/jquery.min.js'> </script>
+  <script type="text/javascript" src='scripts/options_utils.js'> </script>
+  <script type="text/javascript" src='scripts/settings.js'> </script>
 </head>
 
-<body onload="init();">
+<body>
 	<table>
 		<tr>
 			<td width=100%>
@@ -71,7 +54,7 @@
 						<input type='text' class='siteUrl required url longer'/>
 					</div>
           <input type='hidden' class='id'/>
-					<input type='button' id='save' value='Subscribe' title='save the current settings' onclick='validateAndSaveFeeds(true);'/>
+					<input type='button' id='save' value='Subscribe' title='save the current settings'/>
 					<ul class='feed_errors left'></ul>
 					<ul class='feed_errors right'></ul>
 				</div>

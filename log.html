@@ -1,49 +1,13 @@
+<!doctype html>
 <html>
 	<head>
 		<link rel='stylesheet' href='styles/main.css' type='text/css' />
 		<link rel='stylesheet' href='styles/log.css' type='text/css' />
-		<script src='scripts/jquery-1.4.2.min.js'> </script>
-		<script src='scripts/log.js'> </script>
-		<script>
-			function init()
-			{
-				$('#clear').click(function() 
-				{ 
-					//clear the stored logs
-					deleteMessages();
-					//display the current messages(none)
-					displayMessages();
-				});
-				
-				displayMessages();
-			}
-			
-			function displayMessages()
-			{				
-				var msgContainer = $('#messages');
-				var msgs = getMessages();
-				
-				if(msgContainer.children().length > 0)
-					//remove the messages from the page
-					msgContainer.children().remove();
-				
-				if(msgs.length == 0)
-					//display no messages item
-					msgContainer.append("<div class='no_messages'> empty </div>");
-				else
-					//remove the no messages list item
-					msgContainer.find('.no_messages').remove();
-			
-				//display the messages
-				for(var i=0 ; i < msgs.length ; i++)
-					if(i % 2 == 1)
-						msgContainer.append("<div class='message odd_row'>" + msgs[i] + "</div>");
-					else
-						msgContainer.append("<div class='message'>" + msgs[i] + "</div>");
-			}
-		</script>
+		<script type="text/javascript" src='scripts/jquery.min.js'> </script>
+		<script type="text/javascript" src='scripts/log_utils.js'> </script>
+		<script type="text/javascript" src='scripts/log.js'> </script>
 	</head>
-	<body onload='init()'>
+	<body>
 		<div id='header'>
 			<div id='blurb'>
 				<div id='logo'>

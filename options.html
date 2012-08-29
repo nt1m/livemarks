@@ -1,28 +1,15 @@
+<!doctype html>
 <html>
 	<head>
-		<script src='scripts/jquery-1.4.2.min.js'> </script>
-		<script src='scripts/options.js'> </script>
-    <script src='scripts/settings.js'> </script>
-		<title>Foxish Live RSS - Options</title>
+		<script type="text/javascript" src='scripts/jquery.min.js'> </script>
+		<script type="text/javascript" src='scripts/options_utils.js'> </script>
+		<script type="text/javascript" src='scripts/options.js'> </script>
+		<script type="text/javascript" src='scripts/settings.js'> </script>
 		<link rel='stylesheet' href='styles/main.css' type='text/css' />
 		<link rel='stylesheet' href='styles/options.css' type='text/css' />
-		<script>
-			function init()
-			{	
-				$('#add').click(function() { addFeed();});
-				$('#save').click(validateAndSaveFeeds);
-                $('#files').bind('change', handleFileSelect);
-                chrome.bookmarks.getTree(function(topNode) {
-					var feeds = getFeedConfig();
-                    var folders = getAllBookmarkFolders(topNode[0].children, feeds);
-                    //add folders to the options drop down
-                    populateParentFolders(folders);
-                    loadFeedConfig();
-                });                
-			}
-		</script>
+		<title>Foxish Live RSS - Options</title>
 	</head>
-	<body onload='init()'>
+	<body>
 		<div id='header'>
 			<div id='blurb'>
 				<div id='logo'>

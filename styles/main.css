@@ -1,18 +1,17 @@
-@import url(http://fonts.googleapis.com/css?family=Droid+Sans);
+@import url(http://fonts.googleapis.com/css?family=Open+sans);
 
-body {font-family: 'Droid Sans', arial, ser;}
-
-div#header
-{
-	width:800px;
+body {
+	font-family: 'Open Sans', arial, ser;
+	max-width:1000px;
 	margin-left:auto;
 	margin-right:auto;
 }
 
-div#logo 
+div#logo
 {
 	float:left;
 	width:160px;
+	margin:0 30px 0 20px;
 }
 
 div#logo img {margin-left:11px;}
@@ -25,11 +24,10 @@ div#logo .title
 
 div#blurb
 {
-	background:rgb(230,235,255);
-	-webkit-border-radius: 10px;
+	font-size:12px;
 	padding:12px;
 	min-height:120px;
-    margin-bottom:5px;
+    margin-bottom:15px;
 }
 
 div#blurb div.subheading
@@ -44,12 +42,21 @@ div#blurb h1
 {
 	text-align:center;
 	font-size:20px;
-	margin:0;
-	margin-bottom:5px;
+	margin:10px 0;
 	color:rgb(130,135,155);
 }
 
-div.spacer 
+div#blurb .subheading a {
+	display:inline-block;
+	background: #2887B1;
+	color:white;
+	padding:5px;
+	text-decoration: none;
+}
+
+div#blurb .subheading a:hover {background:#227295;}
+
+div.spacer
 {
 	width:85%;
 	border-top: 2px solid black;
@@ -59,3 +66,92 @@ div.spacer
 	margin-right: auto ;
 	clear:both;
 }
+
+a.button {
+	text-align:center;
+	text-decoration:none;
+	display: block;
+	border-radius: 3px;
+	color:black;
+	padding:13px 10px 11px 10px;
+  	border-bottom:2px solid rgba(0,0,0,0.2);
+  	text-transform: uppercase;
+  	color:white;
+  	background: #2887B1;
+}
+
+a.button:hover {background:#227295;}
+
+#dialogue {
+	display:none;
+	position:fixed;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	background:rgba(0,0,0,0.5);
+}
+
+#dialogue.error {color:#F45D4C;}
+
+#dialogue-container {
+	position:absolute;
+	top:40%;
+	left:50%;
+
+	width:200px;
+	margin-left:-100px;
+
+	height:100px;
+	margin-top: -50px;
+
+	background:white;
+	display: inline-block;
+	padding:20px 10px 10px 10px;
+
+	text-align: center;
+}
+
+#dialogue-content {
+	margin:10px;
+}
+
+#dialogue-close {
+	position:absolute;
+	top:3px;
+	right:3px;
+	display:inline-block;
+	font-size:16px;
+	width:20px;
+	height:20px;
+	background: rgb(50,50,50);
+	color:white;
+	text-align: center;
+	text-decoration: none;
+}
+
+#dialogue-close:hover {
+	background:grey;
+}
+
+#dialogue input {
+	display:block;
+	margin:10px auto;
+}
+
+#dialogue.error #dialogue-button {
+	background:#FC98A2;
+}
+
+#dialogue.error #dialogue-button:hover {
+	background:#F45D4C;
+}
+
+#dialogue-button {
+	display:inline-block;
+	padding:10px 20px;
+	background:#37A640;
+	text-decoration: none;
+}
+
+#dialogue-button:hover {background:#319238;}

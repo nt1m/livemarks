@@ -3,9 +3,12 @@ document.addEventListener('DOMContentLoaded', function () {
       chrome.i18n.getMessage("rss_subscription_default_title");
       i18nReplace('rss_subscription_feed_preview');
       i18nReplaceImpl('feedUrl', 'rss_subscription_feed_link', '');
-      
-    $('#save').click(function() {validateAndSaveFeeds(true);});
-    
+
+    $('#save').click(function() {
+      validateAndSaveFeeds(true);
+      return false;
+    });
+
     chrome.bookmarks.getTree(function(topNode) {
       var folders = getAllBookmarkFolders(topNode[0].children);
       //add folders to the options drop down
@@ -13,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
       //add a feed id to the possiable new entry
       $('.feed .id:first').val(getUniqueFeedId());
     });
-  
+
   main();
 });
 
@@ -54,9 +57,9 @@ var unknownName = chrome.i18n.getMessage("rss_subscription_unknown_feed_name");
 var feedReaderList;
 
 // Navigates to the reader of the user's choice (for subscribing to the feed).
-function navigate() 
+function navigate()
 {
-	
+
 }
 
 /**
@@ -126,7 +129,7 @@ function setFeedSiteUrl(doc)
     }else
         siteUrl = 'http://';
 
-    //set the site url input field  
+    //set the site url input field
     $('.siteUrl')[0].value = siteUrl;
 }
 
@@ -216,7 +219,7 @@ function handleResponse() {
     setFeedTitle(title.textContent);
   else
     setFeedTitle(unknownName);
-	
+
    setFeedSiteUrl(doc);
 
   // Add an IFRAME with the html contents.

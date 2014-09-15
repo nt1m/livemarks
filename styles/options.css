@@ -1,174 +1,133 @@
-div.feed {clear:both;}
-
-div.feed:hover {background:rgb(230,230,255)}
-
-div.feed div
-{
-	width:47%;
-	text-align:right;
-	float:left;
+.feed {
+	clear:both;
+	position:relative;
+	width:100%;
+	padding: 15px 0;
+	border-top:2px solid rgba(0,0,0,0.2);
+	overflow: hidden;
 }
 
-div.feed input[type="text"] 
-{
-	font-size: 16px;
-	margin-left:5px;
-	width:75%;
+.feed:first-of-type {
+	border:none;
 }
 
-div.feed select.parentFolder
-{
-    margin-right:5px;
-    width:30%;
+label {
+	margin: 0 5px;
+	text-align: right;
+	font-size: 12px;
 }
 
-div.feed ul.feed_errors
+.form {
+	display:table;
+	width:95%;
+}
+
+.form-row {
+	width:100%;
+	display:table-row;
+}
+
+.form-row > * {
+	display:table-cell;
+}
+
+.feed input, .feed select {
+	box-sizing: border-box;
+	width:100%;
+	margin-left:10px;
+}
+
+.feed input[type="text"]
 {
-	color:red;
+	padding:2px;
+	border:1px solid rgb(200,200,200);
+}
+
+.feed input.error {
+	background:#FC98A2;
+}
+
+.feed ul.feed_errors
+{
+	color:#F45D4C;
+	display: block;
 	text-align:left;
-	width:35%;
-	padding:0px;
-	padding-left:15px;
-	margin:3px;
-	margin-left:10%;
-	float:left;
+	width:100%;
+	list-style: none;
+	font-size: 12px;
 }
 
-div.feed ul.left {clear:left;}
-
-div.feed ul.right {clear:right;}
-
-div.feed div.feed_errors li 
-{
-	float: left;
-	width:50%;
+.feed ul.feed_errors li {
+	display: inline-block;
+	width:40%;
+	margin-left:50px;
 }
 
-div.feed input.maxItems, .short {width:30px;}
-
-a.button
-{
-	diaplay:block;
-	height:25px;
-	width:25px;
+.feed input.maxItems, .short {
+	width:30px;
 	text-align:center;
-	font-size:40px;
-	text-decoration:none;
-	float:left;
-	margin-left:15px;
-	margin-top:18px;
 }
 
-a.delete
-{
-	line-height:60%;
-	border:solid 2px red;
-	background:rgb(240,195,200);
-	color:red;
+.feed a.delete {
+	display:inline-block;
+	background:#FC98A2;
+	height:20px;
+	width:20px;
+	border:none;
+	position:absolute;
+	right:0px;
+	top:0px;
+	padding:0;
+	border-radius: 0;
 }
-a.delete:hover
-{
-	background:red;
-	color:white;
+a.delete:hover {background:#F45D4C;}
+
+a#add {
+	margin-bottom: 5px;
 }
 
-input#save
-{
-	display:block;
-	margin-left: auto ;
-	margin-right: auto ;
-	clear:left;
-    width:70px;
+.no-feeds a#add {
+	padding:40px 0;
+}
+
+#save {
+	background:#37A640;
+	padding:20px 0;
 	font-size:18px;
-	padding:5px;
-	padding-left:10px;
-	padding-right:10px;
+}
+#save:hover {background:#319238;}
+
+ul.options {
+	list-style: none;
+	text-align: right;
+	overflow: auto;
 }
 
-a#add
-{
-	background:rgb(210,235,210);
-	color:black;
+ul.options a {
+	clear:both;
 	float:right;
-	padding:10px;
-	margin-bottom:10px;
-	margin-right:30px;
-	clear:right;
-	border:2px solid green;
+	margin-bottom: 10px;
+	text-transform: lowercase;
+	font-size: 13px;
 }
 
-a#add:hover {color:green;}
-
-a#error_log
-{
+#settings {
+	padding:10px;
 	float:left;
-	margin-top:5px;
-	margin-left:5px;
-    clear:left;
 }
 
-a#error_log img
-{
-	margin-right:5px;
-	margin-bottom:-3px;
+#settings .small {
+	font-size:10px;
+	margin-left:10px;
 }
 
-div#save_status
-{
-	text-align:center;
-	padding:10px;
-	width:150px;
-	margin-left: auto ;
-	margin-right: auto ;
-}
+#files {display:none;}
 
-div#save_status.error
-{
-	background:rgb(255,230,230);
-	width:300px;
-}
-
-div#save_status.success
-{
-	background:rgb(230,255,230);
-	width:150px;
-}
-
-div#export_area, div#import_area, div#poll_interval_area
-{
-    border: solid 3px rgb(200,200,255);
-	background:rgb(240,245,255);
-    float:left;
-    padding:0 5px;
-    font-size: 15px;
-    margin:5px;
-	height: 30px;
-	line-height:30px;
- }
-
-input[type=file] {width:90px;}
-
-#import_status, #poll_interval_status
-{
-    -webkit-border-radius: 10px;
+#poll_interval_status {
     background:rgb(210,235,210);
-    float:left;
-    display:block;
 }
 
-#import_status.error , #import_status.success , #poll_interval_status.error {padding:7px;}
+#poll_interval_status.error {padding:7px;}
 
-#import_status.error, #poll_interval_status.error {background: rgb(235,210,210);}
+#poll_interval_status.error {background: rgb(235,210,210);}
 
-#save_message
-{
-    width:36%;
-    text-align:center;
-    background: #F2F5A9;
-    padding:5px;
-    margin-top:10px;
-    float:right;
-    position:relative;
-    top:-55px;
-    display:none;
-}

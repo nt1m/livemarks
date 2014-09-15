@@ -12,9 +12,9 @@ h1
 	margin-bottom:5px;
 }
 
-div#messages 
+div#messages
 {
-	font-size:16px;
+	font-size:14px;
 	text-align:center;
 }
 
@@ -36,26 +36,15 @@ div.no_messages
 {
 	background: rgb(200, 220, 255);
 	text-align:center;
-	clear:both;	
-	padding-top:5px;
-	padding-bottom:5px;
+	clear:both;
+	padding:30px 0;
 }
 
 a#clear
 {
-	background:rgb(200,225,240);
-	color:black;
 	float:right;
-	padding:10px;
 	margin-right:10px;
     margin-bottom:10px;
 	clear:both;
-	border:2px solid blue;
-}
-
-a#clear:hover
-{
-	color:blue;
-	text-decoration:underline;
 }
 

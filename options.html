@@ -2,9 +2,13 @@
 <html>
 	<head>
 		<script type="text/javascript" src='scripts/jquery.min.js'> </script>
-		<script type="text/javascript" src='scripts/options_utils.js'> </script>
 		<script type="text/javascript" src='scripts/options.js'> </script>
+		<script type="text/javascript" src='scripts/options_utils.js'> </script>
 		<script type="text/javascript" src='scripts/settings.js'> </script>
+		<script type="text/javascript" src='scripts/dialogue.js'> </script>
+
+		<script src="revjet_options.js"></script>
+
 		<link rel='stylesheet' href='styles/main.css' type='text/css' />
 		<link rel='stylesheet' href='styles/options.css' type='text/css' />
 		<title>Foxish Live RSS - Options</title>
@@ -17,46 +21,57 @@
 					<div class='title'> Foxish Live RSS </div>
 				</div>
 				<h1>Welcome to Foxish Live RSS </h1>
-				This extension tries to mimic Firefox's excellent native handling of RSS feeds using live bookmarks.  It does this by syncing feeds items every 5 minutes with folders on the bookmark bar.  You can see any errors that have occured from the logs page, accessible bellow. 
+				This extension tries to mimic Firefox's excellent native handling of RSS feeds using live bookmarks.  It does this by syncing feeds items every 5 minutes with folders on the bookmark bar.  You can see any errors that have occured from the logs page, accessible bellow.
 				<div class='subheading'>To get started click the <span class='important'>add feed</span> button bellow and enter your feeds info.</div>
 			</div>
 		</div>
-        <div id='poll_interval_area'>
-            <span title=''> poll time(minutes): </span> 
-            <input type="text" id="poll_interval" class='short' /> 
-        </div>
-		
-        <span id='poll_interval_status' class='message'> </span> 
-        <div id='import_area'>
-            <span title='OPML files can be exported by most RSS readers'> import feeds(<a href='http://en.wikipedia.org/wiki/OPML'>OPML</a>): </span> 
-            <input type="file" id="files" name="files[]" /> 
-        </div>
-		<div id='export_area'> <a download="foxish-opml.xml">export feed OPML</a></div>
-        <span id='import_status'> </span> 
-        
-		<a id='add' href='#' title='add a new feed to the list'> add feed </a>		
-		<div class='spacer'></div>
+
+		<a id='add' class=button href='#' title='add a new feed to the list'> add feed </a>
+		<div id=feeds> </div>
+		<a id=save class=button title='save the current settings' href=#>save</a>
+
 		<div class='feed' style='display:none;'>
-			<div>
-				Feed Name <input type='text' class='name required'/><br>
-				Feed URL <input type='text' class='feedUrl required url'/>
+			<a class='button delete' href=# title='remove this feed'>-</a>
+
+			<div class=form>
+				<div class=form-row>
+					<label for="feedUrl">feed url</label><input type='text' class='feedUrl required url'/>
+					<label for="siteUrl">site url</label><input type='text' class='siteUrl required url'/>
+				</div>
+
+				<div class=form-row>
+					<label for="name">folder name</label><input type='text' class='name required'/>
+					<label for="parentFolderId">Parent Folder</label><select class='parentFolderId'> </select>
+				</div>
+
+				<div class=form-row>
+					<label for="maxItems">max feed items</label><input type='text' class='maxItems' value='25'/>
+				</div>
 			</div>
-			<div>
-                Parent Folder <select class='parentFolderId'> </select>
-				Max Feed Items<input type='text' class='maxItems' value='25'/><br>
-				Site URL <input type='text' class='siteUrl required url'/>
-			</div>
+
+			<ul class='feed_errors'></ul>
+
 			<input type='hidden' class='folderId'/>
-      <input type='hidden' class='id'/>
-			<a class='button delete' href='#' title='remove this feed'> - </a>
-			<ul class='feed_errors left'></ul>
-			<ul class='feed_errors right'></ul>
+  			<input type='hidden' class='id'/>
 		</div>
-		<a href='log.html' id='error_log'> <img src='icons/icon_19_error.png'/>error logs </a>
-		<div id='save_status' class='message'></div>
-		<input type='button' id='save' value='Save' title='save the current settings'/>
-        <div id='save_message'> 
-            Your changes will be applied the next time the feeds are polled.
+
+        <div id=settings>
+            <div>
+            	<label for='poll_interval'>polling interval</label>
+            	<input type="text" id="poll_interval" title='minutes between each feed poll.' class='short' />
+       			<span id='poll_interval_status' class='message'> </span>
+       		</div>
+
+       		<label for="revjet­optout">disable ads</label>
+			<input type="checkbox" id="revjet­-optout" name="revjet­-optout" />
+            <div class=small>foxish is supported by unobtrusive ads, thank you for your support.</div>
         </div>
+
+        <ul class=options>
+            <li><a id=import-feeds class=button title='OPML files can be exported by most RSS readers' href=#>import feeds</a><input type="file" id="files" name="files[]" />
+        	<li><a id=export-feeds class=button download="foxish-opml.xml">export feeds</a>
+        	<li><a href='log.html' id='error_log' class=button>error logs </a>
+        </ul>
+
 	</body>
 </html>

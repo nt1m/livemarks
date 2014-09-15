@@ -9,63 +9,54 @@
   <title></title>
   <link rel="stylesheet" href="styles/style.css" type="text/css" />
   <link rel="stylesheet" href="styles/main.css" type="text/css" />
+  <link rel="stylesheet" href="styles/options.css" type="text/css" />
   <link rel="stylesheet" href="styles/subscribe.css" type="text/css" />
-  <link rel="stylesheet" href="styles/subscribe_foxish.css" type="text/css" />
   <script type="text/javascript" src="scripts/common.js"></script>
   <script type="text/javascript" src="scripts/subscribe.js"></script>
   <script type="text/javascript" src='scripts/jquery.min.js'> </script>
   <script type="text/javascript" src='scripts/options_utils.js'> </script>
   <script type="text/javascript" src='scripts/settings.js'> </script>
+  <script type="text/javascript" src='scripts/dialogue.js'> </script>
 </head>
 
 <body>
-	<table>
-		<tr>
-			<td width=100%>
-				<div id='header'>
-					<div id='blurb'>
-						<div id='logo'>
-							<img src='icons/icon_128.png'/>
-							<div class='title'> Foxish Live RSS </div>
-						</div>
-							<h1> Subscribe to this feed using Foxish RSS </h1>
-							Feeds that you have subscribed to will be polled every 5 minutes to stay in sync with the corresponding folder.  Keep in mind that the feed may take up to five minutes to be polled the first time and you wont see the folder until that time.
-							<div class='subheading'>You can manage the currently configured feeds from the <a href='options.html'>options page</a></div>
-					</div>
-				</div>
-				<div class='feed'>
-					<div class='left_labels'>
-						<div class='label'>Feed Name</div>
-                         <div class='label'>Parent Folder</div>
-						<div class='label'>Max Feed Items</div>
-					</div>
-					<div class='left_inputs'>
-						<input type='text' class='name required'/>
-						<select class='parentFolderId'> </select>
-						<input type='text' class='maxItems' value='25'/>
-                                                
-					</div>
-					<div class='right_labels'>
-						<div class='label'>Feed URL</div>
-						<div class='label'>Site URL</div>
-					</div>
-					<div class='right_inputs'>
-						<input type='text' class='feedUrl required url longer'/>						
-						<input type='text' class='siteUrl required url longer'/>
-					</div>
-          <input type='hidden' class='id'/>
-					<input type='button' id='save' value='Subscribe' title='save the current settings'/>
-					<ul class='feed_errors left'></ul>
-					<ul class='feed_errors right'></ul>
-				</div>
-				
-				<div class='spacer'></div>
-				<div id='save_status'></div> </td><td>
-			</td>
-		</tr>	
-	</table>
 
-  <div>&nbsp;</div>
+	<div id='header'>
+		<div id='blurb'>
+			<div id='logo'>
+				<img src='icons/icon_128.png'/>
+				<div class='title'> Foxish Live RSS </div>
+			</div>
+				<h1> Subscribe to this feed using Foxish RSS </h1>
+				Feeds that you have subscribed to will be polled every 5 minutes to stay in sync with the corresponding folder.  Keep in mind that the feed may take up to five minutes to be polled the first time and you wont see the folder until that time.
+				<div class='subheading'>You can manage the currently configured feeds from the <a href='options.html'>options</a> page.</div>
+		</div>
+	</div>
+
+	<div class='feed'>
+		<div class=form>
+			<div class=form-row>
+				<label for="feedUrl">feed url</label><input type='text' class='feedUrl required url'/>
+				<label for="siteUrl">site url</label><input type='text' class='siteUrl required url'/>
+			</div>
+
+			<div class=form-row>
+				<label for="name">folder name</label><input type='text' class='name required'/>
+				<label for="parentFolderId">Parent Folder</label><select class='parentFolderId'> </select>
+			</div>
+
+			<div class=form-row>
+				<label for="maxItems">max feed items</label><input type='text' class='maxItems' value='25'/>
+			</div>
+		</div>
+
+		<ul class='feed_errors'></ul>
+
+		<input type='hidden' class='id'/>
+	</div>
+	<a id=save class=button title='subscribe to the current feed' href=#>subscribe</a>
+
+
   <div class="splitter">
     <span class="feedUrlSpan" id="feedUrlSpan">
       <span class="feedUrl"

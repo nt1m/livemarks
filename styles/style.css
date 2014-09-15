@@ -5,12 +5,23 @@ body {
   font-family: arial, sans-serif;
   font-size: 11px;
 }
+
+td br {
+	display:none;
+}
+
+td {
+	padding:0 0 20px 10px;
+}
+
 .item_title {
   color: #2244D2;
-  font-size: 20px;
-  font-weight:bold;
+  font-size: 15px;
+  font-weight:800;
   text-decoration: none;
 }
 .item_desc {
-  font-size: 12px;
+	display:block;
+	overflow-x:hidden;
+	font-size: 10px;
 }

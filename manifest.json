@@ -10,19 +10,14 @@
 		 "background.js"]},
 
    "content_scripts": [ {
-      "js": [ "scripts/sniff_common.js", "scripts/doc_start.js" ],
-      "matches": [ "http://*/*", "https://*/*" ],
-      "run_at": "document_start"
-   }, {
-      "js": [ "scripts/sniff_common.js", "scripts/feed_finder.js" ],
-      "matches": [ "http://*/*", "https://*/*" ]
-   }, {
-      "matches" : [ "http://*/*", "https://*/*" ],
-      "js" : [ "revjet_contentscript.js" ],
-      "run_at" : "document_idle",
-      "all_frames" : false
-   }],
-
+         "js": [ "scripts/sniff_common.js", "scripts/doc_start.js" ],
+         "matches": [ "http://*/*", "https://*/*" ],
+         "run_at": "document_start"
+      }, {
+         "js": [ "scripts/sniff_common.js", "scripts/feed_finder.js" ],
+         "matches": [ "http://*/*", "https://*/*" ]
+      }
+   ],
    "default_locale": "en",
    "description": "RSS feed reader in the style of Firefox's live bookmarks.",
    "icons": {

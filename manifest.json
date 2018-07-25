@@ -26,7 +26,9 @@
       "48": "icons/icon_48.png"
    },
    "name": "Foxish live RSS",
-   "options_page": "options.html",
+   "options_ui": {
+       "page": "options.html"
+   },
    "page_action": {
       "default_icon": "icons/icon_48.png",
       "default_title": "__MSG_rss_subscription_default_title__",

@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function () {
+window.addEventListener("load", function () {
   document.title =
       chrome.i18n.getMessage("rss_subscription_default_title");
       i18nReplace('rss_subscription_feed_preview');
@@ -20,208 +20,92 @@ document.addEventListener('DOMContentLoaded', function () {
   main();
 });
 
-// Copyright (c) 2010 The Chromium Authors. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
-
-// Grab the querystring, removing question mark at the front and splitting on
-// the ampersand.
-var queryString = location.search.substring(1).split("&");
-
-// The feed URL is the first component and always present.
-var feedUrl = decodeURIComponent(queryString[0]);
-
-// We allow synchronous requests for testing. This component is only present
-// if true.
-var synchronousRequest = queryString[1] == "synchronous";
-
-// The XMLHttpRequest object that tries to load and parse the feed, and (if
-// testing) also the style sheet and the frame js.
-var req;
-
-// Depending on whether this is run from a test or from the extension, this
-// will either be a link to the css file within the extension or contain the
-// contents of the style sheet, fetched through XmlHttpRequest.
-var styleSheet = "";
-
-// Depending on whether this is run from a test or from the extension, this
-// will either be a link to the js file within the extension or contain the
-// contents of the style sheet, fetched through XmlHttpRequest.
-var frameScript = "";
-
-// What to show when we cannot parse the feed name.
-var unknownName = chrome.i18n.getMessage("rss_subscription_unknown_feed_name");
-
-// A list of feed readers, populated by localStorage if available, otherwise
-// hard coded.
-var feedReaderList;
-
-// Navigates to the reader of the user's choice (for subscribing to the feed).
-function navigate()
-{
-
+function setPreviewContent(html) {
+  // Normal loading just requires links to the css and the js file.
+  let frame = document.getElementById("preview");
+  let sheet = `<link rel="stylesheet" href="${chrome.extension.getURL("styles/reader.css")}">`;
+  let script = `<script src="${chrome.extension.getURL("scripts/iframe.js")}"></script>`;
+  frame.srcdoc = "<html>" + sheet + html + script + "</html>";
 }
 
 /**
 * The main function. fetches the feed data.
 */
-function main() {
+async function main() {
+  var queryString = location.search.substring(1).split("&");
+  var feedUrl = decodeURIComponent(queryString[0]);
+  try {
+    let response = await fetch(feedUrl);
+    let body = await response.text();
+    let {title, siteUrl, error} = parseFeed(body);
+    if (error) {
+      setPreviewContent(`<div id="error">${error}</div>`);
+      return;
+    }
 
-  // Now fetch the data.
-  req = new XMLHttpRequest();
-  if (synchronousRequest) {
-    // Tests that load the html page directly through a file:// url don't have
-    // access to the js and css from the frame so we must load them first and
-    // inject them into the src for the iframe.
-    req.open("GET", "style.css", false);
-    req.send(null);
+    let iframe = document.getElementById("preview");
 
-    styleSheet = "<style>" + req.responseText + "</style>";
+    document.querySelector(".name").value = title;
+    document.querySelector(".siteUrl").value = siteUrl;
+    document.querySelector(".feedUrl").value = feedUrl;
+    embedAsIframe(body);
 
-    req.open("GET", "scripts/iframe.js", false);
-    req.send(null);
-
-    frameScript = "<script>" + req.responseText +
-                    "<" + "/script>";
-  } else {
-    // Normal loading just requires links to the css and the js file.
-    styleSheet = "<link rel='stylesheet' type='text/css' href='" +
-                    chrome.extension.getURL("styles/style.css") + "'>";
-    frameScript = "<script src='" + chrome.extension.getURL("scripts/iframe.js") +
-                    "'></" + "script>";
+  } catch(e) {
+    let error = chrome.i18n.getMessage("rss_subscription_error_fetching");
+    setPreviewContent(`<div id="error">${error}</div>`);
   }
-
-  feedUrl = decodeURIComponent(feedUrl);
-  setFeedUrl(feedUrl);
-  req.onload = handleResponse;
-  req.onerror = handleError;
-  // Not everyone sets the mime type correctly, which causes handleResponse
-  // to fail to XML parse the response text from the server. By forcing
-  // it to text/xml we avoid this.
-  req.overrideMimeType('text/xml');
-  req.open("GET", feedUrl, !synchronousRequest);
-  req.send(null);
-
-  document.getElementById('feedUrl').href = 'view-source:' + feedUrl;
+  // document.getElementById('feedUrl').href = 'view-source:' + feedUrl;
 }
 
-// Sets the title for the feed.
-function setFeedTitle(title) {
-  $('.name')[0].value = title;
-}
+function getFeedSiteUrl(doc) {
+  let element = doc.querySelector("link[rel=alternate]") ?
+      doc.querySelector("link[rel=alternate]")
+    : doc.querySelector("link");
 
-//sets the feeds site url or if not contained in the feed then the http prefix
-function setFeedSiteUrl(doc)
-{
-    var siteUrl;
-    //try to find the feeds site url
-    if($(doc).find('link[rel=alternate]:first').length > 0)
-        siteUrl = $(doc).find('link[rel=alternate]:first');
-    else if($(doc).find('link:first').length > 0)
-        siteUrl = $(doc).find('link:first');
-    //if a node was found then get the url
-    if(siteUrl !== undefined)
-    {
-        if(siteUrl.attr('href') !== undefined)
-            siteUrl = siteUrl.attr('href');
-        else
-            siteUrl = siteUrl.text();
-    }else
-        siteUrl = 'http://';
-
-    //set the site url input field
-    $('.siteUrl')[0].value = siteUrl;
-}
-
-//sets the feeds url
-function setFeedUrl(feedUrl)
-{
-	$('.feedUrl')[0].value = feedUrl;
-}
-
-// Handles errors during the XMLHttpRequest.
-function handleError() {
-  handleFeedParsingFailed(
-      chrome.i18n.getMessage("rss_subscription_error_fetching"));
-}
-
-// Handles feed parsing errors.
-function handleFeedParsingFailed(error) {
-  setFeedTitle(unknownName);
-
-  // The tests always expect an IFRAME, so add one showing the error.
-  var html = "<body><span id=\"error\" class=\"item_desc\">" + error +
-               "</span></body>";
-
-  var error_frame = createFrame('error', html);
-  var itemsTag = document.getElementById('items');
-  itemsTag.appendChild(error_frame);
-}
-
-function createFrame(frame_id, html) {
-  frame = document.createElement('iframe');
-  frame.id = frame_id;
-  frame.srcdoc = "<html>" + styleSheet + html +
-                "</html>";
-  frame.scrolling = "auto";
-  frame.frameBorder = "0";
-  frame.marginWidth = "0";
-  return frame;
+  if (element) {
+    return element.href ? element.href : element.textContent;
+  }
+  return null;
 }
 
 function embedAsIframe(rssText) {
-  var itemsTag = document.getElementById('items');
-
-  // TODO(aa): Add base URL tag
-  iframe = createFrame('rss', styleSheet + frameScript);
-  itemsTag.appendChild(iframe);
-
-  iframe.onload = function() {
+  let iframe = document.getElementById("preview");
+  iframe.onload = () => {
     iframe.contentWindow.postMessage(rssText, "*");
-  }
+  };
+  setPreviewContent("");
 }
 
 // Handles parsing the feed data we got back from XMLHttpRequest.
-function handleResponse() {
-  // Uncomment these three lines to see what the feed data looks like.
-  // var itemsTag = document.getElementById('items');
-  // itemsTag.textContent = req.responseText;
-  // return;
-
-  var doc = req.responseXML;
+function parseFeed(responseText) {
+  // If the XMLHttpRequest object fails to parse the feed we make an attempt
+  // ourselves, because sometimes feeds have html/script code appended below a
+  // valid feed, which makes the feed invalid as a whole even though it is
+  // still parsable.
+  const domParser = new DOMParser();
+  const doc = domParser.parseFromString(responseText, "text/xml");
   if (!doc) {
-    // If the XMLHttpRequest object fails to parse the feed we make an attempt
-    // ourselves, because sometimes feeds have html/script code appended below a
-    // valid feed, which makes the feed invalid as a whole even though it is
-    // still parsable.
-    var domParser = new DOMParser();
-    doc = domParser.parseFromString(req.responseText, "text/xml");
-    if (!doc) {
-      handleFeedParsingFailed(
-          chrome.i18n.getMessage("rss_subscription_not_valid_feed"));
-      return;
-    }
+    return {
+      error: chrome.i18n.getMessage("rss_subscription_not_valid_feed")
+    };
   }
 
   // We must find at least one 'entry' or 'item' element before proceeding.
-  var entries = doc.getElementsByTagName('entry');
-  if (entries.length == 0)
-    entries = doc.getElementsByTagName('item');
+  let entries = doc.getElementsByTagName('entry');
   if (entries.length == 0) {
-    handleFeedParsingFailed(
-        chrome.i18n.getMessage("rss_subscription_no_entries"))
-    return;
+    entries = doc.getElementsByTagName('item');
+  }
+  if (entries.length == 0) {
+    return {
+      error: chrome.i18n.getMessage("rss_subscription_no_entries"),
+    };
   }
 
   // Figure out what the title of the whole feed is.
-  var title = doc.getElementsByTagName('title')[0];
-  if (title)
-    setFeedTitle(title.textContent);
-  else
-    setFeedTitle(unknownName);
+  let {textContent: title} = doc.getElementsByTagName('title')[0];
 
-   setFeedSiteUrl(doc);
-
-  // Add an IFRAME with the html contents.
-  embedAsIframe(req.responseText);
+  return {
+    title,
+    siteUrl: getFeedSiteUrl(doc),
+  };
 }

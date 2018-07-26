@@ -1,27 +1,75 @@
 /**
  * Styles that are shared between the iframe and the parent document.
  */
+
+html {
+  font: message-box;
+}
+
 body {
-  font-family: arial, sans-serif;
-  font-size: 11px;
+  font-size: 1.25em;
 }
 
-td br {
-	display:none;
+main {
+  max-width: 800px;
+  margin: auto;
 }
 
-td {
-	padding:0 0 20px 10px;
+.item {
+  background: #fff;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.12);
+  padding: 30px;
+  margin: 30px;
+  line-height: 1.5;
+}
+
+.item:hover {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+.item h1 {
+  font-size: 1.4em;
+  font-weight: normal;
+}
+
+.item h2 {
+  font-size: 1.25em;
+}
+
+.item img {
+  width: 50%;
+  height: auto;
+}
+
+.item li {
+  margin: 10px 0;
+  line-height: 1.5;
+}
+
+.item a {
+  color: #0060df;
+}
+
+.item a:not(:hover) {
+  text-decoration: none;
+}
+
+.item a:active {
+  color: #003eaa;
+}
+
+.item blockquote {
+  border-left: solid .25em;
+  background: #fafafa;
+  padding: 20px;
+  margin: 20px 0;
 }
 
 .item_title {
-  color: #2244D2;
-  font-size: 15px;
-  font-weight:800;
+  color: #0060df;
+  font-size: 1.8em;
   text-decoration: none;
 }
 .item_desc {
 	display:block;
-	overflow-x:hidden;
-	font-size: 10px;
 }

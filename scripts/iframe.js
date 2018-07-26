@@ -27,14 +27,10 @@ window.addEventListener("message", function(e) {
 }, false);
 
 function buildPreview(doc) {
-  /* Start building the part we render inside an IFRAME. We use a table to
-     ensure that items are separated vertically from each other. */
-  var table = document.createElement("table");
-  var tbody = document.createElement("tbody");
-  table.appendChild(tbody);
-
   /* Now parse the rest. Some use <entry> for each feed item, others use
      <channel><item>. */
+  var container = document.createElement("main");
+
   var entries = doc.getElementsByTagName('entry');
   if (entries.length == 0)
     entries = doc.getElementsByTagName('item');
@@ -77,8 +73,8 @@ function buildPreview(doc) {
         link = itemLink[0].getAttribute('href');
     }
 
-    var tr = document.createElement("tr");
-    var td = document.createElement("td");
+    var item = document.createElement("div");
+    item.classList = "item";
 
     /* If we found a link we'll create an anchor element,
     otherwise just use a bold headline for the title. */
@@ -88,7 +84,7 @@ function buildPreview(doc) {
     if (link != "")
       anchor.href = link;
     anchor.innerHTML = itemTitle;
-    anchor.target = "_top";
+    anchor.target = "_blank";
     anchor.className = "item_title";
 
     var span = document.createElement("span");
@@ -96,16 +92,10 @@ function buildPreview(doc) {
     span.className = "item_desc";
     span.innerHTML = itemDesc;
 
-    td.appendChild(anchor);
-    td.appendChild(document.createElement("br"));
-    td.appendChild(span);
-    td.appendChild(document.createElement("br"));
-    td.appendChild(document.createElement("br"));
+    item.appendChild(anchor);
+    item.appendChild(span);
 
-    tr.appendChild(td);
-    tbody.appendChild(tr);
+    container.appendChild(item);
+    document.body.appendChild(container);
   }
-
-  table.appendChild(tbody);
-  document.body.appendChild(table);
 }

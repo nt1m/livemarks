@@ -1,39 +1,40 @@
 {
-	"manifest_version": 2,
-	"background": {
-    	"scripts": ["scripts/jquery.min.js",
-		 "scripts/jquery.jfeed.js",
-		 "scripts/options_utils.js",
-		 "scripts/settings.js",
-		 "scripts/log_utils.js",
-		 "scripts/feed_util.js",
-		 "background.js"]},
+  "manifest_version": 2,
+  "background": {
+    "scripts": ["scripts/jquery.min.js",
+     "scripts/jquery.jfeed.js",
+     "scripts/options_utils.js",
+     "scripts/settings.js",
+     "scripts/log_utils.js",
+     "scripts/feed_util.js",
+     "background.js"]},
 
-   "content_scripts": [ {
-         "js": [ "scripts/sniff_common.js", "scripts/doc_start.js" ],
-         "matches": [ "http://*/*", "https://*/*" ],
-         "run_at": "document_start"
-      }, {
-         "js": [ "scripts/sniff_common.js", "scripts/feed_finder.js" ],
-         "matches": [ "http://*/*", "https://*/*" ]
-      }
-   ],
-   "default_locale": "en",
-   "description": "RSS feed reader in the style of Firefox's live bookmarks.",
-   "icons": {
-      "128": "icons/icon_128.png",
-      "16": "icons/icon_16.png",
-      "48": "icons/icon_48.png"
-   },
-   "name": "Foxish live RSS",
-   "options_ui": {
-       "page": "options.html"
-   },
-   "page_action": {
-      "default_icon": "icons/icon_48.png",
-      "default_title": "__MSG_rss_subscription_default_title__",
-      "default_popup": "popup.html"
-   },
-   "permissions": [ "storage", "bookmarks", "http://*/", "https://*/", "tabs" ],
-   "version": "4.1"
+  "content_scripts": [ {
+      "js": [ "scripts/sniff_common.js", "scripts/doc_start.js" ],
+      "matches": [ "http://*/*", "https://*/*" ],
+      "run_at": "document_start"
+    }, {
+      "js": [ "scripts/sniff_common.js", "scripts/feed_finder.js" ],
+      "matches": [ "http://*/*", "https://*/*" ]
+    }
+  ],
+  "default_locale": "en",
+  "description": "RSS feed reader in the style of Firefox's live bookmarks.",
+  "icons": {
+    "128": "icons/feed.svg",
+    "16": "icons/feed.svg",
+    "48": "icons/feed.svg"
+  },
+  "name": "Foxish live RSS",
+  "options_ui": {
+     "page": "options.html",
+     "open_in_tab": true
+  },
+  "page_action": {
+    "default_icon": "icons/feed.svg",
+    "default_title": "__MSG_rss_subscription_default_title__",
+    "default_popup": "popup.html"
+  },
+  "permissions": [ "storage", "bookmarks", "http://*/", "https://*/", "tabs" ],
+  "version": "4.1"
 }

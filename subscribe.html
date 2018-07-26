@@ -20,51 +20,36 @@
 </head>
 
 <body>
+  <div id='sidebar'>
+    <h1>Add live bookmark</h1>
+    <div class='feed'>
+      <div class=form>
+        <div class=form-row>
+          <label for="feedUrl">feed url</label><input type='text' class='feedUrl required url'/>
+        </div>
+        <div class=form-row>
+          <label for="siteUrl">site url</label><input type='text' class='siteUrl required url'/>
+        </div>
 
-	<div id='header'>
-		<div id='blurb'>
-			<div id='logo'>
-				<img src='icons/icon_128.png'/>
-				<div class='title'> Foxish Live RSS </div>
-			</div>
-				<h1> Subscribe to this feed using Foxish RSS </h1>
-				Feeds that you have subscribed to will be polled every 5 minutes to stay in sync with the corresponding folder.  Keep in mind that the feed may take up to five minutes to be polled the first time and you wont see the folder until that time.
-				<div class='subheading'>You can manage the currently configured feeds from the <a href='options.html'>options</a> page.</div>
-		</div>
-	</div>
+        <div class=form-row>
+          <label for="name">folder name</label><input type='text' class='name required'/>
+        </div>
+        <div class=form-row>
+          <label for="parentFolderId">Parent Folder</label><select class='parentFolderId'> </select>
+        </div>
 
-	<div class='feed'>
-		<div class=form>
-			<div class=form-row>
-				<label for="feedUrl">feed url</label><input type='text' class='feedUrl required url'/>
-				<label for="siteUrl">site url</label><input type='text' class='siteUrl required url'/>
-			</div>
+        <div class=form-row>
+          <label for="maxItems">max feed items</label><input type='text' class='maxItems' value='25'/>
+        </div>
+      </div>
 
-			<div class=form-row>
-				<label for="name">folder name</label><input type='text' class='name required'/>
-				<label for="parentFolderId">Parent Folder</label><select class='parentFolderId'> </select>
-			</div>
+      <ul class='feed_errors'></ul>
 
-			<div class=form-row>
-				<label for="maxItems">max feed items</label><input type='text' class='maxItems' value='25'/>
-			</div>
-		</div>
-
-		<ul class='feed_errors'></ul>
-
-		<input type='hidden' class='id'/>
-	</div>
-	<a id=save class=button title='subscribe to the current feed' href=#>subscribe</a>
-
-
-  <div class="splitter">
-    <span class="feedUrlSpan" id="feedUrlSpan">
-      <span class="feedUrl"
-        >[ <a id="feedUrl" class="feedUrl" target="_blank"
-              title="The feed page currently being previewed."
-           ></a> ]</span></span>
-    <span><b id="rss_subscription_feed_preview"></b></span>
+      <input type='hidden' class='id'/>
+    </div>
+    <button id="save" class="primary" title='subscribe to the current feed'>Subscribe</a>
   </div>
+ 
   <div id="items"></div>
 </body>
 </html>

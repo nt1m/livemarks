@@ -12,21 +12,14 @@
 		<title>Foxish Live RSS - Options</title>
 	</head>
 	<body>
-		<div id='header'>
-			<div id='blurb'>
-				<div id='logo'>
-					<img src='icons/icon_128.png'/>
-					<div class='title'> Foxish Live RSS </div>
-				</div>
-				<h1>Welcome to Foxish Live RSS </h1>
-				This extension tries to mimic Firefox's excellent native handling of RSS feeds using live bookmarks.  It does this by syncing feeds items every 5 minutes with folders on the bookmark bar.  You can see any errors that have occured from the logs page, accessible bellow.
-				<div class='subheading'>To get started click the <span class='important'>add feed</span> button bellow and enter your feeds info.</div>
-			</div>
+		<div id="toolbar">
+			<button id=import-feeds title='OPML files can be exported by most RSS readers' href=#>Import feeds</button><input type="file" id="files" name="files[]" />
+        	<a class="button" id=export-feeds download="foxish-opml.xml">Export feeds</a>
+        	<a class="button" href='log.html' id='error_log' class=button>error logs</a>
+			<a id='add' class=button href='#' title='add a new feed to the list'>add feed</a>
 		</div>
-
-		<a id='add' class=button href='#' title='add a new feed to the list'> add feed </a>
 		<div id=feeds> </div>
-		<a id=save class=button title='save the current settings' href=#>save</a>
+		<a id=save class="button primary" title='save the current settings' href=#>save</a>
 
 		<div class='feed' style='display:none;'>
 			<a class='button delete' href=# title='remove this feed'>-</a>
@@ -60,12 +53,5 @@
        			<span id='poll_interval_status' class='message'> </span>
        		</div>
         </div>
-
-        <ul class=options>
-            <li><a id=import-feeds class=button title='OPML files can be exported by most RSS readers' href=#>import feeds</a><input type="file" id="files" name="files[]" />
-        	<li><a id=export-feeds class=button download="foxish-opml.xml">export feeds</a>
-        	<li><a href='log.html' id='error_log' class=button>error logs </a>
-        </ul>
-
 	</body>
 </html>

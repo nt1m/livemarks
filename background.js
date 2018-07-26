@@ -248,9 +248,6 @@ if (request.msg == "feedIcon") {
   // We have received a list of feed urls found on the page.
   // Enable the page action icon.
   feedData[sender.tab.id] = request.feeds;
-  chrome.pageAction.setTitle(
-	{ tabId: sender.tab.id,
-	  title: chrome.i18n.getMessage("rss_subscription_action_title")});
   chrome.pageAction.show(sender.tab.id);
 } else if (request.msg == "feedDocument") {
   // We received word from the content script that this document

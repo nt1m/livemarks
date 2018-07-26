@@ -17,35 +17,15 @@ function main() {
       preview(feeds[0].href);
     } else {
       var content = document.getElementById('content');
-      var heading = document.getElementById('heading');
-      heading.innerText =
-          chrome.i18n.getMessage("rss_subscription_action_title");
-      content.appendChild(document.createElement('br'));
 
-      var feed_list = document.createElement('table');
-      feed_list.style.width = "400";
+      var feed_list = document.createElement('ul');
+      feed_list.className = "feedList";
       for (var i = 0; i < feeds.length; ++i) {
-        // Create an RSS image and the anhor encapsulating it.
-        var img_link = feedLink(feeds[i].href);
-        var img = document.createElement('img');
-        img.src = "icons/icon_16.png";
-        img_link.appendChild(img);
-
-        // Create a text node and the anchor encapsulating it.
-        var text_link = feedLink(feeds[i].href);
-        text_link.appendChild(document.createTextNode(feeds[i].title));
-
-        // Add the data to a row in the table.
-        var tr = document.createElement('tr');
-        tr.className = "feedList";
-        var td = document.createElement('td');
-        td.width = "16";
-        td.appendChild(img_link);
-        var td2 = document.createElement('td');
-        td2.appendChild(text_link);
-        tr.appendChild(td);
-        tr.appendChild(td2);
-        feed_list.appendChild(tr);
+        var item = document.createElement("li");
+        var link = feedLink(feeds[i].href);
+        link.textContent = feeds[i].title;
+        item.appendChild(link);
+        feed_list.appendChild(item);
       }
 
       content.appendChild(feed_list);
@@ -56,6 +36,7 @@ function main() {
 function onClick(event) {
   var a = event.currentTarget;
   preview(a.href);
+  event.preventDefault();
 }
 
 function preview(feed_url) {

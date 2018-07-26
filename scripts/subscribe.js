@@ -161,7 +161,7 @@ function handleFeedParsingFailed(error) {
 function createFrame(frame_id, html) {
   frame = document.createElement('iframe');
   frame.id = frame_id;
-  frame.src = "data:text/html;charset=utf-8,<html>" + styleSheet + html +
+  frame.srcdoc = "<html>" + styleSheet + html +
                 "</html>";
   frame.scrolling = "auto";
   frame.frameBorder = "0";

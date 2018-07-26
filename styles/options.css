@@ -1,46 +1,17 @@
 .feed {
-	clear:both;
 	position:relative;
-	width:100%;
-	padding: 15px 0;
-	border-top:2px solid rgba(0,0,0,0.2);
-	overflow: hidden;
-}
-
-.feed:first-of-type {
-	border:none;
 }
 
 label {
-	margin: 0 5px;
-	text-align: right;
-	font-size: 12px;
-}
-
-.form {
-	display:table;
-	width:95%;
-}
-
-.form-row {
-	width:100%;
-	display:table-row;
+	margin: 5px;
 }
 
 .form-row > * {
-	display:table-cell;
-}
-
-.feed input, .feed select {
-	box-sizing: border-box;
 	width:100%;
-	margin-left:10px;
 }
 
-.feed input[type="text"]
-{
-	padding:2px;
-	border:1px solid rgb(200,200,200);
+.feed label {
+	display: block;
 }
 
 .feed input.error {
@@ -64,7 +35,7 @@ label {
 }
 
 .feed input.maxItems, .short {
-	width:30px;
+	width: 5ch;
 	text-align:center;
 }
 
@@ -81,21 +52,6 @@ label {
 	border-radius: 0;
 }
 a.delete:hover {background:#F45D4C;}
-
-a#add {
-	margin-bottom: 5px;
-}
-
-.no-feeds a#add {
-	padding:40px 0;
-}
-
-#save {
-	background:#37A640;
-	padding:20px 0;
-	font-size:18px;
-}
-#save:hover {background:#319238;}
 
 ul.options {
 	list-style: none;
@@ -130,4 +86,3 @@ ul.options a {
 #poll_interval_status.error {padding:7px;}
 
 #poll_interval_status.error {background: rgb(235,210,210);}
-

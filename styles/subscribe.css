@@ -1,21 +1,22 @@
+body {
+  display: flex;
+  align-items: stretch;
+}
+
+#sidebar {
+  background: white;
+  padding: 1em;
+  overflow-y: auto;
+  min-width: 400px;
+}
+
 #items {
   width:100%;
-  height:75%;
-
 }
 
 iframe {
   height:100%;
   width:100%;
-}
-
-.splitter {
-  padding: 2px 8px 2px 5px;
-  border-top: solid 1px #9CC2EF;
-  background: #EBEFF9;
-  font-size: 13px;
-  font-weight: bold;
-  display: block;
 }
 
 .feed {

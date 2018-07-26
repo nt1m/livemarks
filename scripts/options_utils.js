@@ -124,14 +124,14 @@ function validateAndSaveFeeds(appendFeeds) {
     saveFeedConfig(config);
     setupExportLink(config)
 
-    showDialogue('settings were saved');
+    alert('settings were saved');
 
     //update the background.html process
     chrome.extension.getBackgroundPage().setFeeds(config);
     return true;
 
   } else {
-    showDialogue('correct the errors and re-save.', {status:'error'});
+    alert('correct the errors and re-save.');
   }
 
   return false;
@@ -271,7 +271,7 @@ function readImportFile(e) {
   var importFeeds = $(e.target.result).find('outline[type="rss"]');
   if(importFeeds.length === 0)
   {
-    showDialogue('no feeds were found', {status:'error'});
+    alert('no feeds were found');
     return;
   }
 
@@ -303,15 +303,14 @@ function importErrorHandler(evt) {
     msg = 'An error occurred reading this file.';
   }
 
-  showDialogue(msg, {status:'error'});
+  alert(msg);
 }
 
 //clear the error area
 function importSuccess(feedsAdded) {
 
-  var msg, status;
+  var msg;
   if(feedsAdded > 5) {
-    status = 'error';
     if(feedsAdded > 30)
       msg = 'Hold your horses!! Your adding WAY too many feeds!';
     else if(feedsAdded > 10)
@@ -321,10 +320,9 @@ function importSuccess(feedsAdded) {
 
     msg += '<br><br>Chrome enforces bookmark creation limits that prevent Foxish from keeping so many feeds up to date at once.  In most cases Foxish can usually handle updating about 7 feeds and can handle importing three or four an hour before it hits those limits. <br><br>Sorry but for now this is the best we can do.<br><br>You can try to import all your feeds but keep in mind that it will take some time before Chrome lets Foxish catch up and things may get a bit dated or buggy.';
   }else {
-    status = 'success';
     msg = 'feeds loaded, make any changes and click save';
   }
-  showDialogue(msg, {status:status});
+  alert(msg);
 }
 
 //gets all the bookmark folders

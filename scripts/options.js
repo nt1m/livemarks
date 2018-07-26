@@ -2,7 +2,11 @@
 document.addEventListener('DOMContentLoaded', function () {
 
   $('#add').click(function() {
-    showDialogue('enter feed url', {callback: addNewFeed});
+    let url = prompt("Enter Feed URL");
+
+    if (url) {
+      addNewFeed(url);
+    }
     return false;
   });
   $('#save').click(function() {

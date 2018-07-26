@@ -4,9 +4,7 @@ body {
 }
 
 #sidebar {
-  background: white;
-  padding: 1em;
-  overflow-y: auto;
+  margin: 0;
   min-width: 400px;
 }
 

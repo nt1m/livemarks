@@ -18,26 +18,25 @@
 </head>
 
 <body>
-  <div id='sidebar'>
+  <div id='sidebar' class="card">
     <h1>Add live bookmark</h1>
     <div class='feed'>
       <div class=form>
         <div class=form-row>
-          <label for="feedUrl">feed url</label><input type='text' class='feedUrl required url'/>
+          <label for="name">Name</label><input type='text' class='name required'/>
         </div>
         <div class=form-row>
-          <label for="siteUrl">site url</label><input type='text' class='siteUrl required url'/>
+          <label for="feedUrl">Feed URL</label><input type='text' class='feedUrl required url'/>
         </div>
-
         <div class=form-row>
-          <label for="name">folder name</label><input type='text' class='name required'/>
+          <label for="siteUrl">Site URL</label><input type='text' class='siteUrl required url'/>
         </div>
         <div class=form-row>
           <label for="parentFolderId">Parent Folder</label><select class='parentFolderId'> </select>
         </div>
 
         <div class=form-row>
-          <label for="maxItems">max feed items</label><input type='text' class='maxItems' value='25'/>
+          <label for="maxItems">Maximum items</label><input type='text' class='maxItems' value='25'/>
         </div>
       </div>
 
@@ -45,7 +44,9 @@
 
       <input type='hidden' class='id'/>
     </div>
-    <button id="save" class="primary" title='subscribe to the current feed'>Subscribe</a>
+    <div class="form-row">
+      <button id="save" class="primary" title='subscribe to the current feed'>Subscribe</button>
+    </div>
   </div>
  
   <div id="items">

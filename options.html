@@ -11,31 +11,51 @@
     <title>Foxish Live RSS - Options</title>
   </head>
   <body>
-    <div id="toolbar">
-      <button id=import-feeds title='OPML files can be exported by most RSS readers' href=#>Import feeds</button><input type="file" id="files" name="files[]" />
-      <a class="button" id=export-feeds download="foxish-opml.xml">Export feeds</a>
-      <a class="button" href='log.html' id='error_log' class=button>error logs</a>
-      <a id='add' class=button href='#' title='add a new feed to the list'>add feed</a>
-    </div>
-    <div id=feeds> </div>
-    <a id=save class="button" title='save the current settings' href=#>save</a>
-
-    <div class='feed' style='display:none;'>
-      <a class='button delete' href=# title='remove this feed'>-</a>
-
+    <main>
+      <div class="toolbar">
+        <a id='add' class="button icon new icon-white primary" href='#' title='add a new feed to the list'>Add Feed</a>
+        <div class="float-right">
+          <button id=import-feeds title='OPML files can be exported by most RSS readers' href=#>Import feeds</button><input type="file" id="files" name="files[]" />
+          <a class="button" id=export-feeds download="foxish-opml.xml">Export feeds</a>
+          <a class="button" href='log.html' id='error_log' class=button>Error Logs</a>
+        </div>
+      </div>
+      <div id=feeds> </div>
+      <div id="settings" class="toolbar">
+        <div class="float-left">
+          <label for='poll_interval'>Refresh interval:</label>
+          <input type="text" id="poll_interval" title='The interval at which the feed items are fetched' class='short' />
+          <label>minutes</label>
+          <span id='poll_interval_status' class='message'> </span>
+        </div>
+        <a id=save class="button primary float-right" title='save the current settings' href=#>Save</a>
+      </div>
+    </main>
+    <div class='feed card' style='display:none;'>
       <div class=form>
-        <div class=form-row>
-          <label for="feedUrl">feed url</label><input type='text' class='feedUrl required url'/>
-          <label for="siteUrl">site url</label><input type='text' class='siteUrl required url'/>
+        <div class="form-row">
+          <label for="name">Name</label>
+          <div class="flex">
+            <input type='text' class='name required grow'/>
+            <button class="icon delete" title='remove this feed'></button>
+          </div>
         </div>
 
-        <div class=form-row>
-          <label for="name">folder name</label><input type='text' class='name required'/>
-          <label for="parentFolderId">Parent Folder</label><select class='parentFolderId'> </select>
+        <div class="flex">
+          <div class="form-row grow">
+            <label for="feedUrl">Feed URL</label><input type='text' class='feedUrl required url'/>
+          </div>
+          <div class="form-row grow">
+            <label for="siteUrl">Site URL</label><input type='text' class='siteUrl required url'/>
+          </div>
         </div>
-
-        <div class=form-row>
-          <label for="maxItems">max feed items</label><input type='text' class='maxItems' value='25'/>
+        <div class="flex">
+          <div class="form-row grow">
+            <label for="parentFolderId">Parent Folder</label><select class='parentFolderId'> </select>
+          </div>
+          <div class=form-row>
+            <label for="maxItems">Maximum Items</label><input type='text' class='maxItems' value='25'/>
+          </div>
         </div>
       </div>
 
@@ -43,14 +63,6 @@
 
       <input type='hidden' class='folderId'/>
       <input type='hidden' class='id'/>
-    </div>
-
-    <div id=settings>
-      <div>
-        <label for='poll_interval'>polling interval</label>
-        <input type="text" id="poll_interval" title='minutes between each feed poll.' class='short' />
-        <span id='poll_interval_status' class='message'> </span>
-      </div>
     </div>
   </body>
 </html>

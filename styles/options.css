@@ -1,86 +1,86 @@
 .feed {
-	position:relative;
+  position:relative;
 }
 
 label {
-	margin: 5px;
+  margin: 5px;
 }
 
 .form-row > * {
-	width:100%;
+  width:100%;
 }
 
 .feed label {
-	display: block;
+  display: block;
 }
 
 .feed input.error {
-	background:#FC98A2;
+  background:#FC98A2;
 }
 
 .feed ul.feed_errors
 {
-	color:#F45D4C;
-	display: block;
-	text-align:left;
-	width:100%;
-	list-style: none;
-	font-size: 12px;
+  color:#F45D4C;
+  display: block;
+  text-align:left;
+  width:100%;
+  list-style: none;
+  font-size: 12px;
 }
 
 .feed ul.feed_errors li {
-	display: inline-block;
-	width:40%;
-	margin-left:50px;
+  display: inline-block;
+  width:40%;
+  margin-left:50px;
 }
 
 .feed input.maxItems, .short {
-	width: 5ch;
-	text-align:center;
+  width: 5ch;
+  text-align:center;
 }
 
 .feed a.delete {
-	display:inline-block;
-	background:#FC98A2;
-	height:20px;
-	width:20px;
-	border:none;
-	position:absolute;
-	right:0px;
-	top:0px;
-	padding:0;
-	border-radius: 0;
+  display:inline-block;
+  background:#FC98A2;
+  height:20px;
+  width:20px;
+  border:none;
+  position:absolute;
+  right:0px;
+  top:0px;
+  padding:0;
+  border-radius: 0;
 }
 a.delete:hover {background:#F45D4C;}
 
 ul.options {
-	list-style: none;
-	text-align: right;
-	overflow: auto;
+  list-style: none;
+  text-align: right;
+  overflow: auto;
 }
 
 ul.options a {
-	clear:both;
-	float:right;
-	margin-bottom: 10px;
-	text-transform: lowercase;
-	font-size: 13px;
+  clear:both;
+  float:right;
+  margin-bottom: 10px;
+  text-transform: lowercase;
+  font-size: 13px;
 }
 
 #settings {
-	padding:10px;
-	float:left;
+  padding:10px;
+  float:left;
 }
 
 #settings .small {
-	font-size:10px;
-	margin-left:10px;
+  font-size:10px;
+  margin-left:10px;
 }
 
 #files {display:none;}
 
 #poll_interval_status {
-    background:rgb(210,235,210);
+  background:rgb(210,235,210);
 }
 
 #poll_interval_status.error {padding:7px;}

@@ -6,15 +6,15 @@ showDialogue = function showDialogueInit() {
 			options = {};
 
 		$('body').append('<div id=dialogue>' +
-    			'<div id=dialogue-container>' +
-    				'<a href=# id=dialogue-close>-</a>' +
-    				'<div id=dialogue-content>' +
-	    				message +
-    				'</div>' +
-    				(options.callback ? '<input type=text/>' : '') +
-    				'<a id=dialogue-button class=button href=#>ok</a>' +
-    			'</div>' +
-    		'</div>');
+				'<div id=dialogue-container>' +
+					'<a href=# id=dialogue-close>-</a>' +
+					'<div id=dialogue-content>' +
+						message +
+					'</div>' +
+					(options.callback ? '<input type=text/>' : '') +
+					'<a id=dialogue-button class=button href=#>ok</a>' +
+				'</div>' +
+			'</div>');
 
 		$('#dialogue-close').click(function() {
 			$('#dialogue').remove();

@@ -35,6 +35,5 @@
       "default_popup": "popup.html"
    },
    "permissions": [ "storage", "bookmarks", "http://*/", "https://*/", "tabs" ],
-   "update_url": "http://clients2.google.com/service/update2/crx",
    "version": "4.1"
 }

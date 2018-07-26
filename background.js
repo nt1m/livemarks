@@ -7,7 +7,7 @@ var seperator = '. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 var feeds = Array();
 var intervalId;
 
-//run the script 
+//run the script
 init();
 
 //sets the feeds to poll and sync
@@ -243,7 +243,7 @@ function displayError(errorText) {
 // example what feedUrl was detected in the tab).
 var feedData = {};
 
-chrome.extension.onRequest.addListener(function(request, sender) {
+chrome.runtime.onMessage.addListener(function(request, sender) {
 if (request.msg == "feedIcon") {
   // We have received a list of feed urls found on the page.
   // Enable the page action icon.

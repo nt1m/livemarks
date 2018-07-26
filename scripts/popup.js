@@ -10,7 +10,7 @@ function feedLink(url) {
 }
 
 function main() {
-  chrome.tabs.getSelected(null, function(tab) {
+  chrome.tabs.query({active: true, currentWindow: true}, function([tab]) {
     var feeds = chrome.extension.getBackgroundPage().feedData[tab.id];
     if (feeds.length == 1) {
       // Only one feed, no need for a bubble; go straight to the subscribe page.

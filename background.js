@@ -31,10 +31,11 @@ var LivemarkManager = {
   },
 
   async updateLivemark(feed) {
-    const folder = await getBookmarkFolder(feed);
+    const folder = await getLivemarkFolder(feed);
 
     if (folder === null) {
-      if (!await doesParentFolderExist(feed)) {
+      const parentExists = await doesParentFolderExist(feed);
+      if (!parentExists) {
       // if the parent doesn't exist then alert the user
         logError("the parent folder wasn't found for feed: " + feed.name +
           " please check and resave your settings");
@@ -140,7 +141,8 @@ async function addFeedSiteUrlBookmark(feedFolder, feed) {
 }
 
 async function populateLivemark(feedFolder, feed, jFeed) {
-  for (const bookmark of await browser.bookmarks.getChildren(feedFolder.id)) {
+  const children =  await browser.bookmarks.getChildren(feedFolder.id);
+  for (const bookmark of children) {
     await browser.bookmarks.remove(bookmark.id);
   }
 

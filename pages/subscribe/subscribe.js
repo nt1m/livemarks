@@ -6,8 +6,8 @@
 
 window.addEventListener("load", function() {
   document.title = chrome.i18n.getMessage("rss_subscription_default_title");
-  i18nReplace("rss_subscription_feed_preview");
-  i18nReplaceImpl("feedUrl", "rss_subscription_feed_link", "");
+  // i18nReplace("rss_subscription_feed_preview");
+  // i18nReplaceImpl("feedUrl", "rss_subscription_feed_link", "");
 
   $("#save").click(function() {
     validateAndSaveFeeds(true);
@@ -28,8 +28,8 @@ window.addEventListener("load", function() {
 function setPreviewContent(html) {
   // Normal loading just requires links to the css and the js file.
   const frame = document.getElementById("preview");
-  const sheetUrl = chrome.extension.getURL("styles/reader.css");
-  const scriptUrl = chrome.extension.getURL("scripts/iframe.js");
+  const sheetUrl = chrome.extension.getURL("pages/reader/reader.css");
+  const scriptUrl = chrome.extension.getURL("pages/reader/reader.js");
   frame.srcdoc = `<html>
   <head><link rel="stylesheet" href="${sheetUrl}"></head>
   <body>

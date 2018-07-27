@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <script src="scripts/jquery.min.js"></script>
-  <script src="scripts/options.js"></script>
-  <script src="scripts/options_utils.js"></script>
-  <script src="scripts/settings.js"></script>
-  <link href="styles/main.css" rel="stylesheet">
-  <link href="styles/options.css" rel="stylesheet">
+  <script src="/lib/jquery.min.js"></script>
+  <script src="options.js"></script>
+  <script src="/shared/options_utils.js"></script>
+  <script src="/shared/settings.js"></script>
+  <link href="/css/main.css" rel="stylesheet">
+  <link href="options.css" rel="stylesheet">
   <title>Livemark options</title>
 </head>
 <body>
@@ -17,7 +17,7 @@
         <button id="import-feeds" title="OPML files can be exported by most RSS readers">Import feeds</button>
         <input id="files" name="files[]" type="file">
         <a class="button" id="export-feeds">Export feeds</a>
-        <a class="button" href="log.html" id="error_log">Error Logs</a>
+        <a class="button" href="../log/log.html" id="error_log">Error Logs</a>
       </div>
     </div>
     <div class="empty-notice" id="feeds"></div>

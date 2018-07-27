@@ -49,7 +49,7 @@ function preview(feed_url) {
     url = window.localStorage.defaultReader.replace("%s", escape(feed_url));
   } else {
     // Show the preview page.
-    url = "subscribe.html?" + encodeURIComponent(feed_url);
+    url = "../pages/subscribe/subscribe.html?" + encodeURIComponent(feed_url);
   }
   chrome.tabs.create({ url });
   window.close();

@@ -202,7 +202,7 @@ chrome.runtime.onMessage.addListener(function(request, sender) {
         window.close();
       }`,
     });
-    const url = chrome.extension.getURL("subscribe.html?" + encodeURIComponent(request.href));
+    const url = chrome.extension.getURL("pages/subscribe/subscribe.html?" + encodeURIComponent(request.href));
     chrome.tabs.create({url, index: sender.tab.index});
   }
 });

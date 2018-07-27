@@ -58,6 +58,32 @@ label {
   width:100%;
 }
 
+.empty-notice:empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.empty-notice:empty::before {
+  content: "";
+  display: block;
+  margin: auto;
+  margin-bottom: 0;
+  background-image: url(../icons/face-sad.svg);
+  background-position: center;
+  background-size: cover;
+  width: 40px;
+  height: 40px;
+}
+
+.empty-notice:empty::after {
+  content: "No items found";
+  text-align: center;
+  margin-top: 1em;
+  margin-bottom: auto;
+}
+
 .icon::before {
   content: "";
   display: inline-block;

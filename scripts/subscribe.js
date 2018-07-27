@@ -32,7 +32,10 @@ function setPreviewContent(html) {
   const scriptUrl = chrome.extension.getURL("scripts/iframe.js");
   frame.srcdoc = `<html>
   <head><link rel="stylesheet" href="${sheetUrl}"></head>
-  <body>${html}${scriptUrl}</body>
+  <body>
+    ${html}
+    <script src="${scriptUrl}"></script>
+  </body>
   </html>`;
 }
 

@@ -1,23 +1,8 @@
-div#messages {
-  text-align:center;
-}
-
 div.message {
-  list-style-type: none;
-  padding:3px;
-  margin-left:0px;
-  margin-right:0px;
-  clear:both;
-}
-
-div.odd_row {
-  background: rgb(255, 230, 230);
-}
-
-div.no_messages {
-  text-align:center;
-  clear:both;
-  padding:30px 0;
+  padding: 4px 10px;
+  background: var(--grey-20);
+  border-radius: 2px;
+  margin: 10px 0;
 }
 
 a#clear {

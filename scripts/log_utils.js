@@ -11,21 +11,9 @@ function displayMessages() {
     msgContainer.children().remove();
   }
 
-  // display no messages item
-  if (msgs.length == 0) {
-    msgContainer.append("<div class='no_messages'> empty </div>");
-  } else {
-    // remove the no messages list item
-    msgContainer.find(".no_messages").remove();
-  }
-
   // display the messages
   for (let i = 0; i < msgs.length; i++) {
-    if (i % 2 == 1) {
-      msgContainer.append("<div class='message odd_row'>" + msgs[i] + "</div>");
-    } else {
-      msgContainer.append("<div class='message'>" + msgs[i] + "</div>");
-    }
+    msgContainer.append("<div class='message'>" + msgs[i] + "</div>");
   }
 }
 

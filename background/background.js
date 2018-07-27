@@ -82,9 +82,10 @@ var LivemarkManager = {
     }
   },
   init() {
+    this.updateFeeds = this.updateFeeds.bind(this);
+
     this.feeds = getFeedConfig();
     this.pollInterval = getPollInterval();
-    this.updateFeeds = this.updateFeeds.bind(this);
   }
 };
 LivemarkManager.init();

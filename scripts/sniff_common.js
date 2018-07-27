@@ -1,12 +1,10 @@
-// Copyright (c) 2010 The Chromium Authors. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
+"use strict";
 
 // The possible log levels.
 var logLevels = {
-    "none": 0,
-    "error": 1,
-    "info": 2
+  "none": 0,
+  "error": 1,
+  "info": 2
 };
 
 // Defines the current log level. Values other than "none" are for debugging
@@ -17,20 +15,20 @@ function containsFeed(doc) {
   debugMsg(logLevels.info, "containsFeed called");
 
   // Find all the RSS link elements.
-  var result = doc.evaluate(
-      '//*[local-name()="rss" or local-name()="feed" or local-name()="RDF"]',
-      doc, null, 0, null);
+  const result = doc.evaluate(
+    '//*[local-name()="rss" or local-name()="feed" or local-name()="RDF"]',
+    doc, null, 0, null);
 
   if (!result) {
     debugMsg(logLevels.info, "exiting: document.evaluate returned no results");
-    return false;  // This is probably overly defensive, but whatever.
+    return false; // This is probably overly defensive, but whatever.
   }
 
-  var node = result.iterateNext();
+  const node = result.iterateNext();
 
   if (!node) {
     debugMsg(logLevels.info, "returning: iterateNext() returned no nodes");
-    return false;  // No RSS tags were found.
+    return false; // No RSS tags were found.
   }
 
   // The feed for arab dash jokes dot net, for example, contains

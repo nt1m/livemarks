@@ -1,6 +1,6 @@
-// Copyright (c) 2010 The Chromium Authors. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
+"use strict";
+
+/* import-globals-from sniff_common.js */
 
 // First check to see if this document is a feed. If so, it will redirect.
 // Otherwise, check if it has embedded feed links, such as:
@@ -18,33 +18,33 @@ if (!isFeedDocument()) {
 // whether that points to an RSS feed.
 function findFeedLinks() {
   // Find all the RSS link elements.
-  var result = document.evaluate(
-      '//*[local-name()="link"][contains(@rel, "alternate")] ' +
+  const result = document.evaluate(
+    '//*[local-name()="link"][contains(@rel, "alternate")] ' +
       '[contains(@type, "rss") or contains(@type, "atom") or ' +
       'contains(@type, "rdf")]', document, null, 0, null);
 
-  var feeds = [];
-  var item;
-  var count = 0;
-  while (item = result.iterateNext()) {
+  const feeds = [];
+  let item;
+  let count = 0;
+  while ((item = result.iterateNext())) {
     feeds.push({"href": item.href, "title": item.title});
     ++count;
   }
 
   if (count > 0) {
     // Notify the extension needs to show the RSS page action icon.
-    chrome.runtime.sendMessage({msg: "feedIcon", feeds: feeds});
+    chrome.runtime.sendMessage({msg: "feedIcon", feeds});
   }
 }
 
 // Check to see if the current document is a feed delivered as plain text,
 // which Chrome does for some mime types, or a feed wrapped in an html.
 function isFeedDocument() {
-  var body = document.body;
+  const body = document.body;
 
   debugMsg(logLevels.info, "Checking if document is feed");
 
-  var soleTagInBody = "";
+  let soleTagInBody = "";
   if (body && body.childElementCount == 1) {
     soleTagInBody = body.children[0].tagName;
     debugMsg(logLevels.info, "The sole tag in the body is: " + soleTagInBody);
@@ -67,13 +67,14 @@ function isFeedDocument() {
   // for RSS tags within.
   if (soleTagInBody == "PRE") {
     debugMsg(logLevels.info, "Found feed: Wrapped in PRE");
-    var domParser = new DOMParser();
-    var doc = domParser.parseFromString(body.textContent, "text/xml");
+    const domParser = new DOMParser();
+    const doc = domParser.parseFromString(body.textContent, "text/xml");
 
     if (currentLogLevel >= logLevels.error) {
-      var error = doc.getElementsByTagName("parsererror");
-      if (error.length)
-        debugMsg(logLevels.error, 'error: ' + doc.childNodes[0].outerHTML);
+      const error = doc.getElementsByTagName("parsererror");
+      if (error.length) {
+        debugMsg(logLevels.error, "error: " + doc.childNodes[0].outerHTML);
+      }
     }
 
     // |doc| now contains the parsed document within the PRE tag.

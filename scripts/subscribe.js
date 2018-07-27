@@ -1,30 +1,35 @@
-window.addEventListener("load", function () {
-  document.title =
-      chrome.i18n.getMessage("rss_subscription_default_title");
-      i18nReplace('rss_subscription_feed_preview');
-      i18nReplaceImpl('feedUrl', 'rss_subscription_feed_link', '');
+"use strict";
 
-    $('#save').click(function() {
-      validateAndSaveFeeds(true);
-      return false;
-    });
+/* import-globals-from common.js */
+/* import-globals-from options_utils.js */
+/* import-globals-from settings.js */
 
-    chrome.bookmarks.getTree(function(topNode) {
-      var folders = getAllBookmarkFolders(topNode[0].children);
-      //add folders to the options drop down
-      populateParentFolders(folders);
-      //add a feed id to the possiable new entry
-      $('.feed .id:first').val(getUniqueFeedId());
-    });
+window.addEventListener("load", function() {
+  document.title = chrome.i18n.getMessage("rss_subscription_default_title");
+  i18nReplace("rss_subscription_feed_preview");
+  i18nReplaceImpl("feedUrl", "rss_subscription_feed_link", "");
+
+  $("#save").click(function() {
+    validateAndSaveFeeds(true);
+    return false;
+  });
+
+  chrome.bookmarks.getTree(function(topNode) {
+    const folders = getAllBookmarkFolders(topNode[0].children);
+    // add folders to the options drop down
+    populateParentFolders(folders);
+    // add a feed id to the possiable new entry
+    $(".feed .id:first").val(getUniqueFeedId());
+  });
 
   main();
 });
 
 function setPreviewContent(html) {
   // Normal loading just requires links to the css and the js file.
-  let frame = document.getElementById("preview");
-  let sheet = `<link rel="stylesheet" href="${chrome.extension.getURL("styles/reader.css")}">`;
-  let script = `<script src="${chrome.extension.getURL("scripts/iframe.js")}"></script>`;
+  const frame = document.getElementById("preview");
+  const sheet = `<link rel="stylesheet" href="${chrome.extension.getURL("styles/reader.css")}">`;
+  const script = `<script src="${chrome.extension.getURL("scripts/iframe.js")}"></script>`;
   frame.srcdoc = "<html>" + sheet + html + script + "</html>";
 }
 
@@ -32,34 +37,31 @@ function setPreviewContent(html) {
 * The main function. fetches the feed data.
 */
 async function main() {
-  var queryString = location.search.substring(1).split("&");
-  var feedUrl = decodeURIComponent(queryString[0]);
+  const queryString = location.search.substring(1).split("&");
+  const feedUrl = decodeURIComponent(queryString[0]);
   try {
-    let response = await fetch(feedUrl);
-    let body = await response.text();
-    let {title, siteUrl, error} = parseFeed(body);
+    const response = await fetch(feedUrl);
+    const body = await response.text();
+    const {title, siteUrl, error} = parseFeed(body);
     if (error) {
       setPreviewContent(`<div id="error">${error}</div>`);
       return;
     }
 
-    let iframe = document.getElementById("preview");
-
     document.querySelector(".name").value = title;
     document.querySelector(".siteUrl").value = siteUrl;
     document.querySelector(".feedUrl").value = feedUrl;
     embedAsIframe(body);
-
-  } catch(e) {
-    let error = chrome.i18n.getMessage("rss_subscription_error_fetching");
+  } catch (e) {
+    const error = chrome.i18n.getMessage("rss_subscription_error_fetching");
     setPreviewContent(`<div id="error">${error}</div>`);
   }
   // document.getElementById('feedUrl').href = 'view-source:' + feedUrl;
 }
 
 function getFeedSiteUrl(doc) {
-  let element = doc.querySelector("link[rel=alternate]") ?
-      doc.querySelector("link[rel=alternate]")
+  const element = doc.querySelector("link[rel=alternate]") ?
+    doc.querySelector("link[rel=alternate]")
     : doc.querySelector("link");
 
   if (element) {
@@ -69,7 +71,7 @@ function getFeedSiteUrl(doc) {
 }
 
 function embedAsIframe(rssText) {
-  let iframe = document.getElementById("preview");
+  const iframe = document.getElementById("preview");
   iframe.onload = () => {
     iframe.contentWindow.postMessage(rssText, "*");
   };
@@ -91,9 +93,9 @@ function parseFeed(responseText) {
   }
 
   // We must find at least one 'entry' or 'item' element before proceeding.
-  let entries = doc.getElementsByTagName('entry');
+  let entries = doc.getElementsByTagName("entry");
   if (entries.length == 0) {
-    entries = doc.getElementsByTagName('item');
+    entries = doc.getElementsByTagName("item");
   }
   if (entries.length == 0) {
     return {
@@ -102,7 +104,7 @@ function parseFeed(responseText) {
   }
 
   // Figure out what the title of the whole feed is.
-  let {textContent: title} = doc.getElementsByTagName('title')[0];
+  const {textContent: title} = doc.getElementsByTagName("title")[0];
 
   return {
     title,

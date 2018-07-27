@@ -1,0 +1,15 @@
+{
+  "name": "Livemarks",
+  "description": "This package file is for setup of ESLint only for editor integration.",
+  "dependencies": {
+    "eslint": "4.19.1",
+    "eslint-plugin-html": "4.0.3",
+    "eslint-plugin-mozilla": "^0.14.0",
+    "eslint-plugin-no-unsanitized": "^3.0.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "lint": "eslint ./",
+    "lint-fix": "eslint ./ --fix"
+  }
+}

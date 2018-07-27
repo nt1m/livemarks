@@ -1,19 +1,24 @@
 {
   "manifest_version": 2,
   "background": {
-    "scripts": ["scripts/jquery.min.js",
-     "scripts/jquery.jfeed.js",
-     "scripts/options_utils.js",
-     "scripts/settings.js",
-     "scripts/log_utils.js",
-     "scripts/feed_util.js",
-     "background.js"]},
+    "scripts": [
+      "scripts/jquery.min.js",
+      "scripts/jquery.jfeed.js",
+      "scripts/options_utils.js",
+      "scripts/settings.js",
+      "scripts/log_utils.js",
+      "scripts/feed_util.js",
+      "background.js"
+    ]
+  },
 
-  "content_scripts": [ {
+  "content_scripts": [
+    {
       "js": [ "scripts/sniff_common.js", "scripts/doc_start.js" ],
       "matches": [ "http://*/*", "https://*/*" ],
       "run_at": "document_start"
-    }, {
+    },
+    {
       "js": [ "scripts/sniff_common.js", "scripts/feed_finder.js" ],
       "matches": [ "http://*/*", "https://*/*" ]
     }

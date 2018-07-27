@@ -89,7 +89,7 @@ function buildPreview(doc) {
     const span = document.createElement("span");
     span.id = "desc_" + String(i);
     span.className = "item_desc";
-    span.textContent = itemDesc;
+    span.innerHTML = itemDesc;
 
     itemContainer.appendChild(anchor);
     itemContainer.appendChild(span);

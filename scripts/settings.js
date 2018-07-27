@@ -8,17 +8,10 @@ function performSettingChangeActions(feeds) {
   for (const feed of feeds) {
     // changes only need to happen on feeds that already existed
     // in the config
-    let j = 0;
-    for (; j < oldFeeds.length; j++) {
-      if (feed.id === oldFeeds[j].id) {
-        performFeedSettingChanges(feed, oldFeeds[j]);
-        break;
-      }
-    }
 
-    // this feed wasn't found so it must be new
-    if (j === oldFeeds.length) {
-      chrome.extension.getBackgroundPage().updateFeedBookmarks(feed);
+    const editedFeed = oldFeeds.find(oldFeed => oldFeed.id === feed.id);
+    if (editedFeed) {
+      performFeedSettingChanges(feed, editedFeed);
     }
   }
   // handle any feeds that were removed

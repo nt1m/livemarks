@@ -11,6 +11,7 @@ var logLevels = {
 // only and should at no point be checked in.
 var currentLogLevel = logLevels.none;
 
+/* exported containsFeed */
 function containsFeed(doc) {
   debugMsg(logLevels.info, "containsFeed called");
 

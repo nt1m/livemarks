@@ -1,5 +1,7 @@
 "use strict";
 
+/* import-globals-from settings.js */
+
 // loads the feed configuration in the options page
 function loadFeedConfig() {
   const feedConfig = getFeedConfig();
@@ -63,7 +65,7 @@ function addFeed(feed) {
   $("#feeds").append(newFeed);
 
   newFeed.find(".delete").click(function() {
-    $(this).parent().remove(); // delete the feed item
+    $(this).parent().parent().parent().parent().remove(); // delete the feed item
 
     // if all feeds are removed then toggle no feed class
     if ($(".feed:visible").length === 0) {
@@ -118,7 +120,8 @@ function validateAndSaveFeeds(appendFeeds) {
 
     // reset the interval to use the new setting or if no change then just
     // to restart the interval so it doesn't start before our change actions can complete
-    chrome.extension.getBackgroundPage().setPollInterval(pollInterval);
+    const {LivemarkManager} = chrome.extension.getBackgroundPage();
+    LivemarkManager.pollInterval = pollInterval;
 
     // get any folder ids that have been set since page load
     getExistingFolderIds(config);
@@ -134,7 +137,7 @@ function validateAndSaveFeeds(appendFeeds) {
     alert("settings were saved");
 
     // update the background.html process
-    chrome.extension.getBackgroundPage().setFeeds(config);
+    LivemarkManager.feeds = config;
     return true;
   }
   alert("correct the errors and re-save.");
@@ -187,16 +190,13 @@ function getValidatedPollInterval() {
   if (!/^[0-9]+$/.test(pollInterval) || pollInterval < 5) {
     $("#poll_interval_status").addClass("error");
     $("#poll_interval_status").html("must be a whole number and at least 5 minutes");
-  } else {
-    // remove error messages
-    $("#poll_interval_status").removeClass("error");
-    $("#poll_interval_status").html("");
-
-    // the poll interval is only valid if its 5 or greater
-    if (pollInterval >= 5) {
-      return pollInterval;
-    }
+    return null;
   }
+  // remove error messages
+  $("#poll_interval_status").removeClass("error");
+  $("#poll_interval_status").html("");
+
+  return pollInterval;
 }
 
 // validates the configuration of a single feed based on its values and the current config

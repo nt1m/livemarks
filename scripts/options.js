@@ -1,6 +1,7 @@
 "use strict";
 
 /* import-globals-from options_utils.js */
+/* import-globals-from settings.js */
 
 // init method of the options page
 document.addEventListener("DOMContentLoaded", function() {

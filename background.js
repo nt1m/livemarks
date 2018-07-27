@@ -1,63 +1,49 @@
 "use strict";
 
-var feedOptionCount = 2;
-var siteBookmarkPrefix = 'Open "';
-var siteBookmarkPostfix = '"';
-var seperator = ". . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .";
+/* import-globals-from scripts/feed_util.js */
+/* import-globals-from scripts/log_utils.js */
+/* import-globals-from scripts/settings.js */
+/* import-globals-from scripts/options_utils.js */
 
-var feeds = [];
-var intervalId;
+const siteBookmarkPrefix = 'Open "';
+const siteBookmarkPostfix = '"';
 
-// run the script
-init();
+var LivemarkManager = {
+  _feeds: [],
+  get feeds() {
+    return this._feeds;
+  },
+  set feeds(updatedFeeds) {
+    this._feeds = updatedFeeds;
+    this.updateFeeds();
+  },
 
-// sets the feeds to poll and sync
-function setFeeds(updatedFeeds) {
-  feeds = updatedFeeds;
-}
+  _intervalId: null,
+  set pollInterval(minutes) {
+    if (this._intervalId) {
+      window.clearInterval(this._intervalId);
+    }
+    // double check the interval since this could hose the browser
+    if (!minutes >= 5) {
+      minutes = 5;
+    }
+    this._intervalId = window.setInterval(this.updateFeeds, 1000 * 60 * minutes);
+  },
 
-// sets the polling interval
-function setPollInterval(interval) {
-  window.clearInterval(intervalId);
-  // double check the interval since this could hose the browser
-  if (!interval >= 5) {
-    interval = 5;
-  }
-  intervalId = window.setInterval(updateFeeds, 1000 * 60 * interval);
-}
-
-// sets up the feeds and starts polling
-function init() {
-  feeds = getFeedConfig();
-  // set up a interval to pull
-  // double check the interval since this could hose the browser
-  intervalId = window.setInterval(updateFeeds, 1000 * 60 * getPollInterval());
-  // poll right away for the first time
-  updateFeeds();
-}
-
-// polls each configured feed with a delay between each to reduce load all at once
-function updateFeeds() {
-  for (const feed of feeds) {
-    updateFeedBookmarks(feed);
-  }
-}
-
-// updates the feeds bookmarks(folder and items)
-function updateFeedBookmarks(feed) {
-  chrome.bookmarks.getTree(function(bookmarkTree) {
+  async updateLivemark(feed) {
+    const bookmarkTree = await browser.bookmarks.getTree();
     const folder = getBookmarkFolder(bookmarkTree, feed);
 
     if (folder === null) {
       if (!doesParentFolderExist(bookmarkTree, feed)) {
-        // if the parent doesn't exist then alert the user
+      // if the parent doesn't exist then alert the user
         logError("the parent folder wasn't found for feed: " + feed.name +
           " please check and resave your settings");
         return;
       }
 
-      if (doesFolderBelongToFeed(feed.parentFolderId, feeds)) {
-        // if the parent folder is actually another feeds folder that could cause issues
+      if (doesFolderBelongToFeed(feed.parentFolderId, this.feeds)) {
+      // if the parent folder is actually another feeds folder that could cause issues
         logError("feed: " + feed.name + " has its parent folder set to the" +
           " folder of another feed.  This would cause issues.  You must change it before a" +
           " sync will occur");
@@ -68,18 +54,18 @@ function updateFeedBookmarks(feed) {
       createFeedFolder(feed);
       return;
     } else if (feed.folderId === null) {
-      // the feed folder was found so save its id for next poll
+    // the feed folder was found so save its id for next poll
       feed.folderId = folder.id;
       addFolderIdToFeedSettings(feed);
     } else if (feed.parentFolderId !== folder.parentId) {
-      // the feeds folder was moved to a different location
-      // update the settings
+    // the feeds folder was moved to a different location
+    // update the settings
       feed.parentFolderId = folder.parentId;
       addParentIdToFeedSettings(feed);
     }
 
-    if (doesFolderBelongToFeed(feed.parentFolderId, feeds)) {
-      // if the parent folder is actually another feeds folder that could cause issues
+    if (doesFolderBelongToFeed(feed.parentFolderId, this.feeds)) {
+    // if the parent folder is actually another feeds folder that could cause issues
       logError("feed: " + feed.name + " has its parent folder set to the" +
           " folder of another feed.  This would cause issues.  You must change it before a" +
           " sync will occur");
@@ -88,129 +74,86 @@ function updateFeedBookmarks(feed) {
 
     // poll the feed
     pollFeed(folder, feed);
-  });
-}
+  },
+  // polls each configured feed with a delay between each to reduce load all at once
+  async updateFeeds() {
+    for (const feed of this.feeds) {
+      await this.updateLivemark(feed);
+    }
+  },
+  init() {
+    this.feeds = getFeedConfig();
+    this.pollInterval = getPollInterval();
+  }
+};
+LivemarkManager.init();
 
 // this is an async function that will call the pollfeeds once its done
-function createFeedFolder(feed) {
-  chrome.bookmarks.create({"parentId": feed.parentFolderId,
-    "title": feed.name},
-  function(newFolder) {
-    // TODO: need to handle if the parent folder doesn't exist
-
-    // log error to user
-    if (isError(newFolder)) {
-      return;
-    }
-
-    // add the folder id to the feeds config
-    feed.folderId = newFolder.id;
-    addFolderIdToFeedSettings(feed);
-
-    newFolder.children = [];
-    // poll the feed folder
-    pollFeed(newFolder, feed);
+async function createFeedFolder(feed) {
+  const folder = await browser.bookmarks.create({
+    "parentId": feed.parentFolderId,
+    "title": feed.name
   });
+  // TODO: need to handle if the parent folder doesn't exist
+  // add the folder id to the feeds config
+  feed.folderId = folder.id;
+  addFolderIdToFeedSettings(feed);
+
+  folder.children = [];
+  // poll the feed folder
+  pollFeed(folder, feed);
 }
 
 // pulls the feed
 function pollFeed(feedFolder, feed) {
-  const success = function(jFeed) {
-    if (jFeed.items === undefined) {
-      displayError(feed.name + " was polled but contained no entries");
-    } else if (hasFeedUpdated(feed, jFeed)) {
-      addFeedSeperator(feedFolder, feed, jFeed);
-    }
-  };
-
-  const error = function(errorText) {
-    displayError('feed "' + feed.feedUrl + '" couldn\'t be pulled.  The error was: ' + errorText);
-  };
-  const poll = function() {
-    // poll the feed using the JQuery library
+  return new Promise((resolve, reject) => {
     jQuery.getFeed({
       url: feed.feedUrl,
-      success,
-      error,
-    });
-  };
-
-  // delay and then poll the feeds
-  // if(waitDelay === undefined)
-  poll();
-  // else
-  // window.setTimeout(poll, waitDelay);
-}
-
-// adds the feed options seperator if it doesn't
-// exist already
-function addFeedSeperator(feedFolder, feed, jFeed) {
-  if (doesSeperatorBookmarkExists(feedFolder)) {
-    addFeedSiteUrlBookmark(feedFolder, feed, jFeed, 0);
-  } else {
-    addFeedItemToEnd(feedFolder, feed, jFeed, {title: seperator, url: "about:blank"}, addFeedSiteUrlBookmark);
-  }
-}
-
-// adds the feed options seperator if it doesn't
-// exist already
-function addFeedSiteUrlBookmark(feedFolder, feed, jFeed) {
-  if (doesSiteUrlBookmarkExist(feed, feedFolder)) {
-    updateSiteUrlBookmark(feedFolder, feed);
-    syncFeedBookmarksByRemoving(feedFolder, feed, jFeed, 0);
-  } else {
-    addFeedItemToEnd(feedFolder, feed, jFeed, {title: siteBookmarkPrefix + feed.name + siteBookmarkPostfix,
-      url: feed.siteUrl}, addFeedSiteUrlBookmark);
-  }
-}
-
-// removes feed bookmarks that no longer exist in current feed
-function syncFeedBookmarksByRemoving(feedFolder, feed, jFeed, iter) {
-  // remove the bookmarks that dosn't exist in the feed anymore
-  if (iter < feedFolder.children.length - feedOptionCount && iter < feed.maxItems) {
-    if (!doesItemExistsInFeed(feedFolder.children[iter], jFeed, feed)) {
-      removeFeedItem(feedFolder, feed, jFeed, iter, syncFeedBookmarksByRemoving);
-    } else {
-      syncFeedBookmarksByRemoving(feedFolder, feed, jFeed, ++iter);
-    }
-  } else {
-    // call next step in process which is to order the existing items
-    syncFeedBookmarksBySorting(feedFolder, feed, jFeed, 0);
-  }
-}
-
-// sorts the feed bookmarks to match the new feed
-function syncFeedBookmarksBySorting(feedFolder, feed, jFeed, iter) {
-  // sort the existing feed items
-  if (iter < jFeed.items.length && iter < feed.maxItems) {
-    for (let j = 0; j < feedFolder.children.length - feedOptionCount; j++) {
-      if (feedItemsMatch(feedFolder.children[j], jFeed.items[iter])) {
-        if (j != iter) {
-          moveFeedItem(feedFolder, feed, jFeed, iter, j, syncFeedBookmarksBySorting);
-          return;
+      success(jFeed) {
+        if (jFeed.items === undefined) {
+          displayError(feed.name + " was polled but contained no entries");
+        } else if (hasFeedUpdated(feed, jFeed)) {
+          populateLivemark(feedFolder, feed, jFeed);
         }
-        break;
-      }
-    }
-    syncFeedBookmarksBySorting(feedFolder, feed, jFeed, ++iter);
-  } else {
-    // call next step in process which is to add the new items to the feed
-
-    syncFeedBookmarksByAdding(feedFolder, feed, jFeed, 0);
-  }
+        resolve();
+      },
+      error(errorText) {
+        displayError('feed "' + feed.feedUrl + '" couldn\'t be pulled.  The error was: ' + errorText);
+        reject();
+      },
+    });
+  });
 }
 
-// adds any feed items that don't exist in the folder
-function syncFeedBookmarksByAdding(feedFolder, feed, jFeed, iter) {
-  // add the feed items that don't already exist in the correct positions
-  if (iter < jFeed.items.length && iter < feed.maxItems) {
-    const item = jFeed.items[iter];
-    // if the feed item dosn't exist or it doesn't match then we need to create it in that position
-    if (feedFolder.children[iter] != undefined && feedItemsMatch(item, feedFolder.children[iter])) {
-      syncFeedBookmarksByAdding(feedFolder, feed, jFeed, ++iter);
-    } else {
-      addFeedItem(feedFolder, feed, jFeed, item, iter, syncFeedBookmarksByAdding);
-    }
+// adds the site url bookmark if it doesn't
+// exist already
+async function addFeedSiteUrlBookmark(feedFolder, feed) {
+  await browser.bookmarks.create({
+    title: siteBookmarkPrefix + feed.name + siteBookmarkPostfix,
+    url: feed.siteUrl,
+    parentId: feedFolder.id,
+  });
+  await browser.bookmarks.create({
+    type: "separator",
+    title: "",
+    parentId: feedFolder.id,
+  });
+}
+
+async function populateLivemark(feedFolder, feed, jFeed) {
+  for (const bookmark of feedFolder.children) {
+    await browser.bookmarks.remove(bookmark.id);
+  }
+
+  await addFeedSiteUrlBookmark(feedFolder, feed);
+  const max = Math.min(feed.maxItems, jFeed.items.length);
+  for (let i = 0; i < max; i++) {
+    const item = jFeed.items[i];
+    await browser.bookmarks.create({
+      "parentId": feedFolder.id,
+      "title": item.title,
+      "url": item.url,
+    });
   }
 }
 
@@ -226,28 +169,11 @@ function hasFeedUpdated(feed, jFeed) {
   return true;
 }
 
-// checks if there is an error and displays the error if so
-function isError(result) {
-  if (result === undefined) {
-    // there was a quota limit exception
-    displayError("The bookmark API limit was hit");
-    return true;
-  } return false;
-}
-
 // display the quota limit error
 function displayError(errorText) {
   // log the msg for the user to see
   logError(errorText);
 }
-
-/*
-* Copyright (c) 2010 The Chromium Authors. All rights reserved.  Use of this
-* source code is governed by a BSD-style license that can be found in the
-* LICENSE file.
-*/
-
-/* david.j.hamp - removed html to make this only js */
 
 // A dictionary keyed off of tabId that keeps track of data per tab (for
 // example what feedUrl was detected in the tab).
@@ -282,21 +208,4 @@ chrome.runtime.onMessage.addListener(function(request, sender) {
 
 chrome.tabs.onRemoved.addListener(function(tabId) {
   delete feedData[tabId];
-});
-
-// On Linux, popups aren't supported yet, so Chrome will call into us
-// when the user clicks on the icon in the OmniBox.
-chrome.pageAction.onClicked.addListener(function(tab) {
-  chrome.windows.get(tab.windowId, function(window) {
-    // We need to know if we are the active window, because the tab may
-    // have moved to another window and we don't want to execute this
-    // action multiple times.
-    if (window.focused) {
-      // Create a new tab showing the subscription page with the right
-      // feed URL.
-      const url = "subscribe.html?" +
-    encodeURIComponent(feedData[tab.id][0].href);
-      chrome.tabs.create({url, windowId: window.id});
-    }
-  });
 });

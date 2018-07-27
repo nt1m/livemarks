@@ -28,9 +28,12 @@ window.addEventListener("load", function() {
 function setPreviewContent(html) {
   // Normal loading just requires links to the css and the js file.
   const frame = document.getElementById("preview");
-  const sheet = `<link rel="stylesheet" href="${chrome.extension.getURL("styles/reader.css")}">`;
-  const script = `<script src="${chrome.extension.getURL("scripts/iframe.js")}"></script>`;
-  frame.srcdoc = "<html>" + sheet + html + script + "</html>";
+  const sheetUrl = chrome.extension.getURL("styles/reader.css");
+  const scriptUrl = chrome.extension.getURL("scripts/iframe.js");
+  frame.srcdoc = `<html>
+  <head><link rel="stylesheet" href="${sheetUrl}"></head>
+  <body>${html}${scriptUrl}</body>
+  </html>`;
 }
 
 /**

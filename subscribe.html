@@ -1,56 +1,51 @@
-<!doctype html>
-<!--
- * Copyright (c) 2009 The Chromium Authors. All rights reserved.  Use of this
- * source code is governed by a BSD-style license that can be found in the
- * LICENSE file.
--->
+<!DOCTYPE html>
 <html>
 <head>
-  <title></title>
-  <link rel="stylesheet" href="styles/main.css" type="text/css" />
-  <link rel="stylesheet" href="styles/options.css" type="text/css" />
-  <link rel="stylesheet" href="styles/subscribe.css" type="text/css" />
-  <script type="text/javascript" src="scripts/common.js"></script>
-  <script type="text/javascript" src="scripts/subscribe.js"></script>
-  <script type="text/javascript" src='scripts/jquery.min.js'> </script>
-  <script type="text/javascript" src='scripts/options_utils.js'> </script>
-  <script type="text/javascript" src='scripts/settings.js'> </script>
+  <title>Subscribe to this feed</title>
+  <link href="styles/main.css" rel="stylesheet">
+  <link href="styles/options.css" rel="stylesheet">
+  <link href="styles/subscribe.css" rel="stylesheet">
+  <script src="scripts/common.js"></script>
+  <script src="scripts/subscribe.js"></script>
+  <script src="scripts/jquery.min.js"></script>
+  <script src="scripts/options_utils.js"></script>
+  <script src="scripts/settings.js"></script>
 </head>
-
 <body>
-  <div id='sidebar' class="card">
+  <div class="card" id="sidebar">
     <h1>Add live bookmark</h1>
-    <div class='feed'>
-      <div class=form>
-        <div class=form-row>
-          <label for="name">Name</label><input type='text' class='name required'/>
+    <div class="feed">
+      <div class="form">
+        <div class="form-row">
+          <label for="name">Name</label>
+          <input class="name required" type="text">
         </div>
-        <div class=form-row>
-          <label for="feedUrl">Feed URL</label><input type='text' class='feedUrl required url'/>
+        <div class="form-row">
+          <label for="feedUrl">Feed URL</label>
+          <input class="feedUrl required url" type="text">
         </div>
-        <div class=form-row>
-          <label for="siteUrl">Site URL</label><input type='text' class='siteUrl required url'/>
+        <div class="form-row">
+          <label for="siteUrl">Site URL</label>
+          <input class="siteUrl required url" type="text">
         </div>
-        <div class=form-row>
-          <label for="parentFolderId">Parent Folder</label><select class='parentFolderId'> </select>
+        <div class="form-row">
+          <label for="parentFolderId">Parent Folder</label>
+          <select class="parentFolderId"></select>
         </div>
-
-        <div class=form-row>
-          <label for="maxItems">Maximum items</label><input type='text' class='maxItems' value='25'/>
+        <div class="form-row">
+          <label for="maxItems">Maximum items</label>
+          <input class="maxItems" type="text" value="25">
         </div>
       </div>
-
-      <ul class='feed_errors'></ul>
-
-      <input type='hidden' class='id'/>
+      <ul class="feed_errors"></ul>
+      <input class="id" type="hidden">
     </div>
     <div class="form-row">
-      <button id="save" class="primary" title='subscribe to the current feed'>Subscribe</button>
+      <button class="primary" id="save" title="subscribe to the current feed">Subscribe</button>
     </div>
   </div>
- 
   <div id="items">
-    <iframe id="preview"></iframe>
+    <iframe id="preview" name="preview"></iframe>
   </div>
 </body>
 </html>

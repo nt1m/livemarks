@@ -141,7 +141,7 @@ async function addFeedSiteUrlBookmark(feedFolder, feed) {
 }
 
 async function populateLivemark(feedFolder, feed, jFeed) {
-  const children =  await browser.bookmarks.getChildren(feedFolder.id);
+  const children = await browser.bookmarks.getChildren(feedFolder.id);
   for (const bookmark of children) {
     await browser.bookmarks.remove(bookmark.id);
   }
@@ -186,24 +186,6 @@ chrome.runtime.onMessage.addListener(function(request, sender) {
   // Enable the page action icon.
     feedData[sender.tab.id] = request.feeds;
     chrome.pageAction.show(sender.tab.id);
-  } else if (request.msg == "feedDocument") {
-  // We received word from the content script that this document
-  // is an RSS feed (not just a document linking to the feed).
-  // So, we go straight to the subscribe page in a new tab and
-  // navigate back on the current page (to get out of the xml page).
-  // We don't want to navigate in-place because trying to go back
-  // from the subscribe page takes us back to the xml page, which
-  // will redirect to the subscribe page again (we don't support a
-  // location.replace equivalant in the Tab navigation system).
-    chrome.tabs.executeScript(sender.tab.id, {
-      code: `if (history.length > 1) {
-        history.go(-1);
-      } else {
-        window.close();
-      }`,
-    });
-    const url = chrome.extension.getURL("pages/subscribe/subscribe.html?" + encodeURIComponent(request.href));
-    chrome.tabs.create({url, index: sender.tab.index});
   }
 });
 

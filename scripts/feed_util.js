@@ -6,7 +6,7 @@ async function doesParentFolderExist(feed) {
 }
 
 // Finds a feeds folder if it exists based on its id or its name and parent folder
-async function getBookmarkFolder(feed) {
+async function getLivemarkFolder(feed) {
   if (feed.folderId !== null) {
     const bookmarks = await browser.bookmarks.get(feed.folderId);
 

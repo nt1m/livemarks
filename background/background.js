@@ -84,6 +84,7 @@ var LivemarkManager = {
   init() {
     this.feeds = getFeedConfig();
     this.pollInterval = getPollInterval();
+    this.updateFeeds = this.updateFeeds.bind(this);
   }
 };
 LivemarkManager.init();

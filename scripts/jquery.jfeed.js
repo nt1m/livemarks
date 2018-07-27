@@ -6,7 +6,7 @@
  
  /* david hamp-gonsalves
   * this is a modified version that can handle jquery 1.4 and is used
-  * by the chrome extension Foxish Live RSS. 
+  * by the firefox livemarks extension
   */
 
 jQuery.getFeed = function(options) {

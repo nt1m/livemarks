@@ -24,13 +24,13 @@
     }
   ],
   "default_locale": "en",
-  "description": "RSS feed reader in the style of Firefox's live bookmarks.",
+  "description": "Brings RSS Livemarks back to Firefox.",
   "icons": {
     "128": "icons/feed.svg",
     "16": "icons/feed.svg",
     "48": "icons/feed.svg"
   },
-  "name": "Foxish live RSS",
+  "name": "Livemarks",
   "options_ui": {
      "page": "options.html",
      "open_in_tab": true

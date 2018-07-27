@@ -16,7 +16,7 @@ function loadFeedConfig() {
 }
 
 function setupExportLink(feedConfig) {
-  let exportData = 'data:text/xml;charset=utf-8,<?xml version="1.0" encoding="UTF-8"?><opml version="1.0"><head><title>Foxish RSS Subscriptions</title></head><body><outline title="RSS Feeds" text="RSS Feeds">';
+  let exportData = 'data:text/xml;charset=utf-8,<?xml version="1.0" encoding="UTF-8"?><opml version="1.0"><head><title>Your livemarks</title></head><body><outline title="RSS Feeds" text="RSS Feeds">';
 
   for (const feed of feedConfig) {
     exportData += '<outline text="' + escapeXML(feed.name) + '" title="' + escapeXML(feed.name) + '" type="rss" xmlUrl="' + escapeXML(feed.feedUrl) + '" htmlUrl="' + escapeXML(feed.siteUrl) + '"/>';
@@ -324,21 +324,7 @@ function importErrorHandler(evt) {
 
 // clear the error area
 function importSuccess(feedsAdded) {
-  let msg;
-  if (feedsAdded > 5) {
-    if (feedsAdded > 30) {
-      msg = "Hold your horses!! Your adding WAY too many feeds!";
-    } else if (feedsAdded > 10) {
-      msg = "Wow you've got a lot of feeds there!";
-    } else {
-      msg = "No need to panic but you might have too many feeds there.\n\n";
-    }
-
-    msg += "<br><br>Chrome enforces bookmark creation limits that prevent Foxish from keeping so many feeds up to date at once.  In most cases Foxish can usually handle updating about 7 feeds and can handle importing three or four an hour before it hits those limits. <br><br>Sorry but for now this is the best we can do.<br><br>You can try to import all your feeds but keep in mind that it will take some time before Chrome lets Foxish catch up and things may get a bit dated or buggy.";
-  } else {
-    msg = "feeds loaded, make any changes and click save";
-  }
-  alert(msg);
+  alert("feeds loaded, make any changes and click save");
 }
 
 // gets all the bookmark folders

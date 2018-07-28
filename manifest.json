@@ -4,10 +4,8 @@
     "scripts": [
       "lib/jquery.min.js",
       "lib/jquery.jfeed.js",
-      "shared/options_utils.js",
       "shared/settings.js",
-      "shared/log_utils.js",
-      "background/feed_util.js",
+      "shared/livemark-store.js",
       "background/background.js"
     ]
   },
@@ -32,7 +30,7 @@
   },
   "name": "Livemarks",
   "options_ui": {
-     "page": "pages/options/options.html",
+     "page": "pages/settings/settings.html",
      "open_in_tab": true
   },
   "page_action": {

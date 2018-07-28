@@ -3,48 +3,16 @@
 <head>
   <title>Subscribe to this feed</title>
   <link href="/css/main.css" rel="stylesheet">
-  <link href="../options/options.css" rel="stylesheet">
   <link href="subscribe.css" rel="stylesheet">
-  <script src="subscribe.js"></script>
-  <script src="/lib/jquery.min.js"></script>
-  <script src="/shared/options_utils.js"></script>
-  <script src="/shared/settings.js"></script>
 </head>
 <body>
-  <div class="card" id="sidebar">
-    <h1>Add live bookmark</h1>
-    <div class="feed">
-      <div class="form">
-        <div class="form-row">
-          <label for="name">Name</label>
-          <input class="name required" type="text">
-        </div>
-        <div class="form-row">
-          <label for="feedUrl">Feed URL</label>
-          <input class="feedUrl required url" type="text">
-        </div>
-        <div class="form-row">
-          <label for="siteUrl">Site URL</label>
-          <input class="siteUrl required url" type="text">
-        </div>
-        <div class="form-row">
-          <label for="parentFolderId">Parent Folder</label>
-          <select class="parentFolderId"></select>
-        </div>
-        <div class="form-row">
-          <label for="maxItems">Maximum items</label>
-          <input class="maxItems" type="text" value="25">
-        </div>
-      </div>
-      <ul class="feed_errors"></ul>
-      <input class="id" type="hidden">
-    </div>
-    <div class="form-row">
-      <button class="primary" id="save" title="subscribe to the current feed">Subscribe</button>
-    </div>
-  </div>
-  <div id="items">
-    <iframe id="preview" name="preview"></iframe>
-  </div>
+  <main id="header" class="flex">
+    <h1 id="title" class="grow"></h1>
+    <button class="primary icon new icon-white" id="subscribe-button">Add Livemark</button>
+  </main>
+  <iframe id="preview" name="preview" class="grow"></iframe>
+  <script src="/shared/livemark-store.js"></script>
+  <script src="/shared/settings.js"></script>
+  <script src="subscribe.js"></script>
 </body>
 </html>

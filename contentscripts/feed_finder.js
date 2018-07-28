@@ -1,7 +1,5 @@
 "use strict";
 
-/* import-globals-from sniff_common.js */
-
 // First check to see if this document is a feed. If so, it will redirect.
 // Otherwise, check if it has embedded feed links, such as:
 // (<link rel="alternate" type="application/rss+xml" etc). If so, show the

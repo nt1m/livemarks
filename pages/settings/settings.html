@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Your livemarks</title>
+  <link href="/css/main.css" rel="stylesheet">
+  <link href="settings.css" rel="stylesheet">
+</head>
+<body>
+  <main>
+    <div class="toolbar flex">
+      <h1 class="grow">Your livemarks</h1>
+      <button class="icon settings float-right" id="settings-toggle" title="Settings"></button>
+      <button class="icon new icon-white primary float-right" id="add">New livemark</button>
+    </div>
+    <div class="empty-notice grow" id="feeds"></div>
+  </main>
+  <div id="dialog-overlay" hidden></div>
+  <div class="card dialog" id="settings-dialog" hidden>
+    <h3>Import/export</h3>
+    <p>This feature uses the OPML format which is used by most RSS readers.</p>
+    <a class="button"><input id="import-feeds" name="files[]" type="file">Import feeds</a>
+    <a class="button" id="export-feeds" download="livemarks-opml.xml">Export feeds</a>
+    <form id="settings-form">
+      <h3>Refresh interval</h3>
+      <p>Configure how often livemarks are updated.</p>
+      <input class="short" name="pollInterval" min="1" required type="number">
+      <label>minutes</label>
+      <h3>Default folder</h3>
+      <p>All future livemarks will be saved here by default</p>
+      <select name="defaultFolder"></select>
+    </form>
+    <div class="dialog-footer">
+      <button class="dialog-cancel">Close</button>
+    </div>
+  </div>
+  <form class="card dialog" id="edit-livemark-dialog" hidden>
+    <div class="form-row">
+      <label for="title">Name</label>
+      <div class="flex">
+        <input name="title" class="grow" required>
+        <a href="#" class="icon delete button" title="remove this feed"></a>
+      </div>
+    </div>
+    <div class="flex">
+      <div class="form-row grow">
+        <label for="feedUrl">Feed URL</label>
+        <input type="url" name="feedUrl" required>
+      </div>
+      <div class="form-row grow">
+        <label for="siteUrl">Site URL</label>
+        <input type="url" name="siteUrl">
+      </div>
+    </div>
+    <div class="flex">
+      <div class="form-row grow">
+        <label for="parentId">Parent Folder</label>
+        <select name="parentId" required></select>
+      </div>
+      <div class="form-row">
+        <label for="maxItems">Maximum Items</label>
+        <div><input name="maxItems" type="number" required value="25" min="1" class="short"></div>
+      </div>
+    </div>
+    <div class="dialog-footer">
+      <a class="button dialog-cancel">Cancel</a>
+      <button type="submit" class="primary">Save</button>
+    </div>
+  </form>
+  <script src="/shared/settings.js"></script>
+  <script src="/shared/livemark-store.js"></script>
+  <script src="opml-utils.js"></script>
+  <script src="settings.js"></script>
+</body>
+</html>

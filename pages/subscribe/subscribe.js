@@ -1,27 +1,10 @@
 "use strict";
 
-/* import-globals-from common.js */
-/* import-globals-from options_utils.js */
-/* import-globals-from settings.js */
+/* import-globals-from ../../shared/livemark-store.js */
+/* import-globals-from ../../shared/settings.js */
 
 window.addEventListener("load", function() {
   document.title = chrome.i18n.getMessage("rss_subscription_default_title");
-  // i18nReplace("rss_subscription_feed_preview");
-  // i18nReplaceImpl("feedUrl", "rss_subscription_feed_link", "");
-
-  $("#save").click(function() {
-    validateAndSaveFeeds(true);
-    return false;
-  });
-
-  chrome.bookmarks.getTree(function(topNode) {
-    const folders = getAllBookmarkFolders(topNode[0].children);
-    // add folders to the options drop down
-    populateParentFolders(folders);
-    // add a feed id to the possiable new entry
-    $(".feed .id:first").val(getUniqueFeedId());
-  });
-
   main();
 });
 
@@ -43,6 +26,7 @@ function setPreviewContent(html) {
 * The main function. fetches the feed data.
 */
 async function main() {
+  await LivemarkStore.init();
   const queryString = location.search.substring(1).split("&");
   const feedUrl = decodeURIComponent(queryString[0]);
   try {
@@ -50,17 +34,30 @@ async function main() {
     const body = await response.text();
     const {title, siteUrl, error} = parseFeed(body);
     if (error) {
-      setPreviewContent(`<div id="error">${error}</div>`);
+      setPreviewContent(`<main id="error">${error}</main>`);
       return;
     }
 
-    document.querySelector(".name").value = title;
-    document.querySelector(".siteUrl").value = siteUrl;
-    document.querySelector(".feedUrl").value = feedUrl;
+    document.title = title;
+    document.querySelector("#title").textContent = title;
+    document.querySelector("#subscribe-button").addEventListener("click", async () => {
+      const folderId = await Settings.getDefaultFolder();
+      await LivemarkStore.add({
+        title,
+        feedUrl,
+        siteUrl,
+        parentId: folderId,
+        maxItems: 25,
+      });
+
+      const [folderProps] = await browser.bookmarks.get(folderId);
+      alert(`Livemark added to ${folderProps.title},
+please go to the options page to edit it.`);
+    });
     embedAsIframe(body);
   } catch (e) {
     const error = chrome.i18n.getMessage("rss_subscription_error_fetching");
-    setPreviewContent(`<div id="error">${error}</div>`);
+    setPreviewContent(`<main id="error">${error}</main>`);
   }
   // document.getElementById('feedUrl').href = 'view-source:' + feedUrl;
 }

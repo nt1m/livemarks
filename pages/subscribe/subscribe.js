@@ -5,7 +5,7 @@
 /* import-globals-from ../../shared/settings.js */
 
 window.addEventListener("load", function() {
-  document.title = chrome.i18n.getMessage("rss_subscription_default_title");
+  document.title = "Feed preview";
   main();
 });
 
@@ -42,8 +42,7 @@ async function main() {
     const feed = await FeedParser.getFeed(feedUrl);
     const {title, siteUrl, items} = feed;
     if (items.length == 0) {
-      const error = chrome.i18n.getMessage("rss_subscription_no_entries");
-      setPreviewContent(`<main id="error">${error}</main>`);
+      setPreviewContent(`<main id="error">No feed entries found</main>`);
       return;
     }
 
@@ -66,8 +65,7 @@ please go to the options page to edit it.`);
     embedAsIframe(feed);
   } catch (e) {
     console.log(e);
-    const error = chrome.i18n.getMessage("rss_subscription_error_fetching");
-    setPreviewContent(`<main id="error">${error}</main>`);
+    setPreviewContent(`<main id="error">Failed to fetch feed</main>`);
   }
   // document.getElementById('feedUrl').href = 'view-source:' + feedUrl;
 }

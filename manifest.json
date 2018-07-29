@@ -20,7 +20,6 @@
       "matches": [ "http://*/*", "https://*/*" ]
     }
   ],
-  "default_locale": "en",
   "description": "Brings RSS Livemarks back to Firefox.",
   "icons": {
     "128": "icons/feed.svg",
@@ -34,7 +33,7 @@
   },
   "page_action": {
     "default_icon": "icons/feed.svg",
-    "default_title": "__MSG_rss_subscription_default_title__",
+    "default_title": "Subscribe",
     "default_popup": "popup/popup.html"
   },
   "permissions": [ "storage", "bookmarks", "http://*/", "https://*/", "tabs" ],

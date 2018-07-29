@@ -15,7 +15,7 @@ const FeedParser = {
     return feed;
   },
   parseFeed(doc) {
-    let scripts = doc.querySelectorAll("script");
+    const scripts = doc.querySelectorAll("script");
     [...scripts].forEach(script => script.remove());
 
     let feed;

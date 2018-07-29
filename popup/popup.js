@@ -4,13 +4,6 @@ document.addEventListener("DOMContentLoaded", function() {
   main();
 });
 
-function feedLink(url) {
-  const feed_link = document.createElement("a");
-  feed_link.href = url;
-  feed_link.addEventListener("click", onClick);
-  return feed_link;
-}
-
 function main() {
   chrome.tabs.query({active: true, currentWindow: true}, function([tab]) {
     const feeds = chrome.extension.getBackgroundPage().feedData[tab.id];
@@ -20,37 +13,30 @@ function main() {
     } else {
       const content = document.getElementById("content");
 
-      const feed_list = document.createElement("ul");
-      feed_list.className = "feedList";
-      for (let i = 0; i < feeds.length; ++i) {
+      const feedList = document.createElement("ul");
+      feedList.className = "feedList";
+      for (const feed of feeds) {
         const item = document.createElement("li");
-        const link = feedLink(feeds[i].href);
-        link.textContent = feeds[i].title;
+        const link = document.createElement("a");
+        const url = feed.href;
+        link.href = url;
+        link.addEventListener("click", (e) => {
+          e.preventDefault();
+          preview(url);
+        });
+        link.textContent = feed.title;
         item.appendChild(link);
-        feed_list.appendChild(item);
+        feedList.appendChild(item);
       }
 
-      content.appendChild(feed_list);
+      content.appendChild(feedList);
     }
   });
 }
 
-function onClick(event) {
-  const a = event.currentTarget;
-  preview(a.href);
-  event.preventDefault();
-}
-
+// Show the preview page
 function preview(feed_url) {
-  // See if we need to skip the preview page and subscribe directly.
-  let url = "";
-  if (window.localStorage && window.localStorage.showPreviewPage == "No") {
-    // Skip the preview.
-    url = window.localStorage.defaultReader.replace("%s", escape(feed_url));
-  } else {
-    // Show the preview page.
-    url = "../pages/subscribe/subscribe.html?" + encodeURIComponent(feed_url);
-  }
+  const url = "../pages/subscribe/subscribe.html?" + encodeURIComponent(feed_url);
   chrome.tabs.create({ url });
   window.close();
 }

@@ -33,7 +33,6 @@ const LivemarkUpdater = {
       const [bookmark] = await browser.bookmarks.get(feed.id);
       try {
         const feedData = await FeedParser.getFeed(feed.feedUrl);
-        console.log(feedData);
         if (feedData.updated !== feed.updated) {
           this.updateLivemark(bookmark, feed, feedData);
         }

@@ -37,5 +37,5 @@
     "default_popup": "popup/popup.html"
   },
   "permissions": [ "storage", "bookmarks", "<all_urls>", "tabs" ],
-  "version": "1.0"
+  "version": "1.0.1"
 }

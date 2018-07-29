@@ -57,10 +57,14 @@ const LivemarkUpdater = {
   },
   async updateLivemark(folder, feed, jFeed) {
     let readPrefix = await Settings.getReadPrefix();
-    if (readPrefix.length > 0) readPrefix += " ";
+    if (readPrefix.length > 0) {
+      readPrefix += " ";
+    }
 
     let unreadPrefix = await Settings.getUnreadPrefix();
-    if (unreadPrefix.length > 0) unreadPrefix += " ";
+    if (unreadPrefix.length > 0) {
+      unreadPrefix += " ";
+    }
 
     const children = await browser.bookmarks.getChildren(folder.id);
     for (const bookmark of children) {

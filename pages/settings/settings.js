@@ -66,6 +66,8 @@ window.onload = async () => {
 async function showSettingsDialog() {
   const settingsForm = document.querySelector("#settings-form");
   settingsForm.pollInterval.value = await Settings.getPollInterval();
+  settingsForm.readPrefix.value = await Settings.getReadPrefix();
+  settingsForm.unreadPrefix.value = await Settings.getUnreadPrefix();
 
   await populateFolderSelector(settingsForm.defaultFolder);
 
@@ -91,6 +93,8 @@ function initDialogs() {
     e.preventDefault();
     if (settingsForm.reportValidity()) {
       await Settings.setPollInterval(settingsForm.pollInterval.value);
+      await Settings.setReadPrefix(settingsForm.readPrefix.value);
+      await Settings.setUnreadPrefix(settingsForm.unreadPrefix.value);
       await Settings.setDefaultFolder(settingsForm.defaultFolder.value);
     }
   }, true);

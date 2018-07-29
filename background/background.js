@@ -56,6 +56,12 @@ const LivemarkUpdater = {
     });
   },
   async updateLivemark(folder, feed, jFeed) {
+    let readPrefix = await Settings.getReadPrefix();
+    if (readPrefix.length > 0) readPrefix += " ";
+
+    let unreadPrefix = await Settings.getUnreadPrefix();
+    if (unreadPrefix.length > 0) unreadPrefix += " ";
+
     const children = await browser.bookmarks.getChildren(folder.id);
     for (const bookmark of children) {
       await browser.bookmarks.remove(bookmark.id);
@@ -70,7 +76,7 @@ const LivemarkUpdater = {
       const visits = await browser.history.getVisits({"url": item.url});
       await browser.bookmarks.create({
         "parentId": folder.id,
-        "title": ((visits.length > 0) ? "\u26AA " : "\u26AB ") + item.title,
+        "title": ((visits.length > 0) ? readPrefix : unreadPrefix) + item.title,
         "url": item.url,
       });
     }

@@ -35,6 +35,22 @@ const Settings = {
     return setSetting("pollInterval", newValue);
   },
 
+  getReadPrefix() {
+    return getSetting("readPrefix", "");
+  },
+
+  setReadPrefix(newValue) {
+    return setSetting("readPrefix", newValue);
+  },
+
+  getUnreadPrefix() {
+    return getSetting("unreadPrefix", "");
+  },
+
+  setUnreadPrefix(newValue) {
+    return setSetting("unreadPrefix", newValue);
+  },
+
   addChangeListener(callback) {
     return browser.storage.onChanged.addListener(changes => {
       changes = Object.assign({}, changes);

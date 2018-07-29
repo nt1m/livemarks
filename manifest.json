@@ -36,6 +36,6 @@
     "default_title": "Subscribe",
     "default_popup": "popup/popup.html"
   },
-  "permissions": [ "storage", "bookmarks", "http://*/", "https://*/", "tabs" ],
-  "version": "4.1"
+  "permissions": [ "storage", "bookmarks", "<all_urls>", "tabs" ],
+  "version": "1.0"
 }

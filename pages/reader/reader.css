@@ -61,8 +61,14 @@ main {
 }
 
 .item img {
-  width: 50%;
+  max-width: 50%;
   height: auto;
+  vertical-align: middle;
+}
+
+.item .emoji {
+  width: 1em;
+  height: 1em;
 }
 
 .item li {
@@ -80,6 +86,13 @@ main {
 
 .item a:active {
   color: #003eaa;
+}
+
+.item pre,
+.item code {
+  font-family: Menlo, Consolas, monospace;
+  overflow: auto;
+  text-overflow: ellipsis;
 }
 
 .item blockquote {

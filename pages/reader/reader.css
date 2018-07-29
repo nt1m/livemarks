@@ -103,10 +103,10 @@ main {
 }
 
 .item_title {
-  color: #0060df;
   font-size: 1.8em;
   text-decoration: none;
 }
+
 .item_desc {
   display:block;
 }

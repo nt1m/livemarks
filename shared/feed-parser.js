@@ -15,6 +15,9 @@ const FeedParser = {
     return feed;
   },
   parseFeed(doc) {
+    let scripts = doc.querySelectorAll("script");
+    [...scripts].forEach(script => script.remove());
+
     let feed;
     if (doc.querySelector("channel")) {
       feed = this.parseRss(doc);

@@ -42,7 +42,7 @@ async function main() {
     const feed = await FeedParser.getFeed(feedUrl);
     const {title, siteUrl, items} = feed;
     if (items.length == 0) {
-      setPreviewContent(`<main id="error">No feed entries found</main>`);
+      setPreviewContent("<main id=\"error\">No feed entries found</main>");
       return;
     }
 
@@ -65,7 +65,7 @@ please go to the options page to edit it.`);
     embedAsIframe(feed);
   } catch (e) {
     console.log(e);
-    setPreviewContent(`<main id="error">Failed to fetch feed</main>`);
+    setPreviewContent("<main id=\"error\">Failed to fetch feed</main>");
   }
   // document.getElementById('feedUrl').href = 'view-source:' + feedUrl;
 }

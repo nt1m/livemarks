@@ -2,8 +2,7 @@
   "manifest_version": 2,
   "background": {
     "scripts": [
-      "lib/jquery.min.js",
-      "lib/jquery.jfeed.js",
+      "shared/feed-parser.js",
       "shared/settings.js",
       "shared/livemark-store.js",
       "background/background.js"

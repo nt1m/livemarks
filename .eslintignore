@@ -1,1 +1,2 @@
-lib/jquery.*
+lib/
+node_modules/

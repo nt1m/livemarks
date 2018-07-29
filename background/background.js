@@ -2,6 +2,7 @@
 
 /* import-globals-from ../shared/livemark-store.js */
 /* import-globals-from ../shared/settings.js */
+/* import-globals-from ../shared/feed-parser.js */
 
 const siteBookmarkPrefix = 'Open "';
 const siteBookmarkPostfix = '"';
@@ -30,25 +31,16 @@ const LivemarkUpdater = {
     const livemarks = await LivemarkStore.getAll();
     for (const feed of livemarks) {
       const [bookmark] = await browser.bookmarks.get(feed.id);
-      const jFeed = await this.getLivemarkItems(feed);
-
-      if (jFeed && jFeed.updated !== feed.updated) {
-        this.updateLivemark(bookmark, feed, jFeed);
+      try {
+        const feedData = await FeedParser.getFeed(feed.feedUrl);
+        console.log(feedData);
+        if (feedData.updated !== feed.updated) {
+          this.updateLivemark(bookmark, feed, feedData);
+        }
+      } catch (e) {
+        console.log("Error getting feed", e);
       }
     }
-  },
-  getLivemarkItems(feed) {
-    return new Promise((resolve, reject) => {
-      jQuery.getFeed({
-        url: feed.feedUrl,
-        success(jFeed) {
-          resolve(jFeed);
-        },
-        error(errorText) {
-          reject(errorText);
-        },
-      });
-    });
   },
   // adds the site url bookmark if it doesn't
   // exist already

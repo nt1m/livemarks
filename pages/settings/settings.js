@@ -21,7 +21,6 @@ window.onload = async () => {
         maxItems: 25,
       };
       await LivemarkStore.add(feed);
-      addFeedToList(feed);
     }
   });
 
@@ -40,7 +39,6 @@ window.onload = async () => {
         }
         for (const feed of imported) {
           await LivemarkStore.add(feed);
-          addFeedToList(feed);
         }
         alert(`Successfully imported ${imported.length} feeds.`);
       } catch (e) {
@@ -52,7 +50,7 @@ window.onload = async () => {
   });
 
   loadFeeds();
-  LivemarkStore.store.addChangeListener(loadFeeds);
+  LivemarkStore.store.addChangeListener(loadFeeds, { ownChanges: true });
 };
 
 async function showSettingsDialog() {
@@ -135,7 +133,6 @@ async function showEditFeedDialog(feed) {
     e.preventDefault();
     toggleDialog(dialog.id, false);
     await LivemarkStore.remove(id);
-    loadFeeds();
   };
   dialog.onsubmit = async (e) => {
     e.preventDefault();
@@ -149,7 +146,6 @@ async function showEditFeedDialog(feed) {
         props[key] = value;
       }
       await LivemarkStore.edit(id, props);
-      loadFeeds();
     }
   };
   toggleDialog(dialog.id, true);

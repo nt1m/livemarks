@@ -75,41 +75,43 @@ class StoredMap extends Map {
     return loadFromStorage();
   }
 
-  _emit(data) {
+  _emit(data, ownChange = false) {
     // already in sync, don't notify
     if (data.changedKeys.length == 0) {
       return;
     }
 
     if (!this.listeners) {
-      this.listeners = new Set();
+      this.listeners = new Map();
     }
-    for (const listener of this.listeners.values()) {
-      listener(data);
+    for (const listener of this.listeners.keys()) {
+      if (!ownChange || this.listeners.get(listener).ownChanges) {
+        listener(data);
+      }
     }
   }
 
-  addChangeListener(callback) {
+  addChangeListener(callback, options = { ownChanges: false }) {
     if (!this.listeners) {
-      this.listeners = new Set();
+      this.listeners = new Map();
     }
-    this.listeners.add(callback);
+    this.listeners.set(callback, options);
   }
 
   removeChangeListener(callback) {
     if (!this.listeners) {
-      this.listeners = new Set();
+      this.listeners = new Map();
     }
     this.listeners.delete(callback);
   }
 
-  onceChange() {
+  onceChange(options) {
     return new Promise(resolve => {
       const listener = (event) => {
         this.removeChangeListener(listener);
         resolve(event);
       };
-      this.addChangeListener(listener);
+      this.addChangeListener(listener, options);
     });
   }
 
@@ -120,6 +122,7 @@ class StoredMap extends Map {
         [this.storageKey]: [...this.entries()],
       });
     }
+    this._emit({ changedKeys: [k] }, true);
     return returnValue;
   }
 
@@ -128,14 +131,17 @@ class StoredMap extends Map {
     await browser.storage.local.set({
       [this.storageKey]: [...this.entries()],
     });
+    this._emit({ changedKeys: [k] }, true);
     return returnValue;
   }
 
   async clear() {
+    const oldKeys = [...this.keys()];
     super.clear();
     await browser.storage.local.set({
       [this.storageKey]: [],
     });
+    this._emit({ changedKeys: oldKeys }, true);
   }
 }
 

@@ -67,9 +67,10 @@ const LivemarkUpdater = {
     const max = Math.min(feed.maxItems, jFeed.items.length);
     for (let i = 0; i < max; i++) {
       const item = jFeed.items[i];
+      const visits = await browser.history.getVisits({"url": item.url});
       await browser.bookmarks.create({
         "parentId": folder.id,
-        "title": item.title,
+        "title": ((visits.length > 0) ? "\u26AA " : "\u26AB ") + item.title,
         "url": item.url,
       });
     }

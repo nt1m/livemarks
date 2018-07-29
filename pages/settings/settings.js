@@ -51,6 +51,16 @@ window.onload = async () => {
 
   loadFeeds();
   LivemarkStore.store.addChangeListener(loadFeeds, { ownChanges: true });
+  browser.bookmarks.onChanged.addListener(async (id) => {
+    if (await LivemarkStore.isLivemarkFolder(id)) {
+      loadFeeds();
+    }
+  });
+  browser.bookmarks.onMoved.addListener(async (id) => {
+    if (await LivemarkStore.isLivemarkFolder(id)) {
+      loadFeeds();
+    }
+  });
 };
 
 async function showSettingsDialog() {

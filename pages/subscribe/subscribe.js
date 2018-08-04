@@ -40,7 +40,7 @@ async function main() {
   const feedUrl = decodeURIComponent(queryString[0]);
   try {
     const feed = await FeedParser.getFeed(feedUrl);
-    const {title, siteUrl, items} = feed;
+    const {title, url: siteUrl, items} = feed;
     if (items.length == 0) {
       setPreviewContent("<main id=\"error\">No feed entries found</main>");
       return;

@@ -2,14 +2,25 @@
 
 /* exported FeedParser */
 const FeedParser = {
+  fetchXML(url) {
+    return new Promise((resolve, reject) => {
+      let request = new XMLHttpRequest();
+      request.open("GET", url, true);
+
+      request.addEventListener("load", (event) => {
+        if (request.responseXML) {
+          resolve(request.responseXML);
+        } else {
+          reject(new Error(request.statusText));
+        }
+      });
+
+      request.overrideMimeType("text/xml");
+      request.send();
+    });
+  },
   async getFeed(url) {
-    const response = await fetch(url);
-    const responseText = await response.text();
-    const domParser = new DOMParser();
-    const doc = domParser.parseFromString(responseText, "text/xml");
-    if (!doc) {
-      throw new Error("Invalid feed");
-    }
+    const doc = await this.fetchXML(url);
     const feed = this.parseFeed(doc);
     feed.feedUrl = url;
     return feed;

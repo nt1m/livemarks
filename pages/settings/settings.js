@@ -102,6 +102,7 @@ function initDialogs() {
 }
 
 async function loadFeeds() {
+  toggleDialog("settings-dialog", false);
   toggleDialog("edit-livemark-dialog", false);
   const allFeeds = await LivemarkStore.getAll();
   document.getElementById("feeds").textContent = "";

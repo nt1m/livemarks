@@ -30,12 +30,8 @@ const LivemarkUpdater = {
   async updateAllLivemarks() {
     const livemarks = await LivemarkStore.getAll();
     for (const feed of livemarks) {
-      const [bookmark] = await browser.bookmarks.get(feed.id);
       try {
-        const feedData = await FeedParser.getFeed(feed.feedUrl);
-        if (feedData.updated !== feed.updated) {
-          this.updateLivemark(bookmark, feed, feedData);
-        }
+        this.updateLivemark(feed);
       } catch (e) {
         console.log("Error getting feed", e);
       }
@@ -55,7 +51,16 @@ const LivemarkUpdater = {
       parentId: folder.id,
     });
   },
-  async updateLivemark(folder, feed, jFeed) {
+  async updateLivemark(feed, options) {
+    const {
+      forceUpdate = false,
+    } = options || {};
+
+    const feedData = await FeedParser.getFeed(feed.feedUrl);
+    if (feedData.updated == feed.updated && !forceUpdate) {
+      return;
+    }
+    const [folder] = await browser.bookmarks.get(feed.id);
     let readPrefix = await Settings.getReadPrefix();
     if (readPrefix.length > 0) {
       readPrefix += " ";
@@ -74,9 +79,9 @@ const LivemarkUpdater = {
     if (feed.siteUrl) {
       await this.addFeedSiteUrlBookmark(folder, feed);
     }
-    const max = Math.min(feed.maxItems, jFeed.items.length);
+    const max = Math.min(feed.maxItems, feedData.items.length);
     for (let i = 0; i < max; i++) {
-      const item = jFeed.items[i];
+      const item = feedData.items[i];
       const visits = await browser.history.getVisits({"url": item.url});
       await browser.bookmarks.create({
         "parentId": folder.id,
@@ -84,11 +89,40 @@ const LivemarkUpdater = {
         "url": item.url,
       });
     }
-    await LivemarkStore.edit(folder.id, {updated: jFeed.updated});
+    await LivemarkStore.edit(folder.id, {updated: feedData.updated});
   }
 };
 
-LivemarkUpdater.init();
+/* Context menu */
+
+const ContextMenu = {
+  async init() {
+    const createReloadItem = async () => {
+      this.reloadItemId = await browser.menus.create({
+        contexts: ["bookmark"],
+        title: "Reload Live Bookmark",
+      });
+    };
+    browser.menus.onShown.addListener(async ({bookmarkId}) => {
+      if (!LivemarkStore.store.has(bookmarkId)) {
+        await browser.menus.remove(this.reloadItemId);
+        this.reloadItemId = null;
+      } else if (!this.reloadItemId) {
+        await createReloadItem();
+      }
+      await browser.menus.refresh();
+    });
+    browser.menus.onClicked.addListener(async ({bookmarkId, menuItemId}) => {
+      if (LivemarkStore.store.has(bookmarkId) && menuItemId == this.reloadItemId) {
+        const feed = await LivemarkStore.getDetails(bookmarkId);
+        await LivemarkUpdater.updateLivemark(feed, {forceUpdate: true});
+      }
+    });
+    createReloadItem();
+  }
+};
+
+LivemarkUpdater.init().then(() => ContextMenu.init());
 
 // A dictionary keyed off of tabId that keeps track of data per tab (for
 // example what feedUrl was detected in the tab).

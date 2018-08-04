@@ -18,13 +18,11 @@ function findFeedLinks() {
 
   const feeds = [];
   let item;
-  let count = 0;
   while ((item = result.iterateNext())) {
     feeds.push({"href": item.href, "title": item.title});
-    ++count;
   }
 
-  if (count > 0) {
+  if (feeds.length > 0) {
     // Notify the extension needs to show the RSS page action icon.
     chrome.runtime.sendMessage({msg: "feedIcon", feeds});
   }

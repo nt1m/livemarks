@@ -69,7 +69,7 @@ const FeedParser = {
 
     const getHrefFromElement = (selector, target = doc) => {
       const element = target.querySelector(selector);
-      return element ? element.href : null;
+      return element ? element.getAttribute("href") : null;
     };
 
     const channel = doc.querySelector("feed");
@@ -77,7 +77,7 @@ const FeedParser = {
     const feed = {
       type: "atom",
       title: getTextFromElement("title", channel),
-      url: getHrefFromElement("link", channel),
+      url: getHrefFromElement("link:not([rel=self])", channel),
       description: getTextFromElement("subtitle", channel),
       language: channel.getAttribute("xml:lang"),
       updated: getTextFromElement("updated", channel),

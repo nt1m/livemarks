@@ -10,7 +10,7 @@ function exportOPML(feeds) {
       type="rss"
       xmlUrl="${escapeXML(feedUrl)}"
       htmlUrl="${escapeXML(siteUrl)}"
-/>\n`;
+/>`;
   });
   return `<?xml version="1.0" encoding="UTF-8"?>
 <opml version="1.0">
@@ -19,7 +19,7 @@ function exportOPML(feeds) {
   </head>
   <body>
     <outline title="RSS Feeds" text="RSS Feeds">
-      ${opmlFeeds}
+      ${opmlFeeds.join("\n")}
     </outline>
   </body>
 </opml>`;

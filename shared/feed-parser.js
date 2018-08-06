@@ -4,7 +4,7 @@
 const FeedParser = {
   fetchXML(url) {
     return new Promise((resolve, reject) => {
-      let request = new XMLHttpRequest();
+      const request = new XMLHttpRequest();
       request.open("GET", url, true);
 
       request.addEventListener("load", (event) => {

@@ -28,12 +28,15 @@
       <h3>Default folder</h3>
       <p>All future livemarks will be saved here by default</p>
       <select name="defaultFolder"></select>
-      <h3>Bookmark prefixes</h3>
-      <p>The supplied strings will be prefixed to bookmarks to indicate status. Note that titles won't update until the next feed refresh.</p>
-      <label>Unread:</label>
-      <input class="short" name="unreadPrefix">
-      <label>Read:</label>
-      <input class="short" name="readPrefix">
+      <!-- Disable prefix feature until there's decent auto updating of the prefixes -->
+      <div hidden>
+        <h3>Bookmark prefixes</h3>
+        <p>The supplied strings will be prefixed to bookmarks to indicate status. Note that titles won't update until the next feed refresh.</p>
+        <label>Unread:</label>
+        <input class="short" name="unreadPrefix">
+        <label>Read:</label>
+        <input class="short" name="readPrefix">
+      </div>
       <h3>About</h3>
       <p>This add-on is maintained by <a href="https://twitter.com/therealntim">Tim Nguyen</a>. It's based on <a href="https://github.com/davidhampgonsalves/foxish">the Foxish Chrome extension.</a> You can support the add-on by:</p>
       <a href="https://paypal.me/ntimdev" target="_blank" class="button" id="donate-button" type="submit">Donating</a>

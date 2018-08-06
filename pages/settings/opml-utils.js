@@ -2,27 +2,33 @@
 
 /* exported exportOPML */
 function exportOPML(feeds) {
-  const escapeXML = (str) => str.replace(/"/g, "&quot;");
-  const opmlFeeds = feeds.map(({ title, feedUrl, siteUrl }) => {
-    return `<outline 
-      text="${escapeXML(title)}"
-      title="${escapeXML(title)}"
-      type="rss"
-      xmlUrl="${escapeXML(feedUrl)}"
-      htmlUrl="${escapeXML(siteUrl)}"
-/>`;
-  });
-  return `<?xml version="1.0" encoding="UTF-8"?>
+  const TEMPLATE = `<?xml version="1.0" encoding="UTF-8"?>
 <opml version="1.0">
   <head>
     <title>Your livemarks</title>
   </head>
   <body>
     <outline title="RSS Feeds" text="RSS Feeds">
-      ${opmlFeeds.join("\n")}
     </outline>
   </body>
 </opml>`;
+
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(TEMPLATE, "text/xml");
+
+  const container = doc.querySelector("outline");
+  for (const { title, feedUrl, siteUrl} of feeds) {
+    const outline = doc.createElement("outline");
+    outline.setAttribute("text", title);
+    outline.setAttribute("title", title);
+    outline.setAttribute("type", "rss");
+    outline.setAttribute("xmlUrl", feedUrl);
+    outline.setAttribute("htmlUrl", siteUrl);
+    container.appendChild(outline);
+  }
+
+  const serializer = new XMLSerializer();
+  return serializer.serializeToString(doc);
 }
 
 /* exported importOPML */

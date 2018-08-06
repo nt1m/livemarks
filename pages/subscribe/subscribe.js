@@ -15,7 +15,10 @@ function setPreviewContent(html) {
   const sheetUrl = chrome.extension.getURL("pages/reader/reader.css");
   const scriptUrl = chrome.extension.getURL("pages/reader/reader.js");
   frame.srcdoc = `<html>
-  <head><link rel="stylesheet" href="${sheetUrl}"></head>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="${sheetUrl}">
+  </head>
   <body>
     ${html}
     <script src="${scriptUrl}"></script>

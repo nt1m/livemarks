@@ -11,13 +11,13 @@
 
   "content_scripts": [
     {
-      "js": [ "contentscripts/detector.js"],
-      "matches": [ "http://*/*", "https://*/*" ],
+      "js": ["contentscripts/detector.js"],
+      "matches": ["http://*/*", "https://*/*"],
       "run_at": "document_start"
     },
     {
-      "js": [ "contentscripts/feed_finder.js"],
-      "matches": [ "http://*/*", "https://*/*" ]
+      "js": ["contentscripts/feed_finder.js"],
+      "matches": ["http://*/*", "https://*/*"]
     }
   ],
   "description": "Brings RSS Livemarks back to Firefox.",
@@ -37,5 +37,5 @@
     "default_popup": "popup/popup.html"
   },
   "permissions": [ "storage", "bookmarks", "history", "notifications", "<all_urls>", "tabs", "menus" ],
-  "version": "1.0.3"
+  "version": "1.1"
 }

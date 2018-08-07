@@ -13,7 +13,6 @@ function setPreviewContent(html) {
   // Normal loading just requires links to the css and the js file.
   const frame = document.getElementById("preview");
   const sheetUrl = chrome.extension.getURL("pages/reader/reader.css");
-  const scriptUrl = chrome.extension.getURL("pages/reader/reader.js");
   frame.srcdoc = `<html>
   <head>
     <meta charset="utf-8">
@@ -21,17 +20,8 @@ function setPreviewContent(html) {
   </head>
   <body>
     ${html}
-    <script src="${scriptUrl}"></script>
   </body>
   </html>`;
-}
-
-function embedAsIframe(rssText) {
-  const iframe = document.getElementById("preview");
-  iframe.onload = () => {
-    iframe.contentWindow.postMessage(rssText, "*");
-  };
-  setPreviewContent("");
 }
 
 /**
@@ -65,7 +55,7 @@ async function main() {
       alert(`Livemark added to ${folderProps.title},
 please go to the options page to edit it.`);
     });
-    embedAsIframe(feed);
+    setPreviewContent(`<main>${getPreviewHTML(feed)}</main>`);
   } catch (e) {
     console.log(e);
     setPreviewContent("<main id=\"error\">Failed to fetch feed</main>");

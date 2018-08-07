@@ -1,13 +1,8 @@
 "use strict";
 
-window.addEventListener("message", function(e) {
-  const feed = e.data;
-  if (feed) {
-    buildPreview(feed);
-  }
-});
+/* The HTML computed by this function is appended into a sandboxed iframe */
 
-function buildPreview({ items }) {
+function getPreviewHTML({ items }) {
   const container = document.createElement("main");
   for (const item of items) {
     const itemContainer = document.createElement("div");
@@ -31,5 +26,5 @@ function buildPreview({ items }) {
 
     container.appendChild(itemContainer);
   }
-  document.body.appendChild(container);
+  return container.innerHTML;
 }

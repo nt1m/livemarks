@@ -27,12 +27,12 @@ const LivemarkUpdater = {
       this.intervalId = setInterval(this.updateAllLivemarks, 60 * 1000 * interval);
     }
   },
-  async updateAllLivemarks({changedKeys}) {
+  async updateAllLivemarks({changedKeys = []} = {}) {
     const livemarks = await LivemarkStore.getAll();
     for (const feed of livemarks) {
       try {
         this.updateLivemark(feed, {
-          forceUpdate: changedKeys && changedKeys.includes(feed.id),
+          forceUpdate: changedKeys.includes(feed.id),
         });
       } catch (e) {
         console.log("Error getting feed", e);

@@ -51,7 +51,7 @@ const FeedParser = {
       url: getTextFromElement("link", channel),
       description: getTextFromElement("description", channel),
       language: getTextFromElement("language", channel),
-      updated: getTextFromElement("lastBuildDate", channel),
+      updated: getTextFromElement("lastBuildDate", channel) || getTextFromElement("pubDate", channel)
     };
 
     const rssTag = doc.querySelector("rss");
@@ -67,9 +67,12 @@ const FeedParser = {
         url: getTextFromElement("link", item),
         description: getTextFromElement("description", item),
         updated: getTextFromElement("pubDate", item),
-        id: getTextFromElement("guid", item),
+        id: getTextFromElement("guid", item)
       };
     });
+
+    if (! feed.updated)
+      feed.updated = feed.items[0].updated;
     return feed;
   },
   parseAtom(doc) {
@@ -91,7 +94,7 @@ const FeedParser = {
       url: getHrefFromElement("link:not([rel=self])", channel),
       description: getTextFromElement("subtitle", channel),
       language: channel.getAttribute("xml:lang"),
-      updated: getTextFromElement("updated", channel),
+      updated: getTextFromElement("updated", channel) || getTextFromElement("published", channel)
     };
 
     feed.items = [...doc.querySelectorAll("entry")].map(item => {
@@ -99,10 +102,13 @@ const FeedParser = {
         title: getTextFromElement("title", item),
         url: getHrefFromElement("link", item),
         description: getTextFromElement("content", item),
-        updated: getTextFromElement("updated", item),
-        id: getTextFromElement("id", item),
+        updated: getTextFromElement("updated", item) || getTextFromElement("published", item),
+        id: getTextFromElement("id", item)
       };
     });
+
+    if (! feed.updated)
+      feed.updated = feed.items[0].updated;
     return feed;
   }
 };

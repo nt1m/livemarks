@@ -3,6 +3,7 @@
 /* import-globals-from ../../shared/feed-parser.js */
 /* import-globals-from ../../shared/livemark-store.js */
 /* import-globals-from ../../shared/settings.js */
+/* import-globals-from ../reader/reader.js */
 
 window.addEventListener("load", function() {
   document.title = "Feed preview";
@@ -62,4 +63,3 @@ please go to the options page to edit it.`);
   }
   // document.getElementById('feedUrl').href = 'view-source:' + feedUrl;
 }
-

@@ -1,5 +1,6 @@
 "use strict";
 
+/* exported getPreviewHTML */
 /* The HTML computed by this function is appended into a sandboxed iframe */
 
 function getPreviewHTML({ items }) {

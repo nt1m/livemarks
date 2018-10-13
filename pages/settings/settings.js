@@ -11,17 +11,19 @@ window.onload = async () => {
 
   document.getElementById("add").addEventListener("click", async () => {
     let url = prompt("Enter Feed URL");
-    if (url) {
+    try {
       url = new URL(url);
-      const feed = {
-        title: url.hostname,
-        feedUrl: url.href,
-        siteUrl: url.origin,
-        parentId: await Settings.getDefaultFolder(),
-        maxItems: 25,
-      };
-      await LivemarkStore.add(feed);
+    } catch(e) {
+      return alert(e);
     }
+    const feed = {
+      title: url.hostname,
+      feedUrl: url.href,
+      siteUrl: url.origin,
+      parentId: await Settings.getDefaultFolder(),
+      maxItems: 25,
+    };
+    await LivemarkStore.add(feed);
   });
 
   document.getElementById("settings-toggle")

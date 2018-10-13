@@ -37,7 +37,14 @@ window.onload = async () => {
           alert("No feeds found");
           return;
         }
-        for (const feed of imported) {
+        for (const {title, feedUrl, siteUrl} of imported) {
+          const feed = {
+            title,
+            feedUrl,
+            siteUrl,
+            parentId: await Settings.getDefaultFolder(),
+            maxItems: 25,
+          };
           await LivemarkStore.add(feed);
         }
         alert(`Successfully imported ${imported.length} feeds.`);

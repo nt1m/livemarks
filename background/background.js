@@ -59,7 +59,7 @@ const LivemarkUpdater = {
     } = options || {};
 
     const feedData = await FeedParser.getFeed(feed.feedUrl);
-    if (feedData.updated == feed.updated && !forceUpdate) {
+    if (feedData.updated && feedData.updated == feed.updated && !forceUpdate) {
       return;
     }
     const [folder] = await browser.bookmarks.get(feed.id);

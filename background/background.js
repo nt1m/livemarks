@@ -130,15 +130,54 @@ LivemarkUpdater.init().then(() => ContextMenu.init());
 // example what feedUrl was detected in the tab).
 var feedData = {};
 
-chrome.runtime.onMessage.addListener(function(request, sender) {
+browser.runtime.onMessage.addListener(async (request, sender) => {
   if (request.msg == "feedIcon") {
   // We have received a list of feed urls found on the page.
   // Enable the page action icon.
     feedData[sender.tab.id] = request.feeds;
     chrome.pageAction.show(sender.tab.id);
   }
+
+  if (request.msg == "get-feed") {
+    return await FeedParser.getFeed(request.feedUrl);
+  }
+
+  if (request.msg == "subscribe") {
+    const {title, feedUrl, siteUrl} = request;
+    const folderId = await Settings.getDefaultFolder();
+
+    await LivemarkStore.add({
+      title,
+      feedUrl,
+      siteUrl,
+      parentId: folderId,
+      maxItems: 25,
+    });
+
+    const [folderProps] = await browser.bookmarks.get(folderId);
+    return folderProps.title;
+  }
 });
 
 chrome.tabs.onRemoved.addListener(function(tabId) {
   delete feedData[tabId];
 });
+
+chrome.webRequest.onHeadersReceived.addListener(details => {
+  const isRSS = details.responseHeaders.some(header => {
+    if (header["name"].toLowerCase() == "content-type") {
+      const type = header["value"].toLowerCase().replace(/^\s+|\s*(?:;.*)?$/g, "");
+      return type == "application/rss+xml" || type == "application/atom+xml";
+    }
+
+    return false;
+  });
+
+  if (isRSS) {
+    const url = chrome.extension.getURL("pages/subscribe/subscribe.html") + "?" +
+                  encodeURIComponent(details.url);
+    return {
+      redirectUrl: url,
+    }
+  }
+}, {urls: ["<all_urls>"], types: ["main_frame"]}, ["blocking", "responseHeaders"]);

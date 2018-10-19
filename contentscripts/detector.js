@@ -51,8 +51,9 @@ function debugMsg(loglevel, text) {
   }
 }
 
-// See if the current document is a feed document and if so, let
-// the extension know that we should show the subscribe page instead.
+// See if the current document is a feed document and if so, go to the
+// subscribe page instead.
 if (containsFeed(document)) {
-  chrome.runtime.sendMessage({msg: "feedDocument", href: location.href});
+  location.href = chrome.extension.getURL("pages/subscribe/subscribe.html") + "?" +
+                  encodeURIComponent(location.href);
 }

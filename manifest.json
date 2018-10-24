@@ -36,6 +36,9 @@
     "default_title": "Subscribe",
     "default_popup": "popup/popup.html"
   },
-  "permissions": ["storage", "bookmarks", "history", "notifications", "<all_urls>", "tabs", "menus"],
-  "version": "1.5"
+  "permissions": ["storage", "bookmarks", "history", "notifications", "webRequest", "webRequestBlocking", "<all_urls>", "tabs", "menus"],
+  "version": "1.5",
+  "web_accessible_resources": [
+    "pages/subscribe/subscribe.html"
+  ]
 }

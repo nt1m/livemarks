@@ -1,8 +1,5 @@
 "use strict";
 
-/* import-globals-from ../../shared/feed-parser.js */
-/* import-globals-from ../../shared/livemark-store.js */
-/* import-globals-from ../../shared/settings.js */
 /* import-globals-from ../reader/reader.js */
 
 window.addEventListener("load", function() {
@@ -29,11 +26,14 @@ function setPreviewContent(html) {
 * The main function. fetches the feed data.
 */
 async function main() {
-  await LivemarkStore.init();
   const queryString = location.search.substring(1).split("&");
   const feedUrl = decodeURIComponent(queryString[0]);
   try {
-    const feed = await FeedParser.getFeed(feedUrl);
+    const feed = await browser.runtime.sendMessage({
+      msg: "get-feed",
+      feedUrl
+    });
+
     const {title, url: siteUrl, items} = feed;
     if (items.length == 0) {
       setPreviewContent("<main id=\"error\">No feed entries found</main>");
@@ -43,17 +43,13 @@ async function main() {
     document.title = title;
     document.querySelector("#title").textContent = title;
     document.querySelector("#subscribe-button").addEventListener("click", async () => {
-      const folderId = await Settings.getDefaultFolder();
-      await LivemarkStore.add({
+      const folderTitle = await browser.runtime.sendMessage({
+        msg: "subscribe",
         title,
         feedUrl,
-        siteUrl,
-        parentId: folderId,
-        maxItems: 25,
-      });
-
-      const [folderProps] = await browser.bookmarks.get(folderId);
-      alert(`Livemark added to ${folderProps.title},
+        siteUrl
+      })
+      alert(`Livemark added to ${folderTitle},
 please go to the options page to edit it.`);
     });
     setPreviewContent(`<main>${getPreviewHTML(feed)}</main>`);
@@ -61,5 +57,4 @@ please go to the options page to edit it.`);
     console.log(e);
     setPreviewContent("<main id=\"error\">Failed to fetch feed</main>");
   }
-  // document.getElementById('feedUrl').href = 'view-source:' + feedUrl;
 }

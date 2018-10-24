@@ -40,7 +40,7 @@ const FeedParser = {
   parseRss(doc) {
     const getTextFromElement = (selector, target = doc) => {
       const element = target.querySelector(selector);
-      return element ? element.textContent : null;
+      return element ? element.textContent.trim() : null;
     };
 
     const channel = doc.querySelector("channel");
@@ -80,7 +80,7 @@ const FeedParser = {
   parseAtom(doc) {
     const getTextFromElement = (selector, target = doc) => {
       const element = target.querySelector(selector);
-      return element ? element.textContent : null;
+      return element ? element.textContent.trim() : null;
     };
 
     const getHrefFromElement = (selector, target = doc) => {

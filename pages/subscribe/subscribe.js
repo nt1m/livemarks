@@ -1,8 +1,5 @@
 "use strict";
 
-/* import-globals-from ../../shared/feed-parser.js */
-/* import-globals-from ../../shared/livemark-store.js */
-/* import-globals-from ../../shared/settings.js */
 /* import-globals-from ../reader/reader.js */
 
 window.addEventListener("load", function() {

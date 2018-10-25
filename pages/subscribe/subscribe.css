@@ -13,11 +13,12 @@ body {
   color: var(--grey-50);
 }
 
-#copy-feed {
-  margin-top: 0.5em;
+#feed-url {
+  padding: 0;
+  width: 100%;
   display: block;
-  color: inherit;
-  text-decoration: inherit;
+  border: none !important;
+  box-shadow: none !important;
 }
 
 #items {

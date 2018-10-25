@@ -56,10 +56,10 @@ async function main() {
 please go to the options page to edit it.`);
     });
 
-    document.querySelector("#copy-feed").href = feedUrl;
-    document.querySelector("#copy-feed").addEventListener("click", (event) => {
-      navigator.clipboard.writeText(feedUrl);
-      event.preventDefault();
+    document.querySelector("#feed-url").value = feedUrl;
+    document.querySelector("#feed-url").addEventListener("focus", (event) => {
+      event.target.select();
+      document.execCommand("copy");
     });
 
     setPreviewContent(`<main>${getPreviewHTML(feed)}</main>`);

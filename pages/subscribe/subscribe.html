@@ -7,14 +7,18 @@
   <link href="subscribe.css" rel="stylesheet">
 </head>
 <body>
-  <main id="header" class="flex">
-    <div class="grow">
-      <h1 id="title"></h1>
-      <p id="description"></p>
+  <main id="header">
+    <div class="flex">
+      <div class="grow">
+        <h1 id="title"></h1>
+        <p id="description"></p>
+      </div>
+      <div>
+        <button class="primary icon new icon-white" id="subscribe-button">Add Livemark</button>
+      </div>
     </div>
     <div>
-      <button class="primary icon new icon-white" id="subscribe-button">Add Livemark</button>
-      <a href="#" id="copy-feed">Copy Feed URL</a>
+      <input id="feed-url" type="text">
     </div>
   </main>
   <iframe id="preview" name="preview" class="grow" sandbox="allow-same-origin allow-popups"></iframe>

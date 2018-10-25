@@ -9,6 +9,17 @@ body {
   margin: 1em auto;
 }
 
+#description {
+  color: var(--grey-50);
+}
+
+#copy-feed {
+  margin-top: 0.5em;
+  display: block;
+  color: inherit;
+  text-decoration: inherit;
+}
+
 #items {
   width:100%;
 }

@@ -226,8 +226,8 @@ chrome.tabs.onRemoved.addListener(function(tabId) {
 
 chrome.webRequest.onHeadersReceived.addListener(details => {
   const isRSS = details.responseHeaders.some(header => {
-    if (header["name"].toLowerCase() == "content-type") {
-      const type = header["value"].toLowerCase().replace(/^\s+|\s*(?:;.*)?$/g, "");
+    if (header.name.toLowerCase() == "content-type") {
+      const type = header.value.toLowerCase().replace(/^\s+|\s*(?:;.*)?$/g, "");
       return type == "application/rss+xml" || type == "application/atom+xml";
     }
 
@@ -239,6 +239,6 @@ chrome.webRequest.onHeadersReceived.addListener(details => {
                   encodeURIComponent(details.url);
     return {
       redirectUrl: url,
-    }
+    };
   }
 }, {urls: ["<all_urls>"], types: ["main_frame"]}, ["blocking", "responseHeaders"]);

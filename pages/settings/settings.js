@@ -13,7 +13,7 @@ window.onload = async () => {
     let url = prompt("Enter Feed URL");
     try {
       url = new URL(url);
-    } catch(e) {
+    } catch (e) {
       return alert(e);
     }
     const feed = {

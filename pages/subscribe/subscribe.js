@@ -48,7 +48,7 @@ async function main() {
         title,
         feedUrl,
         siteUrl
-      })
+      });
       alert(`Livemark added to ${folderTitle},
 please go to the options page to edit it.`);
     });

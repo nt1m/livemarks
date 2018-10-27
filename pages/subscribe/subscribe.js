@@ -14,6 +14,7 @@ function setPreviewContent(html) {
   frame.srcdoc = `<html>
   <head>
     <meta charset="utf-8">
+    <base target="_blank">
     <link rel="stylesheet" href="${sheetUrl}">
   </head>
   <body>

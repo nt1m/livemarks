@@ -16,9 +16,12 @@ body {
 #feed-url {
   padding: 0;
   width: 100%;
+  padding-left: 24px;
   display: block;
-  border: none !important;
+  border: none;
+  background: url(/icons/link.svg) no-repeat center left !important;
   box-shadow: none !important;
+  color: inherit;
 }
 
 #items {

@@ -34,7 +34,7 @@ async function main() {
       feedUrl
     });
 
-    const {title, url: siteUrl, items} = feed;
+    const {title, description, url: siteUrl, items} = feed;
     if (items.length == 0) {
       setPreviewContent("<main id=\"error\">No feed entries found</main>");
       return;
@@ -42,6 +42,9 @@ async function main() {
 
     document.title = title;
     document.querySelector("#title").textContent = title;
+    if (description) {
+      document.querySelector("#description").textContent = description;
+    }
     document.querySelector("#subscribe-button").addEventListener("click", async () => {
       const folderTitle = await browser.runtime.sendMessage({
         msg: "subscribe",
@@ -52,6 +55,13 @@ async function main() {
       alert(`Livemark added to ${folderTitle},
 please go to the options page to edit it.`);
     });
+
+    document.querySelector("#feed-url").value = feedUrl;
+    document.querySelector("#feed-url").addEventListener("focus", (event) => {
+      event.target.select();
+      document.execCommand("copy");
+    });
+
     setPreviewContent(`<main>${getPreviewHTML(feed)}</main>`);
   } catch (e) {
     console.log(e);

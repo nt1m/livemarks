@@ -9,6 +9,21 @@ body {
   margin: 1em auto;
 }
 
+#description {
+  color: var(--grey-50);
+}
+
+#feed-url {
+  padding: 0;
+  width: 100%;
+  padding-left: 24px;
+  display: block;
+  border: none;
+  background: url(/icons/link.svg) no-repeat center left !important;
+  box-shadow: none !important;
+  color: inherit;
+}
+
 #items {
   width:100%;
 }

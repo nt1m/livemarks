@@ -7,9 +7,19 @@
   <link href="subscribe.css" rel="stylesheet">
 </head>
 <body>
-  <main id="header" class="flex">
-    <h1 id="title" class="grow"></h1>
-    <button class="primary icon new icon-white" id="subscribe-button">Add Livemark</button>
+  <main id="header">
+    <div class="flex">
+      <div class="grow">
+        <h1 id="title"></h1>
+        <p id="description"></p>
+      </div>
+      <div>
+        <button class="primary icon new icon-white" id="subscribe-button">Add Livemark</button>
+      </div>
+    </div>
+    <div>
+      <input id="feed-url" type="text">
+    </div>
   </main>
   <iframe id="preview" name="preview" class="grow" sandbox="allow-same-origin allow-popups"></iframe>
   <script src="/shared/livemark-store.js"></script>

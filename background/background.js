@@ -224,6 +224,11 @@ chrome.tabs.onRemoved.addListener(function(tabId) {
   delete feedData[tabId];
 });
 
+function getSubscribeURL(feedUrl) {
+  const url = chrome.extension.getURL("pages/subscribe/subscribe.html");
+  return url + "?" + encodeURIComponent(feedUrl);
+}
+
 chrome.webRequest.onHeadersReceived.addListener(details => {
   const header = details.responseHeaders.find(header => {
     return header.name.toLowerCase() == "content-type";
@@ -235,10 +240,8 @@ chrome.webRequest.onHeadersReceived.addListener(details => {
   // Atom or RSS MIME type, redirect to preview page
   const type = header.value.toLowerCase().replace(/^\s+|\s*(?:;.*)?$/g, "");
   if (type == "application/rss+xml" || type == "application/atom+xml") {
-    const url = chrome.extension.getURL("pages/subscribe/subscribe.html") + "?" +
-                  encodeURIComponent(details.url);
     return {
-      redirectUrl: url,
+      redirectUrl: getSubscribeURL(details.url),
     };
   }
 
@@ -260,8 +263,7 @@ chrome.webRequest.onHeadersReceived.addListener(details => {
           let feed = await FeedParser.getFeed(details.url);
           if (feed.items.length > 0) {
             chrome.tabs.update(details.tabId, {
-              url: chrome.extension.getURL("pages/subscribe/subscribe.html") + "?" +
-                encodeURIComponent(details.url),
+              url: getSubscribeURL(details.url),
               loadReplace: true
             });
           }

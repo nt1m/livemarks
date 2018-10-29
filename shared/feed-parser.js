@@ -15,8 +15,8 @@ const FeedParser = {
         }
       });
       request.addEventListener("error", (event) => {
-        reject(new Error(`${request.status}: ${request.statusText}`))
-      })
+        reject(new Error(`${request.status}: ${request.statusText}`));
+      });
 
       request.overrideMimeType("text/xml");
       request.send();
@@ -88,7 +88,11 @@ const FeedParser = {
 
     const getHrefFromElement = (selector, target = doc) => {
       const element = target.querySelector(selector);
-      return element ? element.getAttribute("href") : null;
+      if (element) {
+        return element.getAttribute("href") ||
+               element.getAttributeNS("http://www.w3.org/2005/Atom", "href");
+      }
+      return null;
     };
 
     const channel = doc.querySelector("feed");

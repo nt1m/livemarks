@@ -9,7 +9,10 @@ window.addEventListener("load", function() {
 
 function setPreviewContent(html) {
   // Normal loading just requires links to the css and the js file.
-  const frame = document.getElementById("preview");
+  const frame = document.createElement("iframe");
+  frame.classList.add("grow");
+  frame.sandbox = "allow-same-origin allow-popups";
+
   const sheetUrl = chrome.extension.getURL("pages/reader/reader.css");
   frame.srcdoc = `<html>
   <head>
@@ -21,6 +24,8 @@ function setPreviewContent(html) {
     ${html}
   </body>
   </html>`;
+
+  document.getElementById("preview").append(frame);
 }
 
 /**

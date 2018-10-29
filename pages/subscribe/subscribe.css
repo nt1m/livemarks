@@ -28,7 +28,11 @@ body {
   width:100%;
 }
 
-iframe {
+#preview {
+  display: contents;
+}
+
+frame {
   height:100%;
   width:100%;
 }

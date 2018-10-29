@@ -29,6 +29,13 @@ function setPreviewContent(html) {
 async function main() {
   const queryString = location.search.substring(1).split("&");
   const feedUrl = decodeURIComponent(queryString[0]);
+
+  document.querySelector("#feed-url").value = feedUrl;
+  document.querySelector("#feed-url").addEventListener("focus", (event) => {
+    event.target.select();
+    document.execCommand("copy");
+  });
+
   try {
     const feed = await browser.runtime.sendMessage({
       msg: "get-feed",
@@ -55,12 +62,6 @@ async function main() {
       });
       alert(`Livemark added to ${folderTitle},
 please go to the options page to edit it.`);
-    });
-
-    document.querySelector("#feed-url").value = feedUrl;
-    document.querySelector("#feed-url").addEventListener("focus", (event) => {
-      event.target.select();
-      document.execCommand("copy");
     });
 
     setPreviewContent(`<main>${getPreviewHTML(feed)}</main>`);

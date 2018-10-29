@@ -11,9 +11,12 @@ const FeedParser = {
         if (request.responseXML) {
           resolve(request.responseXML);
         } else {
-          reject(new Error(request.statusText));
+          reject(new Error(`${request.status}: ${request.statusText}`));
         }
       });
+      request.addEventListener("error", (event) => {
+        reject(new Error(`${request.status}: ${request.statusText}`))
+      })
 
       request.overrideMimeType("text/xml");
       request.send();

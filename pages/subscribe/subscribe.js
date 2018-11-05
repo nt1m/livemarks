@@ -75,3 +75,18 @@ please go to the options page to edit it.`);
     setPreviewContent("<main id=\"error\">Failed to fetch feed</main>");
   }
 }
+
+window.addEventListener("keypress", event => {
+  // ToDo: macOS keybindings?
+  if (event.ctrlKey && event.char === "u") {
+    // Users expect Ctrl+U to show the source
+
+    const queryString = location.search.substring(1).split("&");
+    const feedUrl = decodeURIComponent(queryString[0]);
+
+    browser.runtime.sendMessage({
+      msg: "open-viewsource",
+      feedUrl
+    });
+  }
+});

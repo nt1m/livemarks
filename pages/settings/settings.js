@@ -77,6 +77,7 @@ async function showSettingsDialog() {
   settingsForm.pollInterval.value = await Settings.getPollInterval();
   settingsForm.readPrefix.value = await Settings.getReadPrefix();
   settingsForm.unreadPrefix.value = await Settings.getUnreadPrefix();
+  settingsForm.feedPreview.checked = await Settings.getFeedPreviewEnabled();
 
   await populateFolderSelector(settingsForm.defaultFolder);
 
@@ -105,6 +106,7 @@ function initDialogs() {
       await Settings.setReadPrefix(settingsForm.readPrefix.value);
       await Settings.setUnreadPrefix(settingsForm.unreadPrefix.value);
       await Settings.setDefaultFolder(settingsForm.defaultFolder.value);
+      await Settings.setFeedPreviewEnabled(settingsForm.feedPreview.checked);
     }
   }, true);
   settingsForm.addEventListener("blur", e => e.preventDefault());

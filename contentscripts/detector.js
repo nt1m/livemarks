@@ -54,6 +54,5 @@ function debugMsg(loglevel, text) {
 // See if the current document is a feed document and if so, go to the
 // subscribe page instead.
 if (containsFeed(document)) {
-  location.href = chrome.extension.getURL("pages/subscribe/subscribe.html") + "?" +
-                  encodeURIComponent(location.href);
+  chrome.runtime.sendMessage({msg: "load-preview", url: location.href});
 }

@@ -51,6 +51,14 @@ const Settings = {
     return setSetting("unreadPrefix", newValue);
   },
 
+  getFeedPreviewEnabled() {
+    return getSetting("feedPreviewEnabled", true);
+  },
+
+  setFeedPreviewEnabled(newValue) {
+    return setSetting("feedPreviewEnabled", newValue);
+  },
+
   addChangeListener(callback) {
     return browser.storage.onChanged.addListener(changes => {
       changes = Object.assign({}, changes);

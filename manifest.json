@@ -11,6 +11,11 @@
 
   "content_scripts": [
     {
+      "js": ["contentscripts/detector.js"],
+      "matches": ["http://*/*", "https://*/*"],
+      "run_at": "document_start"
+    },
+    {
       "js": ["contentscripts/feed_finder.js"],
       "matches": ["http://*/*", "https://*/*"]
     }

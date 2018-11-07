@@ -18,11 +18,16 @@ function getPreviewHTML({ items }) {
     anchor.target = "_blank";
     anchor.className = "item_title";
 
+    const time = document.createElement("time");
+    time.className = "item_date";
+    time.textContent = item.updated;
+
     const span = document.createElement("span");
     span.className = "item_desc";
     span.innerHTML = item.description;
 
     itemContainer.appendChild(anchor);
+    itemContainer.appendChild(time);
     itemContainer.appendChild(span);
 
     container.appendChild(itemContainer);

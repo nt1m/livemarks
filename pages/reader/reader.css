@@ -107,6 +107,12 @@ main {
   text-decoration: none;
 }
 
+.item_date {
+  display: block;
+  font-size: 0.9em;
+  color: #4a4a4f;
+}
+
 .item_desc {
   display:block;
 }

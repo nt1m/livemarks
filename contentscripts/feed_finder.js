@@ -24,6 +24,6 @@ function findFeedLinks() {
 
   if (feeds.length > 0) {
     // Notify the extension needs to show the RSS page action icon.
-    chrome.runtime.sendMessage({msg: "feedIcon", feeds});
+    chrome.runtime.sendMessage({msg: "feeds", feeds});
   }
 }

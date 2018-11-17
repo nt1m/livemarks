@@ -185,18 +185,51 @@ const ContextMenu = {
   }
 };
 
-LivemarkUpdater.init().then(() => ContextMenu.init());
+function getSubscribeURL(feedUrl) {
+  const url = chrome.extension.getURL("pages/subscribe/subscribe.html");
+  return url + "?" + encodeURIComponent(feedUrl);
+}
+
+const FeedPreview = {
+  async init() {
+    // This value needs to be synchronously accessible in the
+    // chrome.webRequest.onHeadersReceived listener below.
+    this.enabled = await Settings.getFeedPreviewEnabled();
+
+    Settings.addChangeListener(async (changes) => {
+      if (changes["settings.feedPreviewEnabled"]) {
+        this.enabled = await Settings.getFeedPreviewEnabled();
+      }
+    });
+  },
+
+  show(tabId, url) {
+    chrome.tabs.update(tabId, {url: getSubscribeURL(url), loadReplace: true});
+  }
+};
+
+(async function() {
+  await LivemarkUpdater.init();
+  await ContextMenu.init();
+  await FeedPreview.init();
+})();
 
 // A dictionary keyed off of tabId that keeps track of data per tab (for
 // example what feedUrl was detected in the tab).
 var feedData = {};
 
 browser.runtime.onMessage.addListener(async (request, sender) => {
-  if (request.msg == "feedIcon") {
+  if (request.msg == "feeds") {
   // We have received a list of feed urls found on the page.
   // Enable the page action icon.
     feedData[sender.tab.id] = request.feeds;
     chrome.pageAction.show(sender.tab.id);
+  }
+
+  if (request.msg == "load-preview") {
+    if (FeedPreview.enabled) {
+      FeedPreview.show(sender.tab.id, request.url);
+    }
   }
 
   if (request.msg == "get-feed") {
@@ -224,12 +257,12 @@ chrome.tabs.onRemoved.addListener(function(tabId) {
   delete feedData[tabId];
 });
 
-function getSubscribeURL(feedUrl) {
-  const url = chrome.extension.getURL("pages/subscribe/subscribe.html");
-  return url + "?" + encodeURIComponent(feedUrl);
-}
-
 chrome.webRequest.onHeadersReceived.addListener(details => {
+  if (!FeedPreview.enabled) {
+    // Feed preview disabled, nothing to do here.
+    return;
+  }
+
   const header = details.responseHeaders.find(header => {
     return header.name.toLowerCase() == "content-type";
   })
@@ -262,10 +295,7 @@ chrome.webRequest.onHeadersReceived.addListener(details => {
           // Verify that this is actually a feed by parsing it.
           let feed = await FeedParser.getFeed(details.url);
           if (feed.items.length > 0) {
-            chrome.tabs.update(details.tabId, {
-              url: getSubscribeURL(details.url),
-              loadReplace: true
-            });
+            FeedPreview.show(details.tabId, details.url);
           }
         } catch (e) {}
         return;

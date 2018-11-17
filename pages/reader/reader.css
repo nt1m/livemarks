@@ -76,16 +76,8 @@ main {
   line-height: 1.5;
 }
 
-.item a {
-  color: #0060df;
-}
-
 .item a:not(:hover) {
   text-decoration: none;
-}
-
-.item a:active {
-  color: #003eaa;
 }
 
 .item pre,

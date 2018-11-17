@@ -19,13 +19,26 @@ body {
   padding-left: 24px;
   display: block;
   border: none;
-  background: url(/icons/link.svg) no-repeat center left !important;
+  background: url(/icons/link.svg) no-repeat 4px center !important;
   box-shadow: none !important;
+  color: inherit;
+  margin-bottom: 1em;
+}
+
+#view-source-button {
   color: inherit;
 }
 
+#view-source-button:not(:hover) {
+  text-decoration: none;
+}
+
+#view-source-button::before {
+  width: 24px;
+}
+
 #items {
-  width:100%;
+  width: 100%;
 }
 
 #preview {

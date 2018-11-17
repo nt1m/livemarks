@@ -134,6 +134,10 @@ label {
   background-image: url(../icons/delete.svg);
 }
 
+.icon.view-source::before {
+  background-image: url(../icons/view-source.svg);
+}
+
 .icon.new::before {
   background-image: url(../icons/new.svg);
 }
@@ -264,4 +268,3 @@ input:not([type="submit"]):not([type="button"]):not([type="hidden"]):invalid {
   padding: 1.5em;
   margin: 1em 0;
 }
-

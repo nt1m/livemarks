@@ -276,5 +276,8 @@ chrome.webRequest.onHeadersReceived.addListener(details => {
         filter.disconnect();
       }
     }
+    filter.onstop = (event) => {
+      filter.disconnect();
+    }
   }
 }, {urls: ["<all_urls>"], types: ["main_frame"]}, ["blocking", "responseHeaders"]);

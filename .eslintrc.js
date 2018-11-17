@@ -3,7 +3,6 @@ module.exports = {
     "es6": true,
     "browser": true,
     "webextensions": true,
-    "jquery": true,
   },
   "extends": [
     "plugin:mozilla/recommended"
@@ -32,8 +31,8 @@ module.exports = {
     "comma-style": [2, "last"],
     // Warn about cyclomatic complexity in functions.
     "complexity": [2, 35],
-    // Require return statements to either always or never specify values.
-    "consistent-return": 2,
+    // Do not require return statements to either always or never specify values.
+    "consistent-return": 0,
     // Don't warn for inconsistent naming when capturing this (not so important
     // with auto-binding fat arrow functions).
     "consistent-this": 0,

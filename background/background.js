@@ -233,7 +233,7 @@ browser.runtime.onMessage.addListener(async (request, sender) => {
   }
 
   if (request.msg == "get-feed") {
-    return await FeedParser.getFeed(request.feedUrl);
+    return FeedParser.getFeed(request.feedUrl);
   }
 
   if (request.msg == "subscribe") {
@@ -263,9 +263,9 @@ chrome.webRequest.onHeadersReceived.addListener(details => {
     return;
   }
 
-  const header = details.responseHeaders.find(header => {
-    return header.name.toLowerCase() == "content-type";
-  })
+  const header = details.responseHeaders.find(h => {
+    return h.name.toLowerCase() == "content-type";
+  });
   if (header === undefined) {
     return;
   }
@@ -280,10 +280,10 @@ chrome.webRequest.onHeadersReceived.addListener(details => {
 
   // XML MIME type, try sniffing for feed content
   if (type == "application/xml" || type == "text/xml") {
-    let decoder = new TextDecoder("utf-8");
+    const decoder = new TextDecoder("utf-8");
     let str = "";
 
-    let filter = browser.webRequest.filterResponseData(details.requestId);
+    const filter = browser.webRequest.filterResponseData(details.requestId);
     filter.ondata = async (event) => {
       filter.write(event.data);
 
@@ -293,7 +293,7 @@ chrome.webRequest.onHeadersReceived.addListener(details => {
 
         try {
           // Verify that this is actually a feed by parsing it.
-          let feed = await FeedParser.getFeed(details.url);
+          const feed = await FeedParser.getFeed(details.url);
           if (feed.items.length > 0) {
             FeedPreview.show(details.tabId, details.url);
           }
@@ -305,9 +305,9 @@ chrome.webRequest.onHeadersReceived.addListener(details => {
       if (str.length > 1024) {
         filter.disconnect();
       }
-    }
+    };
     filter.onstop = (event) => {
       filter.disconnect();
-    }
+    };
   }
 }, {urls: ["<all_urls>"], types: ["main_frame"]}, ["blocking", "responseHeaders"]);

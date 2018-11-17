@@ -14,7 +14,8 @@ window.onload = async () => {
     try {
       url = new URL(url);
     } catch (e) {
-      return alert(e);
+      alert(e);
+      return;
     }
     const feed = {
       title: url.hostname,

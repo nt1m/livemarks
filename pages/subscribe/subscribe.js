@@ -3,7 +3,6 @@
 /* import-globals-from ../reader/reader.js */
 
 window.addEventListener("load", function() {
-  document.title = "Feed preview";
   main();
 });
 

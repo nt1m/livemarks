@@ -11,6 +11,9 @@ window.onload = async () => {
 
   document.getElementById("add").addEventListener("click", async () => {
     let url = prompt("Enter Feed URL");
+    if (url === null) {
+      return;
+    }
     try {
       url = new URL(url);
     } catch (e) {

@@ -235,9 +235,11 @@ const LivemarkStore = {
     const found = await browser.storage.local.get("livemarks");
     // Migrate local storage to sync storage
     if (found.hasOwnProperty("livemarks")) {
-      await browser.storage.sync.set({
-        livemarks: found.livemarks,
-      });
+      if (found.livemarks.length && found.livemarks.length > 0) {
+        await browser.storage.sync.set({
+          livemarks: found.livemarks,
+        });
+      }
       await browser.storage.local.remove("livemarks");
     }
     this.store = await new StoredMap("livemarks");

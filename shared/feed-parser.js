@@ -66,12 +66,35 @@ const FeedParser = {
     }
 
     feed.items = [...doc.querySelectorAll("item")].map(item => {
+      let media;
+
+      const allContent = item.getElementsByTagName("media:content");
+      if (allContent.length) {
+        media = Array.from(allContent, content => {
+          return {
+            url: content.getAttribute("url"),
+            size: content.getAttribute("fileSize"),
+            type: content.getAttribute("type"),
+          };
+        });
+      } else {
+        const enclosure = item.querySelector("enclosure");
+        if (enclosure) {
+          media = [{
+            url: enclosure.getAttribute("url"),
+            size: enclosure.getAttribute("length"),
+            type: enclosure.getAttribute("type"),
+          }];
+        }
+      }
+
       return {
         title: getTextFromElement("title", item),
         url: getTextFromElement("link", item),
         description: getTextFromElement("description", item),
         updated: getTextFromElement("pubDate", item),
-        id: getTextFromElement("guid", item)
+        id: getTextFromElement("guid", item),
+        media
       };
     });
 

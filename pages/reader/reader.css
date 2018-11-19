@@ -108,3 +108,9 @@ main {
 .item_desc {
   display:block;
 }
+
+.item_media {
+  margin-top: 1em;
+  padding: 0.5em;
+  background-color: #f9f9fa;
+}

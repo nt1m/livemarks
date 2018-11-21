@@ -150,11 +150,21 @@ const LivemarkStore = {
   isLivemarkFolder(id) {
     return this.store.has(id);
   },
-  getAll() {
+  async getAll() {
     const keys = [...this.store.keys()];
-    return Promise.all(keys.map(id => {
-      return this.getDetails(id);
-    }));
+
+    const all = [];
+    for (const id of keys) {
+      // XXX: Work around broken bookmarks at this entry point for now.
+      try {
+        const details = await this.getDetails(id);
+        all.push(details);
+      } catch (e) {
+        console.error("Found broken bookmark", id, e);
+      }
+    }
+
+    return all;
   },
   async add(feed) {
     const { title, parentId } = feed;

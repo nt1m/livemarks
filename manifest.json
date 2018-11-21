@@ -40,12 +40,5 @@
   "version": "1.8",
   "web_accessible_resources": [
     "pages/subscribe/subscribe.html"
-  ],
-
-"applications": {
-  "gecko": {
-    "id": "addon@example.com",
-    "strict_min_version": "42.0"
-  }
-}
+  ]
 }

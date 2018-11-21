@@ -10,7 +10,7 @@ class StoredMap extends Map {
    */
   constructor(storageKey) {
     const getFromStorage = async () => {
-      const found = await browser.storage.local.get(storageKey);
+      const found = await browser.storage.sync.get(storageKey);
       if (!found.hasOwnProperty(storageKey)) {
         return [];
       }
@@ -20,7 +20,7 @@ class StoredMap extends Map {
 
     const setupSync = () => {
       browser.storage.onChanged.addListener(async (changes, area) => {
-        if (area !== "local" || !changes.hasOwnProperty(storageKey)) {
+        if (area !== "sync" || !changes.hasOwnProperty(storageKey)) {
           return;
         }
         const objectEquals = (a, b) => {
@@ -118,7 +118,7 @@ class StoredMap extends Map {
   async set(k, v) {
     const returnValue = super.set(k, v);
     if (this.storageKey) {
-      await browser.storage.local.set({
+      await browser.storage.sync.set({
         [this.storageKey]: [...this.entries()],
       });
     }
@@ -128,7 +128,7 @@ class StoredMap extends Map {
 
   async delete(k) {
     const returnValue = super.delete(k);
-    await browser.storage.local.set({
+    await browser.storage.sync.set({
       [this.storageKey]: [...this.entries()],
     });
     this._emit({ changedKeys: [k] }, true);
@@ -138,7 +138,7 @@ class StoredMap extends Map {
   async clear() {
     const oldKeys = [...this.keys()];
     super.clear();
-    await browser.storage.local.set({
+    await browser.storage.sync.set({
       [this.storageKey]: [],
     });
     this._emit({ changedKeys: oldKeys }, true);
@@ -243,23 +243,15 @@ const LivemarkStore = {
 
   async init() {
     const found = await browser.storage.local.get("livemarks");
-    if (!found.hasOwnProperty("livemarks") || !found.livemarks.length) {
-      // Migrate sync to local storage. Only if the local storage is empty.
-      try {
-        const sync = await browser.storage.sync.get("livemarks");
-
-        if (sync.livemarks.length && sync.livemarks.length > 0) {
-          await browser.storage.local.set({
-            livemarks: sync.livemarks,
-          });
-        }
-
-        await browser.storage.sync.remove("livemarks");
-      } catch (e) {
-        console.error("Storage migration failed", e);
+    // Migrate local storage to sync storage
+    if (found.hasOwnProperty("livemarks")) {
+      if (found.livemarks.length && found.livemarks.length > 0) {
+        await browser.storage.sync.set({
+          livemarks: found.livemarks,
+        });
       }
+      await browser.storage.local.remove("livemarks");
     }
-
     this.store = await new StoredMap("livemarks");
     browser.bookmarks.onRemoved.addListener(id => {
       if (this.isLivemarkFolder(id)) {

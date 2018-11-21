@@ -1,5 +1,6 @@
 "use strict";
 
+/* import-globals-from ../../shared/feed-parser.js */
 /* import-globals-from ../../shared/livemark-store.js */
 /* import-globals-from ../../shared/settings.js */
 /* import-globals-from opml-utils.js */
@@ -10,20 +11,36 @@ window.onload = async () => {
   initDialogs();
 
   document.getElementById("add").addEventListener("click", async () => {
-    let url = prompt("Enter Feed URL");
-    if (url === null) {
+    let feedUrl = prompt("Enter Feed URL");
+    if (feedUrl === null) {
       return;
     }
     try {
-      url = new URL(url);
+      feedUrl = new URL(feedUrl);
     } catch (e) {
       alert(e);
       return;
     }
+
+    let feedTitle, siteUrl;
+    try {
+      const {title, url, items} = await FeedParser.getFeed(feedUrl.href);
+      if (items.length == 0) {
+        alert("No feed entries found");
+        return;
+      }
+
+      feedTitle = title;
+      siteUrl = url;
+    } catch (e) {
+      alert(e);
+      return;
+    }
+
     const feed = {
-      title: url.hostname,
-      feedUrl: url.href,
-      siteUrl: url.origin,
+      title: feedTitle,
+      feedUrl: feedUrl.href,
+      siteUrl,
       parentId: await Settings.getDefaultFolder(),
       maxItems: 25,
     };

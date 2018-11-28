@@ -123,20 +123,26 @@ const LivemarkUpdater = {
       }
     }
 
-    const max = Math.min(feed.maxItems, feedData.items.length);
+    // Filter items with no title and URL.
+    const items = feedData.items.filter(item => item.title || item.url);
+    const max = Math.min(feed.maxItems, items.length);
     let i = 0;
     for (; i < max; i++) {
-      const item = feedData.items[i];
-      const visits = await browser.history.getVisits({"url": item.url});
+      const item = items[i];
+      const url = item.url || feed.feedUrl;
+      let visits = 0;
+      try {
+        visits = (await browser.history.getVisits({url})).length;
+      } catch (e) {}
       const title = ((visits.length > 0) ? readPrefix : unreadPrefix) + item.title;
       if (i < usableChildren.length) {
         // There's a child in the right place, see if it has the right data,
         // and update it if not.
         const child = usableChildren[i];
-        if (child.url !== item.url || child.title !== title) {
+        if (child.url !== url || child.title !== title) {
           await browser.bookmarks.update(child.id, {
             title,
-            url: item.url,
+            url
           });
         }
       } else {
@@ -144,7 +150,7 @@ const LivemarkUpdater = {
         await browser.bookmarks.create({
           parentId: folder.id,
           title,
-          url: item.url,
+          url
         });
       }
     }

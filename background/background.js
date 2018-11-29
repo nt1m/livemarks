@@ -134,7 +134,7 @@ const LivemarkUpdater = {
       try {
         visits = (await browser.history.getVisits({url})).length;
       } catch (e) {}
-      const title = ((visits.length > 0) ? readPrefix : unreadPrefix) + item.title;
+      const title = ((visits > 0) ? readPrefix : unreadPrefix) + item.title;
       if (i < usableChildren.length) {
         // There's a child in the right place, see if it has the right data,
         // and update it if not.

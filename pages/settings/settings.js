@@ -138,7 +138,9 @@ async function loadFeeds() {
   toggleDialog("edit-livemark-dialog", false);
   const allFeeds = await LivemarkStore.getAll();
   document.getElementById("feeds").textContent = "";
-  allFeeds.forEach(addFeedToList);
+  allFeeds.sort((a, b) => {
+    return a.title.localeCompare(b.title);
+  }).forEach(addFeedToList);
 }
 
 function addFeedToList(feed) {

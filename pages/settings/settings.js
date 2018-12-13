@@ -172,11 +172,12 @@ async function showEditFeedDialog(feed) {
 
   await populateFolderSelector(dialog.parentId);
 
-  const {title, feedUrl, siteUrl, parentId, id} = feed;
+  const {title, feedUrl, siteUrl, parentId, maxItems, id} = feed;
   dialog.title.value = title;
   dialog.feedUrl.value = feedUrl;
   dialog.siteUrl.value = siteUrl;
   dialog.parentId.value = parentId;
+  dialog.maxItems.value = maxItems;
 
   const deleteButton = dialog.querySelector(".delete");
   deleteButton.onclick = async (e) => {

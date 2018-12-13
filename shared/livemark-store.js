@@ -211,6 +211,10 @@ const LivemarkStore = {
 
     if (feed.siteUrl && feed.siteUrl !== oldFeed.siteUrl) {
       oldFeed.siteUrl = feed.siteUrl;
+    } else if (feed.siteUrl === "" && oldFeed.siteUrl) {
+      // We have to check against "" since we only want to cover the case where
+      // the user explicitly set the value to be empty.
+      oldFeed.siteUrl = null;
     }
 
     if (feed.feedUrl && feed.feedUrl !== oldFeed.feedUrl) {
@@ -224,6 +228,7 @@ const LivemarkStore = {
     if (feed.updated && feed.updated !== oldFeed.updated) {
       oldFeed.updated = feed.updated;
     }
+
     this.store.set(id, oldFeed);
   },
 

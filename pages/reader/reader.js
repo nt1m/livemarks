@@ -37,6 +37,10 @@ function displayFileName(mediaURL) {
 }
 
 function getPreviewHTML({ items }) {
+  const formatter = new Intl.DateTimeFormat(undefined, {
+    day: "numeric", month: "long", year: "numeric",
+    hour: "numeric", minute: "numeric"});
+
   const container = document.createElement("main");
   for (const item of items) {
     const itemContainer = document.createElement("div");
@@ -53,7 +57,12 @@ function getPreviewHTML({ items }) {
 
     const time = document.createElement("time");
     time.className = "item_date";
-    time.textContent = item.updated;
+    const date = Date.parse(item.updated);
+    if (date) {
+      time.textContent = formatter.format(new Date(date));
+    } else {
+      time.textContent = item.updated;
+    }
 
     const span = document.createElement("span");
     span.className = "item_desc";

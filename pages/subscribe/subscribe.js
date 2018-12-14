@@ -57,12 +57,10 @@ async function main() {
     if (description) {
       document.querySelector("#description").textContent = description;
     }
-    document.querySelector("#view-source-button").addEventListener("click", () => {
-      browser.runtime.sendMessage({
-        msg: "open-viewsource",
-        feedUrl
-      });
-    });
+
+    const viewSourceBtn = document.querySelector("#view-source-button");
+    viewSourceBtn.href = "view-source:" + feedUrl;
+
     document.querySelector("#subscribe-button").addEventListener("click", async () => {
       const folderTitle = await browser.runtime.sendMessage({
         msg: "subscribe",

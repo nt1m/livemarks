@@ -257,13 +257,6 @@ browser.runtime.onMessage.addListener(async (request, sender) => {
     const [folderProps] = await browser.bookmarks.get(folderId);
     return folderProps.title;
   }
-
-  if (request.msg == "open-viewsource") {
-    browser.tabs.create({
-      url: "view-source:" + request.feedUrl,
-      openerTabId: sender.tab.id
-    });
-  }
 });
 
 chrome.tabs.onRemoved.addListener(function(tabId) {

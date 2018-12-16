@@ -9,8 +9,13 @@ body {
   margin: 1em auto;
 }
 
+#title {
+  font-size: 1.7em;
+}
+
 #description {
   color: var(--grey-50);
+  margin-top: 0.5em;
 }
 
 #feed-url {
@@ -22,7 +27,7 @@ body {
   background: url(/icons/link.svg) no-repeat 4px center !important;
   box-shadow: none !important;
   color: inherit;
-  margin-bottom: 1em;
+  margin-bottom: 0.5em;
 }
 
 #view-source-button {

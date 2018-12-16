@@ -29,15 +29,22 @@ const LivemarkUpdater = {
   },
   async updateAllLivemarks({changedKeys = []} = {}) {
     const livemarks = await LivemarkStore.getAll();
-    for (const feed of livemarks) {
-      try {
+
+    const next = () => {
+      const feed = livemarks.pop();
+      if (feed) {
         this.updateLivemark(feed, {
           forceUpdate: changedKeys.includes(feed.id),
-        });
-      } catch (e) {
-        console.log("Error getting feed", e);
+        }).finally(next);
       }
-    }
+    };
+
+    // Only update at most 5 livemarks concurrently.
+    livemarks.splice(0, 5).forEach(feed => {
+      this.updateLivemark(feed, {
+        forceUpdate: changedKeys.includes(feed.id),
+      }).finally(next);
+    });
   },
   // adds the site url bookmark if it doesn't
   // exist already. Returns whether or not it modified the child list.

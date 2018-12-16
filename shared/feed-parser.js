@@ -6,16 +6,20 @@ const FeedParser = {
     return new Promise((resolve, reject) => {
       const request = new XMLHttpRequest();
       request.open("GET", url, true);
+      request.timeout = 5000; // time in milliseconds
 
       request.addEventListener("load", (event) => {
         if (request.responseXML) {
           resolve(request.responseXML);
         } else {
-          reject(new Error(`${request.status}: ${request.statusText}`));
+          reject(new Error(`no XML data (${url})`));
         }
       });
       request.addEventListener("error", (event) => {
-        reject(new Error(`${request.status}: ${request.statusText}`));
+        reject(new Error(`${request.status}: ${request.statusText} (${url})`));
+      });
+      request.addEventListener("timeout", (event) => {
+        reject(new Error(`timeout (${url})`));
       });
 
       request.overrideMimeType("text/xml");

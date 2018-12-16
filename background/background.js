@@ -28,22 +28,25 @@ const LivemarkUpdater = {
     }
   },
   async updateAllLivemarks({changedKeys = []} = {}) {
-    const livemarks = await LivemarkStore.getAll();
+    const forceUpdate = changedKeys.length > 0;
+
+    let livemarks = await LivemarkStore.getAll();
+    if (forceUpdate) {
+      livemarks = livemarks.filter(feed => {
+        return changedKeys.includes(feed.id);
+      });
+    }
 
     const next = () => {
       const feed = livemarks.pop();
       if (feed) {
-        this.updateLivemark(feed, {
-          forceUpdate: changedKeys.includes(feed.id),
-        }).finally(next);
+        this.updateLivemark(feed, {forceUpdate}).finally(next);
       }
     };
 
     // Only update at most 5 livemarks concurrently.
     livemarks.splice(0, 5).forEach(feed => {
-      this.updateLivemark(feed, {
-        forceUpdate: changedKeys.includes(feed.id),
-      }).finally(next);
+      this.updateLivemark(feed, {forceUpdate}).finally(next);
     });
   },
   // adds the site url bookmark if it doesn't

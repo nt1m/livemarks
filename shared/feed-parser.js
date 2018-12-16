@@ -11,8 +11,10 @@ const FeedParser = {
       request.addEventListener("load", (event) => {
         if (request.responseXML) {
           resolve(request.responseXML);
-        } else {
+        } else if (request.status === 200) {
           reject(new Error(`no XML data (${url})`));
+        } else {
+          reject(new Error(`${request.status}: ${request.statusText} (${url})`));
         }
       });
       request.addEventListener("error", (event) => {

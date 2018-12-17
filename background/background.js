@@ -7,24 +7,60 @@
 const siteBookmarkPrefix = 'Open "';
 const siteBookmarkPostfix = '"';
 
+function hashString(str) {
+  var hash = 0;
+  for (var i = 0; i < str.length; i++) {
+    var chr = str.charCodeAt(i);
+    hash  = ((hash << 5) - hash) + chr;
+    hash |= 0; // Convert to 32bit integer
+  }
+  return hash;
+}
+
 const LivemarkUpdater = {
   async init() {
     await LivemarkStore.init();
     this.updateAllLivemarks = this.updateAllLivemarks.bind(this);
     this.handleSettingsChange = this.handleSettingsChange.bind(this);
+    this.historyOnVisited = this.historyOnVisited.bind(this);
 
     const interval = await Settings.getPollInterval();
     this.intervalId = setInterval(this.updateAllLivemarks, 60 * 1000 * interval);
 
     LivemarkStore.store.addChangeListener(this.updateAllLivemarks);
     Settings.addChangeListener(this.handleSettingsChange);
-    await this.updateAllLivemarks();
+
+    // We use this Map to mark feed items as visited.
+    // Map [int32 -> String | Array [String]]
+    this.itemURLHashToFeeds = new Map();
+    browser.history.onVisited.addListener(this.historyOnVisited);
+
+    // Force every feed to be refreshed on startup.
+    let feedIds = (await LivemarkStore.getAll()).map(feed => feed.id);
+    await this.updateAllLivemarks({changedKeys: feedIds});
   },
   async handleSettingsChange(changes) {
     if (changes["settings.pollInterval"]) {
       clearInterval(this.intervalId);
       const interval = await Settings.getPollInterval();
       this.intervalId = setInterval(this.updateAllLivemarks, 60 * 1000 * interval);
+    }
+  },
+  async historyOnVisited(item) {
+    const hash = hashString(item.url);
+    const entry = this.itemURLHashToFeeds.get(hash);
+
+    if (entry === undefined) {
+      return;
+    }
+
+    for (const bookmarkId of Array.isArray(entry) ? entry : [entry]) {
+      if (!LivemarkStore.store.has(bookmarkId)) {
+        continue;
+      }
+
+      const feed = await LivemarkStore.getDetails(bookmarkId);
+      await this.updateLivemark(feed, {forceUpdate: true});
     }
   },
   async updateAllLivemarks({changedKeys = []} = {}) {
@@ -141,6 +177,27 @@ const LivemarkUpdater = {
       try {
         visits = (await browser.history.getVisits({url})).length;
       } catch (e) {}
+
+      // Only univisted URLs need to be updated later
+      if (visits === 0) {
+        const hash = hashString(url);
+
+        const entry = this.itemURLHashToFeeds.get(hash);
+        if (entry === undefined) {
+          this.itemURLHashToFeeds.set(hash, folder.id);
+        } else if (entry !== folder.id) {
+          // Handle collusion.
+          if (Array.isArray(entry)) {
+            if (!entry.includes(folder.id)) {
+              entry.push(folder.id);
+            }
+          } else {
+            // Previously single entry, now multiple.
+            this.itemURLHashToFeeds.set(hash, [entry, folder.id]);
+          }
+        }
+      }
+
       const title = ((visits > 0) ? readPrefix : unreadPrefix) + item.title;
       if (i < usableChildren.length) {
         // There's a child in the right place, see if it has the right data,

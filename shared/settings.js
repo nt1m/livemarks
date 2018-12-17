@@ -36,7 +36,7 @@ const Settings = {
   },
 
   getReadPrefix() {
-    return getSetting("readPrefix", "");
+    return getSetting("readPrefix", "✓");
   },
 
   setReadPrefix(newValue) {

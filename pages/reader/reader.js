@@ -67,6 +67,9 @@ function getPreviewHTML({ items }) {
     const span = document.createElement("span");
     span.className = "item_desc";
     // eslint-disable-next-line no-unsanitized/property
+    // The result of this insertion is rendered in a sandbox iframe,
+    // created in setPreviewContent! So this is safe as long as
+    // the browser does not have any bugs...
     span.innerHTML = item.description;
 
     itemContainer.appendChild(anchor);

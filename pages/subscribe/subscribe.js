@@ -6,18 +6,21 @@ window.addEventListener("load", function() {
   main();
 });
 
-function setPreviewContent(html) {
+async function setPreviewContent(html) {
   // Normal loading just requires links to the css and the js file.
   const frame = document.createElement("iframe");
   frame.classList.add("grow");
-  frame.sandbox = "allow-same-origin allow-popups";
+  frame.sandbox = "allow-popups";
 
   const sheetUrl = chrome.extension.getURL("pages/reader/reader.css");
+  const response = await fetch(sheetUrl);
+  const text = await response.text();
+
   frame.srcdoc = `<html>
   <head>
     <meta charset="utf-8">
     <base target="_blank">
-    <link rel="stylesheet" href="${sheetUrl}">
+    <style type="text/css">${text}</style>
   </head>
   <body>
     ${html}

@@ -12,6 +12,9 @@ async function setPreviewContent(html) {
   frame.classList.add("grow");
   frame.sandbox = "allow-popups";
 
+  const error = document.getElementById("tp-error");
+  error.hidden = true;
+
   const sheetUrl = chrome.extension.getURL("pages/reader/reader.css");
   const response = await fetch(sheetUrl);
   const text = await response.text();
@@ -28,6 +31,17 @@ async function setPreviewContent(html) {
   </html>`;
 
   document.getElementById("preview").append(frame);
+}
+
+function setShowPermissionPrompt(host) {
+  const error = document.getElementById("tp-error");
+  const hostSpan = document.getElementById("tp-host");
+  const grantBtn = document.getElementById("tp-grant");
+
+  error.hidden = false;
+  if (document.querySelector("iframe")) {
+    document.querySelector("iframe").remove();
+  }
 }
 
 /**
@@ -78,6 +92,12 @@ please go to the options page to edit it.`);
     setPreviewContent(`<main>${getPreviewHTML(feed)}</main>`);
   } catch (e) {
     console.log(e);
-    setPreviewContent("<main id=\"error\">Failed to fetch feed</main>");
+    let origin = new URL(feedUrl).origin + "/*";
+    let allPermissions = await browser.permissions.getAll();
+    if (allPermissions.origins.includes(origin)) {
+      setPreviewContent("<main id=\"error\">Failed to fetch feed</main>");
+    } else {
+      setShowPermissionPrompt(origin);
+    }
   }
 }

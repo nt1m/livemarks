@@ -24,7 +24,13 @@
       <a class="icon view-source" id="view-source-button">View source</a>
     </div>
   </main>
-  <div id="preview"></div>
+  <div id="preview">
+    <main id="tp-error" class="error" hidden>
+      Firefox Content Blocking may be preventing the feed from being fetched.
+      You may need to grant permissions for <span id="tp-host"></span>.
+      <button id="tp-grant">Grant permission</button>
+    </main>
+  </div>
   <script src="/shared/livemark-store.js"></script>
   <script src="/shared/settings.js"></script>
   <script src="/shared/feed-parser.js"></script>

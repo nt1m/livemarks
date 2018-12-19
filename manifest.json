@@ -40,5 +40,8 @@
   "version": "1.12",
   "web_accessible_resources": [
     "pages/subscribe/subscribe.html"
+  ],
+  "optional_permissions": [
+    "<all_urls>"
   ]
 }

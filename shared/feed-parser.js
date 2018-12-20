@@ -6,7 +6,7 @@ const FeedParser = {
     return new Promise((resolve, reject) => {
       const request = new XMLHttpRequest();
       request.open("GET", url, true);
-      request.timeout = 5000; // time in milliseconds
+      request.timeout = 10000; // time in milliseconds
 
       request.addEventListener("load", (event) => {
         if (request.responseXML) {

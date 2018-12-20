@@ -59,7 +59,7 @@ const LivemarkUpdater = {
         const feed = await LivemarkStore.getDetails(bookmarkId);
         await this.updateLivemark(feed, {forceUpdate: true});
       }
-      entry.remove(bookmarkId);
+      entry.delete(bookmarkId);
       if (entry.size === 0) {
         this.itemURLHashToFeeds.delete(hash);
       }
@@ -165,6 +165,18 @@ const LivemarkUpdater = {
         await browser.bookmarks.remove(bookmark.id);
       } else {
         usableChildren.push(bookmark);
+      }
+    }
+
+    // Remove the old hashes from the map.
+    for (const bookmark of usableChildren) {
+      const hash = hashString(bookmark.url);
+      const entry = this.itemURLHashToFeeds.get(hash);
+      if (entry) {
+        entry.delete(folder.id);
+        if (entry.size === 0) {
+          this.itemURLHashToFeeds.delete(hash);
+        }
       }
     }
 

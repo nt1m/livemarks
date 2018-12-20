@@ -31,12 +31,12 @@ const LivemarkUpdater = {
     Settings.addChangeListener(this.handleSettingsChange);
 
     // We use this Map to mark feed items as visited.
-    // Map [int32 -> String | Array [String]]
+    // Map [int32 -> Set[String]]
     this.itemURLHashToFeeds = new Map();
     browser.history.onVisited.addListener(this.historyOnVisited);
 
     // Force every feed to be refreshed on startup.
-    let feedIds = (await LivemarkStore.getAll()).map(feed => feed.id);
+    const feedIds = (await LivemarkStore.getAll()).map(feed => feed.id);
     await this.updateAllLivemarks({changedKeys: feedIds});
   },
   async handleSettingsChange(changes) {
@@ -54,13 +54,15 @@ const LivemarkUpdater = {
       return;
     }
 
-    for (const bookmarkId of Array.isArray(entry) ? entry : [entry]) {
-      if (!LivemarkStore.store.has(bookmarkId)) {
-        continue;
+    for (const bookmarkId of entry) {
+      if (LivemarkStore.store.has(bookmarkId)) {
+        const feed = await LivemarkStore.getDetails(bookmarkId);
+        await this.updateLivemark(feed, {forceUpdate: true});
       }
-
-      const feed = await LivemarkStore.getDetails(bookmarkId);
-      await this.updateLivemark(feed, {forceUpdate: true});
+      entry.remove(bookmarkId);
+      if (entry.size === 0) {
+        this.itemURLHashToFeeds.delete(hash);
+      }
     }
   },
   async updateAllLivemarks({changedKeys = []} = {}) {
@@ -178,23 +180,15 @@ const LivemarkUpdater = {
         visits = (await browser.history.getVisits({url})).length;
       } catch (e) {}
 
-      // Only univisted URLs need to be updated later
+      // Only unvisited URLs need to be updated later
       if (visits === 0 && (readPrefix || unreadPrefix)) {
         const hash = hashString(url);
-
         const entry = this.itemURLHashToFeeds.get(hash);
         if (entry === undefined) {
-          this.itemURLHashToFeeds.set(hash, folder.id);
-        } else if (entry !== folder.id) {
+          this.itemURLHashToFeeds.set(hash, new Set([folder.id]));
+        } else if (!entry.has(folder.id)) {
           // Handle collusion.
-          if (Array.isArray(entry)) {
-            if (!entry.includes(folder.id)) {
-              entry.push(folder.id);
-            }
-          } else {
-            // Previously single entry, now multiple.
-            this.itemURLHashToFeeds.set(hash, [entry, folder.id]);
-          }
+          entry.add(folder.id);
         }
       }
 

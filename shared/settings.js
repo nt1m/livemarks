@@ -36,19 +36,19 @@ const Settings = {
   },
 
   getReadPrefix() {
-    return getSetting("readPrefix", "✓");
+    return getSetting("readPrefix2", "✓");
   },
 
   setReadPrefix(newValue) {
-    return setSetting("readPrefix", newValue);
+    return setSetting("readPrefix2", newValue);
   },
 
   getUnreadPrefix() {
-    return getSetting("unreadPrefix", "");
+    return getSetting("unreadPrefix2", "");
   },
 
   setUnreadPrefix(newValue) {
-    return setSetting("unreadPrefix", newValue);
+    return setSetting("unreadPrefix2", newValue);
   },
 
   getFeedPreviewEnabled() {

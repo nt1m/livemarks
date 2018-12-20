@@ -179,7 +179,7 @@ const LivemarkUpdater = {
       } catch (e) {}
 
       // Only univisted URLs need to be updated later
-      if (visits === 0) {
+      if (visits === 0 && (readPrefix || unreadPrefix)) {
         const hash = hashString(url);
 
         const entry = this.itemURLHashToFeeds.get(hash);

@@ -173,11 +173,14 @@ const LivemarkStore = {
       type: "folder",
       parentId,
     });
-    await this.store.set(bookmark.id, {
+    const feedDetails = {
       feedUrl: feed.feedUrl,
-      siteUrl: feed.siteUrl,
       maxItems: feed.maxItems,
-    });
+    };
+    if (feed.siteUrl) {
+      feedDetails.siteUrl = new URL(feed.siteUrl, feed.feedUrl).href;
+    }
+    await this.store.set(bookmark.id, feedDetails);
   },
 
   async remove(bookmarkId) {

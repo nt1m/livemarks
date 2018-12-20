@@ -1,163 +1,39 @@
 "use strict";
 
-/**
- * Asynchronous ES6 Map that syncs with WebExtension storage
- */
-class StoredMap extends Map {
-  /**
-   * Build a StoredMap
-   * @param storageKey The key that will be use to save and retreive the map.
-   */
-  constructor(storageKey) {
-    const getFromStorage = async () => {
-      const found = await browser.storage.local.get(storageKey);
-      if (!found.hasOwnProperty(storageKey)) {
-        return [];
-      }
+const PREFIX = "livemark.";
 
-      return found[storageKey];
-    };
+function toInternalId(id) {
+  return PREFIX + id;
+}
 
-    const setupSync = () => {
-      browser.storage.onChanged.addListener(async (changes, area) => {
-        if (area !== "local" || !changes.hasOwnProperty(storageKey)) {
-          return;
-        }
-        const objectEquals = (a, b) => {
-          for (const key in a) {
-            if (!(key in b) || a[key] !== b[key]) {
-              return false;
-            }
-          }
-          for (const key in b) {
-            if (!(key in a) || a[key] !== b[key]) {
-              return false;
-            }
-          }
-          return true;
-        };
-
-        const deleted = [];
-        const changed = [];
-        const stored = new Map(changes[storageKey].newValue);
-        for (const key of this.keys()) {
-          if (!stored.has(key)) {
-            deleted.push(key);
-          }
-        }
-
-        for (const [key, value] of stored) {
-          if (!this.has(key) || !objectEquals(value, this.get(key))) {
-            changed.push(key);
-          }
-        }
-
-        for (const deletion of deleted) {
-          super.delete(deletion);
-        }
-
-        for (const change of changed) {
-          super.set(change, stored.get(change));
-        }
-
-        this._emit({ changedKeys: [...deleted, ...changed]});
-      });
-    };
-
-    const loadFromStorage = async () => {
-      const stored = await getFromStorage();
-      super(stored);
-      this.storageKey = storageKey;
-      setupSync();
-      return this;
-    };
-
-    return loadFromStorage();
-  }
-
-  _emit(data, ownChange = false) {
-    // already in sync, don't notify
-    if (data.changedKeys.length == 0) {
-      return;
-    }
-
-    if (!this.listeners) {
-      this.listeners = new Map();
-    }
-    for (const listener of this.listeners.keys()) {
-      if (!ownChange || this.listeners.get(listener).ownChanges) {
-        listener(data);
-      }
-    }
-  }
-
-  addChangeListener(callback, options = { ownChanges: false }) {
-    if (!this.listeners) {
-      this.listeners = new Map();
-    }
-    this.listeners.set(callback, options);
-  }
-
-  removeChangeListener(callback) {
-    if (!this.listeners) {
-      this.listeners = new Map();
-    }
-    this.listeners.delete(callback);
-  }
-
-  onceChange(options) {
-    return new Promise(resolve => {
-      const listener = (event) => {
-        this.removeChangeListener(listener);
-        resolve(event);
-      };
-      this.addChangeListener(listener, options);
-    });
-  }
-
-  async set(k, v) {
-    const returnValue = super.set(k, v);
-    if (this.storageKey) {
-      await browser.storage.local.set({
-        [this.storageKey]: [...this.entries()],
-      });
-    }
-    this._emit({ changedKeys: [k] }, true);
-    return returnValue;
-  }
-
-  async delete(k) {
-    const returnValue = super.delete(k);
-    await browser.storage.local.set({
-      [this.storageKey]: [...this.entries()],
-    });
-    this._emit({ changedKeys: [k] }, true);
-    return returnValue;
-  }
-
-  async clear() {
-    const oldKeys = [...this.keys()];
-    super.clear();
-    await browser.storage.local.set({
-      [this.storageKey]: [],
-    });
-    this._emit({ changedKeys: oldKeys }, true);
-  }
+function fromInternalId(id) {
+  return id.slice(PREFIX.length);
 }
 
 /* exported LivemarkStore */
 const LivemarkStore = {
-  isLivemarkFolder(id) {
-    return this.store.has(id);
+  async isLivemarkFolder(id) {
+    const livemark = await this.get(id);
+    return livemark !== undefined;
   },
+
+  async get(id) {
+    let result = await browser.storage.local.get(toInternalId(id));
+    return result[toInternalId(id)];
+  },
+
   async getAll() {
-    const keys = [...this.store.keys()];
+    const livemarks = await browser.storage.local.get();
 
     const all = [];
-    for (const id of keys) {
-      // XXX: Work around broken bookmarks at this entry point for now.
+    for (const key in livemarks) {
+      if (!key.startsWith(PREFIX)) {
+        continue;
+      }
+
+      const id = fromInternalId(key);
       try {
-        const details = await this.getDetails(id);
+        const details = await this._makeDetails(id, livemarks[key]);
         all.push(details);
       } catch (e) {
         console.error("Found broken bookmark", id, e);
@@ -173,6 +49,7 @@ const LivemarkStore = {
       type: "folder",
       parentId,
     });
+
     const feedDetails = {
       feedUrl: feed.feedUrl,
       maxItems: feed.maxItems,
@@ -182,7 +59,10 @@ const LivemarkStore = {
     } else {
       feedDetails.siteUrl = "";
     }
-    await this.store.set(bookmark.id, feedDetails);
+
+    await browser.storage.local.set({
+      [toInternalId(bookmark.id)]: feedDetails
+    });
   },
 
   async remove(bookmarkId) {
@@ -191,11 +71,12 @@ const LivemarkStore = {
     } catch (e) {
       // Bookmark already deleted
     }
-    await this.store.delete(bookmarkId);
+
+    await browser.storage.local.remove(toInternalId(bookmarkId));
   },
 
   async edit(id, feed) {
-    const oldFeed = this.store.get(id);
+    const oldFeed = await this.get(id);
     const [oldBookmark] = await browser.bookmarks.get(id);
     if (!oldBookmark || !oldFeed) {
       return;
@@ -234,12 +115,11 @@ const LivemarkStore = {
       oldFeed.updated = feed.updated;
     }
 
-    this.store.set(id, oldFeed);
+    await browser.storage.local.set({ [toInternalId(id)]: oldFeed });
   },
 
-  async getDetails(id) {
+  async _makeDetails(id, {feedUrl, siteUrl, maxItems, updated}) {
     const [{title, parentId}] = await browser.bookmarks.get(id);
-    const {feedUrl, siteUrl, maxItems, updated} = this.store.get(id);
     return {
       title,
       feedUrl,
@@ -251,29 +131,57 @@ const LivemarkStore = {
     };
   },
 
-  async init() {
-    const found = await browser.storage.local.get("livemarks");
-    if (!found.hasOwnProperty("livemarks") || !found.livemarks.length) {
-      // Migrate sync to local storage. Only if the local storage is empty.
-      try {
-        const sync = await browser.storage.sync.get("livemarks");
+  async getDetails(id) {
+    const feed = await this.get(id);
+    return this._makeDetails(id, feed);
+  },
 
-        if (sync.livemarks.length && sync.livemarks.length > 0) {
-          await browser.storage.local.set({
-            livemarks: sync.livemarks,
-          });
+  addChangeListener(listener) {
+    this.listeners.push(listener);
+  },
+
+  async init() {
+    this.listeners = [];
+    browser.bookmarks.onRemoved.addListener(async id => {
+      const isLivemarkFolder = await this.isLivemarkFolder(id);
+      if (isLivemarkFolder) {
+        await this.remove(id);
+      }
+    });
+
+    browser.storage.onChanged.addListener((changes, areaName) => {
+      if (areaName !== "local") {
+        return;
+      }
+
+      const changedKeys = [];
+      for (const key in changes) {
+        if (!key.startsWith(PREFIX)) {
+          continue;
         }
 
-        await browser.storage.sync.remove("livemarks");
-      } catch (e) {
-        console.error("Storage migration failed", e);
-      }
-    }
+        // Creation
+        if (!changes[key].oldValue) {
+          changedKeys.push(fromInternalId(key));
+          continue;
+        }
 
-    this.store = await new StoredMap("livemarks");
-    browser.bookmarks.onRemoved.addListener(id => {
-      if (this.isLivemarkFolder(id)) {
-        this.remove(id);
+        // Deletion
+        if (!changes[key].newValue) {
+          changedKeys.push(fromInternalId(key));
+          continue
+        }
+
+        // Important: updated must not be considered!
+        const {feedUrl, maxItems, siteUrl} = changes[key].newValue;
+        const old = changes[key].oldValue;
+        if (old.feedUrl !== feedUrl || old.maxItems !== maxItems || old.siteUrl !== siteUrl) {
+          changedKeys.push(fromInternalId(key));
+        }
+      }
+
+      if (changedKeys.length > 0) {
+        this.listeners.forEach(listener => listener({ changedKeys }));
       }
     });
   }

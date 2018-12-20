@@ -80,7 +80,7 @@ window.onload = async () => {
   });
 
   loadFeeds();
-  LivemarkStore.store.addChangeListener(loadFeeds, { ownChanges: true });
+  LivemarkStore.addChangeListener(loadFeeds);
   browser.bookmarks.onChanged.addListener(async (id) => {
     if (await LivemarkStore.isLivemarkFolder(id)) {
       loadFeeds();

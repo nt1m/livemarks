@@ -26,7 +26,7 @@ const LivemarkUpdater = {
     const interval = await Settings.getPollInterval();
     this.intervalId = setInterval(this.updateAllLivemarks, 60 * 1000 * interval);
 
-    LivemarkStore.store.addChangeListener(this.updateAllLivemarks);
+    LivemarkStore.addChangeListener(this.updateAllLivemarks);
     Settings.addChangeListener(this.handleSettingsChange);
 
     // We use this Map to mark feed items as visited.
@@ -54,7 +54,7 @@ const LivemarkUpdater = {
     }
 
     for (const bookmarkId of entry) {
-      if (LivemarkStore.isLivemarkFolder(bookmarkId)) {
+      if (await LivemarkStore.isLivemarkFolder(bookmarkId)) {
         const feed = await LivemarkStore.getDetails(bookmarkId);
         await this.updateLivemark(feed, {forceUpdate: true});
       }
@@ -242,7 +242,8 @@ const ContextMenu = {
       });
     };
     browser.menus.onShown.addListener(async ({bookmarkId}) => {
-      if (!LivemarkStore.isLivemarkFolder(bookmarkId)) {
+      const isLivemarkFolder = await LivemarkStore.isLivemarkFolder(bookmarkId);
+      if (!isLivemarkFolder) {
         await browser.menus.remove(this.reloadItemId);
         this.reloadItemId = null;
       } else if (!this.reloadItemId) {
@@ -251,7 +252,8 @@ const ContextMenu = {
       await browser.menus.refresh();
     });
     browser.menus.onClicked.addListener(async ({bookmarkId, menuItemId}) => {
-      if (LivemarkStore.isLivemarkFolder(bookmarkId) && menuItemId == this.reloadItemId) {
+      const isLivemarkFolder = await LivemarkStore.isLivemarkFolder(bookmarkId);
+      if (isLivemarkFolder && menuItemId == this.reloadItemId) {
         const feed = await LivemarkStore.getDetails(bookmarkId);
         await LivemarkUpdater.updateLivemark(feed, {forceUpdate: true});
       }

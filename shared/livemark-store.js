@@ -179,6 +179,8 @@ const LivemarkStore = {
     };
     if (feed.siteUrl) {
       feedDetails.siteUrl = new URL(feed.siteUrl, feed.feedUrl).href;
+    } else {
+      feedDetails.siteUrl = "";
     }
     await this.store.set(bookmark.id, feedDetails);
   },

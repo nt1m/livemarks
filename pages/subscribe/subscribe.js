@@ -10,6 +10,8 @@ async function setPreviewContent(html) {
   // Normal loading just requires links to the css and the js file.
   const frame = document.createElement("iframe");
   frame.classList.add("grow");
+  // DANGER! The next line is security critical for this extension!
+  // Without this sandbox, malicious feeds can trivially exploit us.
   frame.sandbox = "allow-popups";
 
   const sheetUrl = chrome.extension.getURL("pages/reader/reader.css");

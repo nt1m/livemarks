@@ -37,7 +37,7 @@
     "default_popup": "popup/popup.html"
   },
   "permissions": ["storage", "bookmarks", "history", "webRequest", "webRequestBlocking", "<all_urls>", "tabs", "menus"],
-  "version": "1.13",
+  "version": "1.14",
   "web_accessible_resources": [
     "pages/subscribe/subscribe.html"
   ]

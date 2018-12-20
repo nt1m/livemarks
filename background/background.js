@@ -54,7 +54,7 @@ const LivemarkUpdater = {
     }
 
     for (const bookmarkId of entry) {
-      if (LivemarkStore.store.has(bookmarkId)) {
+      if (LivemarkStore.isLivemarkFolder(bookmarkId)) {
         const feed = await LivemarkStore.getDetails(bookmarkId);
         await this.updateLivemark(feed, {forceUpdate: true});
       }
@@ -242,7 +242,7 @@ const ContextMenu = {
       });
     };
     browser.menus.onShown.addListener(async ({bookmarkId}) => {
-      if (!LivemarkStore.store.has(bookmarkId)) {
+      if (!LivemarkStore.isLivemarkFolder(bookmarkId)) {
         await browser.menus.remove(this.reloadItemId);
         this.reloadItemId = null;
       } else if (!this.reloadItemId) {
@@ -251,7 +251,7 @@ const ContextMenu = {
       await browser.menus.refresh();
     });
     browser.menus.onClicked.addListener(async ({bookmarkId, menuItemId}) => {
-      if (LivemarkStore.store.has(bookmarkId) && menuItemId == this.reloadItemId) {
+      if (LivemarkStore.isLivemarkFolder(bookmarkId) && menuItemId == this.reloadItemId) {
         const feed = await LivemarkStore.getDetails(bookmarkId);
         await LivemarkUpdater.updateLivemark(feed, {forceUpdate: true});
       }

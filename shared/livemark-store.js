@@ -39,15 +39,16 @@ class StoredMap extends Map {
 
         const deleted = [];
         const changed = [];
-        const stored = new Map(changes[storageKey].newValue);
-        for (const key of this.keys()) {
-          if (!stored.has(key)) {
+        const newValues = new Map(changes[storageKey].newValue);
+        const oldValues = new Map(changes[storageKey].oldValue);
+        for (const key of oldValues) {
+          if (!newValues.has(key)) {
             deleted.push(key);
           }
         }
 
-        for (const [key, value] of stored) {
-          if (!this.has(key) || !objectEquals(value, this.get(key))) {
+        for (const [key, value] of newValues) {
+          if (!oldValues.has(key) || !objectEquals(value, oldValues.get(key))) {
             changed.push(key);
           }
         }
@@ -57,7 +58,7 @@ class StoredMap extends Map {
         }
 
         for (const change of changed) {
-          super.set(change, stored.get(change));
+          super.set(change, newValues.get(change));
         }
 
         this._emit({ changedKeys: [...deleted, ...changed]});

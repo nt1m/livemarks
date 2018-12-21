@@ -142,6 +142,27 @@ const LivemarkStore = {
 
   async init() {
     this.listeners = [];
+
+    try {
+      const { livemarks = [] } = await browser.storage.local.get("livemarks");
+
+      for (const [id, feed] of livemarks) {
+        const [bookmark] = await browser.bookmarks.get(id).catch(() => {
+          return [];
+        });
+
+        if (bookmark === undefined) {
+          continue;
+        }
+
+        await browser.storage.local.set({ [toInternalId(bookmark.id)]: feed });
+      }
+
+      await browser.storage.local.remove("livemarks");
+    } catch (e) {
+      console.error("Storage migration failed", e);
+    }
+
     browser.bookmarks.onRemoved.addListener(async id => {
       const isLivemarkFolder = await this.isLivemarkFolder(id);
       if (isLivemarkFolder) {

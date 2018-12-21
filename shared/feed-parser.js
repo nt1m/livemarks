@@ -52,13 +52,24 @@ const FeedParser = {
       return element ? element.textContent.trim() : null;
     };
 
+    // Sometimes the titles or feed description contains HTML.
+    const getParsedTextFromElement = (selector, target = doc) => {
+      const element = target.querySelector(selector);
+      if (element) {
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(element.textContent, "text/html");
+        return doc.documentElement.textContent.trim();
+      }
+      return null;
+    };
+
     const channel = doc.querySelector("channel");
 
     const feed = {
       type: "rss",
-      title: getTextFromElement("title", channel),
+      title: getParsedTextFromElement("title", channel),
       url: getTextFromElement("link", channel),
-      description: getTextFromElement("description", channel),
+      description: getParsedTextFromElement("description", channel),
       language: getTextFromElement("language", channel),
       updated: getTextFromElement("lastBuildDate", channel)
         || getTextFromElement("pubDate", channel)
@@ -95,7 +106,7 @@ const FeedParser = {
       }
 
       return {
-        title: getTextFromElement("title", item),
+        title: getParsedTextFromElement("title", item),
         url: getTextFromElement("link", item),
         description: getTextFromElement("description", item),
         updated: getTextFromElement("pubDate", item),
@@ -115,6 +126,17 @@ const FeedParser = {
       return element ? element.textContent.trim() : null;
     };
 
+    // Sometimes the titles or feed description contains HTML.
+    const getParsedTextFromElement = (selector, target = doc) => {
+      const element = target.querySelector(selector);
+      if (element) {
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(element.textContent, "text/html");
+        return doc.documentElement.textContent.trim();
+      }
+      return null;
+    };
+
     const getHrefFromElement = (selector, target = doc) => {
       const element = target.querySelector(selector);
       if (element) {
@@ -128,10 +150,10 @@ const FeedParser = {
 
     const feed = {
       type: "atom",
-      title: getTextFromElement("title", channel),
+      title: getParsedTextFromElement("title", channel),
       url: getHrefFromElement("link[rel=alternate]", channel)
         || getHrefFromElement("link:not([rel=self])", channel),
-      description: getTextFromElement("subtitle", channel),
+      description: getParsedTextFromElement("subtitle", channel),
       language: channel.getAttribute("xml:lang"),
       updated: getTextFromElement("updated", channel)
             || getTextFromElement("published", channel)
@@ -139,7 +161,7 @@ const FeedParser = {
 
     feed.items = [...doc.querySelectorAll("entry")].map(item => {
       return {
-        title: getTextFromElement("title", item),
+        title: getParsedTextFromElement("title", item),
         url: getHrefFromElement("link[rel=alternate]", item)
           || getHrefFromElement("link", item),
         description: getTextFromElement("content", item),

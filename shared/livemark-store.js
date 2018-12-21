@@ -18,7 +18,7 @@ const LivemarkStore = {
   },
 
   async get(id) {
-    let result = await browser.storage.local.get(toInternalId(id));
+    const result = await browser.storage.local.get(toInternalId(id));
     return result[toInternalId(id)];
   },
 
@@ -169,13 +169,14 @@ const LivemarkStore = {
         // Deletion
         if (!changes[key].newValue) {
           changedKeys.push(fromInternalId(key));
-          continue
+          continue;
         }
 
-        // Important: updated must not be considered!
+        // Important: the `updated` field must not be considered!
         const {feedUrl, maxItems, siteUrl} = changes[key].newValue;
         const old = changes[key].oldValue;
-        if (old.feedUrl !== feedUrl || old.maxItems !== maxItems || old.siteUrl !== siteUrl) {
+        if (old.feedUrl !== feedUrl || old.maxItems !== maxItems ||
+            old.siteUrl !== siteUrl) {
           changedKeys.push(fromInternalId(key));
         }
       }

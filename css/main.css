@@ -116,7 +116,7 @@ label {
 }
 
 .empty-notice:empty::after {
-  content: "No items found";
+  content: "__MSG_noItemsFound__";
   text-align: center;
   margin-top: 1em;
   margin-bottom: auto;

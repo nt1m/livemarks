@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Your livemarks</title>
+  <title data-i18n-text="yourLivemarks"></title>
   <meta charset="utf-8">
   <link href="/css/main.css" rel="stylesheet">
   <link href="settings.css" rel="stylesheet">
@@ -9,81 +9,92 @@
 <body>
   <main>
     <div class="toolbar flex">
-      <h1 class="grow">Your livemarks</h1>
-      <button class="icon settings float-right" id="settings-toggle" title="Settings">More options</button>
-      <button class="icon new icon-white primary float-right" id="add">New livemark</button>
+      <h1 class="grow" data-i18n-text="yourLivemarks"></h1>
+      <button data-i18n-text="moreOptions" class="icon settings float-right" id="settings-toggle"></button>
+      <button data-i18n-text="newLivemark" class="icon new icon-white primary float-right" id="add"></button>
     </div>
     <div class="empty-notice grow" id="feeds"></div>
   </main>
   <div id="dialog-overlay" hidden></div>
   <div class="card dialog" id="settings-dialog" hidden>
-    <h3>Import/export</h3>
-    <p>This feature uses the OPML format which is used by most RSS readers.</p>
-    <a class="button"><input id="import-feeds" name="files[]" type="file">Import feeds</a>
-    <a class="button" id="export-feeds" download="livemarks-opml.xml">Export feeds</a>
+    <h3 data-i18n-text="settings_importExport_heading"></h3>
+    <p data-i18n-text="settings_importExport_description"></p>
+    <a class="button">
+      <input id="import-feeds" name="files[]" type="file">
+      <span data-i18n-text="settings_importExport_importFeeds"></span>
+    </a>
+    <a class="button" id="export-feeds" download="livemarks-opml.xml" data-i18n-text="settings_importExport_exportFeeds"></a>
     <form id="settings-form">
-      <h3>Refresh interval</h3>
-      <p>Configure how often livemarks are updated.</p>
+      <h3 data-i18n-text="settings_refreshInterval_heading"></h3>
+      <p data-i18n-text="settings_refreshInterval_description"></p>
       <input class="short" name="pollInterval" min="1" required type="number">
-      <label>minutes</label>
-      <h3>Default folder</h3>
-      <p>All future livemarks will be saved here by default</p>
+      <label data-i18n-text="settings_refreshInterval_minutes"></label>
+      <h3 data-i18n-text="settings_defaultFolder_heading"></h3>
+      <p data-i18n-text="settings_defaultFolder_description"></p>
       <select name="defaultFolder"></select>
-      <!-- Disable prefix feature until there's decent auto updating of the prefixes -->
       <div>
-        <h3>Bookmark prefixes</h3>
-        <p>The supplied strings will be prefixed to bookmarks to indicate status. Note that titles won't update until the next feed refresh.</p>
-        <label>Unread:</label>
+        <h3 data-i18n-text="settings_prefixes_heading"></h3>
+        <p data-i18n-text="settings_prefixes_description"></p>
+        <label data-i18n-text="settings_prefixes_unread"></label>
         <input class="short" name="unreadPrefix">
-        <label>Read:</label>
+        <label data-i18n-text="settings_prefixes_read"></label>
         <input class="short" name="readPrefix">
       </div>
-      <h3>Feed preview</h3>
+      <h3 data-i18n-text="settings_feedPreview_heading"></h3>
       <input type="checkbox" name="feedPreview">
-      <label>Enable feed preview when directly visting a feed URL</label>
-      <h3>About</h3>
-      <p>This add-on is maintained by <a href="https://twitter.com/therealntim">Tim Nguyen</a>. It's based on <a href="https://github.com/davidhampgonsalves/foxish">the Foxish Chrome extension.</a> You can support the add-on by:</p>
-      <a href="https://paypal.me/ntimdev" target="_blank" class="button" id="donate-button" type="submit">Donating</a>
-      <a href="https://addons.mozilla.org/en-US/firefox/addon/livemarks/reviews/add" class="button" target="_blank">Giving a good review</a>
-      <a href="https://github.com/nt1m/livemarks/issues" class="button" target="_blank">Reporting issues</a>
+      <label data-i18n-text="settings_feedPreview_description"></label>
+      <h3 data-i18n-text="settings_about_heading"></h3>
+      <p>
+        <span data-i18n-text="settings_about_description_1"></span>
+        <a href="https://twitter.com/therealntim">Tim Nguyen</a> &
+        <a href="https://twitter.com/evilpies">Tom Schuster</a>
+        <span data-i18n-text="settings_about_description_2"></span>
+        <a href="https://github.com/davidhampgonsalves/foxish">Foxish</a>
+        <span data-i18n-text="settings_about_description_3"></span>
+      </p>
+      <a data-i18n-text="settings_about_donating" href="https://paypal.me/ntimdev" target="_blank" class="button" id="donate-button" type="submit"></a>
+      <a data-i18n-text="settings_about_reviewing" href="https://addons.mozilla.org/en-US/firefox/addon/livemarks/reviews/add" class="button" target="_blank"></a>
+      <a data-i18n-text="settings_about_reporting" href="https://github.com/nt1m/livemarks/issues" class="button" target="_blank"></a>
+      <a data-i18n-text="settings_about_translating" href="#" class="button" target="_blank"></a>
     </form>
     <div class="dialog-footer">
-      <button class="dialog-cancel">Close</button>
+      <button data-i18n-text="settings_close" class="dialog-cancel"></button>
     </div>
   </div>
   <form class="card dialog" id="edit-livemark-dialog" hidden>
     <div class="form-row">
-      <label for="title">Name</label>
+      <label for="title" data-i18n-text="editLivemark_name"></label>
       <div class="flex">
         <input name="title" class="grow" required>
-        <a href="#" class="icon delete button" title="remove this feed"></a>
+        <a href="#" data-i18n-title="editLivemark_remove" class="icon delete button"></a>
       </div>
     </div>
     <div class="flex">
       <div class="form-row grow">
-        <label for="feedUrl">Feed URL</label>
+        <label for="feedUrl" data-i18n-text="editLivemark_feedURL"></label>
         <input type="url" name="feedUrl" required>
       </div>
       <div class="form-row grow">
-        <label for="siteUrl">Site URL</label>
+        <label for="siteUrl" data-i18n-text="editLivemark_siteURL"></label>
         <input type="url" name="siteUrl">
       </div>
     </div>
     <div class="flex">
       <div class="form-row grow">
-        <label for="parentId">Parent Folder</label>
+        <label for="parentId" data-i18n-text="editLivemark_parentFolder"></label>
         <select name="parentId" required></select>
       </div>
       <div class="form-row">
-        <label for="maxItems">Maximum Items</label>
+        <label for="maxItems" data-i18n-text="editLivemark_maxItems"></label>
         <div><input name="maxItems" type="number" required value="25" min="1" class="short"></div>
       </div>
     </div>
     <div class="dialog-footer">
-      <a class="button dialog-cancel">Cancel</a>
-      <button type="submit" class="primary">Save</button>
+      <a class="button dialog-cancel" data-i18n-text="editLivemark_cancel"></a>
+      <button type="submit" class="primary" data-i18n-text="editLivemark_save"></button>
     </div>
   </form>
+  <script src="/shared/i18n.js"></script>
   <script src="/shared/settings.js"></script>
   <script src="/shared/livemark-store.js"></script>
   <script src="/shared/feed-parser.js"></script>

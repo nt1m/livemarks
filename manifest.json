@@ -20,7 +20,8 @@
       "matches": ["http://*/*", "https://*/*"]
     }
   ],
-  "description": "Brings RSS Livemarks back to Firefox.",
+  "description": "__MSG_extensionDescription__",
+  "default_locale": "en",
   "icons": {
     "128": "icons/feed.svg",
     "16": "icons/feed.svg",

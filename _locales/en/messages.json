@@ -15,7 +15,12 @@
     "message": "No feed entries found"
   },
   "subscribe_subscribed": {
-    "message": "Added to $FOLDER$, visit the options page to edit it."
+    "message": "Added to $FOLDER$, visit the options page to edit it.",
+    "placeholders": {
+      "folder": {
+        "content": "$1"
+      }
+    }
   },
   "noItemsFound": {
     "message": "No items found"

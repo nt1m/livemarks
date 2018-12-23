@@ -15,7 +15,12 @@
     "message": "Ni najdenih vnosov vira"
   },
   "subscribe_subscribed": {
-    "message": "Dodan v $FOLDER$, za urejanje obiščite stran z možnostmi."
+    "message": "Dodan v $FOLDER$, za urejanje obiščite stran z možnostmi.",
+    "placeholders": {
+      "folder": {
+        "content": "$1"
+      }
+    }
   },
   "noItemsFound": {
     "message": "Ni najdenih elementov"

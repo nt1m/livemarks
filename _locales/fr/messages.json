@@ -15,7 +15,12 @@
     "message": "Aucun élement trouvé"
   },
   "subscribe_subscribed": {
-    "message": "Ajouté à $FOLDER$, visitez la page d'options pour éditer le marque-page"
+    "message": "Ajouté à $FOLDER$, visitez la page d'options pour éditer le marque-page",
+    "placeholders": {
+      "folder": {
+        "content": "$1"
+      }
+    }
   },
   "noItemsFound": {
     "message": "Aucun élement trouvé"

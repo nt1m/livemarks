@@ -1,6 +1,7 @@
 "use strict";
 
 /* import-globals-from ../reader/reader.js */
+/* import-globals-from ../../shared/i18n.js */
 
 window.addEventListener("load", function() {
   main();
@@ -53,7 +54,9 @@ async function main() {
 
     const {title, description, url: siteUrl, items} = feed;
     if (items.length == 0) {
-      setPreviewContent(`<main id=\"error\">${I18N.getMessage("subscribe_noEntriesFound")}</main>`);
+      setPreviewContent(`<main id=\"error\">
+                        ${I18N.getMessage("subscribe_noEntriesFound")}
+                        </main>`);
       return;
     }
 
@@ -79,6 +82,8 @@ async function main() {
     setPreviewContent(`<main>${getPreviewHTML(feed)}</main>`);
   } catch (e) {
     console.log(e);
-    setPreviewContent(`<main id=\"error\">${I18N.getMessage("subscribe_failedToFetchFeed")}</main>`);
+    setPreviewContent(`<main id=\"error\">
+                      ${I18N.getMessage("subscribe_failedToFetchFeed")}
+                      </main>`);
   }
 }

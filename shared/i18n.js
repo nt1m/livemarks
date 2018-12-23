@@ -1,10 +1,12 @@
+"use strict";
+
 const I18N = {
   getMessage(id, subst) {
     return chrome.i18n.getMessage(id, subst);
   },
   substituteAttribute(element, attribute, property, subst) {
-    console.log(element, attribute, property, subst)
-    return element[property] = this.getMessage(element.getAttribute(attribute), subst);
+    const message = this.getMessage(element.getAttribute(attribute), subst);
+    element[property] = message;
   },
   substituteAllAttributes(attribute, property) {
     for (const element of document.querySelectorAll(`[${attribute}]`)) {

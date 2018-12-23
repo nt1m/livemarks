@@ -57,8 +57,8 @@ const FeedParser = {
       const element = target.querySelector(selector);
       if (element) {
         const parser = new DOMParser();
-        const doc = parser.parseFromString(element.textContent, "text/html");
-        return doc.documentElement.textContent.trim();
+        const dom = parser.parseFromString(element.textContent, "text/html");
+        return dom.documentElement.textContent.trim();
       }
       return null;
     };
@@ -131,8 +131,8 @@ const FeedParser = {
       const element = target.querySelector(selector);
       if (element) {
         const parser = new DOMParser();
-        const doc = parser.parseFromString(element.textContent, "text/html");
-        return doc.documentElement.textContent.trim();
+        const dom = parser.parseFromString(element.textContent, "text/html");
+        return dom.documentElement.textContent.trim();
       }
       return null;
     };

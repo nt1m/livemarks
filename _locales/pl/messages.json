@@ -1,0 +1,135 @@
+{
+	"extensionDescription": {
+		"message": "Przywraca obsługę dynamicznych zakładek RSS do Firefoksa 64 i nowszych."
+	},
+  "subscribe_addLivemark": {
+    "message": "Dodaj dynamiczną zakładkę"
+  },
+  "subscribe_viewSource": {
+    "message": "Wyświetl źródło"
+  },
+  "subscribe_failedToFetchFeed": {
+    "message": "Pobranie kanału się nie powiodło"
+  },
+  "subscribe_noEntriesFound": {
+    "message": "Nie odnaleziono żadnych wpisów kanału"
+  },
+  "subscribe_subscribed": {
+    "message": "Dodano do folderu „$FOLDER$”, strona opcji umożliwia modyfikację.",
+    "placeholders": {
+      "folder": {
+        "content": "$1"
+      }
+    }
+  },
+  "noItemsFound": {
+    "message": "Nie odnaleziono żadnych elementów"
+  },
+  "yourLivemarks": {
+    "description": "Title of the 'Your livemarks' page",
+    "message": "Moje dynamiczne zakładki"
+  },
+  "moreOptions": {
+    "message": "Więcej opcji"
+  },
+  "newLivemark": {
+    "message": "Nowa dynamiczna zakładka"
+  },
+  "settings_importExport_heading": {
+    "message": "Import/eksport"
+  },
+  "settings_importExport_description": {
+    "message": "Ta funkcja używa formatu OPML, obsługiwanego przez większość czytników RSS."
+  },
+  "settings_importExport_importFeeds": {
+    "message": "Importuj kanały"
+  },
+  "settings_importExport_exportFeeds": {
+    "message": "Eksportuj kanały"
+  },
+  "settings_refreshInterval_heading": {
+    "message": "Czas między odświeżaniem"
+  },
+  "settings_refreshInterval_description": {
+    "message": "Jak często dynamiczne zakładki są aktualizowane."
+  },
+  "settings_refreshInterval_minutes": {
+    "description": "Shown as 'X minutes' in the settings dialog",
+    "message": "min"
+  },
+  "settings_defaultFolder_heading": {
+    "message": "Domyślny folder"
+  },
+  "settings_defaultFolder_description": {
+    "message": "Nowe dynamiczne zakładki będą domyślnie zachowywane w tym miejscu."
+  },
+  "settings_prefixes_heading": {
+    "message": "Przedrostki zakładek"
+  },
+  "settings_prefixes_description": {
+    "message": "Podane znaki będą używane jako przedrostki zakładek do wskazywania stanu."
+  },
+  "settings_prefixes_unread": {
+    "message": "Nieprzeczytane:"
+  },
+  "settings_prefixes_read": {
+    "message": "Przeczytane:"
+  },
+  "settings_feedPreview_heading": {
+    "message": "Podgląd kanału"
+  },
+  "settings_feedPreview_description": {
+    "message": "Wyświetlanie po bezpośrednim otwarciu adresu kanału"
+  },
+  "settings_about_heading": {
+    "message": "O dodatku"
+  },
+  "settings_about_description_1": {
+    "message": "Autor:"
+  },
+  "settings_about_description_2": {
+    "message": ". Na podstawie:"
+  },
+  "settings_about_description_3": {
+    "message": ". Sposoby wsparcia dodatku:"
+  },
+  "settings_about_donating": {
+    "message": "Przekaż datek"
+  },
+  "settings_about_reviewing": {
+    "message": "Napisz dobrą recenzję"
+  },
+  "settings_about_reporting": {
+    "message": "Zgłoś problem"
+  },
+  "settings_about_translating": {
+    "message": "Pomóż w tłumaczeniu"
+  },
+  "settings_close": {
+    "message": "Zamknij"
+  },
+  "editLivemark_name": {
+    "message": "Nazwa"
+  },
+  "editLivemark_remove": {
+    "message": "Usuń ten kanał"
+  },
+  "editLivemark_feedURL": {
+    "message": "Adres kanału"
+  },
+  "editLivemark_siteURL": {
+    "message": "Adres witryny"
+  },
+  "editLivemark_parentFolder": {
+    "message": "Folder nadrzędny"
+  },
+  "editLivemark_maxItems": {
+    "message": "Maksymalna liczba elementów"
+  },
+  "editLivemark_cancel": {
+    "message": "Anuluj"
+  },
+  "editLivemark_save": {
+    "message": "Zapisz"
+  }
+}

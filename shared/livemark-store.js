@@ -1,6 +1,6 @@
 "use strict";
 
-const PREFIX = "livemark.";
+const PREFIX = "livemarks.";
 
 function toInternalId(id) {
   return PREFIX + id;

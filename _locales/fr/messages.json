@@ -1,0 +1,130 @@
+{
+  "extensionDescription": {
+    "message": "Restore les marques-pages dynamiques RSS pour Firefox 64 et plus."
+  },
+  "subscribe_addLivemark": {
+    "message": "Ajouter un marque-page"
+  },
+  "subscribe_viewSource": {
+    "message": "Afficher la source"
+  },
+  "subscribe_failedToFetchFeed": {
+    "message": "Impossible de récupérer le flux"
+  },
+  "subscribe_noEntriesFound": {
+    "message": "Aucun élement trouvé"
+  },
+  "subscribe_subscribed": {
+    "message": "Ajouté à $FOLDER$, visitez la page d'options pour éditer le marque-page"
+  },
+  "noItemsFound": {
+    "message": "Aucun élement trouvé"
+  },
+  "yourLivemarks": {
+    "description": "Title of the 'Your livemarks' page",
+    "message": "Marque-pages"
+  },
+  "moreOptions": {
+    "message": "Plus d'options"
+  },
+  "newLivemark": {
+    "message": "Nouveau marque-page"
+  },
+  "settings_importExport_heading": {
+    "message": "Importer/Exporter"
+  },
+  "settings_importExport_description": {
+    "message": "Cette fonctionalité utilise le format OPML utilisé par la plupart des lecteurs RSS."
+  },
+  "settings_importExport_importFeeds": {
+    "message": "Importer des flux"
+  },
+  "settings_importExport_exportFeeds": {
+    "message": "Exporter les flux"
+  },
+  "settings_refreshInterval_heading": {
+    "message": "Fréquence de mise à jour"
+  },
+  "settings_refreshInterval_description": {
+    "message": "Configurez la fréquence de mise à jour des flux."
+  },
+  "settings_refreshInterval_minutes": {
+    "description": "Shown as 'X minutes' in the settings dialog",
+    "message": "minutes"
+  },
+  "settings_defaultFolder_heading": {
+    "message": "Dossier par défaut"
+  },
+  "settings_defaultFolder_description": {
+    "message": "Vos futurs marque-pages seront enregistrés ici par défaut."
+  },
+  "settings_prefixes_heading": {
+    "message": "Préfixes de marque-page"
+  },
+  "settings_prefixes_description": {
+    "message": "Ces chaînes de charactères vont être utilisées comme préfixes pour indiquer le status."
+  },
+  "settings_prefixes_unread": {
+    "message": "Non lu:"
+  },
+  "settings_prefixes_read": {
+    "message": "Lu:"
+  },
+  "settings_feedPreview_heading": {
+    "message": "Aperçu des flux"
+  },
+  "settings_feedPreview_description": {
+    "message": "Activer l'aperçu personalisé quand je visite un flux"
+  },
+  "settings_about_heading": {
+    "message": "À propos"
+  },
+  "settings_about_description_1": {
+    "message": "Cette extension a été crée par"
+  },
+  "settings_about_description_2": {
+    "message": ". Elle est basée sur"
+  },
+  "settings_about_description_3": {
+    "message": ". Vous pouvez soutenir l'extension en:"
+  },
+  "settings_about_donating": {
+    "message": "Faisant un don"
+  },
+  "settings_about_reviewing": {
+    "message": "Donnant une bonne critique"
+  },
+  "settings_about_reporting": {
+    "message": "Signalant des problèmes"
+  },
+  "settings_about_translating": {
+    "message": "Contribuant des traductions"
+  },
+  "settings_close": {
+    "message": "Fermer"
+  },
+  "editLivemark_name": {
+    "message": "Nom"
+  },
+  "editLivemark_remove": {
+    "message": "Supprimer ce flux"
+  },
+  "editLivemark_feedURL": {
+    "message": "URL du flux"
+  },
+  "editLivemark_siteURL": {
+    "message": "URL du site"
+  },
+  "editLivemark_parentFolder": {
+    "message": "Dossier parent"
+  },
+  "editLivemark_maxItems": {
+    "message": "Nombre maximum d'éléments"
+  },
+  "editLivemark_cancel": {
+    "message": "Annuler"
+  },
+  "editLivemark_save": {
+    "message": "Enregistrer"
+  }
+}

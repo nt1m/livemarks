@@ -1,7 +1,7 @@
 {
-	"extensionDescription": {
-		"message": "Restores RSS live bookmark support to Firefox 64 and above."
-	},
+  "extensionDescription": {
+    "message": "Restores RSS live bookmark support to Firefox 64 and above."
+  },
   "subscribe_addLivemark": {
     "message": "Add Livemark"
   },

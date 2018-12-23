@@ -18,12 +18,12 @@ const LivemarkStore = {
   },
 
   async get(id) {
-    const result = await browser.storage.local.get(toInternalId(id));
+    const result = await browser.storage.sync.get(toInternalId(id));
     return result[toInternalId(id)];
   },
 
   async getAll() {
-    const livemarks = await browser.storage.local.get();
+    const livemarks = await browser.storage.sync.get();
 
     const all = [];
     for (const key in livemarks) {
@@ -60,7 +60,7 @@ const LivemarkStore = {
       feedDetails.siteUrl = "";
     }
 
-    await browser.storage.local.set({
+    await browser.storage.sync.set({
       [toInternalId(bookmark.id)]: feedDetails
     });
   },
@@ -72,7 +72,7 @@ const LivemarkStore = {
       // Bookmark already deleted
     }
 
-    await browser.storage.local.remove(toInternalId(bookmarkId));
+    await browser.storage.sync.remove(toInternalId(bookmarkId));
   },
 
   async edit(id, feed) {
@@ -115,7 +115,7 @@ const LivemarkStore = {
       oldFeed.updated = feed.updated;
     }
 
-    await browser.storage.local.set({ [toInternalId(id)]: oldFeed });
+    await browser.storage.sync.set({ [toInternalId(id)]: oldFeed });
   },
 
   async _makeDetails(id, {feedUrl, siteUrl, maxItems, updated}) {
@@ -144,21 +144,22 @@ const LivemarkStore = {
     this.listeners = [];
 
     try {
-      const { livemarks = [] } = await browser.storage.local.get("livemarks");
+      const { livemarks } = await browser.storage.local.get("livemarks");
+      if (livemarks) {
+        for (const [id, feed] of livemarks) {
+          const [bookmark] = await browser.bookmarks.get(id).catch(() => {
+            return [];
+          });
 
-      for (const [id, feed] of livemarks) {
-        const [bookmark] = await browser.bookmarks.get(id).catch(() => {
-          return [];
-        });
+          if (bookmark === undefined) {
+            continue;
+          }
 
-        if (bookmark === undefined) {
-          continue;
+          await browser.storage.sync.set({ [toInternalId(bookmark.id)]: feed });
         }
 
-        await browser.storage.local.set({ [toInternalId(bookmark.id)]: feed });
+        await browser.storage.local.remove("livemarks");
       }
-
-      await browser.storage.local.remove("livemarks");
     } catch (e) {
       console.error("Storage migration failed", e);
     }
@@ -171,7 +172,7 @@ const LivemarkStore = {
     });
 
     browser.storage.onChanged.addListener((changes, areaName) => {
-      if (areaName !== "local") {
+      if (areaName !== "sync") {
         return;
       }
 

@@ -238,7 +238,7 @@ const ContextMenu = {
     const createReloadItem = async () => {
       this.reloadItemId = await browser.menus.create({
         contexts: ["bookmark"],
-        title: "Reload Live Bookmark",
+        title: browser.i18n.getMessage("reloadLiveBookmark"),
       });
     };
     browser.menus.onShown.addListener(async ({bookmarkId}) => {

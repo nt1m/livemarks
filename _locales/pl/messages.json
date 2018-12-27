@@ -2,6 +2,9 @@
   "extensionDescription": {
     "message": "Przywraca obsługę dynamicznych zakładek RSS do Firefoksa 64 i nowszych."
   },
+  "reloadLiveBookmark": {
+    "message": "Odśwież dynamiczną zakładkę"
+  },
   "subscribe_addLivemark": {
     "message": "Dodaj dynamiczną zakładkę"
   },

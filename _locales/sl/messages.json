@@ -2,6 +2,9 @@
   "extensionDescription": {
     "message": "Obnovi podporo za RSS zaznamke za Firefox 64 in novejše."
   },
+  "reloadLiveBookmark": {
+    "message": "Reload Live Bookmark"
+  },
   "subscribe_addLivemark": {
     "message": "Dodaj Livemark"
   },

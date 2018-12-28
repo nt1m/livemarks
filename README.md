@@ -16,4 +16,6 @@ This add-on provides RSS feed bookmark folders, that are auto-updated regularly,
 - Change drag and drop behaviour
 - Hiding livemarks from the "Recently Bookmarked" folder ([issue 44](https://github.com/nt1m/livemarks/issues/44))
 
+Help with translation: https://www.transifex.com/tim-nguyen/livemarks/
+
 This is a mostly rewritten version of https://github.com/davidhampgonsalves/foxish

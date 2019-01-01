@@ -1,0 +1,138 @@
+{
+  "extensionDescription": {
+    "message": "Firefox 64以降にRSSライブブックマーク機能を復活させる。"
+  },
+  "reloadLiveBookmark": {
+    "message": "ライブブックマークを再読み込み"
+  },
+  "subscribe_addLivemark": {
+    "message": "ライブブックマークを追加"
+  },
+  "subscribe_viewSource": {
+    "message": "ソースを表示"
+  },
+  "subscribe_failedToFetchFeed": {
+    "message": "フィードの取得に失敗しました。"
+  },
+  "subscribe_noEntriesFound": {
+    "message": "フィードに項目が存在しません。"
+  },
+  "subscribe_subscribed": {
+    "message": "$FOLDER$に追加しました。設定画面で編集できます。",
+    "placeholders": {
+      "folder": {
+        "content": "$1"
+      }
+    }
+  },
+  "noItemsFound": {
+    "message": "アイテムが見つかりませんでした。"
+  },
+  "yourLivemarks": {
+    "description": "Title of the 'Your livemarks' page",
+    "message": "あなたのライブブックマーク一覧"
+  },
+  "moreOptions": {
+    "message": "その他の設定"
+  },
+  "newLivemark": {
+    "message": "新しいライブブックマーク"
+  },
+  "settings_importExport_heading": {
+    "message": "インポート/エクスポート"
+  },
+  "settings_importExport_description": {
+    "message": "この機能は多くのRSSリーダーで使用されているOPML形式を使用します。"
+  },
+  "settings_importExport_importFeeds": {
+    "message": "フィードリストのインポート"
+  },
+  "settings_importExport_exportFeeds": {
+    "message": "フィードリストのエクスポート"
+  },
+  "settings_refreshInterval_heading": {
+    "message": "更新間隔"
+  },
+  "settings_refreshInterval_description": {
+    "message": "ライブブックマークの更新間隔を設定します。"
+  },
+  "settings_refreshInterval_minutes": {
+    "description": "Shown as 'X minutes' in the settings dialog",
+    "message": "分"
+  },
+  "settings_defaultFolder_heading": {
+    "message": "デフォルトのフォルダー"
+  },
+  "settings_defaultFolder_description": {
+    "message": "新しいライブブックマークはデフォルトでここに保存されます。"
+  },
+  "settings_prefixes_heading": {
+    "message": "ブックマークのプレフィックス"
+  },
+  "settings_prefixes_description": {
+    "message": "指定した文字列がステータスを示すためのブックマークのプリフィックスとして使用されます。"
+  },
+  "settings_prefixes_unread": {
+    "message": "未読："
+  },
+  "settings_prefixes_read": {
+    "message": "既読："
+  },
+  "settings_feedPreview_heading": {
+    "message": "フィードのプレビュー"
+  },
+  "settings_feedPreview_description": {
+    "message": "フィードのURLに直接アクセスした際のフィードのプレビューを有効化する"
+  },
+  "settings_about_heading": {
+    "message": "Livemarksについて"
+  },
+  "settings_about_description_1": {
+    "message": "このアドオンは"
+  },
+  "settings_about_description_2": {
+    "message": "によって作成されました。このアドオンは"
+  },
+  "settings_about_description_3": {
+    "message": "を基としています。以下の方法でこのアドオンを支援することができます："
+  },
+  "settings_about_donating": {
+    "message": "寄付を行う"
+  },
+  "settings_about_reviewing": {
+    "message": "良いレビューを行う"
+  },
+  "settings_about_reporting": {
+    "message": "バグや要望を報告する"
+  },
+  "settings_about_translating": {
+    "message": "翻訳に協力する"
+  },
+  "settings_close": {
+    "message": "閉じる"
+  },
+  "editLivemark_name": {
+    "message": "名前"
+  },
+  "editLivemark_remove": {
+    "message": "このフィードを削除"
+  },
+  "editLivemark_feedURL": {
+    "message": "フィードのURL"
+  },
+  "editLivemark_siteURL": {
+    "message": "サイトのURL"
+  },
+  "editLivemark_parentFolder": {
+    "message": "親フォルダー"
+  },
+  "editLivemark_maxItems": {
+    "message": "最大アイテム数"
+  },
+  "editLivemark_cancel": {
+    "message": "キャンセル"
+  },
+  "editLivemark_save": {
+    "message": "保存"
+  }
+}

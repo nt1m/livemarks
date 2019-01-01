@@ -41,5 +41,10 @@
   "version": "1.14",
   "web_accessible_resources": [
     "pages/subscribe/subscribe.html"
-  ]
+  ],
+  "applications": {
+    "gecko": {
+      "id": "{c5867acc-54c9-4074-9574-04d8818d53e8}"
+    }
+  }
 }

@@ -38,6 +38,9 @@
   "newLivemark": {
     "message": "Nouveau marque-page"
   },
+  "enterFeedURL": {
+    "message": "Entrez l'URL du flux"
+  },
   "settings_importExport_heading": {
     "message": "Importer/Exporter"
   },
@@ -49,6 +52,9 @@
   },
   "settings_importExport_exportFeeds": {
     "message": "Exporter les flux"
+  },
+  "settings_importExport_errorImport": {
+    "message": "Erreur durant l'importation du fichier OPML"
   },
   "settings_refreshInterval_heading": {
     "message": "Fréquence de mise à jour"

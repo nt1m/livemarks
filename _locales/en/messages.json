@@ -38,6 +38,9 @@
   "newLivemark": {
     "message": "New livemark"
   },
+  "enterFeedURL": {
+    "message": "Enter Feed URL"
+  },
   "settings_importExport_heading": {
     "message": "Import/Export"
   },
@@ -49,6 +52,9 @@
   },
   "settings_importExport_exportFeeds": {
     "message": "Export feeds"
+  },
+  "settings_importExport_errorImport": {
+    "message": "Error importing OPML file"
   },
   "settings_refreshInterval_heading": {
     "message": "Refresh interval"

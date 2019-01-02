@@ -11,7 +11,7 @@ window.onload = async () => {
   initDialogs();
 
   document.getElementById("add").addEventListener("click", async () => {
-    let feedUrl = prompt("Enter Feed URL");
+    let feedUrl = prompt(browser.i18n.getMessage("enterFeedURL"));
     if (feedUrl === null) {
       return;
     }
@@ -26,7 +26,7 @@ window.onload = async () => {
     try {
       const {title, url, items} = await FeedParser.getFeed(feedUrl.href);
       if (items.length == 0) {
-        alert("No feed entries found");
+        alert(browser.i18n.getMessage("subscribe_noEntriesFound"));
         return;
       }
 
@@ -57,7 +57,7 @@ window.onload = async () => {
       try {
         const imported = importOPML(target.result);
         if (imported.length === 0) {
-          alert("No feeds found");
+          alert(browser.i18n.getMessage("subscribe_noEntriesFound"));
           return;
         }
         for (const {title, feedUrl, siteUrl} of imported) {
@@ -72,8 +72,8 @@ window.onload = async () => {
         }
         alert(`Successfully imported ${imported.length} feeds.`);
       } catch (e) {
-        console.log("Error importing OPML file", e);
-        alert("Error importing OPML file");
+        console.log(browser.i18n.getMessage("settings_importExport_errorImport"), e);
+        alert(browser.i18n.getMessage("settings_importExport_errorImport"));
       }
     };
     reader.readAsText(file);

@@ -38,6 +38,9 @@
   "newLivemark": {
     "message": "新しいライブブックマーク"
   },
+  "enterFeedURL": {
+    "message": "フィードのURLを入力してください。"
+  },
   "settings_importExport_heading": {
     "message": "インポート/エクスポート"
   },
@@ -49,6 +52,9 @@
   },
   "settings_importExport_exportFeeds": {
     "message": "フィードリストのエクスポート"
+  },
+  "settings_importExport_errorImport": {
+    "message": "OPMLファイルのインポートに失敗しました。"
   },
   "settings_refreshInterval_heading": {
     "message": "更新間隔"

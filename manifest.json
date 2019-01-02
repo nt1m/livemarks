@@ -29,8 +29,8 @@
   },
   "name": "Livemarks",
   "options_ui": {
-     "page": "pages/settings/settings.html",
-     "open_in_tab": true
+    "page": "pages/settings/settings.html",
+    "open_in_tab": true
   },
   "page_action": {
     "default_icon": "icons/feed.svg",
@@ -38,7 +38,7 @@
     "default_popup": "popup/popup.html"
   },
   "permissions": ["storage", "bookmarks", "history", "webRequest", "webRequestBlocking", "<all_urls>", "tabs", "menus"],
-  "version": "1.15",
+  "version": "1.16",
   "web_accessible_resources": [
     "pages/subscribe/subscribe.html"
   ],

@@ -3,6 +3,7 @@
 /* import-globals-from ../../shared/feed-parser.js */
 /* import-globals-from ../../shared/livemark-store.js */
 /* import-globals-from ../../shared/settings.js */
+/* import-globals-from ../../shared/i18n.js */
 /* import-globals-from opml-utils.js */
 
 window.onload = async () => {
@@ -70,7 +71,7 @@ window.onload = async () => {
           };
           await LivemarkStore.add(feed);
         }
-        alert(`Successfully imported ${imported.length} feeds.`);
+        alert(I18N.getMessage("settings_importExport_successImport", imported.length));
       } catch (e) {
         console.log("Error importing OPML file", e);
         alert(I18N.getMessage("settings_importExport_errorImport"));

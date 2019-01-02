@@ -53,6 +53,14 @@
   "settings_importExport_exportFeeds": {
     "message": "Export feeds"
   },
+  "settings_importExport_successImport": {
+    "message": "Successfully imported $COUNT$ feeds.",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
   "settings_importExport_errorImport": {
     "message": "Error importing OPML file"
   },

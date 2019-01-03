@@ -53,6 +53,14 @@
   "settings_importExport_exportFeeds": {
     "message": "フィードリストのエクスポート"
   },
+  "settings_importExport_successImport": {
+    "message": "$COUNT$件のフィードのインポートに成功しました。",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
   "settings_importExport_errorImport": {
     "message": "OPMLファイルのインポートに失敗しました。"
   },

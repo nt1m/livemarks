@@ -1,0 +1,152 @@
+{
+  "extensionDescription": {
+    "message": "Stellt Unterstützung der RSS dynamischen Lesezeichen für Firefox 64 und neuer wieder her."
+  },
+  "reloadLiveBookmark": {
+    "message": "Dynamische Lesezeichen aktualisieren"
+  },
+  "subscribe_addLivemark": {
+    "message": "Livemark hinzufügen"
+  },
+  "subscribe_viewSource": {
+    "message": "Quelltext anzeigen"
+  },
+  "subscribe_failedToFetchFeed": {
+    "message": "Laden des Feeds fehlgeschlagen"
+  },
+  "subscribe_noEntriesFound": {
+    "message": "Keine Feed-Einträge gefunden"
+  },
+  "subscribe_subscribed": {
+    "message": "Dem Ordner $FOLDER$hinzugefügt. Optionen aufrufen um Lesezeichen zu bearbeiten.",
+    "placeholders": {
+      "folder": {
+        "content": "$1"
+      }
+    }
+  },
+  "noItemsFound": {
+    "message": "Keine Einträge gefunden"
+  },
+  "yourLivemarks": {
+    "description": "Title of the 'Your livemarks' page",
+    "message": "Deine Livemarks"
+  },
+  "moreOptions": {
+    "message": "Weitere Optionen"
+  },
+  "newLivemark": {
+    "message": "Neues Livemark"
+  },
+  "enterFeedURL": {
+    "message": "Feed-URL eingeben"
+  },
+  "settings_importExport_heading": {
+    "message": "Import/Export"
+  },
+  "settings_importExport_description": {
+    "message": "Dieses Feature benutzt das OPML-Format, welches von den meisten RSS-Readern verwendet wird."
+  },
+  "settings_importExport_importFeeds": {
+    "message": "Feeds importieren"
+  },
+  "settings_importExport_exportFeeds": {
+    "message": "Feeds exportieren"
+  },
+  "settings_importExport_successImport": {
+    "message": "$COUNT$Feeds erfolgreich importiert.",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "settings_importExport_errorImport": {
+    "message": "Fehler beim Import der OPML-Datei"
+  },
+  "settings_refreshInterval_heading": {
+    "message": "Aktualisierungs-Intervall"
+  },
+  "settings_refreshInterval_description": {
+    "message": "Stelle ein, wie oft Livemarks aktualisiert werden."
+  },
+  "settings_refreshInterval_minutes": {
+    "description": "Shown as 'X minutes' in the settings dialog",
+    "message": "Minuten"
+  },
+  "settings_defaultFolder_heading": {
+    "message": "Standardordner"
+  },
+  "settings_defaultFolder_description": {
+    "message": "Alle zukünftigen Livemarks werden hier abgespeichert."
+  },
+  "settings_prefixes_heading": {
+    "message": "Lesezeichen-Präfixe"
+  },
+  "settings_prefixes_description": {
+    "message": "Die angegebenen Zeichenketten werden als Lesezeichen-Präfixe verwendet, um den jeweiligen Status anzuzeigen."
+  },
+  "settings_prefixes_unread": {
+    "message": "Ungelesen:"
+  },
+  "settings_prefixes_read": {
+    "message": "Gelesen:"
+  },
+  "settings_feedPreview_heading": {
+    "message": "Feed-Vorschau"
+  },
+  "settings_feedPreview_description": {
+    "message": "Aktiviere Feed-Vorschau wenn eine Feed-URL direkt besucht wird"
+  },
+  "settings_about_heading": {
+    "message": "Über"
+  },
+  "settings_about_description_1": {
+    "message": "Dieses Add-On wurde erstellt durch:"
+  },
+  "settings_about_description_2": {
+    "message": "Es basiert auf"
+  },
+  "settings_about_description_3": {
+    "message": "Unterstütze das Add-On durch:"
+  },
+  "settings_about_donating": {
+    "message": "Spenden"
+  },
+  "settings_about_reviewing": {
+    "message": "Eine gute Bewertung erteilen"
+  },
+  "settings_about_reporting": {
+    "message": "Fehler melden"
+  },
+  "settings_about_translating": {
+    "message": "Übersetzungen beisteuern"
+  },
+  "settings_close": {
+    "message": "Schliessen"
+  },
+  "editLivemark_name": {
+    "message": "Name"
+  },
+  "editLivemark_remove": {
+    "message": "Diesen Feed entfernen"
+  },
+  "editLivemark_feedURL": {
+    "message": "Feed-URL"
+  },
+  "editLivemark_siteURL": {
+    "message": "Site-URL"
+  },
+  "editLivemark_parentFolder": {
+    "message": "Übergeordneter Ordner"
+  },
+  "editLivemark_maxItems": {
+    "message": "Maximale Anzahl Einträge"
+  },
+  "editLivemark_cancel": {
+    "message": "Abbruch"
+  },
+  "editLivemark_save": {
+    "message": "Speichern"
+  }
+}

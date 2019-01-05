@@ -18,7 +18,7 @@
     "message": "Keine Feed-Einträge gefunden"
   },
   "subscribe_subscribed": {
-    "message": "Dem Ordner $FOLDER$hinzugefügt. Optionen aufrufen um Lesezeichen zu bearbeiten.",
+    "message": "Dem Ordner $FOLDER$ hinzugefügt. Optionen aufrufen um Lesezeichen zu bearbeiten.",
     "placeholders": {
       "folder": {
         "content": "$1"
@@ -54,7 +54,7 @@
     "message": "Feeds exportieren"
   },
   "settings_importExport_successImport": {
-    "message": "$COUNT$Feeds erfolgreich importiert.",
+    "message": "$COUNT$ Feeds erfolgreich importiert.",
     "placeholders": {
       "count": {
         "content": "$1"

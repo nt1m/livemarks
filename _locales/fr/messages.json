@@ -5,6 +5,9 @@
   "reloadLiveBookmark": {
     "message": "Recharger le marque-page"
   },
+  "subscribe": {
+    "message": "S'abonner"
+  },
   "subscribe_addLivemark": {
     "message": "Ajouter un marque-page"
   },

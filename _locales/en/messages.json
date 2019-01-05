@@ -5,6 +5,9 @@
   "reloadLiveBookmark": {
     "message": "Reload Live Bookmark"
   },
+  "subscribe": {
+    "message": "Subscribe"
+  },
   "subscribe_addLivemark": {
     "message": "Add Livemark"
   },

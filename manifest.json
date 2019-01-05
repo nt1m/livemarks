@@ -34,7 +34,7 @@
   },
   "page_action": {
     "default_icon": "icons/feed.svg",
-    "default_title": "Subscribe",
+    "default_title": "__MSG_subscribe__",
     "default_popup": "popup/popup.html"
   },
   "permissions": ["storage", "bookmarks", "history", "webRequest", "webRequestBlocking", "<all_urls>", "tabs", "menus"],

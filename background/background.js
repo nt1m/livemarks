@@ -203,7 +203,8 @@ const LivemarkUpdater = {
         }
       }
 
-      const title = ((visits > 0) ? readPrefix : unreadPrefix) + item.title;
+      const itemTitle = item.title ? item.title : url;
+      const title = ((visits > 0) ? readPrefix : unreadPrefix) + itemTitle;
       if (i < usableChildren.length) {
         // There's a child in the right place, see if it has the right data,
         // and update it if not.

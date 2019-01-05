@@ -1,0 +1,152 @@
+{
+  "extensionDescription": {
+    "message": "Obnovuje podporu pre aktívne záložky RSS vo Firefoxe 64 a novšom."
+  },
+  "reloadLiveBookmark": {
+    "message": "Obnoviť aktívnu záložku"
+  },
+  "subscribe_addLivemark": {
+    "message": "Pridať aktívnu záložku"
+  },
+  "subscribe_viewSource": {
+    "message": "Zobraziť zdroj"
+  },
+  "subscribe_failedToFetchFeed": {
+    "message": "Načítanie kanála zlyhalo"
+  },
+  "subscribe_noEntriesFound": {
+    "message": "Nenašiel sa žiadny kanál"
+  },
+  "subscribe_subscribed": {
+    "message": "Added to $FOLDER$, visit the options page to edit it.",
+    "placeholders": {
+      "folder": {
+        "content": "$1"
+      }
+    }
+  },
+  "noItemsFound": {
+    "message": "Nenašli sa žiadne položky"
+  },
+  "yourLivemarks": {
+    "description": "Title of the 'Your livemarks' page",
+    "message": "Vaše aktívne záložky"
+  },
+  "moreOptions": {
+    "message": "Ďalšie možnosti"
+  },
+  "newLivemark": {
+    "message": "Nová aktívna záložka"
+  },
+  "enterFeedURL": {
+    "message": "Zadajte URL adresu"
+  },
+  "settings_importExport_heading": {
+    "message": "Import/Export"
+  },
+  "settings_importExport_description": {
+    "message": "Táto funkcia používa formát OPML, ktorý používa väčšina RSS čítačiek."
+  },
+  "settings_importExport_importFeeds": {
+    "message": "Importovať kanál"
+  },
+  "settings_importExport_exportFeeds": {
+    "message": "Exportovať kanál"
+  },
+  "settings_importExport_successImport": {
+    "message": "Successfully imported $COUNT$ feeds.",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "settings_importExport_errorImport": {
+    "message": "Error importing OPML file"
+  },
+  "settings_refreshInterval_heading": {
+    "message": "Refresh interval"
+  },
+  "settings_refreshInterval_description": {
+    "message": "Configure how often livemarks are updated."
+  },
+  "settings_refreshInterval_minutes": {
+    "description": "Shown as 'X minutes' in the settings dialog",
+    "message": "minút"
+  },
+  "settings_defaultFolder_heading": {
+    "message": "Predvolený priečinok"
+  },
+  "settings_defaultFolder_description": {
+    "message": "All future livemarks will be saved here by default"
+  },
+  "settings_prefixes_heading": {
+    "message": "Bookmark prefixes"
+  },
+  "settings_prefixes_description": {
+    "message": "The supplied strings will be used as bookmark prefixes to indicate status."
+  },
+  "settings_prefixes_unread": {
+    "message": "Unread:"
+  },
+  "settings_prefixes_read": {
+    "message": "Read:"
+  },
+  "settings_feedPreview_heading": {
+    "message": "Náhľad kanála"
+  },
+  "settings_feedPreview_description": {
+    "message": "Enable feed preview when directly visting a feed URL"
+  },
+  "settings_about_heading": {
+    "message": "O doplnku"
+  },
+  "settings_about_description_1": {
+    "message": "Doplnok vytvorili"
+  },
+  "settings_about_description_2": {
+    "message": ". Je založený na doplnku"
+  },
+  "settings_about_description_3": {
+    "message": ". Môžete ho podporiť nasledovnými spôsobmi:"
+  },
+  "settings_about_donating": {
+    "message": "Prispením"
+  },
+  "settings_about_reviewing": {
+    "message": "Poskytnutím kladnej recenzie"
+  },
+  "settings_about_reporting": {
+    "message": "Nahlásením chýb"
+  },
+  "settings_about_translating": {
+    "message": "Prekladom"
+  },
+  "settings_close": {
+    "message": "Zavrieť"
+  },
+  "editLivemark_name": {
+    "message": "Názov"
+  },
+  "editLivemark_remove": {
+    "message": "Odstrániť tento kanál"
+  },
+  "editLivemark_feedURL": {
+    "message": "URL adresa kanála"
+  },
+  "editLivemark_siteURL": {
+    "message": "URL adresa stránky"
+  },
+  "editLivemark_parentFolder": {
+    "message": "Nadradený priečinok"
+  },
+  "editLivemark_maxItems": {
+    "message": "Maximálny počet položiek"
+  },
+  "editLivemark_cancel": {
+    "message": "Zrušiť"
+  },
+  "editLivemark_save": {
+    "message": "Uložiť"
+  }
+}

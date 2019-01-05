@@ -38,6 +38,9 @@
   "newLivemark": {
     "message": "Nowa dynamiczna zakładka"
   },
+  "enterFeedURL": {
+    "message": "Adres kanału"
+  },
   "settings_importExport_heading": {
     "message": "Import/eksport"
   },
@@ -49,6 +52,17 @@
   },
   "settings_importExport_exportFeeds": {
     "message": "Eksportuj kanały"
+  },
+  "settings_importExport_successImport": {
+    "message": "Pomyślnie zaimportowano kanały ($COUNT$).",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "settings_importExport_errorImport": {
+    "message": "Błąd podczas importowania pliku OPML"
   },
   "settings_refreshInterval_heading": {
     "message": "Czas między odświeżaniem"
@@ -88,10 +102,10 @@
     "message": "O dodatku"
   },
   "settings_about_description_1": {
-    "message": "Autor:"
+    "message": "Autorzy:"
   },
   "settings_about_description_2": {
-    "message": ". Na podstawie:"
+    "message": ". Na podstawie rozszerzenia"
   },
   "settings_about_description_3": {
     "message": ". Sposoby wsparcia dodatku:"

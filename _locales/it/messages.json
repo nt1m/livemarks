@@ -1,0 +1,152 @@
+{
+  "extensionDescription": {
+    "message": "Ripristina il supporto ai segnalibri live RSS in Firefox 64 e superiori."
+  },
+  "reloadLiveBookmark": {
+    "message": "Ricarica il segnalibro live"
+  },
+  "subscribe_addLivemark": {
+    "message": "Aggiunge Livemark"
+  },
+  "subscribe_viewSource": {
+    "message": "Visualizza sorgente"
+  },
+  "subscribe_failedToFetchFeed": {
+    "message": "Impossibile recuperare il feed"
+  },
+  "subscribe_noEntriesFound": {
+    "message": "Nessuna voce di feed trovata"
+  },
+  "subscribe_subscribed": {
+    "message": "Aggiunto a $FOLDER$, visita la pagina delle opzioni per modificarlo.",
+    "placeholders": {
+      "folder": {
+        "content": "$1"
+      }
+    }
+  },
+  "noItemsFound": {
+    "message": "Nessun elemento trovato"
+  },
+  "yourLivemarks": {
+    "description": "Title of the 'Your livemarks' page",
+    "message": "I tuoi livemark"
+  },
+  "moreOptions": {
+    "message": "Altre opzioni"
+  },
+  "newLivemark": {
+    "message": "Nuovo livemark"
+  },
+  "enterFeedURL": {
+    "message": "Inserisci l'URL del feed"
+  },
+  "settings_importExport_heading": {
+    "message": "Importa/Esporta"
+  },
+  "settings_importExport_description": {
+    "message": "Questa caratteristica utilizza il formato OPML utilizzato dalla maggior parte dei lettori RSS."
+  },
+  "settings_importExport_importFeeds": {
+    "message": "Importa i feed"
+  },
+  "settings_importExport_exportFeeds": {
+    "message": "Esporta i feed"
+  },
+  "settings_importExport_successImport": {
+    "message": "Sono stati importati con successo $COUNT$ feed.",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "settings_importExport_errorImport": {
+    "message": "Errore nell'importazione del file OPML"
+  },
+  "settings_refreshInterval_heading": {
+    "message": "Intervallo di aggiornamento"
+  },
+  "settings_refreshInterval_description": {
+    "message": "Configura la frequenza con cui i livemarks vengono aggiornati."
+  },
+  "settings_refreshInterval_minutes": {
+    "description": "Shown as 'X minutes' in the settings dialog",
+    "message": "minuti"
+  },
+  "settings_defaultFolder_heading": {
+    "message": "Cartella predefinita"
+  },
+  "settings_defaultFolder_description": {
+    "message": "Tutti i livemark futuri saranno salvati qui per impostazione predefinita"
+  },
+  "settings_prefixes_heading": {
+    "message": "Prefissi dei segnalibri"
+  },
+  "settings_prefixes_description": {
+    "message": "Le stringhe immesse verranno utilizzate come prefissi dei segnalibri per indicarne lo stato."
+  },
+  "settings_prefixes_unread": {
+    "message": "Non letti:"
+  },
+  "settings_prefixes_read": {
+    "message": "Letti:"
+  },
+  "settings_feedPreview_heading": {
+    "message": "Anteprima del feed"
+  },
+  "settings_feedPreview_description": {
+    "message": "Abilita l'anteprima del feed quando si accede direttamente a un URL del feed"
+  },
+  "settings_about_heading": {
+    "message": "Informazioni su"
+  },
+  "settings_about_description_1": {
+    "message": "Questo componente aggiuntivo è stato creato da"
+  },
+  "settings_about_description_2": {
+    "message": ". È basato su"
+  },
+  "settings_about_description_3": {
+    "message": ". Puoi supportare il componente aggiuntivo di:"
+  },
+  "settings_about_donating": {
+    "message": "Donazione"
+  },
+  "settings_about_reviewing": {
+    "message": "Dando una recensione positiva"
+  },
+  "settings_about_reporting": {
+    "message": "Segnalando problemi"
+  },
+  "settings_about_translating": {
+    "message": "Contribuendo alle traduzioni"
+  },
+  "settings_close": {
+    "message": "Chiudi"
+  },
+  "editLivemark_name": {
+    "message": "Nome"
+  },
+  "editLivemark_remove": {
+    "message": "Rimuovi questo feed"
+  },
+  "editLivemark_feedURL": {
+    "message": "URL del feed"
+  },
+  "editLivemark_siteURL": {
+    "message": "URL del sito"
+  },
+  "editLivemark_parentFolder": {
+    "message": "Cartella principale"
+  },
+  "editLivemark_maxItems": {
+    "message": "Numero massimo di elementi"
+  },
+  "editLivemark_cancel": {
+    "message": "Annulla"
+  },
+  "editLivemark_save": {
+    "message": "Salva"
+  }
+}

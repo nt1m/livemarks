@@ -8,6 +8,9 @@
   "subscribe": {
     "message": "Subscribe"
   },
+  "subscribe_title": {
+    "message": "Feed preview"
+  },
   "subscribe_addLivemark": {
     "message": "Add Livemark"
   },

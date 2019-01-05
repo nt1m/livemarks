@@ -5,6 +5,9 @@
   "reloadLiveBookmark": {
     "message": "Odśwież dynamiczną zakładkę"
   },
+  "subscribe": {
+    "message": "Subskrybuj"
+  },
   "subscribe_addLivemark": {
     "message": "Dodaj dynamiczną zakładkę"
   },

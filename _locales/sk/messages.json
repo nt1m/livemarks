@@ -5,6 +5,9 @@
   "reloadLiveBookmark": {
     "message": "Obnoviť aktívnu záložku"
   },
+  "subscribe": {
+    "message": "Odoberať"
+  },
   "subscribe_addLivemark": {
     "message": "Pridať aktívnu záložku"
   },
@@ -18,7 +21,7 @@
     "message": "Nenašiel sa žiadny kanál"
   },
   "subscribe_subscribed": {
-    "message": "Added to $FOLDER$, visit the options page to edit it.",
+    "message": "Kanál bol pridaný do priečinku $FOLDER$, umiestnenie môžete upraviť v možnostiach.",
     "placeholders": {
       "folder": {
         "content": "$1"
@@ -54,7 +57,7 @@
     "message": "Exportovať kanál"
   },
   "settings_importExport_successImport": {
-    "message": "Successfully imported $COUNT$ feeds.",
+    "message": "Úspešne bolo importovaných $COUNT$ kanálov.",
     "placeholders": {
       "count": {
         "content": "$1"
@@ -62,13 +65,13 @@
     }
   },
   "settings_importExport_errorImport": {
-    "message": "Error importing OPML file"
+    "message": "Pri importe OPML súboru nastala chyba"
   },
   "settings_refreshInterval_heading": {
-    "message": "Refresh interval"
+    "message": "Interval aktualizácií"
   },
   "settings_refreshInterval_description": {
-    "message": "Configure how often livemarks are updated."
+    "message": "Nastavte, ako často sa budú aktívne záložky aktualizovať."
   },
   "settings_refreshInterval_minutes": {
     "description": "Shown as 'X minutes' in the settings dialog",
@@ -78,25 +81,25 @@
     "message": "Predvolený priečinok"
   },
   "settings_defaultFolder_description": {
-    "message": "All future livemarks will be saved here by default"
+    "message": "Všetky aktívne záložky budú v budúcnosti ukladané na toto miesto"
   },
   "settings_prefixes_heading": {
-    "message": "Bookmark prefixes"
+    "message": "Značky"
   },
   "settings_prefixes_description": {
-    "message": "The supplied strings will be used as bookmark prefixes to indicate status."
+    "message": "Tieto značky označujú stav, v akom sa záložky nachádzajú."
   },
   "settings_prefixes_unread": {
-    "message": "Unread:"
+    "message": "Neprečítané:"
   },
   "settings_prefixes_read": {
-    "message": "Read:"
+    "message": "Prečítané:"
   },
   "settings_feedPreview_heading": {
     "message": "Náhľad kanála"
   },
   "settings_feedPreview_description": {
-    "message": "Enable feed preview when directly visting a feed URL"
+    "message": "Pri návšteve URL adresy kanála zobraziť jeho náhľad"
   },
   "settings_about_heading": {
     "message": "O doplnku"

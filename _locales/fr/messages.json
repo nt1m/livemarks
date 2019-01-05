@@ -1,12 +1,15 @@
 {
   "extensionDescription": {
-    "message": "Restore les marques-pages dynamiques RSS pour Firefox 64 et plus."
+    "message": "Restore les marque-pages dynamiques RSS pour Firefox 64 et plus."
   },
   "reloadLiveBookmark": {
     "message": "Recharger le marque-page"
   },
   "subscribe": {
     "message": "S'abonner"
+  },
+  "subscribe_title": {
+    "message": "Aperçu du flux"
   },
   "subscribe_addLivemark": {
     "message": "Ajouter un marque-page"

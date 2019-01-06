@@ -8,6 +8,9 @@
   "subscribe": {
     "message": "購読"
   },
+  "subscribe_title": {
+    "message": "フィードのプレビュー"
+  },
   "subscribe_addLivemark": {
     "message": "ライブブックマークを追加"
   },

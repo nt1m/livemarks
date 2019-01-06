@@ -8,6 +8,9 @@
   "subscribe": {
     "message": "Subskrybuj"
   },
+  "subscribe_title": {
+    "message": "Podgląd kanału"
+  },
   "subscribe_addLivemark": {
     "message": "Dodaj dynamiczną zakładkę"
   },

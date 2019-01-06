@@ -8,6 +8,9 @@
   "subscribe": {
     "message": "Odoberať"
   },
+  "subscribe_title": {
+    "message": "Náhľad kanála"
+  },
   "subscribe_addLivemark": {
     "message": "Pridať aktívnu záložku"
   },

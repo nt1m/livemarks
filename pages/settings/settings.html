@@ -94,6 +94,21 @@
       <button type="submit" class="primary" data-i18n-text="editLivemark_save"></button>
     </div>
   </form>
+
+  <form class="card dialog" id="select-folder-dialog" hidden>
+    <div class="flex">
+      <div class="form-row grow">
+        <label for="livemarkFolder" data-i18n-text="selectFolder_folder"></label>
+        <select name="livemarkFolder" required></select>
+      </div>
+    </div>
+
+    <div class="dialog-footer">
+      <a class="button dialog-cancel" data-i18n-text="editLivemark_cancel"></a>
+      <button type="submit" class="primary" data-i18n-text="editLivemark_save"></button>
+    </div>
+  </form>
+
   <script src="/shared/i18n.js"></script>
   <script src="/shared/settings.js"></script>
   <script src="/shared/livemark-store.js"></script>

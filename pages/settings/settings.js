@@ -137,16 +137,25 @@ function initDialogs() {
 async function loadFeeds() {
   toggleDialog("settings-dialog", false);
   toggleDialog("edit-livemark-dialog", false);
-  const allFeeds = await LivemarkStore.getAll();
+  const broken = [];
+  const allFeeds = await LivemarkStore.getAll(broken);
   document.getElementById("feeds").textContent = "";
   allFeeds.sort((a, b) => {
     return a.title.localeCompare(b.title);
-  }).forEach(addFeedToList);
+  }).forEach(feed => addFeedToList(feed, false));
+
+  broken.forEach((feed) => {
+    feed.title = I18N.getMessage("settings_brokenLivemark");
+    addFeedToList(feed, true);
+  })
 }
 
-function addFeedToList(feed) {
+function addFeedToList(feed, broken = false) {
   const item = document.createElement("div");
   item.className = "feed card";
+  if (broken) {
+    item.classList.add("broken");
+  }
 
   const feedTitle = document.createElement("span");
   feedTitle.textContent = feed.title;
@@ -160,7 +169,13 @@ function addFeedToList(feed) {
 
   const editIcon = document.createElement("button");
   editIcon.className = "icon more feed-edit";
-  editIcon.onclick = () => showEditFeedDialog(feed);
+  editIcon.onclick = () => {
+    if (!broken) {
+      showEditFeedDialog(feed);
+    } else {
+      showSelectFolderDialog(feed);
+    }
+  }
   item.appendChild(editIcon);
   document.getElementById("feeds").appendChild(item);
 }
@@ -203,10 +218,41 @@ async function showEditFeedDialog(feed) {
   toggleDialog(dialog.id, true);
 }
 
-async function populateFolderSelector(folderSelector) {
+async function showSelectFolderDialog(feed) {
+  const dialog = document.querySelector("#select-folder-dialog");
+
+  toggleDialog(dialog.id, false);
+
+  await populateFolderSelector(dialog.livemarkFolder, true);
+
+  // dialog.livemarkFolder.querySelectorAll("")
+
+  dialog.onsubmit = async (e) => {
+    e.preventDefault()
+
+    const valid = dialog.reportValidity();
+    if (valid) {
+      toggleDialog(dialog.id, false);
+
+      await LivemarkStore.remove(feed.id);
+      await LivemarkStore.addWithBookmark(dialog.livemarkFolder.value, feed);
+    }
+  }
+
+  toggleDialog(dialog.id, true);
+}
+
+async function populateFolderSelector(folderSelector, removeBuiltin = false) {
   const allFolders = await getAllBookmarkFolders();
   folderSelector.textContent = "";
-  folderSelector.append(...allFolders.map(folder => {
+  folderSelector.append(...allFolders.filter(folder => {
+    if (removeBuiltin) {
+      const builtinIds = ["toolbar_____", "menu________", "unfiled_____", "mobile______"];
+      return !builtinIds.includes(folder.id);
+    }
+
+    return false;
+  }).map(folder => {
     const option = document.createElement("option");
     option.value = folder.id;
     option.textContent = folder.title;

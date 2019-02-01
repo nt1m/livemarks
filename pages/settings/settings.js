@@ -147,7 +147,7 @@ async function loadFeeds() {
   broken.forEach((feed) => {
     feed.title = I18N.getMessage("settings_brokenLivemark");
     addFeedToList(feed, true);
-  })
+  });
 }
 
 function addFeedToList(feed, broken = false) {
@@ -175,7 +175,7 @@ function addFeedToList(feed, broken = false) {
     } else {
       showSelectFolderDialog(feed);
     }
-  }
+  };
   item.appendChild(editIcon);
   document.getElementById("feeds").appendChild(item);
 }
@@ -225,10 +225,8 @@ async function showSelectFolderDialog(feed) {
 
   await populateFolderSelector(dialog.livemarkFolder, true);
 
-  // dialog.livemarkFolder.querySelectorAll("")
-
   dialog.onsubmit = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
     const valid = dialog.reportValidity();
     if (valid) {
@@ -237,7 +235,7 @@ async function showSelectFolderDialog(feed) {
       await LivemarkStore.remove(feed.id);
       await LivemarkStore.addWithBookmark(dialog.livemarkFolder.value, feed);
     }
-  }
+  };
 
   toggleDialog(dialog.id, true);
 }
@@ -251,7 +249,7 @@ async function populateFolderSelector(folderSelector, removeBuiltin = false) {
       return !builtinIds.includes(folder.id);
     }
 
-    return false;
+    return true;
   }).map(folder => {
     const option = document.createElement("option");
     option.value = folder.id;

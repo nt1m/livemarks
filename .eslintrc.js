@@ -11,7 +11,7 @@ module.exports = {
     "mozilla"
   ],
   "parserOptions": {
-    "ecmaVersion": 8
+    "ecmaVersion": 9
   },
   "rules": {
     // Disallow using variables outside the blocks they are defined (especially

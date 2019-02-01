@@ -29,6 +29,15 @@ main > * {
                        "siteUrl edit";
 }
 
+.broken {
+  background-image: linear-gradient(45deg, rgba(252, 166, 166, 0.7) 25%, white 25%, white 50%, rgba(252, 166, 166, 0.7) 50%, rgba(252, 166, 166, 0.7) 75%, white 75%, white 100%);
+  background-size: 3em 3em;
+}
+
+.broken .feed-title {
+  font-weight: bold;
+}
+
 .feed-title {
   grid-area: title;
 }

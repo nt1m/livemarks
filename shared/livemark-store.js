@@ -22,7 +22,7 @@ const LivemarkStore = {
     return result[toInternalId(id)];
   },
 
-  async getAll() {
+  async getAll(broken = []) {
     const livemarks = await browser.storage.sync.get();
 
     const all = [];
@@ -36,12 +36,14 @@ const LivemarkStore = {
         const details = await this._makeDetails(id, livemarks[key]);
         all.push(details);
       } catch (e) {
+        broken.push({id, ...livemarks[key]});
         console.error("Found broken bookmark", id, e);
       }
     }
 
     return all;
   },
+
   async add(feed) {
     const { title, parentId } = feed;
     const bookmark = await browser.bookmarks.create({
@@ -50,6 +52,10 @@ const LivemarkStore = {
       parentId,
     });
 
+    this.addWithBookmark(bookmark.id, feed);
+  },
+
+  async addWithBookmark(id, feed) {
     const feedDetails = {
       feedUrl: feed.feedUrl,
       maxItems: feed.maxItems,
@@ -61,7 +67,7 @@ const LivemarkStore = {
     }
 
     await browser.storage.sync.set({
-      [toInternalId(bookmark.id)]: feedDetails
+      [toInternalId(id)]: feedDetails
     });
   },
 

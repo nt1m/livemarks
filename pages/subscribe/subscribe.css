@@ -5,8 +5,11 @@ body {
 }
 
 #header {
-  align-items: center;
   margin: 1em auto;
+}
+
+#title-header {
+  align-items: center;
 }
 
 #title {
@@ -14,8 +17,8 @@ body {
 }
 
 #description {
-  color: var(--grey-50);
   margin-top: 0.5em;
+  color: var(--grey-50);
 }
 
 #feed-url {

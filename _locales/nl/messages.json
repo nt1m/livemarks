@@ -1,30 +1,30 @@
 {
   "extensionDescription": {
-    "message": "Przywraca obsługę dynamicznych zakładek RSS do Firefoksa 64 i nowszych."
+    "message": "Herstelt ondersteuning voor RSS-livebladwijzers in Firefox 64 en hoger."
   },
   "reloadLiveBookmark": {
-    "message": "Odśwież dynamiczną zakładkę"
+    "message": "Livebladwijzer opnieuw laden"
   },
   "subscribe": {
-    "message": "Subskrybuj"
+    "message": "Abonneren"
   },
   "subscribe_title": {
-    "message": "Podgląd kanału"
+    "message": "Feedvoorbeeld"
   },
   "subscribe_addLivemark": {
-    "message": "Dodaj dynamiczną zakładkę"
+    "message": "Livebladwijzer toevoegen"
   },
   "subscribe_viewSource": {
-    "message": "Wyświetl źródło"
+    "message": "Bron weergeven"
   },
   "subscribe_failedToFetchFeed": {
-    "message": "Pobranie kanału się nie powiodło"
+    "message": "Ophalen van feed mislukt"
   },
   "subscribe_noEntriesFound": {
-    "message": "Nie odnaleziono żadnych wpisów kanału"
+    "message": "Geen feedvermeldingen gevonden"
   },
   "subscribe_subscribed": {
-    "message": "Dodano do folderu „$FOLDER$”, strona opcji umożliwia modyfikację.",
+    "message": "Toegevoegd aan $FOLDER$; bezoek de optiespagina om de standaardmap te bewerken.",
     "placeholders": {
       "folder": {
         "content": "$1"
@@ -32,35 +32,35 @@
     }
   },
   "noItemsFound": {
-    "message": "Nie odnaleziono żadnych elementów"
+    "message": "Geen items gevonden"
   },
   "yourLivemarks": {
     "description": "Title of the 'Your livemarks' page",
-    "message": "Moje dynamiczne zakładki"
+    "message": "Uw livebladwijzers"
   },
   "moreOptions": {
-    "message": "Więcej opcji"
+    "message": "Meer opties"
   },
   "newLivemark": {
-    "message": "Nowa dynamiczna zakładka"
+    "message": "Nieuwe livebladwijzer"
   },
   "enterFeedURL": {
-    "message": "Adres kanału"
+    "message": "Voer feed-URL in"
   },
   "settings_importExport_heading": {
-    "message": "Import/eksport"
+    "message": "Importeren/Exporteren"
   },
   "settings_importExport_description": {
-    "message": "Ta funkcja używa formatu OPML, obsługiwanego przez większość czytników RSS."
+    "message": "Deze functie gebruikt de OPML-indeling, die door de meeste RSS-lezers wordt gebruikt."
   },
   "settings_importExport_importFeeds": {
-    "message": "Importuj kanały"
+    "message": "Feeds importeren"
   },
   "settings_importExport_exportFeeds": {
-    "message": "Eksportuj kanały"
+    "message": "Feeds exporteren"
   },
   "settings_importExport_successImport": {
-    "message": "Pomyślnie zaimportowano kanały ($COUNT$).",
+    "message": "$COUNT$ feeds met succes geïmporteerd.",
     "placeholders": {
       "count": {
         "content": "$1"
@@ -68,92 +68,92 @@
     }
   },
   "settings_importExport_errorImport": {
-    "message": "Błąd podczas importowania pliku OPML"
+    "message": "Fout bij importeren van OPML-bestand"
   },
   "settings_refreshInterval_heading": {
-    "message": "Czas między odświeżaniem"
+    "message": "Vernieuwingsinterval"
   },
   "settings_refreshInterval_description": {
-    "message": "Jak często dynamiczne zakładki są aktualizowane."
+    "message": "Configureren hoe vaak livebladwijzers worden bijgewerkt."
   },
   "settings_refreshInterval_minutes": {
     "description": "Shown as 'X minutes' in the settings dialog",
-    "message": "min"
+    "message": "minuten"
   },
   "settings_defaultFolder_heading": {
-    "message": "Domyślny folder"
+    "message": "Standaardmap"
   },
   "settings_defaultFolder_description": {
-    "message": "Nowe dynamiczne zakładki będą domyślnie zachowywane w tym miejscu."
+    "message": "Hier worden alle toekomstige livebladwijzers standaard opgeslagen."
   },
   "settings_prefixes_heading": {
-    "message": "Przedrostki zakładek"
+    "message": "Bladwijzervoorvoegsels"
   },
   "settings_prefixes_description": {
-    "message": "Podane znaki będą używane jako przedrostki zakładek do wskazywania stanu."
+    "message": "De opgegeven tekenreeksen worden als bladwijzervoorvoegsels gebruikt om de status aan te geven."
   },
   "settings_prefixes_unread": {
-    "message": "Nieprzeczytane:"
+    "message": "Ongelezen:"
   },
   "settings_prefixes_read": {
-    "message": "Przeczytane:"
+    "message": "Gelezen:"
   },
   "settings_feedPreview_heading": {
-    "message": "Podgląd kanału"
+    "message": "Feedvoorbeeld"
   },
   "settings_feedPreview_description": {
-    "message": "Wyświetlanie po bezpośrednim otwarciu adresu kanału"
+    "message": "Feedvoorbeeld inschakelen bij rechtstreeks bezoeken van een feed-URL"
   },
   "settings_about_heading": {
-    "message": "O dodatku"
+    "message": "Over"
   },
   "settings_about_description_1": {
-    "message": "Autorzy:"
+    "message": "Deze add-on is gemaakt door"
   },
   "settings_about_description_2": {
-    "message": ". Na podstawie rozszerzenia"
+    "message": " en gebaseerd op"
   },
   "settings_about_description_3": {
-    "message": ". Sposoby wsparcia dodatku:"
+    "message": ". U kunt de add-on als volgt steunen:"
   },
   "settings_about_donating": {
-    "message": "Przekaż datek"
+    "message": "Doneren"
   },
   "settings_about_reviewing": {
-    "message": "Napisz dobrą recenzję"
+    "message": "Een goede beoordeling geven"
   },
   "settings_about_reporting": {
-    "message": "Zgłoś problem"
+    "message": "Problemen melden"
   },
   "settings_about_translating": {
-    "message": "Pomóż w tłumaczeniu"
+    "message": "Vertalingen bijdragen"
   },
   "settings_close": {
-    "message": "Zamknij"
+    "message": "Sluiten"
   },
   "editLivemark_name": {
-    "message": "Nazwa"
+    "message": "Naam"
   },
   "editLivemark_remove": {
-    "message": "Usuń ten kanał"
+    "message": "Deze feed verwijderen"
   },
   "editLivemark_feedURL": {
-    "message": "Adres kanału"
+    "message": "Feed-URL"
   },
   "editLivemark_siteURL": {
-    "message": "Adres witryny"
+    "message": "Website-URL"
   },
   "editLivemark_parentFolder": {
-    "message": "Folder nadrzędny"
+    "message": "Bovenliggende map"
   },
   "editLivemark_maxItems": {
-    "message": "Maksymalna liczba elementów"
+    "message": "Maximale aantal items"
   },
   "editLivemark_cancel": {
-    "message": "Anuluj"
+    "message": "Annuleren"
   },
   "editLivemark_save": {
-    "message": "Zapisz"
+    "message": "Opslaan"
   },
   "settings_brokenLivemark": {
     "message": "Broken livemark"

@@ -154,5 +154,11 @@
   },
   "editLivemark_save": {
     "message": "Enregistrer"
+  },
+  "settings_brokenLivemark": {
+    "message": "Marque-page erroné"
+  },
+  "selectFolder_folder": {
+    "message": "Sélectionnez un nouveau dossier pour le marque-page erroné"
   }
 }

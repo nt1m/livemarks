@@ -5,6 +5,12 @@
   "reloadLiveBookmark": {
     "message": "Dynamische Lesezeichen aktualisieren"
   },
+  "subscribe": {
+    "message": "Subscribe"
+  },
+  "subscribe_title": {
+    "message": "Feed preview"
+  },
   "subscribe_addLivemark": {
     "message": "Livemark hinzufügen"
   },
@@ -148,5 +154,11 @@
   },
   "editLivemark_save": {
     "message": "Speichern"
+  },
+  "settings_brokenLivemark": {
+    "message": "Broken livemark"
+  },
+  "selectFolder_folder": {
+    "message": "Select folder used by broken livemark"
   }
 }

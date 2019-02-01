@@ -1,12 +1,18 @@
 {
   "extensionDescription": {
-    "message": "Ripristina il supporto ai segnalibri live RSS in Firefox 64 e superiori."
+    "message": "Ripristina il supporto ai Segnalibri live RSS in Firefox 64 e successive."
   },
   "reloadLiveBookmark": {
-    "message": "Ricarica il segnalibro live"
+    "message": "Ricarica Segnalibro live"
+  },
+  "subscribe": {
+    "message": "Abbonati"
+  },
+  "subscribe_title": {
+    "message": "Anteprima del feed"
   },
   "subscribe_addLivemark": {
-    "message": "Aggiunge Livemark"
+    "message": "Aggiungi Segnalibro live"
   },
   "subscribe_viewSource": {
     "message": "Visualizza sorgente"
@@ -15,10 +21,10 @@
     "message": "Impossibile recuperare il feed"
   },
   "subscribe_noEntriesFound": {
-    "message": "Nessuna voce di feed trovata"
+    "message": "Nessuna voce del feed trovata"
   },
   "subscribe_subscribed": {
-    "message": "Aggiunto a $FOLDER$, visita la pagina delle opzioni per modificarlo.",
+    "message": "Aggiunto a $FOLDER$, visitare la pagina delle opzioni per modificarlo.",
     "placeholders": {
       "folder": {
         "content": "$1"
@@ -30,31 +36,31 @@
   },
   "yourLivemarks": {
     "description": "Title of the 'Your livemarks' page",
-    "message": "I tuoi livemark"
+    "message": "Segnalibri live salvati"
   },
   "moreOptions": {
     "message": "Altre opzioni"
   },
   "newLivemark": {
-    "message": "Nuovo livemark"
+    "message": "Nuovo Segnalibro live"
   },
   "enterFeedURL": {
-    "message": "Inserisci l'URL del feed"
+    "message": "Inserire l'URL del feed"
   },
   "settings_importExport_heading": {
-    "message": "Importa/Esporta"
+    "message": "Importa/esporta"
   },
   "settings_importExport_description": {
     "message": "Questa caratteristica utilizza il formato OPML utilizzato dalla maggior parte dei lettori RSS."
   },
   "settings_importExport_importFeeds": {
-    "message": "Importa i feed"
+    "message": "Importa feed"
   },
   "settings_importExport_exportFeeds": {
-    "message": "Esporta i feed"
+    "message": "Esporta feed"
   },
   "settings_importExport_successImport": {
-    "message": "Sono stati importati con successo $COUNT$ feed.",
+    "message": " $COUNT$ importati correttamente.",
     "placeholders": {
       "count": {
         "content": "$1"
@@ -68,7 +74,7 @@
     "message": "Intervallo di aggiornamento"
   },
   "settings_refreshInterval_description": {
-    "message": "Configura la frequenza con cui i livemarks vengono aggiornati."
+    "message": "Configura la frequenza di aggiornamento dei Segnalibri live."
   },
   "settings_refreshInterval_minutes": {
     "description": "Shown as 'X minutes' in the settings dialog",
@@ -78,7 +84,7 @@
     "message": "Cartella predefinita"
   },
   "settings_defaultFolder_description": {
-    "message": "Tutti i livemark futuri saranno salvati qui per impostazione predefinita"
+    "message": "Tutti i futuri segnalibri live saranno salvati qui per impostazione predefinita."
   },
   "settings_prefixes_heading": {
     "message": "Prefissi dei segnalibri"
@@ -96,10 +102,10 @@
     "message": "Anteprima del feed"
   },
   "settings_feedPreview_description": {
-    "message": "Abilita l'anteprima del feed quando si accede direttamente a un URL del feed"
+    "message": "Attiva l'anteprima del feed quando si accede direttamente all'URL di un feed"
   },
   "settings_about_heading": {
-    "message": "Informazioni su"
+    "message": "Informazioni"
   },
   "settings_about_description_1": {
     "message": "Questo componente aggiuntivo è stato creato da"
@@ -108,13 +114,13 @@
     "message": ". È basato su"
   },
   "settings_about_description_3": {
-    "message": ". Puoi supportare il componente aggiuntivo di:"
+    "message": ". Puoi supportare il componente aggiuntivo in questo modo:"
   },
   "settings_about_donating": {
-    "message": "Donazione"
+    "message": "Effettuando una donazione"
   },
   "settings_about_reviewing": {
-    "message": "Dando una recensione positiva"
+    "message": "Scrivendo una recensione positiva"
   },
   "settings_about_reporting": {
     "message": "Segnalando problemi"
@@ -129,7 +135,7 @@
     "message": "Nome"
   },
   "editLivemark_remove": {
-    "message": "Rimuovi questo feed"
+    "message": "Elimina questo feed"
   },
   "editLivemark_feedURL": {
     "message": "URL del feed"
@@ -148,5 +154,11 @@
   },
   "editLivemark_save": {
     "message": "Salva"
+  },
+  "settings_brokenLivemark": {
+    "message": "Broken livemark"
+  },
+  "selectFolder_folder": {
+    "message": "Select folder used by broken livemark"
   }
 }

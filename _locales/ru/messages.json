@@ -1,0 +1,164 @@
+{
+  "extensionDescription": {
+    "message": "Восстанавливает поддержку RSS и Живых закладок в Firefox 64 и выше."
+  },
+  "reloadLiveBookmark": {
+    "message": "Обновить Живую закладку"
+  },
+  "subscribe": {
+    "message": "Подписаться"
+  },
+  "subscribe_title": {
+    "message": "Предварительный просмотр новостного канала"
+  },
+  "subscribe_addLivemark": {
+    "message": "Добавить Livemark"
+  },
+  "subscribe_viewSource": {
+    "message": "Просмотреть исходный код"
+  },
+  "subscribe_failedToFetchFeed": {
+    "message": "Не удалось получить канал"
+  },
+  "subscribe_noEntriesFound": {
+    "message": "Записи ленты не найдены"
+  },
+  "subscribe_subscribed": {
+    "message": " Добавлено в $FOLDER$, перейдите на страницу настроек, чтобы отредактировать её.",
+    "placeholders": {
+      "folder": {
+        "content": "$1"
+      }
+    }
+  },
+  "noItemsFound": {
+    "message": "Ничего не найдено"
+  },
+  "yourLivemarks": {
+    "description": "Title of the 'Your livemarks' page",
+    "message": "Ваши livemarks"
+  },
+  "moreOptions": {
+    "message": "Дополнительные параметры"
+  },
+  "newLivemark": {
+    "message": "Новые livemark"
+  },
+  "enterFeedURL": {
+    "message": "Введите адрес ленты новостей"
+  },
+  "settings_importExport_heading": {
+    "message": "Импорт/Экспорт"
+  },
+  "settings_importExport_description": {
+    "message": "Эта функция использует формат OPML, которым пользуется большинство программ RSS."
+  },
+  "settings_importExport_importFeeds": {
+    "message": "Импорт новостных каналов"
+  },
+  "settings_importExport_exportFeeds": {
+    "message": "Экспорт новостных каналов"
+  },
+  "settings_importExport_successImport": {
+    "message": "Успешно импортированных  каналов новостей $COUNT$ .",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "settings_importExport_errorImport": {
+    "message": "Ошибка при импорте файла OPML"
+  },
+  "settings_refreshInterval_heading": {
+    "message": "Интервал обновления"
+  },
+  "settings_refreshInterval_description": {
+    "message": "Настройте частоту обновления livemarks:"
+  },
+  "settings_refreshInterval_minutes": {
+    "description": "Shown as 'X minutes' in the settings dialog",
+    "message": "минут"
+  },
+  "settings_defaultFolder_heading": {
+    "message": "Папка по умолчанию"
+  },
+  "settings_defaultFolder_description": {
+    "message": "Все будущие livermarks будут сохранены здесь по умолчанию:"
+  },
+  "settings_prefixes_heading": {
+    "message": "Префиксы закладок"
+  },
+  "settings_prefixes_description": {
+    "message": "Предоставленные значения будут использоваться в качестве префиксов закладок для обозначения их состояния."
+  },
+  "settings_prefixes_unread": {
+    "message": "Непрочитанных: "
+  },
+  "settings_prefixes_read": {
+    "message": "Читать:"
+  },
+  "settings_feedPreview_heading": {
+    "message": "Предварительный просмотр ленты новостей"
+  },
+  "settings_feedPreview_description": {
+    "message": "Включение предварительного просмотра новостной ленты при прямом просмотре URL- адреса канала."
+  },
+  "settings_about_heading": {
+    "message": "О Livemarks"
+  },
+  "settings_about_description_1": {
+    "message": "Это дополнение было создано"
+  },
+  "settings_about_description_2": {
+    "message": "и основано на"
+  },
+  "settings_about_description_3": {
+    "message": ". Вы можете поддержать расширение:"
+  },
+  "settings_about_donating": {
+    "message": "Пожертвовать"
+  },
+  "settings_about_reviewing": {
+    "message": "Добавить хороший отзыв :)"
+  },
+  "settings_about_reporting": {
+    "message": "Сообщить об ошибках"
+  },
+  "settings_about_translating": {
+    "message": "Помочь с переводом"
+  },
+  "settings_close": {
+    "message": "Закрыть"
+  },
+  "editLivemark_name": {
+    "message": "Имя"
+  },
+  "editLivemark_remove": {
+    "message": "Удалить эту ленту новостей"
+  },
+  "editLivemark_feedURL": {
+    "message": "Адрес ленты новостей"
+  },
+  "editLivemark_siteURL": {
+    "message": "Адрес сайта"
+  },
+  "editLivemark_parentFolder": {
+    "message": "Папка для закладки"
+  },
+  "editLivemark_maxItems": {
+    "message": "Максимальное количество элементов"
+  },
+  "editLivemark_cancel": {
+    "message": "Отменить"
+  },
+  "editLivemark_save": {
+    "message": "Сохранить"
+  },
+  "settings_brokenLivemark": {
+    "message": "Broken livemark"
+  },
+  "selectFolder_folder": {
+    "message": "Select folder used by broken livemark"
+  }
+}

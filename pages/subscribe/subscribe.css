@@ -5,11 +5,19 @@ body {
 }
 
 #header {
-  align-items: center;
   margin: 1em auto;
 }
 
+#title-header {
+  align-items: center;
+}
+
+#title {
+  font-size: 1.7em;
+}
+
 #description {
+  margin-top: 0.5em;
   color: var(--grey-50);
 }
 
@@ -22,7 +30,7 @@ body {
   background: url(/icons/link.svg) no-repeat 4px center !important;
   box-shadow: none !important;
   color: inherit;
-  margin-bottom: 1em;
+  margin-bottom: 0.5em;
 }
 
 #view-source-button {

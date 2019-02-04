@@ -107,14 +107,18 @@
   "settings_about_heading": {
     "message": "About"
   },
-  "settings_about_description_1": {
-    "message": "This add-on was built by"
+  "settings_about_description_authors": {
+    "message": "This add-on was built by:"
   },
-  "settings_about_description_2": {
-    "message": ". It's based on"
+  "settings_about_description_before_foxish": {
+    "description": "Between _before_foxish and _after_foxish there a 'Foxish' HTML link",
+    "message": "It's based on "
   },
-  "settings_about_description_3": {
-    "message": ". You can support the add-on by:"
+  "settings_about_description_after_foxish": {
+    "message": "."
+  },
+  "settings_about_description_support": {
+    "message": "You can support the add-on by:"
   },
   "settings_about_donating": {
     "message": "Donating"

@@ -107,13 +107,17 @@
   "settings_about_heading": {
     "message": "Livemarksについて"
   },
-  "settings_about_description_1": {
-    "message": "このアドオンは"
+  "settings_about_description_authors": {
+    "message": "このアドオンは："
   },
-  "settings_about_description_2": {
+  "settings_about_description_before_foxish": {
+    "description": "Between _before_foxish and _after_foxish there is a 'Foxish' HTML link",
     "message": "によって作成されました。このアドオンは"
   },
-  "settings_about_description_3": {
+  "settings_about_description_after_foxish": {
+    "message": "."
+  },
+  "settings_about_description_support": {
     "message": "を基としています。以下の方法でこのアドオンを支援することができます："
   },
   "settings_about_donating": {
@@ -156,9 +160,9 @@
     "message": "保存"
   },
   "settings_brokenLivemark": {
-    "message": "Broken livemark"
+    "message": "破損しているライブブックマーク"
   },
   "selectFolder_folder": {
-    "message": "Select folder used by broken livemark"
+    "message": "破損しているライブブックマークにより使用されているフォルダを選択"
   }
 }

@@ -1,30 +1,30 @@
 {
   "extensionDescription": {
-    "message": "Herstelt ondersteuning voor RSS-livebladwijzers in Firefox 64 en hoger."
+    "message": "Genskaber understøttelse af RSS live-bogmærker i Firefox 64 og nyere"
   },
   "reloadLiveBookmark": {
-    "message": "Livebladwijzer opnieuw laden"
+    "message": "Genindlæs live-bogmærke"
   },
   "subscribe": {
-    "message": "Abonneren"
+    "message": "Abonnér"
   },
   "subscribe_title": {
-    "message": "Feedvoorbeeld"
+    "message": "Forhåndsvisning af feed"
   },
   "subscribe_addLivemark": {
-    "message": "Livebladwijzer toevoegen"
+    "message": "Tilføj live-bogmærke"
   },
   "subscribe_viewSource": {
-    "message": "Bron weergeven"
+    "message": "Vis kilde"
   },
   "subscribe_failedToFetchFeed": {
-    "message": "Ophalen van feed mislukt"
+    "message": "Feedet kan ikke indlæses"
   },
   "subscribe_noEntriesFound": {
-    "message": "Geen feedvermeldingen gevonden"
+    "message": "Feedet findes men er tomt"
   },
   "subscribe_subscribed": {
-    "message": "Toegevoegd aan $FOLDER$; bezoek de optiespagina om de standaardmap te bewerken.",
+    "message": "Tilføjet til $FOLDER$, hvis placeringen skal ændres kan det gøres i indstillinger",
     "placeholders": {
       "folder": {
         "content": "$1"
@@ -32,35 +32,35 @@
     }
   },
   "noItemsFound": {
-    "message": "Geen items gevonden"
+    "message": "Intet fundet"
   },
   "yourLivemarks": {
     "description": "Title of the 'Your livemarks' page",
-    "message": "Uw livebladwijzers"
+    "message": "Dine live-bogmærker"
   },
   "moreOptions": {
-    "message": "Meer opties"
+    "message": "Flere indstillinger"
   },
   "newLivemark": {
-    "message": "Nieuwe livebladwijzer"
+    "message": "Nyt live-bogmærke"
   },
   "enterFeedURL": {
-    "message": "Voer feed-URL in"
+    "message": "Indtast Feedets URL"
   },
   "settings_importExport_heading": {
-    "message": "Importeren/Exporteren"
+    "message": "Importer/Exporter"
   },
   "settings_importExport_description": {
-    "message": "Deze functie gebruikt de OPML-indeling, die door de meeste RSS-lezers wordt gebruikt."
+    "message": "Her kan man indlæse OPML filer som er et format som bruges af de fleste RSS læsere."
   },
   "settings_importExport_importFeeds": {
-    "message": "Feeds importeren"
+    "message": "Importer feeds"
   },
   "settings_importExport_exportFeeds": {
-    "message": "Feeds exporteren"
+    "message": "Exporter feeds"
   },
   "settings_importExport_successImport": {
-    "message": "$COUNT$ feeds met succes geïmporteerd.",
+    "message": "Importeret $COUNT$feeds succesfuldt.",
     "placeholders": {
       "count": {
         "content": "$1"
@@ -68,101 +68,101 @@
     }
   },
   "settings_importExport_errorImport": {
-    "message": "Fout bij importeren van OPML-bestand"
+    "message": "Der er sket en fejl under indlæsning af OPML-filen"
   },
   "settings_refreshInterval_heading": {
-    "message": "Vernieuwingsinterval"
+    "message": "Opdaterings interval"
   },
   "settings_refreshInterval_description": {
-    "message": "Configureren hoe vaak livebladwijzers worden bijgewerkt."
+    "message": "Angiver hvor ofte live-bogmærker bliver opdateret"
   },
   "settings_refreshInterval_minutes": {
     "description": "Shown as 'X minutes' in the settings dialog",
-    "message": "minuten"
+    "message": "minutter"
   },
   "settings_defaultFolder_heading": {
-    "message": "Standaardmap"
+    "message": "Standard mappe"
   },
   "settings_defaultFolder_description": {
-    "message": "Hier worden alle toekomstige livebladwijzers standaard opgeslagen."
+    "message": "Alle fremtidige live-bogmærker vil blive gemt her"
   },
   "settings_prefixes_heading": {
-    "message": "Bladwijzervoorvoegsels"
+    "message": "Live-bogmærke prefixer"
   },
   "settings_prefixes_description": {
-    "message": "De opgegeven tekenreeksen worden als bladwijzervoorvoegsels gebruikt om de status aan te geven."
+    "message": "De angivne tegn vil blive brugt som prefix til at vise status."
   },
   "settings_prefixes_unread": {
-    "message": "Ongelezen:"
+    "message": "Ikke læste:"
   },
   "settings_prefixes_read": {
-    "message": "Gelezen:"
+    "message": "Læste:"
   },
   "settings_feedPreview_heading": {
-    "message": "Feedvoorbeeld"
+    "message": "Forhåndsvisning af feed"
   },
   "settings_feedPreview_description": {
-    "message": "Feedvoorbeeld inschakelen bij rechtstreeks bezoeken van een feed-URL"
+    "message": "Muliggører fårhåndsvisning af feed ved besøg af feedets URL"
   },
   "settings_about_heading": {
-    "message": "Over"
+    "message": "Om"
   },
   "settings_about_description_authors": {
-    "message": "Deze add-on is gemaakt door:"
+    "message": "Denne udvidelse er lavet af:"
   },
   "settings_about_description_before_foxish": {
     "description": "Between _before_foxish and _after_foxish there is a 'Foxish' HTML link",
-    "message": "En gebaseerd op"
+    "message": "Det er baseret på"
   },
   "settings_about_description_after_foxish": {
     "message": "."
   },
   "settings_about_description_support": {
-    "message": "U kunt de add-on als volgt steunen:"
+    "message": "Du kan støtte udvidelsen ved at:"
   },
   "settings_about_donating": {
-    "message": "Doneren"
+    "message": "Donere"
   },
   "settings_about_reviewing": {
-    "message": "Een goede beoordeling geven"
+    "message": "Give en god anmeldelse"
   },
   "settings_about_reporting": {
-    "message": "Problemen melden"
+    "message": "Rapportere problemer"
   },
   "settings_about_translating": {
-    "message": "Vertalingen bijdragen"
+    "message": "Bidrag med oversættelse"
   },
   "settings_close": {
-    "message": "Sluiten"
+    "message": "Luk"
   },
   "editLivemark_name": {
-    "message": "Naam"
+    "message": "Navn"
   },
   "editLivemark_remove": {
-    "message": "Deze feed verwijderen"
+    "message": "Fjern denne feed"
   },
   "editLivemark_feedURL": {
-    "message": "Feed-URL"
+    "message": "Feedens URL"
   },
   "editLivemark_siteURL": {
-    "message": "Website-URL"
+    "message": "Hjemmesidens URL"
   },
   "editLivemark_parentFolder": {
-    "message": "Bovenliggende map"
+    "message": "Overordnet mappe"
   },
   "editLivemark_maxItems": {
-    "message": "Maximale aantal items"
+    "message": "Maksimalt antal elementer"
   },
   "editLivemark_cancel": {
-    "message": "Annuleren"
+    "message": "Afbryd"
   },
   "editLivemark_save": {
-    "message": "Opslaan"
+    "message": "Gem"
   },
   "settings_brokenLivemark": {
-    "message": "Defecte livebladwijzer"
+    "message": "Fejl ved live-bogmærke"
   },
   "selectFolder_folder": {
-    "message": "Selecteer een map voor de defecte livebladwijzer"
+    "message": "Vælg mappe til fejlbehæftede live-bogmærker"
   }
 }

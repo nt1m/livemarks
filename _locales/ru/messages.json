@@ -107,14 +107,18 @@
   "settings_about_heading": {
     "message": "О Livemarks"
   },
-  "settings_about_description_1": {
-    "message": "Это дополнение было создано"
+  "settings_about_description_authors": {
+    "message": "Это дополнение было создано:"
   },
-  "settings_about_description_2": {
+  "settings_about_description_before_foxish": {
+    "description": "Between _before_foxish and _after_foxish there is a 'Foxish' HTML link",
     "message": "и основано на"
   },
-  "settings_about_description_3": {
-    "message": ". Вы можете поддержать расширение:"
+  "settings_about_description_after_foxish": {
+    "message": "."
+  },
+  "settings_about_description_support": {
+    "message": "Вы можете поддержать расширение:"
   },
   "settings_about_donating": {
     "message": "Пожертвовать"
@@ -156,9 +160,9 @@
     "message": "Сохранить"
   },
   "settings_brokenLivemark": {
-    "message": "Broken livemark"
+    "message": "Сломанные Livemark"
   },
   "selectFolder_folder": {
-    "message": "Select folder used by broken livemark"
+    "message": "Выберите папку для неправильной закладки"
   }
 }

@@ -107,14 +107,18 @@
   "settings_about_heading": {
     "message": "O doplnku"
   },
-  "settings_about_description_1": {
-    "message": "Doplnok vytvorili"
+  "settings_about_description_authors": {
+    "message": "Doplnok vytvorili:"
   },
-  "settings_about_description_2": {
-    "message": ". Je založený na doplnku"
+  "settings_about_description_before_foxish": {
+    "description": "Between _before_foxish and _after_foxish there is a 'Foxish' HTML link",
+    "message": "Je založený na doplnku:"
   },
-  "settings_about_description_3": {
-    "message": ". Môžete ho podporiť nasledovnými spôsobmi:"
+  "settings_about_description_after_foxish": {
+    "message": "."
+  },
+  "settings_about_description_support": {
+    "message": "Môžete ho podporiť nasledovnými spôsobmi:"
   },
   "settings_about_donating": {
     "message": "Prispením"

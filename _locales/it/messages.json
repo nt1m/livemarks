@@ -1,6 +1,6 @@
 {
   "extensionDescription": {
-    "message": "Ripristina il supporto ai Segnalibri live RSS in Firefox 64 e successive."
+    "message": "Ripristina il supporto ai Segnalibri live RSS in Firefox 64 e versioni successive."
   },
   "reloadLiveBookmark": {
     "message": "Ricarica Segnalibro live"
@@ -60,7 +60,7 @@
     "message": "Esporta feed"
   },
   "settings_importExport_successImport": {
-    "message": " $COUNT$ importati correttamente.",
+    "message": " $COUNT$ feed importati correttamente.",
     "placeholders": {
       "count": {
         "content": "$1"
@@ -84,7 +84,7 @@
     "message": "Cartella predefinita"
   },
   "settings_defaultFolder_description": {
-    "message": "Tutti i futuri segnalibri live saranno salvati qui per impostazione predefinita."
+    "message": "Tutti i futuri Segnalibri live saranno salvati qui per impostazione predefinita."
   },
   "settings_prefixes_heading": {
     "message": "Prefissi dei segnalibri"
@@ -107,14 +107,18 @@
   "settings_about_heading": {
     "message": "Informazioni"
   },
-  "settings_about_description_1": {
-    "message": "Questo componente aggiuntivo è stato creato da"
+  "settings_about_description_authors": {
+    "message": "Questo componente aggiuntivo è stato creato da:"
   },
-  "settings_about_description_2": {
-    "message": ". È basato su"
+  "settings_about_description_before_foxish": {
+    "description": "Between _before_foxish and _after_foxish there is a 'Foxish' HTML link",
+    "message": "È basato su"
   },
-  "settings_about_description_3": {
-    "message": ". Puoi supportare il componente aggiuntivo in questo modo:"
+  "settings_about_description_after_foxish": {
+    "message": "."
+  },
+  "settings_about_description_support": {
+    "message": "È possibile supportare il componente aggiuntivo in questo modo:"
   },
   "settings_about_donating": {
     "message": "Effettuando una donazione"
@@ -138,16 +142,16 @@
     "message": "Elimina questo feed"
   },
   "editLivemark_feedURL": {
-    "message": "URL del feed"
+    "message": "URL del feed:"
   },
   "editLivemark_siteURL": {
-    "message": "URL del sito"
+    "message": "URL del sito:"
   },
   "editLivemark_parentFolder": {
-    "message": "Cartella principale"
+    "message": "Contenuto in:"
   },
   "editLivemark_maxItems": {
-    "message": "Numero massimo di elementi"
+    "message": "Numero massimo di elementi:"
   },
   "editLivemark_cancel": {
     "message": "Annulla"
@@ -156,9 +160,9 @@
     "message": "Salva"
   },
   "settings_brokenLivemark": {
-    "message": "Broken livemark"
+    "message": "Segnalibro live non valido"
   },
   "selectFolder_folder": {
-    "message": "Select folder used by broken livemark"
+    "message": "Selezionare la cartella utilizzata dal Segnalibro live non valido"
   }
 }

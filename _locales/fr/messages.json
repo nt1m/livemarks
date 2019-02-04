@@ -107,14 +107,18 @@
   "settings_about_heading": {
     "message": "À propos"
   },
-  "settings_about_description_1": {
-    "message": "Cette extension a été crée par"
+  "settings_about_description_authors": {
+    "message": "Cette extension a été crée par :"
   },
-  "settings_about_description_2": {
-    "message": ". Elle est basée sur"
+  "settings_about_description_before_foxish": {
+    "description": "Between _before_foxish and _after_foxish there is a 'Foxish' HTML link",
+    "message": "Elle est basée sur"
   },
-  "settings_about_description_3": {
-    "message": ". Vous pouvez soutenir l'extension en:"
+  "settings_about_description_after_foxish": {
+    "message": "."
+  },
+  "settings_about_description_support": {
+    "message": "Vous pouvez soutenir l'extension en :"
   },
   "settings_about_donating": {
     "message": "Faisant un don"

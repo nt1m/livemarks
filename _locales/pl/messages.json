@@ -107,14 +107,18 @@
   "settings_about_heading": {
     "message": "O dodatku"
   },
-  "settings_about_description_1": {
+  "settings_about_description_authors": {
     "message": "Autorzy:"
   },
-  "settings_about_description_2": {
-    "message": ". Na podstawie rozszerzenia"
+  "settings_about_description_before_foxish": {
+    "description": "Between _before_foxish and _after_foxish there is a 'Foxish' HTML link",
+    "message": "Na podstawie rozszerzenia:"
   },
-  "settings_about_description_3": {
-    "message": ". Sposoby wsparcia dodatku:"
+  "settings_about_description_after_foxish": {
+    "message": "."
+  },
+  "settings_about_description_support": {
+    "message": "Sposoby wsparcia dodatku:"
   },
   "settings_about_donating": {
     "message": "Przekaż datek"
@@ -156,9 +160,9 @@
     "message": "Zapisz"
   },
   "settings_brokenLivemark": {
-    "message": "Broken livemark"
+    "message": "Uszkodzona dynamiczna zakładka"
   },
   "selectFolder_folder": {
-    "message": "Select folder used by broken livemark"
+    "message": "Wybierz folder używany przez uszkodzoną dynamiczną zakładkę"
   }
 }

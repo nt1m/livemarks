@@ -6,10 +6,10 @@
     "message": "Dynamische Lesezeichen aktualisieren"
   },
   "subscribe": {
-    "message": "Subscribe"
+    "message": "Abonnieren"
   },
   "subscribe_title": {
-    "message": "Feed preview"
+    "message": "Feed-Vorschau"
   },
   "subscribe_addLivemark": {
     "message": "Livemark hinzufügen"
@@ -107,13 +107,17 @@
   "settings_about_heading": {
     "message": "Über"
   },
-  "settings_about_description_1": {
+  "settings_about_description_authors": {
     "message": "Dieses Add-On wurde erstellt durch:"
   },
-  "settings_about_description_2": {
+  "settings_about_description_before_foxish": {
+    "description": "Between _before_foxish and _after_foxish there is a 'Foxish' HTML link",
     "message": "Es basiert auf"
   },
-  "settings_about_description_3": {
+  "settings_about_description_after_foxish": {
+    "message": "."
+  },
+  "settings_about_description_support": {
     "message": "Unterstütze das Add-On durch:"
   },
   "settings_about_donating": {

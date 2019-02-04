@@ -5,6 +5,12 @@
   "reloadLiveBookmark": {
     "message": "Osveži Livemark"
   },
+  "subscribe": {
+    "message": "Subscribe"
+  },
+  "subscribe_title": {
+    "message": "Feed preview"
+  },
   "subscribe_addLivemark": {
     "message": "Dodaj Livemark"
   },
@@ -38,6 +44,9 @@
   "newLivemark": {
     "message": "Nov livemark"
   },
+  "enterFeedURL": {
+    "message": "Enter Feed URL"
+  },
   "settings_importExport_heading": {
     "message": "Uvozi / Izvozi"
   },
@@ -49,6 +58,17 @@
   },
   "settings_importExport_exportFeeds": {
     "message": "Izvozi vire"
+  },
+  "settings_importExport_successImport": {
+    "message": "Successfully imported $COUNT$ feeds.",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "settings_importExport_errorImport": {
+    "message": "Error importing OPML file"
   },
   "settings_refreshInterval_heading": {
     "message": "Osvežitveni intervali"
@@ -87,14 +107,18 @@
   "settings_about_heading": {
     "message": "O dodatku"
   },
-  "settings_about_description_1": {
-    "message": "Ta dodatek je naredil"
+  "settings_about_description_authors": {
+    "message": "Ta dodatek je naredil:"
   },
-  "settings_about_description_2": {
-    "message": ". Temelji na"
+  "settings_about_description_before_foxish": {
+    "description": "Between _before_foxish and _after_foxish there is a 'Foxish' HTML link",
+    "message": "Temelji na"
   },
-  "settings_about_description_3": {
-    "message": ". Dodatek lahko podpirate tako da:"
+  "settings_about_description_after_foxish": {
+    "message": "."
+  },
+  "settings_about_description_support": {
+    "message": "Dodatek lahko podpirate tako da:"
   },
   "settings_about_donating": {
     "message": "Donirate"
@@ -134,5 +158,11 @@
   },
   "editLivemark_save": {
     "message": "Shrani"
+  },
+  "settings_brokenLivemark": {
+    "message": "Broken livemark"
+  },
+  "selectFolder_folder": {
+    "message": "Select folder used by broken livemark"
   }
 }

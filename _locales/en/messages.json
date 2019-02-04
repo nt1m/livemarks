@@ -111,7 +111,7 @@
     "message": "This add-on was built by:"
   },
   "settings_about_description_before_foxish": {
-    "description": "Between _before_foxish and _after_foxish there a 'Foxish' HTML link",
+    "description": "Between _before_foxish and _after_foxish there is a 'Foxish' HTML link",
     "message": "It's based on "
   },
   "settings_about_description_after_foxish": {

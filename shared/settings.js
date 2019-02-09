@@ -93,23 +93,27 @@ async function setSetting(setting, value) {
 // gets all the bookmark folders
 async function getAllBookmarkFolders() {
   const [rootTree] = await browser.bookmarks.getTree();
+  const livemarksFolders = (await LivemarkStore.getAll()).map(livemark => {
+    return livemark.id;
+  });
+
   const folders = [];
-  const visitChildren = async (tree) => {
+  const visitChildren = (tree) => {
     for (const child of tree) {
       if (child.type !== "folder" || !child.id) {
         continue;
       }
 
       // if the folder belongs to a feed then skip it and its children
-      const isLivemark = await LivemarkStore.isLivemarkFolder(child.id);
-      if (isLivemark) {
+      if (livemarksFolders.includes(child.id)) {
         continue;
       }
 
       folders.push(child);
-      await visitChildren(child.children);
+      visitChildren(child.children);
     }
   };
-  await visitChildren(rootTree.children);
+
+  visitChildren(rootTree.children);
   return folders;
 }

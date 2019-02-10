@@ -108,17 +108,17 @@
     "message": "Livemarksについて"
   },
   "settings_about_description_authors": {
-    "message": "このアドオンは："
+    "message": "このアドオンの開発者："
   },
   "settings_about_description_before_foxish": {
     "description": "Between _before_foxish and _after_foxish there is a 'Foxish' HTML link",
-    "message": "によって作成されました。このアドオンは"
+    "message": "このアドオンは"
   },
   "settings_about_description_after_foxish": {
-    "message": "."
+    "message": "を基としています。"
   },
   "settings_about_description_support": {
-    "message": "を基としています。以下の方法でこのアドオンを支援することができます："
+    "message": "以下の方法でこのアドオンを支援することができます："
   },
   "settings_about_donating": {
     "message": "寄付を行う"

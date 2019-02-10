@@ -160,9 +160,9 @@
     "message": "Speichern"
   },
   "settings_brokenLivemark": {
-    "message": "Broken livemark"
+    "message": "Beschädigte Livemark"
   },
   "selectFolder_folder": {
-    "message": "Select folder used by broken livemark"
+    "message": "Ordner für beschädigte Livemark auswählen."
   }
 }

@@ -107,7 +107,7 @@ const FeedParser = {
 
       return {
         title: getParsedTextFromElement("title", item),
-        url: getTextFromElement("link", item),
+        url: getTextFromElement("link", item) || getTextFromElement("guid", item),
         description: getTextFromElement("description", item),
         updated: getTextFromElement("pubDate", item),
         id: getTextFromElement("guid", item),

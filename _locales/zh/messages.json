@@ -1,0 +1,168 @@
+{
+  "extensionDescription": {
+    "message": "让 RSS 实时书签功能重回 Firefox 64 及更高版本。"
+  },
+  "reloadLiveBookmark": {
+    "message": "重新载入实时书签"
+  },
+  "subscribe": {
+    "message": "订阅"
+  },
+  "subscribe_title": {
+    "message": "订阅源预览"
+  },
+  "subscribe_addLivemark": {
+    "message": "添加实时书签"
+  },
+  "subscribe_viewSource": {
+    "message": "查看源代码"
+  },
+  "subscribe_failedToFetchFeed": {
+    "message": "无法获取订阅源内容"
+  },
+  "subscribe_noEntriesFound": {
+    "message": "未找到订阅源项目"
+  },
+  "subscribe_subscribed": {
+    "message": "已添加到 $FOLDER$，请访问选项页面进行编辑。",
+    "placeholders": {
+      "folder": {
+        "content": "$1"
+      }
+    }
+  },
+  "noItemsFound": {
+    "message": "未找到订阅条目"
+  },
+  "yourLivemarks": {
+    "description": "Title of the 'Your livemarks' page",
+    "message": "您的实时书签"
+  },
+  "moreOptions": {
+    "message": "更多选项"
+  },
+  "newLivemark": {
+    "message": "新增实时书签"
+  },
+  "enterFeedURL": {
+    "message": "输入订阅源 URL"
+  },
+  "settings_importExport_heading": {
+    "message": "导入/导出"
+  },
+  "settings_importExport_description": {
+    "message": "此功能使用大多数 RSS 阅读器使用的 OPML 格式。"
+  },
+  "settings_importExport_importFeeds": {
+    "message": "导入订阅源"
+  },
+  "settings_importExport_exportFeeds": {
+    "message": "导出订阅源"
+  },
+  "settings_importExport_successImport": {
+    "message": "已成功导入 $COUNT$ 个订阅源。",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "settings_importExport_errorImport": {
+    "message": "导入 OPML 文件时发生错误"
+  },
+  "settings_refreshInterval_heading": {
+    "message": "刷新间隔"
+  },
+  "settings_refreshInterval_description": {
+    "message": "配置更新实时书签的频率"
+  },
+  "settings_refreshInterval_minutes": {
+    "description": "Shown as 'X minutes' in the settings dialog",
+    "message": "分钟"
+  },
+  "settings_defaultFolder_heading": {
+    "message": "默认文件夹"
+  },
+  "settings_defaultFolder_description": {
+    "message": "所有后续实时书签将默认保存到此处"
+  },
+  "settings_prefixes_heading": {
+    "message": "书签前缀"
+  },
+  "settings_prefixes_description": {
+    "message": "提供的字符串将用作书签前缀，以标识状态。"
+  },
+  "settings_prefixes_unread": {
+    "message": "未读："
+  },
+  "settings_prefixes_read": {
+    "message": "已读："
+  },
+  "settings_feedPreview_heading": {
+    "message": "订阅源预览"
+  },
+  "settings_feedPreview_description": {
+    "message": "当直接访问订阅源 URL 时启用订阅源预览"
+  },
+  "settings_about_heading": {
+    "message": "关于"
+  },
+  "settings_about_description_authors": {
+    "message": "该附加组件的开发人员为："
+  },
+  "settings_about_description_before_foxish": {
+    "description": "Between _before_foxish and _after_foxish there is a 'Foxish' HTML link",
+    "message": "该项目基于"
+  },
+  "settings_about_description_after_foxish": {
+    "message": "。"
+  },
+  "settings_about_description_support": {
+    "message": "您可通过以下方式支持此附加组件："
+  },
+  "settings_about_donating": {
+    "message": "捐助"
+  },
+  "settings_about_reviewing": {
+    "message": "留下好评"
+  },
+  "settings_about_reporting": {
+    "message": "报告问题"
+  },
+  "settings_about_translating": {
+    "message": "贡献翻译"
+  },
+  "settings_close": {
+    "message": "关闭"
+  },
+  "editLivemark_name": {
+    "message": "名称"
+  },
+  "editLivemark_remove": {
+    "message": "删除此订阅源"
+  },
+  "editLivemark_feedURL": {
+    "message": "订阅源 URL"
+  },
+  "editLivemark_siteURL": {
+    "message": "网站 URL"
+  },
+  "editLivemark_parentFolder": {
+    "message": "父文件夹"
+  },
+  "editLivemark_maxItems": {
+    "message": "最大条目数量"
+  },
+  "editLivemark_cancel": {
+    "message": "取消"
+  },
+  "editLivemark_save": {
+    "message": "保存"
+  },
+  "settings_brokenLivemark": {
+    "message": "已损坏实时书签"
+  },
+  "selectFolder_folder": {
+    "message": "选择已损坏实时书签使用的文件夹"
+  }
+}

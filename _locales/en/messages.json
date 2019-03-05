@@ -5,6 +5,14 @@
   "reloadLiveBookmark": {
     "message": "Reload Live Bookmark"
   },
+  "openSiteUrl": {
+    "message": "Open \"$site$\"",
+    "placeholders": {
+      "site" : {
+        "content" : "$1"
+      }
+    }
+  },
   "subscribe": {
     "message": "Subscribe"
   },

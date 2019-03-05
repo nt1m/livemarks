@@ -4,8 +4,6 @@
 /* import-globals-from ../shared/settings.js */
 /* import-globals-from ../shared/feed-parser.js */
 
-const siteBookmarkPrefix = 'Open "';
-const siteBookmarkPostfix = '"';
 
 function hashString(str) {
   let hash = 0;
@@ -86,7 +84,7 @@ const LivemarkUpdater = {
   // adds the site url bookmark if it doesn't
   // exist already. Returns whether or not it modified the child list.
   async addFeedSiteUrlBookmark(folder, feed, children) {
-    const siteUrlTitle = siteBookmarkPrefix + folder.title + siteBookmarkPostfix;
+    const siteUrlTitle = browser.i18n.getMessage("openSiteUrl", folder.title);
     let didChange = false;
     if (children.length === 0) {
       await browser.bookmarks.create({

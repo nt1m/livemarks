@@ -186,6 +186,7 @@ const LivemarkUpdater = {
     const items = feedData.items.filter(item => item.title || item.url);
     const max = Math.min(feed.maxItems, items.length);
     let i = 0;
+    let itemsReadCount = 0;
     for (; i < max; i++) {
       const item = items[i];
       const url = item.url || feed.feedUrl;
@@ -193,6 +194,10 @@ const LivemarkUpdater = {
       try {
         visits = (await browser.history.getVisits({url})).length;
       } catch (e) {}
+
+      if (visits > 0){
+        itemsReadCount += (visits > 0);
+      }
 
       // Only unvisited URLs need to be updated later
       if (visits === 0 && (readPrefix || unreadPrefix)) {
@@ -232,6 +237,35 @@ const LivemarkUpdater = {
       await browser.bookmarks.remove(usableChildren[i].id);
     }
     await LivemarkStore.edit(folder.id, {updated: feedData.updated});
+
+    // Update the feed folder title prefix if all items have been read
+    this.setPrefix(folder, itemsReadCount == max);
+  },
+  async setPrefix(item, isRead) {
+    let readPrefix = await Settings.getReadPrefix();
+    if (readPrefix.length > 0) {
+      readPrefix += " ";
+    }
+
+    let unreadPrefix = await Settings.getUnreadPrefix();
+    if (unreadPrefix.length > 0) {
+      unreadPrefix += " ";
+    }
+
+    // Remove existing prefixes from the title
+    let title = item.title;
+    if (readPrefix && item.title.startsWith(readPrefix)) {
+        title = item.title.substring(readPrefix.length);
+    }
+    if (unreadPrefix && item.title.startsWith(unreadPrefix)) {
+        title = item.title.substring(unreadPrefix.length);
+    }
+
+    // Update the title with the new prefix
+    title = (isRead ? readPrefix : unreadPrefix) + title;
+    if (title != item.title) {
+        await browser.bookmarks.update(item.id, {title: title});
+    }
   }
 };
 

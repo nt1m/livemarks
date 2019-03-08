@@ -106,6 +106,12 @@
   "settings_prefixes_read": {
     "message": "Read:"
   },
+  "settings_prefixes_feed_folder": {
+    "message": "Enable prefixes on the feed's folders."
+  },
+  "settings_prefixes_parent_folders": {
+    "message": "Enable prefixes on the feed's parent folders recursively."
+  },
   "settings_feedPreview_heading": {
     "message": "Feed preview"
   },

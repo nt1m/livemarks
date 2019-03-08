@@ -99,6 +99,8 @@ async function showSettingsDialog() {
   settingsForm.pollInterval.value = await Settings.getPollInterval();
   settingsForm.readPrefix.value = await Settings.getReadPrefix();
   settingsForm.unreadPrefix.value = await Settings.getUnreadPrefix();
+  settingsForm.prefixFeedFolder.checked = await Settings.getPrefixFeedFolderEnabled();
+  settingsForm.prefixParentFolders.checked = await Settings.getPrefixParentFoldersEnabled();
   settingsForm.feedPreview.checked = await Settings.getFeedPreviewEnabled();
   settingsForm.elements["extensionIcon"].value = await Settings.getExtensionIcon();
 
@@ -129,6 +131,8 @@ function initDialogs() {
       await Settings.setReadPrefix(settingsForm.readPrefix.value);
       await Settings.setUnreadPrefix(settingsForm.unreadPrefix.value);
       await Settings.setDefaultFolder(settingsForm.defaultFolder.value);
+      await Settings.setPrefixFeedFolderEnabled(settingsForm.prefixFeedFolder.checked);
+      await Settings.setPrefixParentFoldersEnabled(settingsForm.prefixParentFolders.checked);
       await Settings.setFeedPreviewEnabled(settingsForm.feedPreview.checked);
       await Settings.setExtensionIcon(settingsForm.elements["extensionIcon"].value);
     }

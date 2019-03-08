@@ -239,10 +239,14 @@ const LivemarkUpdater = {
     await LivemarkStore.edit(folder.id, {updated: feedData.updated});
 
     // Update the feed folder title prefix if all items have been read
-    this.setPrefix(folder, itemsReadCount == max);
+    if (await Settings.getPrefixFeedFolderEnabled()){
+      this.setPrefix(folder, itemsReadCount == max);
+    }
 
     // Update the parent folders' title prefix title if all RSS feeds have been read
-    this.setParentFoldersPrefix(folder);
+    if (await Settings.getPrefixParentFoldersEnabled()){
+      this.setParentFoldersPrefix(folder);
+    }
 
   },
   async setParentFoldersPrefix(livemark) {

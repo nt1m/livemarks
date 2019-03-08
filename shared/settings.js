@@ -51,6 +51,22 @@ const Settings = {
     return setSetting("unreadPrefix2", newValue);
   },
 
+  getPrefixFeedFolderEnabled() {
+    return getSetting("prefixFeedFolderEnabled", false);
+  },
+
+  setPrefixFeedFolderEnabled(newValue) {
+    return setSetting("prefixFeedFolderEnabled", newValue);
+  },
+
+  getPrefixParentFoldersEnabled() {
+    return getSetting("prefixParentFoldersEnabled", false);
+  },
+
+  setPrefixParentFoldersEnabled(newValue) {
+    return setSetting("prefixParentFoldersEnabled", newValue);
+  },
+
   getFeedPreviewEnabled() {
     return getSetting("feedPreviewEnabled", true);
   },

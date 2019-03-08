@@ -43,10 +43,20 @@
       <div class="section">
         <h3 data-i18n-text="settings_prefixes_heading"></h3>
         <p data-i18n-text="settings_prefixes_description"></p>
-        <label data-i18n-text="settings_prefixes_unread"></label>
-        <input class="short" name="unreadPrefix">
-        <label data-i18n-text="settings_prefixes_read"></label>
-        <input class="short" name="readPrefix">
+        <div>
+          <label data-i18n-text="settings_prefixes_unread"></label>
+          <input class="short" name="unreadPrefix">
+          <label data-i18n-text="settings_prefixes_read"></label>
+          <input class="short" name="readPrefix">
+        </div>
+        <div>
+          <input type="checkbox" name="prefixFeedFolder">
+          <label data-i18n-text="settings_prefixes_feed_folder"></label>
+        </div>
+        <div>
+          <input type="checkbox" name="prefixParentFolders">
+          <label data-i18n-text="settings_prefixes_parent_folders"></label>
+        </div>
       </div>
       <div class="section">
         <h3 data-i18n-text="settings_feedPreview_heading"></h3>

@@ -240,6 +240,40 @@ const LivemarkUpdater = {
 
     // Update the feed folder title prefix if all items have been read
     this.setPrefix(folder, itemsReadCount == max);
+
+    // Update the parent folders' title prefix title if all RSS feeds have been read
+    this.setParentFoldersPrefix(folder);
+
+  },
+  async setParentFoldersPrefix(livemark) {
+    const [folder] = await browser.bookmarks.get(livemark.parentId);
+
+    // Don't change the folder name if it is any of the builtin folders
+    const builtinIds = ["toolbar_____", "menu________", "unfiled_____", "mobile______"];
+    if (!builtinIds || builtinIds.includes(folder.id)){
+      return;
+    }
+
+    const children = await browser.bookmarks.getChildren(folder.id);
+    if (!children) {
+      return;
+    }
+
+    let readPrefix = await Settings.getReadPrefix();
+    if (readPrefix.length > 0) {
+      readPrefix += " ";
+    }
+
+    let allRead = true;
+    for (let child of children){
+      if (!child.title.startsWith(readPrefix)) {
+        allRead = false;
+        break;
+      }
+    }
+
+    this.setPrefix(folder, allRead);
+    this.setParentFoldersPrefix(folder);
   },
   async setPrefix(item, isRead) {
     let readPrefix = await Settings.getReadPrefix();

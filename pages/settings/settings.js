@@ -104,6 +104,8 @@ async function showSettingsDialog() {
   settingsForm.feedPreview.checked = await Settings.getFeedPreviewEnabled();
   settingsForm.elements["extensionIcon"].value = await Settings.getExtensionIcon();
 
+  settingsForm.prefixParentFolders.disabled = !settingsForm.prefixFeedFolder.checked;
+
   await populateFolderSelector(settingsForm.defaultFolder);
 
   const allFeeds = await LivemarkStore.getAll();
@@ -127,6 +129,9 @@ function initDialogs() {
   settingsForm.addEventListener("change", async (e) => {
     e.preventDefault();
     if (settingsForm.reportValidity()) {
+      settingsForm.prefixParentFolders.checked &= settingsForm.prefixFeedFolder.checked;
+      settingsForm.prefixParentFolders.disabled = !settingsForm.prefixFeedFolder.checked;
+
       await Settings.setPollInterval(settingsForm.pollInterval.value);
       await Settings.setReadPrefix(settingsForm.readPrefix.value);
       await Settings.setUnreadPrefix(settingsForm.unreadPrefix.value);

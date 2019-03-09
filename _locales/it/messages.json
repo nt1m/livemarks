@@ -5,6 +5,14 @@
   "reloadLiveBookmark": {
     "message": "Ricarica Segnalibro live"
   },
+  "openSiteUrl": {
+    "message": "Open \"$site$\"",
+    "placeholders": {
+      "site" : {
+        "content" : "$1"
+      }
+    }
+  },
   "subscribe": {
     "message": "Abbonati"
   },
@@ -112,7 +120,7 @@
   },
   "settings_about_description_before_foxish": {
     "description": "Between _before_foxish and _after_foxish there is a 'Foxish' HTML link",
-    "message": "È basato su"
+    "message": "È basato su "
   },
   "settings_about_description_after_foxish": {
     "message": "."
@@ -148,7 +156,7 @@
     "message": "URL del sito:"
   },
   "editLivemark_parentFolder": {
-    "message": "Contenuto in:"
+    "message": "Contenuto nella cartella:"
   },
   "editLivemark_maxItems": {
     "message": "Numero massimo di elementi:"

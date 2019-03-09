@@ -5,6 +5,14 @@
   "reloadLiveBookmark": {
     "message": "라이브 북마크 새로고침"
   },
+  "openSiteUrl": {
+    "message": "Open \"$site$\"",
+    "placeholders": {
+      "site" : {
+        "content" : "$1"
+      }
+    }
+  },
   "subscribe": {
     "message": "구독"
   },

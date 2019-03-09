@@ -5,6 +5,14 @@
   "reloadLiveBookmark": {
     "message": "Odśwież dynamiczną zakładkę"
   },
+  "openSiteUrl": {
+    "message": "Otwórz „$site$”",
+    "placeholders": {
+      "site" : {
+        "content" : "$1"
+      }
+    }
+  },
   "subscribe": {
     "message": "Subskrybuj"
   },
@@ -112,7 +120,7 @@
   },
   "settings_about_description_before_foxish": {
     "description": "Between _before_foxish and _after_foxish there is a 'Foxish' HTML link",
-    "message": "Na podstawie rozszerzenia"
+    "message": "Na podstawie rozszerzenia "
   },
   "settings_about_description_after_foxish": {
     "message": "."

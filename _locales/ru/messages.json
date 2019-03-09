@@ -5,6 +5,14 @@
   "reloadLiveBookmark": {
     "message": "Обновить Живую закладку"
   },
+  "openSiteUrl": {
+    "message": "Открыть \"$site$\"",
+    "placeholders": {
+      "site" : {
+        "content" : "$1"
+      }
+    }
+  },
   "subscribe": {
     "message": "Подписаться"
   },

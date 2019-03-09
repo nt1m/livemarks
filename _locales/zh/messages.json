@@ -5,6 +5,14 @@
   "reloadLiveBookmark": {
     "message": "重新载入实时书签"
   },
+  "openSiteUrl": {
+    "message": "Open \"$site$\"",
+    "placeholders": {
+      "site" : {
+        "content" : "$1"
+      }
+    }
+  },
   "subscribe": {
     "message": "订阅"
   },

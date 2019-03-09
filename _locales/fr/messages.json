@@ -5,6 +5,14 @@
   "reloadLiveBookmark": {
     "message": "Recharger le marque-page"
   },
+  "openSiteUrl": {
+    "message": "Ouvrir \"$site$\"",
+    "placeholders": {
+      "site" : {
+        "content" : "$1"
+      }
+    }
+  },
   "subscribe": {
     "message": "S'abonner"
   },

@@ -5,6 +5,14 @@
   "reloadLiveBookmark": {
     "message": "Dynamische Lesezeichen aktualisieren"
   },
+  "openSiteUrl": {
+    "message": "\"$site$\" öffnen",
+    "placeholders": {
+      "site" : {
+        "content" : "$1"
+      }
+    }
+  },
   "subscribe": {
     "message": "Abonnieren"
   },

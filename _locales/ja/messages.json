@@ -5,6 +5,14 @@
   "reloadLiveBookmark": {
     "message": "ライブブックマークを再読み込み"
   },
+  "openSiteUrl": {
+    "message": "\"$site$\"を開く",
+    "placeholders": {
+      "site" : {
+        "content" : "$1"
+      }
+    }
+  },
   "subscribe": {
     "message": "購読"
   },

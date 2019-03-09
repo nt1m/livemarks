@@ -5,6 +5,14 @@
   "reloadLiveBookmark": {
     "message": "Genindlæs live-bogmærke"
   },
+  "openSiteUrl": {
+    "message": "Open \"$site$\"",
+    "placeholders": {
+      "site" : {
+        "content" : "$1"
+      }
+    }
+  },
   "subscribe": {
     "message": "Abonnér"
   },

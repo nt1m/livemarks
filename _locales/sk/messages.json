@@ -5,6 +5,14 @@
   "reloadLiveBookmark": {
     "message": "Obnoviť aktívnu záložku"
   },
+  "openSiteUrl": {
+    "message": "Open \"$site$\"",
+    "placeholders": {
+      "site" : {
+        "content" : "$1"
+      }
+    }
+  },
   "subscribe": {
     "message": "Odoberať"
   },

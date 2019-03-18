@@ -6,7 +6,7 @@
     "message": "重新载入实时书签"
   },
   "openSiteUrl": {
-    "message": "Open \"$site$\"",
+    "message": "打开 \"$site$\"",
     "placeholders": {
       "site" : {
         "content" : "$1"
@@ -120,7 +120,7 @@
   },
   "settings_about_description_before_foxish": {
     "description": "Between _before_foxish and _after_foxish there is a 'Foxish' HTML link",
-    "message": "该项目基于"
+    "message": "该项目基于 "
   },
   "settings_about_description_after_foxish": {
     "message": "。"

@@ -6,7 +6,7 @@
     "message": "Obnoviť aktívnu záložku"
   },
   "openSiteUrl": {
-    "message": "Open \"$site$\"",
+    "message": "Otvoriť „$site$“",
     "placeholders": {
       "site" : {
         "content" : "$1"

@@ -6,7 +6,7 @@
     "message": "라이브 북마크 새로고침"
   },
   "openSiteUrl": {
-    "message": "Open \"$site$\"",
+    "message": "\"$site$\" 열기",
     "placeholders": {
       "site" : {
         "content" : "$1"
@@ -20,7 +20,7 @@
     "message": "피드 미리보기"
   },
   "subscribe_addLivemark": {
-    "message": "Livemark 추가"
+    "message": "라이브 북마크 추가"
   },
   "subscribe_viewSource": {
     "message": "소스 보기"
@@ -120,7 +120,7 @@
   },
   "settings_about_description_before_foxish": {
     "description": "Between _before_foxish and _after_foxish there is a 'Foxish' HTML link",
-    "message": "이 확장 기능은"
+    "message": "이 확장 기능은 "
   },
   "settings_about_description_after_foxish": {
     "message": "를 기반으로 하고 있습니다."

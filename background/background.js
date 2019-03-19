@@ -240,7 +240,7 @@ const LivemarkUpdater = {
 
     // Update the feed folder title prefix if all items have been read
     if (await Settings.getPrefixFeedFolderEnabled()){
-      this.setPrefix(folder, itemsReadCount == max);
+      await this.setPrefix(folder, itemsReadCount == max);
     }
 
     // Update the parent folders' title prefix title if all RSS feeds have been read
@@ -276,7 +276,7 @@ const LivemarkUpdater = {
       }
     }
 
-    this.setPrefix(folder, allRead);
+    await this.setPrefix(folder, allRead);
     this.setParentFoldersPrefix(folder);
   },
   async setPrefix(item, isRead) {

@@ -164,7 +164,8 @@ const FeedParser = {
         title: getParsedTextFromElement("title", item),
         url: getHrefFromElement("link[rel=alternate]", item)
           || getHrefFromElement("link", item),
-        description: getTextFromElement("content", item),
+        description: getTextFromElement("content", item)
+                  || getTextFromElement("summary", item),
         updated: getTextFromElement("updated", item)
               || getTextFromElement("published", item),
         id: getTextFromElement("id", item)

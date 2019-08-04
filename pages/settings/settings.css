@@ -45,7 +45,7 @@ main > * {
 .feed-url {
   grid-area: siteUrl;
   font-size: 0.8em;
-  color: var(--grey-50);
+  color: var(--deemphasized-text-color);
 }
 
 .feed-title,
@@ -85,7 +85,8 @@ main > * {
   height: 16px;
   border-radius: 2px;
   padding: 10px;
-  border: 2px solid rgba(0,0,0,0.1);
+  border: 2px solid rgba(0,0,0,0.2);
+  background-color: white;
   background-position: center;
   background-repeat: no-repeat;
 }
@@ -93,6 +94,7 @@ main > * {
 #darkIcon:checked,
 #lightIcon:checked,
 #orangeIcon:checked {
+  background-color: var(--blue-50-a30);
   border-color: var(--blue-50);
 }
 

@@ -4,6 +4,37 @@
   box-sizing: border-box;
 }
 
+:root {
+  --page-background: var(--grey-10);
+  --page-text-color: var(--grey-90);
+  --card-background: white;
+  --textbox-background: white;
+  --deemphasized-text-color: var(--grey-60);
+  --button-background: var(--grey-90-a10);
+  --button-background-hover: var(--grey-90-a20);
+  --button-background-active: var(--grey-90-a30);
+  --link-color: var(--blue-60);
+  --visited-link-color: var(--purple-60);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page-background: var(--grey-80);
+    --page-text-color: var(--grey-10);
+    --card-background: var(--grey-70);
+    --textbox-background: var(--grey-60);
+    --deemphasized-text-color: var(--grey-40);
+    --button-background: rgba(255,255,255,0.1);
+    --button-background-hover: rgba(255,255,255,0.2);
+    --button-background-active: rgba(255,255,255,0.3);
+    --link-color: var(--blue-40);
+    --visited-link-color: var(--purple-30);
+  }
+  .icon::before {
+    filter: invert(1);
+  }
+}
+
 html {
   font: message-box;
   height: 100%;
@@ -11,10 +42,23 @@ html {
 
 body {
   font-size: 1.25em;
-  background: var(--grey-10);
+  background: var(--page-background);
+  color: var(--page-text-color);
   margin: 0;
   padding: 0;
   height: 100%;
+}
+
+a {
+  color: var(--link-color);
+}
+
+a:visited {
+  color: var(--visited-link-color);
+}
+
+a:active {
+  filter: brightness(0.7);
 }
 
 h1 {
@@ -63,6 +107,7 @@ label {
 }
 
 .dialog {
+  background-color: var(--card-background);
   position: fixed;
   top: 50%;
   left: 50%;
@@ -153,6 +198,10 @@ label {
   background-image: url(../icons/settings.svg);
 }
 
+.icon.link::before {
+  background-image: url(../icons/link.svg);
+}
+
 .icon.icon-white::before {
   filter: invert(1);
 }
@@ -164,7 +213,7 @@ select {
   overflow: hidden;
   -moz-appearance: none;
   border-radius: 2px;
-  background-color: var(--grey-90-a10);
+  background-color: var(--button-background);
   box-shadow: 0 0 0 0 transparent;
   padding: 8px;
   transition-duration: 250ms;
@@ -185,6 +234,10 @@ select {
   text-overflow: ellipsis;
 }
 
+select > option {
+  color: black;
+}
+
 .button.icon:empty,
 button.icon:empty {
   background-color: transparent;
@@ -192,7 +245,7 @@ button.icon:empty {
 
 .button.icon:empty:hover,
 button.icon:empty:hover {
-  background-color: var(--grey-90-a10);
+  background-color: var(--button-background);
 }
 
 .button:hover,
@@ -200,13 +253,13 @@ button:hover,
 select:hover,
 .button.icon:empty:hover:active,
 button.icon:empty:hover:active {
-  background-color: var(--grey-90-a20);
+  background-color: var(--button-background-hover);
 }
 
 .button:hover:active,
 button:hover:active,
 select:hover:active {
-  background-color: var(--grey-90-a30);
+  background-color: var(--button-background-active);
 }
 
 .button:disabled,
@@ -242,6 +295,8 @@ input.short {
 }
 
 input:not([type="submit"]):not([type="button"]):not([type="hidden"]) {
+  background-color: var(--textbox-background);
+  color: inherit;
   border: 1px solid var(--grey-90-a30);
   padding: 8px;
   border-radius: 2px;
@@ -266,7 +321,7 @@ input:not([type="submit"]):not([type="button"]):not([type="hidden"]):invalid {
 
 .card {
   box-shadow: 0 2px 8px var(--grey-90-a10);
-  background: white;
+  background: var(--card-background);
   border-radius: 2px;
   padding: 1.5em;
   margin: 1em 0;

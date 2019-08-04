@@ -18,16 +18,14 @@ body {
 
 #description {
   margin-top: 0.5em;
-  color: var(--grey-50);
+  color: var(--deemphasized-text-color);
 }
 
 #feed-url {
   padding: 0;
-  width: 100%;
-  padding-left: 24px;
   display: block;
+  background: none;
   border: none;
-  background: url(/icons/link.svg) no-repeat 4px center !important;
   box-shadow: none !important;
   color: inherit;
   margin-bottom: 0.5em;
@@ -41,6 +39,7 @@ body {
   text-decoration: none;
 }
 
+#link-icon::before,
 #view-source-button::before {
   width: 24px;
 }

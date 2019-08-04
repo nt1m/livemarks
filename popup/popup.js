@@ -1,8 +1,29 @@
 "use strict";
 
 document.addEventListener("DOMContentLoaded", function() {
+  maybeSetTheme();
   main();
 });
+
+async function maybeSetTheme() {
+  const currentTheme = await browser.theme.getCurrent();
+  if (!currentTheme.colors) {
+    return;
+  }
+
+  const setProperty = (themeProp, cssProp) => {
+    let value = currentTheme.colors[themeProp];
+    if (!value) {
+      return;
+    }
+    if ((typeof value) == "array") {
+      value = `rgb(${value.join(",")})`;
+    }
+    document.body.style[cssProp] = value;
+  }
+  setProperty("popup", "backgroundColor");
+  setProperty("popup_text", "color");
+}
 
 function getFeeds(tabId) {
   return browser.runtime.sendMessage({

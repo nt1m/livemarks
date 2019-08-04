@@ -112,6 +112,21 @@
   "settings_feedPreview_description": {
     "message": "Enable feed preview when directly visting a feed URL"
   },
+  "settings_extensionIcon_heading": {
+    "message": "Extension icon"
+  },
+  "settings_extensionIcon_description": {
+    "message": "Choose the extension icon that fits best with your browser theme."
+  },
+  "settings_extensionIcon_darkIcon": {
+    "message": "Dark icon"
+  },
+  "settings_extensionIcon_lightIcon": {
+    "message": "Light icon"
+  },
+  "settings_extensionIcon_orangeIcon": {
+    "message": "Orange icon"
+  },
   "settings_about_heading": {
     "message": "About"
   },

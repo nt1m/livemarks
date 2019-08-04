@@ -59,6 +59,14 @@ const Settings = {
     return setSetting("feedPreviewEnabled", newValue);
   },
 
+  getExtensionIcon() {
+    return getSetting("extensionIcon", "dark");
+  },
+
+  setExtensionIcon(newValue) {
+    return setSetting("extensionIcon", newValue);
+  },
+
   addChangeListener(callback) {
     return browser.storage.onChanged.addListener(changes => {
       changes = Object.assign({}, changes);

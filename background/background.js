@@ -4,6 +4,11 @@
 /* import-globals-from ../shared/settings.js */
 /* import-globals-from ../shared/feed-parser.js */
 
+async function updateExtensionIcon(tabId) {
+  const icon = await Settings.getExtensionIcon();
+  const path = icon == "dark" ? "feed.svg" : `feed-${icon}.svg`;
+  await browser.pageAction.setIcon({ path: { 16: "icons/" + path }, tabId });
+}
 
 function hashString(str) {
   let hash = 0;
@@ -300,6 +305,7 @@ browser.runtime.onMessage.addListener(async (request, sender) => {
   // Enable the page action icon.
     feedData[sender.tab.id] = request.feeds;
     chrome.pageAction.show(sender.tab.id);
+    updateExtensionIcon(sender.tab.id);
   }
 
   if (request.msg == "load-preview") {

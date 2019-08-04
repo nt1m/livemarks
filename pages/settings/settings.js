@@ -100,6 +100,7 @@ async function showSettingsDialog() {
   settingsForm.readPrefix.value = await Settings.getReadPrefix();
   settingsForm.unreadPrefix.value = await Settings.getUnreadPrefix();
   settingsForm.feedPreview.checked = await Settings.getFeedPreviewEnabled();
+  settingsForm.elements["extensionIcon"].value = await Settings.getExtensionIcon();
 
   await populateFolderSelector(settingsForm.defaultFolder);
 
@@ -129,6 +130,7 @@ function initDialogs() {
       await Settings.setUnreadPrefix(settingsForm.unreadPrefix.value);
       await Settings.setDefaultFolder(settingsForm.defaultFolder.value);
       await Settings.setFeedPreviewEnabled(settingsForm.feedPreview.checked);
+      await Settings.setExtensionIcon(settingsForm.elements["extensionIcon"].value);
     }
   }, true);
   settingsForm.addEventListener("blur", e => e.preventDefault());

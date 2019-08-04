@@ -76,3 +76,35 @@ main > * {
   overflow: hidden;
   opacity: 0;
 }
+
+#darkIcon,
+#lightIcon,
+#orangeIcon {
+  -moz-appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 2px;
+  padding: 10px;
+  border: 2px solid rgba(0,0,0,0.1);
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#darkIcon:checked,
+#lightIcon:checked,
+#orangeIcon:checked {
+  border-color: var(--blue-50);
+}
+
+#darkIcon {
+  background-image: url(../../icons/feed.svg);
+}
+
+#lightIcon {
+  background-color: #2a2a2e;
+  background-image: url(../../icons/feed-light.svg);
+}
+
+#orangeIcon {
+  background-image: url(../../icons/feed-orange.svg);
+}

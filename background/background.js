@@ -297,15 +297,19 @@ const FeedPreview = {
 
 // A dictionary keyed off of tabId that keeps track of data per tab (for
 // example what feedUrl was detected in the tab).
-var feedData = {};
+var tabIdToFeeds = {};
 
 browser.runtime.onMessage.addListener(async (request, sender) => {
   if (request.msg == "feeds") {
   // We have received a list of feed urls found on the page.
   // Enable the page action icon.
-    feedData[sender.tab.id] = request.feeds;
+    tabIdToFeeds[sender.tab.id] = request.feeds;
     chrome.pageAction.show(sender.tab.id);
     updateExtensionIcon(sender.tab.id);
+  }
+
+  if (request.msg == "get-tab-feeds") {
+    return tabIdToFeeds[request.tabId];
   }
 
   if (request.msg == "load-preview") {
@@ -336,7 +340,7 @@ browser.runtime.onMessage.addListener(async (request, sender) => {
 });
 
 chrome.tabs.onRemoved.addListener(function(tabId) {
-  delete feedData[tabId];
+  delete tabIdToFeeds[tabId];
 });
 
 chrome.webRequest.onHeadersReceived.addListener(details => {

@@ -106,11 +106,32 @@
   "settings_prefixes_read": {
     "message": "Przeczytane:"
   },
+  "settings_prefixes_feed_folder": {
+    "message": "Wyświetlanie na folderach, w których wszystkie elementy są przeczytane/nieprzeczytane"
+  },
+  "settings_prefixes_parent_folders": {
+    "message": "Wyświetlanie na folderze nadrzędnym, w którym wszystkie foldery podrzędne są przeczytane/nieprzeczytane"
+  },
   "settings_feedPreview_heading": {
     "message": "Podgląd kanału"
   },
   "settings_feedPreview_description": {
     "message": "Wyświetlanie po bezpośrednim otwarciu adresu kanału"
+  },
+  "settings_extensionIcon_heading": {
+    "message": "Ikona rozszerzenia"
+  },
+  "settings_extensionIcon_description": {
+    "message": "Wybierz ikonę rozszerzenia, która najlepiej pasuje do motywu przeglądarki."
+  },
+  "settings_extensionIcon_darkIcon": {
+    "message": "Ciemna"
+  },
+  "settings_extensionIcon_lightIcon": {
+    "message": "Jasna"
+  },
+  "settings_extensionIcon_orangeIcon": {
+    "message": "Pomarańczowa"
   },
   "settings_about_heading": {
     "message": "O dodatku"

@@ -106,11 +106,32 @@
   "settings_prefixes_read": {
     "message": "Gelezen:"
   },
+  "settings_prefixes_feed_folder": {
+    "message": "Op mappen tonen wanneer al hun items gelezen/ongelezen zijn"
+  },
+  "settings_prefixes_parent_folders": {
+    "message": "Op bovenliggende map tonen wanneer alle onderliggende mappen gelezen/ongelezen zijn"
+  },
   "settings_feedPreview_heading": {
     "message": "Feedvoorbeeld"
   },
   "settings_feedPreview_description": {
     "message": "Feedvoorbeeld inschakelen bij rechtstreeks bezoeken van een feed-URL"
+  },
+  "settings_extensionIcon_heading": {
+    "message": "Extensiepictogram"
+  },
+  "settings_extensionIcon_description": {
+    "message": "Kies het extensiepictogram dat het beste bij uw browserthema past."
+  },
+  "settings_extensionIcon_darkIcon": {
+    "message": "Donker pictogram"
+  },
+  "settings_extensionIcon_lightIcon": {
+    "message": "Licht pictogram"
+  },
+  "settings_extensionIcon_orangeIcon": {
+    "message": "Oranje pictogram"
   },
   "settings_about_heading": {
     "message": "Over"

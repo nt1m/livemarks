@@ -106,11 +106,32 @@
   "settings_prefixes_read": {
     "message": "已读："
   },
+  "settings_prefixes_feed_folder": {
+    "message": "当所有项目已读/未读时显示在文件夹上"
+  },
+  "settings_prefixes_parent_folders": {
+    "message": "当所有子文件夹已读/未读时显示在父文件夹上"
+  },
   "settings_feedPreview_heading": {
     "message": "订阅源预览"
   },
   "settings_feedPreview_description": {
     "message": "当直接访问订阅源 URL 时启用订阅源预览"
+  },
+  "settings_extensionIcon_heading": {
+    "message": "扩展图标"
+  },
+  "settings_extensionIcon_description": {
+    "message": "选择最适合您浏览器主题的扩展图标。"
+  },
+  "settings_extensionIcon_darkIcon": {
+    "message": "深色图标"
+  },
+  "settings_extensionIcon_lightIcon": {
+    "message": "浅色图标"
+  },
+  "settings_extensionIcon_orangeIcon": {
+    "message": "橙色图标"
   },
   "settings_about_heading": {
     "message": "关于"

@@ -106,11 +106,32 @@
   "settings_prefixes_read": {
     "message": "Gelesen:"
   },
+  "settings_prefixes_feed_folder": {
+    "message": "Anzeigen bei Ordnern, deren Unterelemente gelesen/ungelesen sind."
+  },
+  "settings_prefixes_parent_folders": {
+    "message": "Anzeigen bei Ordnern, deren Unterordner gelesen/ungelesen sind."
+  },
   "settings_feedPreview_heading": {
     "message": "Feed-Vorschau"
   },
   "settings_feedPreview_description": {
     "message": "Aktiviere Feed-Vorschau wenn eine Feed-URL direkt besucht wird"
+  },
+  "settings_extensionIcon_heading": {
+    "message": "Erweiterungs-Symbol"
+  },
+  "settings_extensionIcon_description": {
+    "message": "Wähle das Symbol, welches am Besten zum Browser-Theme passt."
+  },
+  "settings_extensionIcon_darkIcon": {
+    "message": "Dunkles Symbol"
+  },
+  "settings_extensionIcon_lightIcon": {
+    "message": "Helles Symbol"
+  },
+  "settings_extensionIcon_orangeIcon": {
+    "message": "Orangefarbenes Symbol"
   },
   "settings_about_heading": {
     "message": "Über"

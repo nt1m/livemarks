@@ -76,7 +76,7 @@ module.exports = {
     // rule is a better rule to check this.
     "max-depth": 0,
     // Maximum length of a line.
-    "max-len": [2, 90, 2, {"ignoreUrls": true, "ignorePattern": "data:image\/|\\s*require\\s*\\(|^\\s*loader\\.lazy|-\\*-"}],
+    "max-len": [2, 95, 2, {"ignoreUrls": true, "ignorePattern": "data:image\/|\\s*require\\s*\\(|^\\s*loader\\.lazy|-\\*-"}],
     // Maximum depth callbacks can be nested.
     "max-nested-callbacks": [2, 3],
     // Don't limit the number of parameters that can be used in a function.
@@ -262,7 +262,7 @@ module.exports = {
     // Disallow padding within blocks.
     "padded-blocks": [2, "never"],
     // prefer const
-    "prefer-const": 2,
+    "prefer-const": ["error", {"destructuring": "all"}],
     // Don't require quotes around object literal property names.
     "quote-props": 0,
     // Double quotes should be used.

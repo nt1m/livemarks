@@ -102,7 +102,7 @@ async function showSettingsDialog() {
   settingsForm.prefixFeedFolder.checked = await Settings.getPrefixFeedFolderEnabled();
   settingsForm.prefixParentFolders.checked = await Settings.getPrefixParentFoldersEnabled();
   settingsForm.feedPreview.checked = await Settings.getFeedPreviewEnabled();
-  settingsForm.elements["extensionIcon"].value = await Settings.getExtensionIcon();
+  settingsForm.elements.extensionIcon.value = await Settings.getExtensionIcon();
 
   settingsForm.prefixParentFolders.disabled = !settingsForm.prefixFeedFolder.checked;
 
@@ -139,7 +139,7 @@ function initDialogs() {
       await Settings.setPrefixFeedFolderEnabled(settingsForm.prefixFeedFolder.checked);
       await Settings.setPrefixParentFoldersEnabled(settingsForm.prefixParentFolders.checked);
       await Settings.setFeedPreviewEnabled(settingsForm.feedPreview.checked);
-      await Settings.setExtensionIcon(settingsForm.elements["extensionIcon"].value);
+      await Settings.setExtensionIcon(settingsForm.elements.extensionIcon.value);
     }
   }, true);
   settingsForm.addEventListener("blur", e => e.preventDefault());

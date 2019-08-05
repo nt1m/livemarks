@@ -1,6 +1,7 @@
 "use strict";
 
 /* import-globals-from prefix-utils.js */
+/* import-globals-from settings.js */
 
 const PREFIX = "livemarks.";
 
@@ -29,8 +30,8 @@ const LivemarkStore = {
 
     // Pass in prefixes so they can be removed from the title. We don't get them in
     // _makeDetails to avoid unnecessarily fetching into storage
-    let readPrefix = await Settings.getReadPrefix();
-    let unreadPrefix = await Settings.getUnreadPrefix();
+    const readPrefix = await Settings.getReadPrefix();
+    const unreadPrefix = await Settings.getUnreadPrefix();
 
     const all = [];
     for (const key in livemarks) {

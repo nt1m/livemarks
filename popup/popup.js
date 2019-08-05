@@ -16,11 +16,11 @@ async function maybeSetTheme() {
     if (!value) {
       return;
     }
-    if ((typeof value) == "array") {
+    if (Array.isArray(value)) {
       value = `rgb(${value.join(",")})`;
     }
     document.body.style[cssProp] = value;
-  }
+  };
   setProperty("popup", "backgroundColor");
   setProperty("popup_text", "color");
 }

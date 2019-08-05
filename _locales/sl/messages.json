@@ -6,7 +6,7 @@
     "message": "Osveži Livemark"
   },
   "openSiteUrl": {
-    "message": "Open \"$site$\"",
+    "message": "Odpri \"$site$\"",
     "placeholders": {
       "site" : {
         "content" : "$1"
@@ -14,10 +14,10 @@
     }
   },
   "subscribe": {
-    "message": "Subscribe"
+    "message": "Naroči se"
   },
   "subscribe_title": {
-    "message": "Feed preview"
+    "message": "Predogled vira"
   },
   "subscribe_addLivemark": {
     "message": "Dodaj Livemark"
@@ -53,7 +53,7 @@
     "message": "Nov livemark"
   },
   "enterFeedURL": {
-    "message": "Enter Feed URL"
+    "message": "Vnesite URL vira"
   },
   "settings_importExport_heading": {
     "message": "Uvozi / Izvozi"
@@ -68,7 +68,7 @@
     "message": "Izvozi vire"
   },
   "settings_importExport_successImport": {
-    "message": "Successfully imported $COUNT$ feeds.",
+    "message": "Uspešno uvoženih $COUNT$ virov.",
     "placeholders": {
       "count": {
         "content": "$1"
@@ -76,7 +76,7 @@
     }
   },
   "settings_importExport_errorImport": {
-    "message": "Error importing OPML file"
+    "message": "Napaka pri uvozu OPML datoteke"
   },
   "settings_refreshInterval_heading": {
     "message": "Osvežitveni intervali"
@@ -168,9 +168,9 @@
     "message": "Shrani"
   },
   "settings_brokenLivemark": {
-    "message": "Broken livemark"
+    "message": "Uničen livemark"
   },
   "selectFolder_folder": {
-    "message": "Select folder used by broken livemark"
+    "message": "Izberite mapo, ki jo uporablja uničen livemark"
   }
 }

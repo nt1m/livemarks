@@ -6,7 +6,7 @@
     "message": "Ricarica Segnalibro live"
   },
   "openSiteUrl": {
-    "message": "Open \"$site$\"",
+    "message": "Apri \"$site$\"",
     "placeholders": {
       "site" : {
         "content" : "$1"
@@ -59,7 +59,7 @@
     "message": "Importa/esporta"
   },
   "settings_importExport_description": {
-    "message": "Questa caratteristica utilizza il formato OPML utilizzato dalla maggior parte dei lettori RSS."
+    "message": "Questa caratteristica utilizza il formato file OPML (gestito dalla maggior parte dei lettori RSS)."
   },
   "settings_importExport_importFeeds": {
     "message": "Importa feed"

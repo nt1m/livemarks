@@ -120,7 +120,7 @@
   },
   "settings_about_description_before_foxish": {
     "description": "Between _before_foxish and _after_foxish there is a 'Foxish' HTML link",
-    "message": "и основано на"
+    "message": "и основано на "
   },
   "settings_about_description_after_foxish": {
     "message": "."

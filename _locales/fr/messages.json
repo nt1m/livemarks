@@ -112,6 +112,21 @@
   "settings_feedPreview_description": {
     "message": "Activer l'aperçu personalisé quand je visite un flux"
   },
+  "settings_extensionIcon_heading": {
+    "message": "Icône de l'extension"
+  },
+  "settings_extensionIcon_description": {
+    "message": "Choisissez l'icône qui fonctionne le mieux avec votre thème."
+  },
+  "settings_extensionIcon_darkIcon": {
+    "message": "Icône sombre"
+  },
+  "settings_extensionIcon_lightIcon": {
+    "message": "Icône claire"
+  },
+  "settings_extensionIcon_orangeIcon": {
+    "message": "Icône orange"
+  },
   "settings_about_heading": {
     "message": "À propos"
   },

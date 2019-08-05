@@ -107,10 +107,10 @@
     "message": "Read:"
   },
   "settings_prefixes_feed_folder": {
-    "message": "Enable prefixes on the feed's folders."
+    "message": "Show on folders when all their items are read/unread"
   },
   "settings_prefixes_parent_folders": {
-    "message": "Enable prefixes on the feed's parent folders recursively."
+    "message": "Show on parent folder when all child folders are read/unread"
   },
   "settings_feedPreview_heading": {
     "message": "Feed preview"

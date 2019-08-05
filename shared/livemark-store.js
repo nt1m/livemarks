@@ -1,5 +1,7 @@
 "use strict";
 
+/* import-globals-from prefix-utils.js */
+
 const PREFIX = "livemarks.";
 
 function toInternalId(id) {
@@ -25,6 +27,11 @@ const LivemarkStore = {
   async getAll(broken = []) {
     const livemarks = await browser.storage.sync.get();
 
+    // Pass in prefixes so they can be removed from the title. We don't get them in
+    // _makeDetails to avoid unnecessarily fetching into storage
+    let readPrefix = await Settings.getReadPrefix();
+    let unreadPrefix = await Settings.getUnreadPrefix();
+
     const all = [];
     for (const key in livemarks) {
       if (!key.startsWith(PREFIX)) {
@@ -33,7 +40,10 @@ const LivemarkStore = {
 
       const id = fromInternalId(key);
       try {
-        const details = await this._makeDetails(id, livemarks[key]);
+        const details = await this._makeDetails(id, livemarks[key], {
+          readPrefix,
+          unreadPrefix,
+        });
         all.push(details);
       } catch (e) {
         broken.push({id, ...livemarks[key]});
@@ -124,8 +134,12 @@ const LivemarkStore = {
     await browser.storage.sync.set({ [toInternalId(id)]: oldFeed });
   },
 
-  async _makeDetails(id, {feedUrl, siteUrl, maxItems, updated}) {
-    const [{title, parentId}] = await browser.bookmarks.get(id);
+  async _makeDetails(id, {feedUrl, siteUrl, maxItems, updated}, {readPrefix, unreadPrefix}) {
+    let [{title, parentId}] = await browser.bookmarks.get(id);
+
+    title = PrefixUtils.removePrefix(readPrefix, title);
+    title = PrefixUtils.removePrefix(unreadPrefix, title);
+
     return {
       title,
       feedUrl,
@@ -139,7 +153,9 @@ const LivemarkStore = {
 
   async getDetails(id) {
     const feed = await this.get(id);
-    return this._makeDetails(id, feed);
+    const readPrefix = await Settings.getReadPrefix();
+    const unreadPrefix = await Settings.getUnreadPrefix();
+    return this._makeDetails(id, feed, {readPrefix, unreadPrefix});
   },
 
   addChangeListener(listener) {

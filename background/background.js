@@ -131,14 +131,7 @@ const LivemarkUpdater = {
     }
     const [folder] = await browser.bookmarks.get(feed.id);
     let readPrefix = await Settings.getReadPrefix();
-    if (readPrefix.length > 0) {
-      readPrefix += " ";
-    }
-
     let unreadPrefix = await Settings.getUnreadPrefix();
-    if (unreadPrefix.length > 0) {
-      unreadPrefix += " ";
-    }
 
     // Note: We make an effort to avoid unnecessary churn on bookmark
     // creation/deletion, as it give firefox sync a hard time:
@@ -212,7 +205,10 @@ const LivemarkUpdater = {
       }
 
       const itemTitle = item.title ? item.title : url;
-      const title = ((visits > 0) ? readPrefix : unreadPrefix) + itemTitle;
+      const title = PrefixUtils.addPrefix(
+        (visits > 0) ? readPrefix : unreadPrefix,
+        itemTitle,
+      );
       if (i < usableChildren.length) {
         // There's a child in the right place, see if it has the right data,
         // and update it if not.
@@ -247,62 +243,42 @@ const LivemarkUpdater = {
     if (await Settings.getPrefixParentFoldersEnabled()){
       this.setParentFoldersPrefix(folder);
     }
-
   },
   async setParentFoldersPrefix(livemark) {
     const [folder] = await browser.bookmarks.get(livemark.parentId);
 
     // Don't change the folder name if it is any of the builtin folders
     const builtinIds = ["toolbar_____", "menu________", "unfiled_____", "mobile______"];
-    if (!builtinIds || builtinIds.includes(folder.id)){
+    if (builtinIds.includes(folder.id)){
       return;
     }
 
     const children = await browser.bookmarks.getChildren(folder.id);
-    if (!children) {
+    if (!children || children.length == 0) {
       return;
     }
 
     let readPrefix = await Settings.getReadPrefix();
-    if (readPrefix.length > 0) {
-      readPrefix += " ";
-    }
 
-    let allRead = true;
-    for (let child of children){
-      if (!child.title.startsWith(readPrefix)) {
-        allRead = false;
-        break;
-      }
-    }
+    let allRead = children.every(() => PrefixUtils.hasPrefix(readPrefix, child.title));
 
     await this.setPrefix(folder, allRead);
     this.setParentFoldersPrefix(folder);
   },
   async setPrefix(item, isRead) {
     let readPrefix = await Settings.getReadPrefix();
-    if (readPrefix.length > 0) {
-      readPrefix += " ";
-    }
-
     let unreadPrefix = await Settings.getUnreadPrefix();
-    if (unreadPrefix.length > 0) {
-      unreadPrefix += " ";
-    }
 
-    // Remove existing prefixes from the title
-    let title = item.title;
-    if (readPrefix && item.title.startsWith(readPrefix)) {
-        title = item.title.substring(readPrefix.length);
-    }
-    if (unreadPrefix && item.title.startsWith(unreadPrefix)) {
-        title = item.title.substring(unreadPrefix.length);
-    }
+    let oldTitle = item.title;
+
+    let title = PrefixUtils.removePrefix(readPrefix, oldTitle);
+    title = PrefixUtils.removePrefix(unreadPrefix, title);
 
     // Update the title with the new prefix
-    title = (isRead ? readPrefix : unreadPrefix) + title;
-    if (title != item.title) {
-        await browser.bookmarks.update(item.id, {title: title});
+    title = PrefixUtils.addPrefix(isRead ? readPrefix : unreadPrefix, title);
+
+    if (title != oldTitle) {
+      await browser.bookmarks.update(item.id, {title});
     }
   }
 };

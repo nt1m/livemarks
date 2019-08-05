@@ -43,16 +43,29 @@
       <div class="section">
         <h3 data-i18n-text="settings_prefixes_heading"></h3>
         <p data-i18n-text="settings_prefixes_description"></p>
-        <label data-i18n-text="settings_prefixes_unread"></label>
-        <input class="short" name="unreadPrefix">
-        <label data-i18n-text="settings_prefixes_read"></label>
-        <input class="short" name="readPrefix">
+        <div>
+          <label data-i18n-text="settings_prefixes_unread"></label>
+          <input class="short" name="unreadPrefix">
+          <label data-i18n-text="settings_prefixes_read"></label>
+          <input class="short" name="readPrefix">
+        </div>
+        <br/>
+        <div>
+          <div class="flex">
+            <input type="checkbox" id="prefixFeedFolder" name="prefixFeedFolder">
+            <label class="grow" for="prefixFeedFolder" data-i18n-text="settings_prefixes_feed_folder"></label>
+          </div>
+          <div class="flex">
+            <input type="checkbox" id="prefixParentFolders" name="prefixParentFolders">
+            <label class="grow" for="prefixParentFolders" data-i18n-text="settings_prefixes_parent_folders"></label>
+          </div>
+        </div>
       </div>
       <div class="section">
         <h3 data-i18n-text="settings_feedPreview_heading"></h3>
         <div class="flex">
-          <input type="checkbox" name="feedPreview">
-          <label class="grow" data-i18n-text="settings_feedPreview_description"></label>
+          <input type="checkbox" id="feedPreview" name="feedPreview">
+          <label class="grow" for="feedPreview" data-i18n-text="settings_feedPreview_description"></label>
         </div>
       </div>
       <div class="section">
@@ -138,6 +151,7 @@
   </form>
 
   <script src="/shared/i18n.js"></script>
+  <script src="/shared/prefix-utils.js"></script>
   <script src="/shared/settings.js"></script>
   <script src="/shared/livemark-store.js"></script>
   <script src="/shared/feed-parser.js"></script>

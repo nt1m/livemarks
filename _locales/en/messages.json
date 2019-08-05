@@ -106,6 +106,12 @@
   "settings_prefixes_read": {
     "message": "Read:"
   },
+  "settings_prefixes_feed_folder": {
+    "message": "Show on folders when all their items are read/unread"
+  },
+  "settings_prefixes_parent_folders": {
+    "message": "Show on parent folder when all child folders are read/unread"
+  },
   "settings_feedPreview_heading": {
     "message": "Feed preview"
   },

@@ -131,14 +131,7 @@ const LivemarkUpdater = {
     }
     const [folder] = await browser.bookmarks.get(feed.id);
     let readPrefix = await Settings.getReadPrefix();
-    if (readPrefix.length > 0) {
-      readPrefix += " ";
-    }
-
     let unreadPrefix = await Settings.getUnreadPrefix();
-    if (unreadPrefix.length > 0) {
-      unreadPrefix += " ";
-    }
 
     // Note: We make an effort to avoid unnecessary churn on bookmark
     // creation/deletion, as it give firefox sync a hard time:
@@ -186,6 +179,7 @@ const LivemarkUpdater = {
     const items = feedData.items.filter(item => item.title || item.url);
     const max = Math.min(feed.maxItems, items.length);
     let i = 0;
+    let itemsReadCount = 0;
     for (; i < max; i++) {
       const item = items[i];
       const url = item.url || feed.feedUrl;
@@ -193,6 +187,10 @@ const LivemarkUpdater = {
       try {
         visits = (await browser.history.getVisits({url})).length;
       } catch (e) {}
+
+      if (visits > 0){
+        itemsReadCount += (visits > 0);
+      }
 
       // Only unvisited URLs need to be updated later
       if (visits === 0 && (readPrefix || unreadPrefix)) {
@@ -207,7 +205,10 @@ const LivemarkUpdater = {
       }
 
       const itemTitle = item.title ? item.title : url;
-      const title = ((visits > 0) ? readPrefix : unreadPrefix) + itemTitle;
+      const title = PrefixUtils.addPrefix(
+        (visits > 0) ? readPrefix : unreadPrefix,
+        itemTitle,
+      );
       if (i < usableChildren.length) {
         // There's a child in the right place, see if it has the right data,
         // and update it if not.
@@ -232,6 +233,53 @@ const LivemarkUpdater = {
       await browser.bookmarks.remove(usableChildren[i].id);
     }
     await LivemarkStore.edit(folder.id, {updated: feedData.updated});
+
+    // Update the feed folder title prefix if all items have been read
+    if (await Settings.getPrefixFeedFolderEnabled()){
+      await this.setPrefix(folder, itemsReadCount == max);
+    }
+
+    // Update the parent folders' title prefix title if all RSS feeds have been read
+    if (await Settings.getPrefixParentFoldersEnabled()){
+      this.setParentFoldersPrefix(folder);
+    }
+  },
+  async setParentFoldersPrefix(livemark) {
+    const [folder] = await browser.bookmarks.get(livemark.parentId);
+
+    // Don't change the folder name if it is any of the builtin folders
+    const builtinIds = ["toolbar_____", "menu________", "unfiled_____", "mobile______"];
+    if (builtinIds.includes(folder.id)){
+      return;
+    }
+
+    const children = await browser.bookmarks.getChildren(folder.id);
+    if (!children || children.length == 0) {
+      return;
+    }
+
+    let readPrefix = await Settings.getReadPrefix();
+
+    let allRead = children.every(() => PrefixUtils.hasPrefix(readPrefix, child.title));
+
+    await this.setPrefix(folder, allRead);
+    this.setParentFoldersPrefix(folder);
+  },
+  async setPrefix(item, isRead) {
+    let readPrefix = await Settings.getReadPrefix();
+    let unreadPrefix = await Settings.getUnreadPrefix();
+
+    let oldTitle = item.title;
+
+    let title = PrefixUtils.removePrefix(readPrefix, oldTitle);
+    title = PrefixUtils.removePrefix(unreadPrefix, title);
+
+    // Update the title with the new prefix
+    title = PrefixUtils.addPrefix(isRead ? readPrefix : unreadPrefix, title);
+
+    if (title != oldTitle) {
+      await browser.bookmarks.update(item.id, {title});
+    }
   }
 };
 

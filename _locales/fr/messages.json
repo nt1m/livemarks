@@ -106,6 +106,12 @@
   "settings_prefixes_read": {
     "message": "Lu:"
   },
+  "settings_prefixes_feed_folder": {
+    "message": "Afficher sur les dossiers quand toutes leurs publications sont lues/non-lues"
+  },
+  "settings_prefixes_parent_folders": {
+    "message": "Afficher sur le dossier parent quand tous leurs dossiers enfants sont lues/non-lues"
+  },
   "settings_feedPreview_heading": {
     "message": "Aperçu des flux"
   },

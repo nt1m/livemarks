@@ -253,6 +253,8 @@ async function showSelectFolderDialog(feed) {
 
 async function populateFolderSelector(folderSelector, removeBuiltin = false) {
   const allFolders = await getAllBookmarkFolders();
+  const readPrefix = await Settings.getReadPrefix();
+  const unreadPrefix = await Settings.getUnreadPrefix();
   folderSelector.textContent = "";
   folderSelector.append(...allFolders.filter(folder => {
     if (removeBuiltin) {
@@ -264,7 +266,12 @@ async function populateFolderSelector(folderSelector, removeBuiltin = false) {
   }).map(folder => {
     const option = document.createElement("option");
     option.value = folder.id;
-    option.textContent = folder.title;
+
+    let title = folder.title;
+    title = PrefixUtils.removePrefix(readPrefix, title);
+    title = PrefixUtils.removePrefix(unreadPrefix, title);
+
+    option.textContent = title;
     return option;
   }));
   folderSelector.value = await Settings.getDefaultFolder();

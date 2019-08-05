@@ -385,7 +385,13 @@ browser.runtime.onMessage.addListener(async (request, sender) => {
     });
 
     const [folderProps] = await browser.bookmarks.get(folderId);
-    return folderProps.title;
+    let formattedFolderTitle = folderProps.title;
+    const readPrefix = await Settings.getReadPrefix();
+    formattedFolderTitle = PrefixUtils.removePrefix(readPrefix, formattedFolderTitle);
+    const unreadPrefix = await Settings.getUnreadPrefix();
+    formattedFolderTitle = PrefixUtils.removePrefix(unreadPrefix, formattedFolderTitle);
+
+    return formattedFolderTitle;
   }
 });
 

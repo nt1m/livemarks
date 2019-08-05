@@ -67,6 +67,15 @@ main > * {
   margin-left: 0.5em;
 }
 
+#settings-dialog {
+  column-count: 2;
+  min-width: 300px;
+}
+
+#settings-form {
+  display: contents;
+}
+
 #import-feeds {
   position: absolute;
   top: 0;

@@ -17,22 +17,30 @@
   </main>
   <div id="dialog-overlay" hidden></div>
   <div class="card dialog" id="settings-dialog" hidden>
-    <h3 data-i18n-text="settings_importExport_heading"></h3>
-    <p data-i18n-text="settings_importExport_description"></p>
-    <a class="button">
-      <input id="import-feeds" name="files[]" type="file">
-      <span data-i18n-text="settings_importExport_importFeeds"></span>
-    </a>
-    <a class="button" id="export-feeds" download="livemarks-opml.xml" data-i18n-text="settings_importExport_exportFeeds"></a>
+    <div class="section">
+      <h3 data-i18n-text="settings_importExport_heading"></h3>
+      <p data-i18n-text="settings_importExport_description"></p>
+      <a class="button">
+        <input id="import-feeds" name="files[]" type="file">
+        <span data-i18n-text="settings_importExport_importFeeds"></span>
+      </a>
+      <a class="button" id="export-feeds" download="livemarks-opml.xml" data-i18n-text="settings_importExport_exportFeeds"></a>
+    </div>
     <form id="settings-form">
-      <h3 data-i18n-text="settings_refreshInterval_heading"></h3>
-      <p data-i18n-text="settings_refreshInterval_description"></p>
-      <input class="short" name="pollInterval" min="1" required type="number">
-      <label data-i18n-text="settings_refreshInterval_minutes"></label>
-      <h3 data-i18n-text="settings_defaultFolder_heading"></h3>
-      <p data-i18n-text="settings_defaultFolder_description"></p>
-      <select name="defaultFolder"></select>
-      <div>
+      <div class="section">
+        <h3 data-i18n-text="settings_refreshInterval_heading"></h3>
+        <p data-i18n-text="settings_refreshInterval_description"></p>
+        <div class="flex">
+          <input class="short" name="pollInterval" min="1" required type="number">
+          <label class="grow" data-i18n-text="settings_refreshInterval_minutes"></label>
+        </div>
+      </div>
+      <div class="section">
+        <h3 data-i18n-text="settings_defaultFolder_heading"></h3>
+        <p data-i18n-text="settings_defaultFolder_description"></p>
+        <select name="defaultFolder"></select>
+      </div>
+      <div class="section">
         <h3 data-i18n-text="settings_prefixes_heading"></h3>
         <p data-i18n-text="settings_prefixes_description"></p>
         <label data-i18n-text="settings_prefixes_unread"></label>
@@ -40,33 +48,41 @@
         <label data-i18n-text="settings_prefixes_read"></label>
         <input class="short" name="readPrefix">
       </div>
-      <h3 data-i18n-text="settings_feedPreview_heading"></h3>
-      <input type="checkbox" name="feedPreview">
-      <label data-i18n-text="settings_feedPreview_description"></label>
-      <h3 data-i18n-text="settings_extensionIcon_heading"></h3>
-      <p data-i18n-text="settings_extensionIcon_description"></p>
-      <div>
-        <input type="radio" name="extensionIcon" value="dark" data-i18n-title="settings_extensionIcon_darkIcon" id="darkIcon"/>
-        <input type="radio" name="extensionIcon" value="light" data-i18n-title="settings_extensionIcon_lightIcon" id="lightIcon"/>
-        <input type="radio" name="extensionIcon" value="orange" data-i18n-title="settings_extensionIcon_orangeIcon" id="orangeIcon"/>
+      <div class="section">
+        <h3 data-i18n-text="settings_feedPreview_heading"></h3>
+        <div class="flex">
+          <input type="checkbox" name="feedPreview">
+          <label class="grow" data-i18n-text="settings_feedPreview_description"></label>
+        </div>
       </div>
-      <h3 data-i18n-text="settings_about_heading"></h3>
-      <div>
-        <p data-i18n-text="settings_about_description_authors"></p>
-        <ul>
-          <li><a href="https://twitter.com/therealntim">Tim Nguyen</a></li>
-          <li><a href="https://twitter.com/evilpies">Tom Schuster</a></li>
-        </ul>
-        <p>
-          <span data-i18n-text="settings_about_description_before_foxish"></span><a href="https://github.com/davidhampgonsalves/foxish">Foxish</a><span data-i18n-text="settings_about_description_after_foxish"></span>
-        </p>
-        <p data-i18n-text="settings_about_description_support"></p>
+      <div class="section">
+        <h3 data-i18n-text="settings_extensionIcon_heading"></h3>
+        <p data-i18n-text="settings_extensionIcon_description"></p>
+        <div>
+          <input type="radio" name="extensionIcon" value="dark" data-i18n-title="settings_extensionIcon_darkIcon" id="darkIcon"/>
+          <input type="radio" name="extensionIcon" value="light" data-i18n-title="settings_extensionIcon_lightIcon" id="lightIcon"/>
+          <input type="radio" name="extensionIcon" value="orange" data-i18n-title="settings_extensionIcon_orangeIcon" id="orangeIcon"/>
+        </div>
       </div>
-      <div>
-        <a data-i18n-text="settings_about_donating" href="https://paypal.me/ntimdev" target="_blank" class="button" id="donate-button" type="submit"></a>
-        <a data-i18n-text="settings_about_reviewing" href="https://addons.mozilla.org/firefox/addon/livemarks/reviews/add" class="button" target="_blank"></a>
-        <a data-i18n-text="settings_about_reporting" href="https://github.com/nt1m/livemarks/issues" class="button" target="_blank"></a>
-        <a data-i18n-text="settings_about_translating" href="https://www.transifex.com/tim-nguyen/livemarks/" class="button" target="_blank"></a>
+      <div class="section">
+        <h3 data-i18n-text="settings_about_heading"></h3>
+        <div>
+          <p data-i18n-text="settings_about_description_authors"></p>
+          <ul>
+            <li><a href="https://twitter.com/therealntim">Tim Nguyen</a></li>
+            <li><a href="https://twitter.com/evilpies">Tom Schuster</a></li>
+          </ul>
+          <p>
+            <span data-i18n-text="settings_about_description_before_foxish"></span><a href="https://github.com/davidhampgonsalves/foxish">Foxish</a><span data-i18n-text="settings_about_description_after_foxish"></span>
+          </p>
+          <p data-i18n-text="settings_about_description_support"></p>
+        </div>
+        <div>
+          <a data-i18n-text="settings_about_donating" href="https://paypal.me/ntimdev" target="_blank" class="button" id="donate-button" type="submit"></a>
+          <a data-i18n-text="settings_about_reviewing" href="https://addons.mozilla.org/firefox/addon/livemarks/reviews/add" class="button" target="_blank"></a>
+          <a data-i18n-text="settings_about_reporting" href="https://github.com/nt1m/livemarks/issues" class="button" target="_blank"></a>
+          <a data-i18n-text="settings_about_translating" href="https://www.transifex.com/tim-nguyen/livemarks/" class="button" target="_blank"></a>
+        </div>
       </div>
     </form>
     <div class="dialog-footer">

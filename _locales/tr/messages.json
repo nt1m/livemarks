@@ -1,0 +1,197 @@
+{
+  "extensionDescription": {
+    "message": "Firefox 64 ve üzeri sürümlere için RSS besleme desteği sağlar"
+  },
+  "reloadLiveBookmark": {
+    "message": "Abonelikleri Güncelle"
+  },
+  "openSiteUrl": {
+    "message": "\"$site$\" Aç",
+    "placeholders": {
+      "site" : {
+        "content" : "$1"
+      }
+    }
+  },
+  "subscribe": {
+    "message": "Abone ol"
+  },
+  "subscribe_title": {
+    "message": "Ön izleme"
+  },
+  "subscribe_addLivemark": {
+    "message": "Abonelik Ekle"
+  },
+  "subscribe_viewSource": {
+    "message": "Kaynağı görüntüle"
+  },
+  "subscribe_failedToFetchFeed": {
+    "message": "Besleme alınamadı"
+  },
+  "subscribe_noEntriesFound": {
+    "message": "Besleme girişi bulunamadı"
+  },
+  "subscribe_subscribed": {
+    "message": "Abonelik $FOLDER$ klasörüne eklendi. Düzenlemek için klasöre gidiniz.",
+    "placeholders": {
+      "folder": {
+        "content": "$1"
+      }
+    }
+  },
+  "noItemsFound": {
+    "message": "İçeirk bulunamadı"
+  },
+  "yourLivemarks": {
+    "description": "Title of the 'Your livemarks' page",
+    "message": "Abonelikleriniz"
+  },
+  "moreOptions": {
+    "message": "Ek seçenekler"
+  },
+  "newLivemark": {
+    "message": "Yeni Abonelik"
+  },
+  "enterFeedURL": {
+    "message": "Besleme URL'si Gir"
+  },
+  "settings_importExport_heading": {
+    "message": "İçe Aktar / Dışa Aktar"
+  },
+  "settings_importExport_description": {
+    "message": "Bu özellik bir çok RSS okuyucusu tarafındna kullanılan OPML biçimini kullanır."
+  },
+  "settings_importExport_importFeeds": {
+    "message": "İçe Aktar"
+  },
+  "settings_importExport_exportFeeds": {
+    "message": "Dışa Aktar"
+  },
+  "settings_importExport_successImport": {
+    "message": "$COUNT$ besleme başarıyla içe aktarıldı.",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "settings_importExport_errorImport": {
+    "message": "OPML alımı başarısız"
+  },
+  "settings_refreshInterval_heading": {
+    "message": "Güncelleme aralığı"
+  },
+  "settings_refreshInterval_description": {
+    "message": "Aboneliklerinizi güncelleme sıklığını belirleyin."
+  },
+  "settings_refreshInterval_minutes": {
+    "description": "Shown as 'X minutes' in the settings dialog",
+    "message": "dakika"
+  },
+  "settings_defaultFolder_heading": {
+    "message": "Varsayılan klasör"
+  },
+  "settings_defaultFolder_description": {
+    "message": "Gelecekteki tüm abonelikleriniz varsayılan klasöre kaydedilecektir"
+  },
+  "settings_prefixes_heading": {
+    "message": "Yer imi ön ekleri"
+  },
+  "settings_prefixes_description": {
+    "message": "Aşağıda belirtilen ekler yer imi durumuna göre satır başına eklenecektir."
+  },
+  "settings_prefixes_unread": {
+    "message": "Okunmamış:"
+  },
+  "settings_prefixes_read": {
+    "message": "Okundu:"
+  },
+  "settings_prefixes_feed_folder": {
+    "message": "İçeriklerin tümü okundu/okunmamış olarak işaretli ise klasörde göster"
+  },
+  "settings_prefixes_parent_folders": {
+    "message": "Alt klasörlerin tümü okundu/okunmamış olarak işaretli ise üst klasörde göster"
+  },
+  "settings_feedPreview_heading": {
+    "message": "Ön izleme"
+  },
+  "settings_feedPreview_description": {
+    "message": "URL'yi ziyaret ederken besleme ön izlemesini etkinleştir"
+  },
+  "settings_extensionIcon_heading": {
+    "message": "Simge rengi"
+  },
+  "settings_extensionIcon_description": {
+    "message": "Tarayıcı temanıza uygun olan rengi seçebilirsiniz."
+  },
+  "settings_extensionIcon_darkIcon": {
+    "message": "Siyah"
+  },
+  "settings_extensionIcon_lightIcon": {
+    "message": "Beyaz"
+  },
+  "settings_extensionIcon_orangeIcon": {
+    "message": "Turuncu"
+  },
+  "settings_about_heading": {
+    "message": "Hakkında"
+  },
+  "settings_about_description_authors": {
+    "message": "Geliştiriciler:"
+  },
+  "settings_about_description_before_foxish": {
+    "description": "Between _before_foxish and _after_foxish there is a 'Foxish' HTML link",
+    "message": "Temel alınmıştır: "
+  },
+  "settings_about_description_after_foxish": {
+    "message": "."
+  },
+  "settings_about_description_support": {
+    "message": "Eklentiye destek verebilirsiniz:"
+  },
+  "settings_about_donating": {
+    "message": "Bağış Yap"
+  },
+  "settings_about_reviewing": {
+    "message": "Yorum Yap"
+  },
+  "settings_about_reporting": {
+    "message": "Sorun bildir"
+  },
+  "settings_about_translating": {
+    "message": "Yerelleştirme Sağla"
+  },
+  "settings_close": {
+    "message": "Kapat"
+  },
+  "editLivemark_name": {
+    "message": "İsim"
+  },
+  "editLivemark_remove": {
+    "message": "Bu beslemeyi sil"
+  },
+  "editLivemark_feedURL": {
+    "message": "Besleme URL'si"
+  },
+  "editLivemark_siteURL": {
+    "message": "Sayfa URL'si"
+  },
+  "editLivemark_parentFolder": {
+    "message": "Üst klasör"
+  },
+  "editLivemark_maxItems": {
+    "message": "En fazla içerik sayısı"
+  },
+  "editLivemark_cancel": {
+    "message": "İptal"
+  },
+  "editLivemark_save": {
+    "message": "Kaydet"
+  },
+  "settings_brokenLivemark": {
+    "message": "Hatalı abonelik"
+  },
+  "selectFolder_folder": {
+    "message": "Hatalı aboneliğin olduğu klasörü seç"
+  }
+}

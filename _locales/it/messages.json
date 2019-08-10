@@ -106,11 +106,32 @@
   "settings_prefixes_read": {
     "message": "Letti:"
   },
+  "settings_prefixes_feed_folder": {
+    "message": "Mostra nelle cartelle quando tutti i loro elementi sono letti/non letti"
+  },
+  "settings_prefixes_parent_folders": {
+    "message": "Mostra nelle cartella genitore quando tutte le cartelle contenute sono lette/non lette"
+  },
   "settings_feedPreview_heading": {
     "message": "Anteprima del feed"
   },
   "settings_feedPreview_description": {
     "message": "Attiva l'anteprima del feed quando si accede direttamente all'URL di un feed"
+  },
+  "settings_extensionIcon_heading": {
+    "message": "Icona dell'estensione"
+  },
+  "settings_extensionIcon_description": {
+    "message": "Scegli l'icona dell'estensione che meglio si adatta al tema del browser"
+  },
+  "settings_extensionIcon_darkIcon": {
+    "message": "Icona scura"
+  },
+  "settings_extensionIcon_lightIcon": {
+    "message": "Icona chiara"
+  },
+  "settings_extensionIcon_orangeIcon": {
+    "message": "Icona arancione"
   },
   "settings_about_heading": {
     "message": "Informazioni"

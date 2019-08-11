@@ -77,12 +77,36 @@ main > * {
 }
 
 #settings-dialog {
-  column-count: 2;
   min-width: 300px;
+  width: -moz-max-content;
+  width: max-content;
+}
+
+#settings-dialog:not([hidden]) {
+  display: flex;
+  flex-direction: column;
+}
+
+#settings-dialog .dialog-content {
+  overflow: auto;
+  flex-grow: 1;
+}
+
+#settings-dialog .dialog-content > div {
+  column-count: 2;
+  column-width: 50ch;
 }
 
 #settings-form {
   display: contents;
+}
+
+.section {
+  break-inside: avoid;
+}
+
+.indent {
+  padding-inline-start: 1em;
 }
 
 #import-feeds {

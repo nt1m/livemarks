@@ -89,7 +89,7 @@ const LivemarkUpdater = {
   // adds the site url bookmark if it doesn't
   // exist already. Returns whether or not it modified the child list.
   async addFeedSiteUrlBookmark(folder, feed, children) {
-    const siteUrlTitle = browser.i18n.getMessage("openSiteUrl", folder.title);
+    const siteUrlTitle = browser.i18n.getMessage("openSiteUrl", folder.title.trim());
     let didChange = false;
     if (children.length === 0) {
       await browser.bookmarks.create({

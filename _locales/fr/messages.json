@@ -1,6 +1,6 @@
 {
   "extensionDescription": {
-    "message": "Restore les marque-pages dynamiques RSS pour Firefox 64 et plus."
+    "message": "Restaure les marque-pages dynamiques RSS pour Firefox 64 et plus."
   },
   "reloadLiveBookmark": {
     "message": "Recharger le marque-page"
@@ -29,7 +29,7 @@
     "message": "Impossible de récupérer le flux"
   },
   "subscribe_noEntriesFound": {
-    "message": "Aucun élement trouvé"
+    "message": "Aucun élément trouvé"
   },
   "subscribe_subscribed": {
     "message": "Ajouté à $FOLDER$, visitez la page d'options pour éditer le marque-page",
@@ -40,7 +40,7 @@
     }
   },
   "noItemsFound": {
-    "message": "Aucun élement trouvé"
+    "message": "Aucun élément trouvé"
   },
   "yourLivemarks": {
     "description": "Title of the 'Your livemarks' page",
@@ -59,7 +59,7 @@
     "message": "Importer/Exporter"
   },
   "settings_importExport_description": {
-    "message": "Cette fonctionalité utilise le format OPML utilisé par la plupart des lecteurs RSS."
+    "message": "Cette fonctionnalité utilise le format OPML utilisé par la plupart des lecteurs RSS."
   },
   "settings_importExport_importFeeds": {
     "message": "Importer des flux"
@@ -137,7 +137,7 @@
     "message": "À propos"
   },
   "settings_about_description_authors": {
-    "message": "Cette extension a été crée par :"
+    "message": "Cette extension a été créée par :"
   },
   "settings_about_description_before_foxish": {
     "description": "Between _before_foxish and _after_foxish there is a 'Foxish' HTML link",
@@ -159,7 +159,7 @@
     "message": "Signalant des problèmes"
   },
   "settings_about_translating": {
-    "message": "Contribuant des traductions"
+    "message": "Contribuant aux traductions"
   },
   "settings_close": {
     "message": "Fermer"

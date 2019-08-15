@@ -1,10 +1,9 @@
 [main]
 host = https://www.transifex.com
 
-[livemarks.messages-json]
+[livemarks.messages-json--master]
 file_filter = _locales/<lang>/messages.json
 minimum_perc = 0
 source_file = _locales/en/messages.json
 source_lang = en
 type = CHROME
-

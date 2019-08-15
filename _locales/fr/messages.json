@@ -3,10 +3,10 @@
     "message": "Restaure les marque-pages dynamiques RSS pour Firefox 64 et plus."
   },
   "reloadLiveBookmark": {
-    "message": "Recharger le marque-page"
+    "message": "Actualiser les entrées"
   },
   "openSiteUrl": {
-    "message": "Ouvrir \"$site$\"",
+    "message": "Ouvrir « $site$ »",
     "placeholders": {
       "site" : {
         "content" : "$1"
@@ -29,7 +29,7 @@
     "message": "Impossible de récupérer le flux"
   },
   "subscribe_noEntriesFound": {
-    "message": "Aucun élément trouvé"
+    "message": "Aucune entrée trouvée"
   },
   "subscribe_subscribed": {
     "message": "Ajouté à $FOLDER$, visitez la page d'options pour éditer le marque-page",
@@ -98,13 +98,13 @@
     "message": "Préfixes de marque-page"
   },
   "settings_prefixes_description": {
-    "message": "Ces chaînes de charactères vont être utilisées comme préfixes pour indiquer le status."
+    "message": "Ces chaînes de caractères vont être utilisées comme préfixes pour indiquer le statut."
   },
   "settings_prefixes_unread": {
-    "message": "Non lu:"
+    "message": "Non lu :"
   },
   "settings_prefixes_read": {
-    "message": "Lu:"
+    "message": "Lu :"
   },
   "settings_prefixes_feed_folder": {
     "message": "Afficher sur les dossiers quand toutes leurs publications sont lues/non-lues"
@@ -116,7 +116,7 @@
     "message": "Aperçu des flux"
   },
   "settings_feedPreview_description": {
-    "message": "Activer l'aperçu personalisé quand je visite un flux"
+    "message": "Activer l'aperçu personnalisé quand je visite un flux"
   },
   "settings_extensionIcon_heading": {
     "message": "Icône de l'extension"

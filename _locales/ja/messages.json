@@ -106,11 +106,32 @@
   "settings_prefixes_read": {
     "message": "既読："
   },
+  "settings_prefixes_feed_folder": {
+    "message": "全てのアイテムが既読／未読のフォルダに表示"
+  },
+  "settings_prefixes_parent_folders": {
+    "message": "フォルダ中の全てのフォルダが既読／未読のフォルダに表示"
+  },
   "settings_feedPreview_heading": {
     "message": "フィードのプレビュー"
   },
   "settings_feedPreview_description": {
     "message": "フィードのURLに直接アクセスした際のフィードのプレビューを有効化する"
+  },
+  "settings_extensionIcon_heading": {
+    "message": "拡張機能のアイコン"
+  },
+  "settings_extensionIcon_description": {
+    "message": "ブラウザのテーマに最も合うアイコンを選んでください。"
+  },
+  "settings_extensionIcon_darkIcon": {
+    "message": "ダークアイコン"
+  },
+  "settings_extensionIcon_lightIcon": {
+    "message": "ライトアイコン"
+  },
+  "settings_extensionIcon_orangeIcon": {
+    "message": "オレンジアイコン"
   },
   "settings_about_heading": {
     "message": "Livemarksについて"

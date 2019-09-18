@@ -1,0 +1,197 @@
+{
+  "extensionDescription": {
+    "message": "還原 Firefox 64 (及更之前) 版的 RSS 即時書籤功能。"
+  },
+  "reloadLiveBookmark": {
+    "message": "重新載入即時書籤"
+  },
+  "openSiteUrl": {
+    "message": "開啟 $site$",
+    "placeholders": {
+      "site" : {
+        "content" : "$1"
+      }
+    }
+  },
+  "subscribe": {
+    "message": "訂閱"
+  },
+  "subscribe_title": {
+    "message": "Feed 預覽"
+  },
+  "subscribe_addLivemark": {
+    "message": "增加 Livemark"
+  },
+  "subscribe_viewSource": {
+    "message": "檢視來源"
+  },
+  "subscribe_failedToFetchFeed": {
+    "message": "無法取得內容"
+  },
+  "subscribe_noEntriesFound": {
+    "message": "無內容"
+  },
+  "subscribe_subscribed": {
+    "message": "已新增至 $FOLDER$，您可透過選項頁面修改此設定。",
+    "placeholders": {
+      "folder": {
+        "content": "$1"
+      }
+    }
+  },
+  "noItemsFound": {
+    "message": "找不到項目"
+  },
+  "yourLivemarks": {
+    "description": "Title of the 'Your livemarks' page",
+    "message": "你的 livemarks"
+  },
+  "moreOptions": {
+    "message": "更多選項"
+  },
+  "newLivemark": {
+    "message": "新的 livemark"
+  },
+  "enterFeedURL": {
+    "message": "輸入 Feed 網址"
+  },
+  "settings_importExport_heading": {
+    "message": "匯入 / 匯出"
+  },
+  "settings_importExport_description": {
+    "message": "此功能使用 OPML 格式，其適用於大多數的 RSS 閱讀器。"
+  },
+  "settings_importExport_importFeeds": {
+    "message": "匯入 feeds"
+  },
+  "settings_importExport_exportFeeds": {
+    "message": "匯出 feeds"
+  },
+  "settings_importExport_successImport": {
+    "message": "已成功匯入 $COUNT$ 筆 feeds。",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "settings_importExport_errorImport": {
+    "message": "匯入 OPML 檔時發生錯誤。"
+  },
+  "settings_refreshInterval_heading": {
+    "message": "更新間隔"
+  },
+  "settings_refreshInterval_description": {
+    "message": "設定 livemarks 更新頻率。"
+  },
+  "settings_refreshInterval_minutes": {
+    "description": "Shown as 'X minutes' in the settings dialog",
+    "message": "分鐘"
+  },
+  "settings_defaultFolder_heading": {
+    "message": "預設目錄"
+  },
+  "settings_defaultFolder_description": {
+    "message": "預設會將之後的 livemarks 儲存於此"
+  },
+  "settings_prefixes_heading": {
+    "message": "書籤前綴文字"
+  },
+  "settings_prefixes_description": {
+    "message": "此字符將被用於協助判斷該書籤的檢視狀態。"
+  },
+  "settings_prefixes_unread": {
+    "message": "未瀏覽:"
+  },
+  "settings_prefixes_read": {
+    "message": "已瀏覽:"
+  },
+  "settings_prefixes_feed_folder": {
+    "message": "當所有項目皆未讀或已讀時，顯示於目錄"
+  },
+  "settings_prefixes_parent_folders": {
+    "message": "當所有子目錄未讀或已讀時，顯示於父目錄"
+  },
+  "settings_feedPreview_heading": {
+    "message": "Feed 預覽"
+  },
+  "settings_feedPreview_description": {
+    "message": "當直接瀏覽 feed 網址時，啟用 feed 預覽"
+  },
+  "settings_extensionIcon_heading": {
+    "message": "元件圖示"
+  },
+  "settings_extensionIcon_description": {
+    "message": "選擇最適合您瀏覽器佈景主題的元件圖示。"
+  },
+  "settings_extensionIcon_darkIcon": {
+    "message": "暗色系圖示"
+  },
+  "settings_extensionIcon_lightIcon": {
+    "message": "亮色系圖示"
+  },
+  "settings_extensionIcon_orangeIcon": {
+    "message": "橘色圖示"
+  },
+  "settings_about_heading": {
+    "message": "關於"
+  },
+  "settings_about_description_authors": {
+    "message": "此附加元件作者:"
+  },
+  "settings_about_description_before_foxish": {
+    "description": "Between _before_foxish and _after_foxish there is a 'Foxish' HTML link",
+    "message": "基於"
+  },
+  "settings_about_description_after_foxish": {
+    "message": "."
+  },
+  "settings_about_description_support": {
+    "message": "您可以透過下列方式支持此附加元件:"
+  },
+  "settings_about_donating": {
+    "message": "捐獻"
+  },
+  "settings_about_reviewing": {
+    "message": "給我們一個好的評價"
+  },
+  "settings_about_reporting": {
+    "message": "回報錯誤"
+  },
+  "settings_about_translating": {
+    "message": "協助翻譯"
+  },
+  "settings_close": {
+    "message": "關閉"
+  },
+  "editLivemark_name": {
+    "message": "名稱"
+  },
+  "editLivemark_remove": {
+    "message": "移除此 feed"
+  },
+  "editLivemark_feedURL": {
+    "message": "Feed 網址"
+  },
+  "editLivemark_siteURL": {
+    "message": "網站位址"
+  },
+  "editLivemark_parentFolder": {
+    "message": "父層目錄"
+  },
+  "editLivemark_maxItems": {
+    "message": "最大項目"
+  },
+  "editLivemark_cancel": {
+    "message": "取消"
+  },
+  "editLivemark_save": {
+    "message": "儲存"
+  },
+  "settings_brokenLivemark": {
+    "message": "失效的 livemark"
+  },
+  "selectFolder_folder": {
+    "message": "為失效的 livemark 選擇一個目錄"
+  }
+}

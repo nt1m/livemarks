@@ -1,6 +1,6 @@
 {
   "extensionDescription": {
-    "message": "還原 Firefox 64 (及更之前) 版的 RSS 即時書籤功能。"
+    "message": "還原 Firefox 64 (及更早之前) 版的 RSS 即時書籤功能。"
   },
   "reloadLiveBookmark": {
     "message": "重新載入即時書籤"
@@ -20,10 +20,10 @@
     "message": "Feed 預覽"
   },
   "subscribe_addLivemark": {
-    "message": "增加 Livemark"
+    "message": "新增至 Livemark"
   },
   "subscribe_viewSource": {
-    "message": "檢視來源"
+    "message": "檢視原始碼"
   },
   "subscribe_failedToFetchFeed": {
     "message": "無法取得內容"
@@ -32,7 +32,7 @@
     "message": "無內容"
   },
   "subscribe_subscribed": {
-    "message": "已新增至 $FOLDER$，您可透過選項頁面修改此設定。",
+    "message": "已新增至 $FOLDER$，您可以在「選項」修改此設定。 ",
     "placeholders": {
       "folder": {
         "content": "$1"
@@ -92,7 +92,7 @@
     "message": "預設目錄"
   },
   "settings_defaultFolder_description": {
-    "message": "預設會將之後的 livemarks 儲存於此"
+    "message": "livemarks 預設存放目錄"
   },
   "settings_prefixes_heading": {
     "message": "書籤前綴文字"
@@ -101,16 +101,16 @@
     "message": "此字符將被用於協助判斷該書籤的檢視狀態。"
   },
   "settings_prefixes_unread": {
-    "message": "未瀏覽:"
+    "message": "未讀:"
   },
   "settings_prefixes_read": {
-    "message": "已瀏覽:"
+    "message": "已讀:"
   },
   "settings_prefixes_feed_folder": {
-    "message": "當所有項目皆未讀或已讀時，顯示於目錄"
+    "message": "當所有項目皆為未讀或已讀時，顯示於目錄上"
   },
   "settings_prefixes_parent_folders": {
-    "message": "當所有子目錄未讀或已讀時，顯示於父目錄"
+    "message": "當所有子目錄皆為未讀或已讀時，顯示於父目錄"
   },
   "settings_feedPreview_heading": {
     "message": "Feed 預覽"
@@ -125,13 +125,13 @@
     "message": "選擇最適合您瀏覽器佈景主題的元件圖示。"
   },
   "settings_extensionIcon_darkIcon": {
-    "message": "暗色系圖示"
+    "message": "暗色"
   },
   "settings_extensionIcon_lightIcon": {
-    "message": "亮色系圖示"
+    "message": "亮色"
   },
   "settings_extensionIcon_orangeIcon": {
-    "message": "橘色圖示"
+    "message": "橘色"
   },
   "settings_about_heading": {
     "message": "關於"

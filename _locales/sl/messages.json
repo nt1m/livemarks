@@ -106,11 +106,32 @@
   "settings_prefixes_read": {
     "message": "Prebrano:"
   },
+  "settings_prefixes_feed_folder": {
+    "message": "V mapi pokaži če vse otroški elementi prebrani/neprebrani"
+  },
+  "settings_prefixes_parent_folders": {
+    "message": "V nadrejeni mapi pokaži če vse otroške mape prebrane/neprebrane"
+  },
   "settings_feedPreview_heading": {
     "message": "Predogled vira"
   },
   "settings_feedPreview_description": {
     "message": "Omogočite predogled, ko neposredno obiščete URL vira"
+  },
+  "settings_extensionIcon_heading": {
+    "message": "Ikona razširitve"
+  },
+  "settings_extensionIcon_description": {
+    "message": "Izberite ikono, ki se najbolj sklada z vašo temo brskalnika."
+  },
+  "settings_extensionIcon_darkIcon": {
+    "message": "Temna ikona"
+  },
+  "settings_extensionIcon_lightIcon": {
+    "message": "Svetla ikona"
+  },
+  "settings_extensionIcon_orangeIcon": {
+    "message": "Oranžna ikona"
   },
   "settings_about_heading": {
     "message": "O dodatku"
@@ -120,7 +141,7 @@
   },
   "settings_about_description_before_foxish": {
     "description": "Between _before_foxish and _after_foxish there is a 'Foxish' HTML link",
-    "message": "Temelji na"
+    "message": "Temelji na "
   },
   "settings_about_description_after_foxish": {
     "message": "."

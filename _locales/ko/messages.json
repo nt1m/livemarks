@@ -106,11 +106,32 @@
   "settings_prefixes_read": {
     "message": "읽음:"
   },
+  "settings_prefixes_feed_folder": {
+    "message": "폴더에 모든 항목 읽음/읽지 않음 표시"
+  },
+  "settings_prefixes_parent_folders": {
+    "message": "상위 폴더에 모든 하위 폴더 읽음/읽지 않음 표시"
+  },
   "settings_feedPreview_heading": {
     "message": "피드 미리보기"
   },
   "settings_feedPreview_description": {
     "message": "피드 URL로 바로 접속했을 때 피드 미리보기를 활성화합니다"
+  },
+  "settings_extensionIcon_heading": {
+    "message": "부가 기능 아이콘"
+  },
+  "settings_extensionIcon_description": {
+    "message": "브라우저 테마와 가장 잘 맞는 부가 기능 아이콘을 선택하세요."
+  },
+  "settings_extensionIcon_darkIcon": {
+    "message": "어두운 아이콘"
+  },
+  "settings_extensionIcon_lightIcon": {
+    "message": "밝은 아이콘"
+  },
+  "settings_extensionIcon_orangeIcon": {
+    "message": "오렌지색 아이콘"
   },
   "settings_about_heading": {
     "message": "정보"

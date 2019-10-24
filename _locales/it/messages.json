@@ -110,7 +110,7 @@
     "message": "Mostra nelle cartelle quando tutti i loro elementi sono letti/non letti"
   },
   "settings_prefixes_parent_folders": {
-    "message": "Mostra nelle cartella genitore quando tutte le cartelle contenute sono lette/non lette"
+    "message": "Mostra nelle cartella principale quando tutte le cartelle in essa contenute sono lette/non lette"
   },
   "settings_feedPreview_heading": {
     "message": "Anteprima del feed"
@@ -177,7 +177,7 @@
     "message": "URL del sito:"
   },
   "editLivemark_parentFolder": {
-    "message": "Contenuto nella cartella:"
+    "message": "Salvato nella cartella:"
   },
   "editLivemark_maxItems": {
     "message": "Numero massimo di elementi:"

@@ -65,10 +65,11 @@ const FeedParser = {
 
     const channel = doc.querySelector("channel");
 
+    const websiteUrl = getTextFromElement("link", channel);
     const feed = {
       type: "rss",
       title: getParsedTextFromElement("title", channel),
-      url: getTextFromElement("link", channel),
+      url: websiteUrl,
       description: getParsedTextFromElement("description", channel),
       language: getTextFromElement("language", channel),
       updated: getTextFromElement("lastBuildDate", channel)
@@ -105,9 +106,10 @@ const FeedParser = {
         }
       }
 
+      const itemUrl = getTextFromElement("link", item) || getTextFromElement("guid", item);
       return {
         title: getParsedTextFromElement("title", item),
-        url: getTextFromElement("link", item) || getTextFromElement("guid", item),
+        url: new URL(itemUrl, websiteUrl).href,
         description: getTextFromElement("description", item),
         updated: getTextFromElement("pubDate", item),
         id: getTextFromElement("guid", item),

@@ -4,7 +4,7 @@
 
  :root {
    --card-background: white;
-   --card-text-color: black;
+   --text-color: black;
    --media-background: #f9f9fa;
    --deemphasized-text-color: #4a4a4f;
    --link-color: #0060df;
@@ -14,7 +14,7 @@
  @media (prefers-color-scheme: dark) {
    :root {
      --card-background: #38383d;
-     --card-text-color: #f9f9fa;
+     --text-color: #f9f9fa;
      --media-background: #2a2a2e;
      --deemphasized-text-color: #b1b1b3;
      --link-color: #45a1ff;
@@ -32,6 +32,7 @@ body {
   margin: 0;
   padding: 0;
   height: 100%;
+  color: var(--text-color);
 }
 
 a {
@@ -74,7 +75,7 @@ main {
 
 .item {
   background: var(--card-background);
-  color: var(--card-text-color);
+  color: inherit;
   box-shadow: 0 0 1px rgba(0, 0, 0, 0.12);
   padding: 15px;
   margin: 8px 0;

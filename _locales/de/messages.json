@@ -1,6 +1,6 @@
 {
   "extensionDescription": {
-    "message": "Stellt Unterstützung der RSS dynamischen Lesezeichen für Firefox 64 und neuer wieder her."
+    "message": "Stellt die RSS-Live-Lesezeichenunterstützung für Firefox 64 und höher wieder her."
   },
   "reloadLiveBookmark": {
     "message": "Dynamische Lesezeichen aktualisieren"
@@ -32,7 +32,7 @@
     "message": "Keine Feed-Einträge gefunden"
   },
   "subscribe_subscribed": {
-    "message": "Dem Ordner $FOLDER$ hinzugefügt. Optionen aufrufen um Lesezeichen zu bearbeiten.",
+    "message": "Dem Ordner $FOLDER$ hinzugefügt. Einstellungen aufrufen, um das Lesezeichen zu bearbeiten.",
     "placeholders": {
       "folder": {
         "content": "$1"
@@ -62,10 +62,10 @@
     "message": "Dieses Feature benutzt das OPML-Format, welches von den meisten RSS-Readern verwendet wird."
   },
   "settings_importExport_importFeeds": {
-    "message": "Feeds importieren"
+    "message": "Feeds importieren…"
   },
   "settings_importExport_exportFeeds": {
-    "message": "Feeds exportieren"
+    "message": "Feeds exportieren…"
   },
   "settings_importExport_successImport": {
     "message": "$COUNT$ Feeds erfolgreich importiert.",
@@ -79,10 +79,10 @@
     "message": "Fehler beim Import der OPML-Datei"
   },
   "settings_refreshInterval_heading": {
-    "message": "Aktualisierungs-Intervall"
+    "message": "Aktualisierungsintervall"
   },
   "settings_refreshInterval_description": {
-    "message": "Stelle ein, wie oft Livemarks aktualisiert werden."
+    "message": "Einstellen, wie oft die Livemarks aktualisiert werden."
   },
   "settings_refreshInterval_minutes": {
     "description": "Shown as 'X minutes' in the settings dialog",
@@ -107,22 +107,22 @@
     "message": "Gelesen:"
   },
   "settings_prefixes_feed_folder": {
-    "message": "Anzeigen bei Ordnern, deren Unterelemente gelesen/ungelesen sind."
+    "message": "Bei Ordnern anzeigen, wenn alle ihre Elemente gelesen/ungelesen sind."
   },
   "settings_prefixes_parent_folders": {
-    "message": "Anzeigen bei Ordnern, deren Unterordner gelesen/ungelesen sind."
+    "message": "Bei übergeordneten Ordnern anzeigen, wenn alle Unterordner gelesen/ungelesen sind."
   },
   "settings_feedPreview_heading": {
     "message": "Feed-Vorschau"
   },
   "settings_feedPreview_description": {
-    "message": "Aktiviere Feed-Vorschau wenn eine Feed-URL direkt besucht wird"
+    "message": "Feed-Vorschau aktivieren, wenn eine Feed-URL direkt besucht wird"
   },
   "settings_extensionIcon_heading": {
-    "message": "Erweiterungs-Symbol"
+    "message": "Erweiterungssymbol"
   },
   "settings_extensionIcon_description": {
-    "message": "Wähle das Symbol, welches am besten zum Browser-Theme passt."
+    "message": "Das Symbol wählen, welches am besten zum Browser-Theme passt."
   },
   "settings_extensionIcon_darkIcon": {
     "message": "Dunkles Symbol"
@@ -137,17 +137,17 @@
     "message": "Über"
   },
   "settings_about_description_authors": {
-    "message": "Dieses Add-On wurde erstellt durch:"
+    "message": "Dieses Add-on wurde erstellt durch:"
   },
   "settings_about_description_before_foxish": {
     "description": "Between _before_foxish and _after_foxish there is a 'Foxish' HTML link",
-    "message": "Es basiert auf"
+    "message": "Es basiert auf "
   },
   "settings_about_description_after_foxish": {
     "message": "."
   },
   "settings_about_description_support": {
-    "message": "Unterstütze das Add-On durch:"
+    "message": "Das Add-on unterstützen durch:"
   },
   "settings_about_donating": {
     "message": "Spenden"
@@ -162,7 +162,7 @@
     "message": "Übersetzungen beisteuern"
   },
   "settings_close": {
-    "message": "Schliessen"
+    "message": "Schließen"
   },
   "editLivemark_name": {
     "message": "Name"
@@ -183,7 +183,7 @@
     "message": "Maximale Anzahl Einträge"
   },
   "editLivemark_cancel": {
-    "message": "Abbruch"
+    "message": "Abbrechen"
   },
   "editLivemark_save": {
     "message": "Speichern"

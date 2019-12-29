@@ -46,6 +46,9 @@ async function main() {
     document.execCommand("copy");
   });
 
+  const viewSourceBtn = document.querySelector("#view-source-button");
+  viewSourceBtn.href = "view-source:" + feedUrl;
+
   try {
     const feed = await browser.runtime.sendMessage({
       msg: "get-feed",
@@ -65,9 +68,6 @@ async function main() {
     if (description) {
       document.querySelector("#description").textContent = description;
     }
-
-    const viewSourceBtn = document.querySelector("#view-source-button");
-    viewSourceBtn.href = "view-source:" + feedUrl;
 
     document.querySelector("#subscribe-button").addEventListener("click", async () => {
       const folderTitle = await browser.runtime.sendMessage({

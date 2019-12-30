@@ -3,7 +3,7 @@
   "description": "This package file is for setup of ESLint only for editor integration.",
   "dependencies": {
     "eslint": "6.8.0",
-    "eslint-plugin-html": "4.0.6",
+    "eslint-plugin-html": "6.0.0",
     "eslint-plugin-mozilla": "2.3.1",
     "eslint-plugin-no-unsanitized": "3.0.2"
   },

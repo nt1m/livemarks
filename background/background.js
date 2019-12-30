@@ -334,8 +334,14 @@ const FeedPreview = {
     });
   },
 
-  show(tabId, url) {
-    chrome.tabs.update(tabId, {url: getSubscribeURL(url), loadReplace: true});
+  async show(tabId, url) {
+    try {
+      // Verify that this is actually a feed by parsing it.
+      const feed = await FeedParser.getFeed(url);
+      if (feed.items.length > 0) {
+        chrome.tabs.update(tabId, {url: getSubscribeURL(url), loadReplace: true});
+      }
+    } catch (e) {}
   }
 };
 
@@ -433,13 +439,7 @@ chrome.webRequest.onHeadersReceived.addListener(details => {
       if (str.includes("<channel") || str.includes("<feed")) {
         filter.disconnect();
 
-        try {
-          // Verify that this is actually a feed by parsing it.
-          const feed = await FeedParser.getFeed(details.url);
-          if (feed.items.length > 0) {
-            FeedPreview.show(details.tabId, details.url);
-          }
-        } catch (e) {}
+        FeedPreview.show(details.tabId, details.url);
         return;
       }
 

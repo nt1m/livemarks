@@ -142,7 +142,7 @@ const LivemarkUpdater = {
 
     if (feed.siteUrl) {
       const didChange = await this.addFeedSiteUrlBookmark(folder, feed, children);
-      // Changes should be rare, so just refetch the child list if it changed
+      // Changes should be rare, so just refetch the child list if it changed
       // rather than attempting to keep it up to date.
       if (didChange) {
         children = await browser.bookmarks.getChildren(folder.id);

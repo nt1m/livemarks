@@ -25,6 +25,9 @@ module.exports = {
     // Encourage the use of dot notation whenever possible.
     "dot-notation": "error",
 
+    // 2-spaces indentation
+    "indent": ["error", 2, {"SwitchCase": 1}],
+
     // Don't enforce the maximum depth that blocks can be nested. The complexity
     // rule is a better rule to check this.
     "max-depth": "off",

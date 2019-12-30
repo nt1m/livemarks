@@ -357,8 +357,8 @@ var tabIdToFeeds = {};
 
 browser.runtime.onMessage.addListener(async (request, sender) => {
   if (request.msg == "feeds") {
-  // We have received a list of feed urls found on the page.
-  // Enable the page action icon.
+    // We have received a list of feed urls found on the page.
+    // Enable the page action icon.
     tabIdToFeeds[sender.tab.id] = request.feeds;
     chrome.pageAction.show(sender.tab.id);
     updateExtensionIcon(sender.tab.id);

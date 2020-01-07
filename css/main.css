@@ -88,7 +88,7 @@ label {
   float: right;
 }
 
-.flex {
+.flex:not([hidden]) {
   display: flex;
 }
 
@@ -295,7 +295,7 @@ input.short {
   max-width: 7ch;
 }
 
-input:not([type="submit"]):not([type="button"]):not([type="hidden"]) {
+input:not([type="checkbox"]):not([type="submit"]):not([type="button"]):not([type="hidden"]) {
   background-color: var(--textbox-background);
   color: inherit;
   border: 1px solid var(--grey-90-a30);
@@ -305,19 +305,49 @@ input:not([type="submit"]):not([type="button"]):not([type="hidden"]) {
   transition: box-shadow 0.15s cubic-bezier(.07,.95,0,1);
 }
 
-input:not([type="submit"]):not([type="button"]):not([type="hidden"]):hover {
+input:not([type="checkbox"]):not([type="submit"]):not([type="button"]):not([type="hidden"]):hover {
   border-color: var(--grey-90-a50);
 }
 
-input:not([type="submit"]):not([type="button"]):not([type="hidden"]):focus {
+input:not([type="checkbox"]):not([type="submit"]):not([type="button"]):not([type="hidden"]):focus {
   border-color: var(--blue-50);
   box-shadow: 0 0 0 1px var(--blue-50), 0 0 0 4px var(--blue-50-a30);
 }
 
-input:not([type="submit"]):not([type="button"]):not([type="hidden"]).error,
-input:not([type="submit"]):not([type="button"]):not([type="hidden"]):invalid {
+input:not([type="checkbox"]):not([type="submit"]):not([type="button"]):not([type="hidden"]).error,
+input:not([type="checkbox"]):not([type="submit"]):not([type="button"]):not([type="hidden"]):invalid {
   border-color: var(--red-50);
   box-shadow: 0 0 0 1px var(--red-50), 0 0 0 4px var(--red-50-a30);
+}
+
+input[type="checkbox"] {
+  -moz-appearance: none;
+  border: 2px solid var(--grey-10-a10);
+  border-radius: 2px;
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+}
+
+input[type="checkbox"]::before {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin: -2px;
+}
+
+input[type="checkbox"]:checked::before {
+  content: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path d="M6.52,12.5a1,1,0,0,1-.705-.291l-3.52-3.5a1,1,0,1,1,1.41-1.418l2.812,2.8,5.774-5.793a1,1,0,0,1,1.416,1.412l-6.479,6.5A1,1,0,0,1,6.52,12.5Z" fill="white"/></svg>')
+}
+
+input[type="checkbox"]:indeterminate::before {
+  content: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><rect x="3" y="7" width="10" height="2" rx="1" fill="white"/></svg>');
+}
+
+input[type="checkbox"]:indeterminate,
+input[type="checkbox"]:checked {
+  border-color: transparent;
+  background-color: var(--blue-60);
 }
 
 .card {

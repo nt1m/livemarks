@@ -80,6 +80,10 @@ window.onload = async () => {
     reader.readAsText(file);
   });
 
+  document.querySelector("#delete-feed-selection").addEventListener("click", () => {
+    FeedMultiSelection.removeSelectedFeeds();
+  });
+
   loadFeeds();
   LivemarkStore.addChangeListener(loadFeeds);
   browser.bookmarks.onChanged.addListener(async (id) => {
@@ -159,14 +163,83 @@ async function loadFeeds() {
     feed.title = I18N.getMessage("settings_brokenLivemark");
     addFeedToList(feed, true);
   });
+
+  FeedMultiSelection.reset();
 }
+
+const FeedMultiSelection = {
+  selection: new Set(),
+  selectAllCheckbox: document.getElementById("select-all-checkbox"),
+  async _updateSelectAllCheckboxState() {
+    const size = await LivemarkStore.getSize();
+    const isEmptySelection = this.selection.size == 0;
+    this.selectAllCheckbox.indeterminate = !isEmptySelection && this.selection.size < size;
+    this.selectAllCheckbox.checked = !isEmptySelection && this.selection.size == size;
+    this.selectAllCheckbox.disabled = size == 0;
+    document.getElementById("selection-toolbar").hidden = size == 0;
+  },
+  addToSelection(feed) {
+    this.selection.add(feed);
+    this._updateSelectAllCheckboxState();
+  },
+  addAllToSelection() {
+    for (const element of document.querySelectorAll("#feeds > .feed")) {
+      this.selection.add(element.feedData);
+      element.querySelector(".feed-checkbox").checked = true;
+    }
+    this._updateSelectAllCheckboxState();
+  },
+  removeFromSelection(feed) {
+    this.selection.delete(feed);
+    this._updateSelectAllCheckboxState();
+  },
+  reset() {
+    this.selection.clear();
+    for (const element of document.querySelectorAll("#feeds > .feed")) {
+      element.querySelector(".feed-checkbox").checked = false;
+    }
+    this._updateSelectAllCheckboxState();
+
+    // XXX: probably doesn't belong here...
+    this.selectAllCheckbox.onchange = () => {
+      if (this.selectAllCheckbox.checked) {
+        this.addAllToSelection();
+      } else {
+        this.reset();
+      }
+    };
+  },
+
+  moveSelectedFeeds(folder) {
+    // XXX: todo
+  },
+  async removeSelectedFeeds() {
+    for (const feed of this.selection) {
+      await LivemarkStore.remove(feed.id);
+    }
+    this.selection.clear();
+  }
+};
 
 function addFeedToList(feed, broken = false) {
   const item = document.createElement("div");
   item.className = "feed card";
+  item.feedData = feed;
   if (broken) {
     item.classList.add("broken");
   }
+
+  const checkbox = document.createElement("input");
+  checkbox.type = "checkbox";
+  checkbox.className = "feed-checkbox";
+  checkbox.onchange = () => {
+    if (checkbox.checked) {
+      FeedMultiSelection.addToSelection(feed);
+    } else {
+      FeedMultiSelection.removeFromSelection(feed);
+    }
+  };
+  item.appendChild(checkbox);
 
   const feedTitle = document.createElement("span");
   feedTitle.textContent = feed.title;

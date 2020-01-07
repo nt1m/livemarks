@@ -6,6 +6,7 @@
    --card-background: white;
    --text-color: black;
    --media-background: #f9f9fa;
+   --blockquote-background: #fafafa;
    --deemphasized-text-color: #4a4a4f;
    --link-color: #0060df;
    --visited-link-color: #8000d7;
@@ -16,6 +17,7 @@
      --card-background: #38383d;
      --text-color: #f9f9fa;
      --media-background: #2a2a2e;
+     --blockquote-background: #2a2a2e;
      --deemphasized-text-color: #b1b1b3;
      --link-color: #45a1ff;
      --visited-link-color: #c069ff;
@@ -124,7 +126,7 @@ main {
 
 .item blockquote {
   border-left: solid .25em;
-  background: #fafafa;
+  background: var(--blockquote-background);
   padding: 20px;
   margin: 20px 0;
 }
@@ -142,11 +144,15 @@ main {
 
 .item_desc {
   margin-top: 0.5em;
-  display:block;
+  display: block;
 }
 
 .item_media {
   margin-top: 1em;
   padding: 0.5em;
-  background-color: #f9f9fa;
+  background-color: var(--media-background);
+}
+
+.item_media ul {
+  padding-inline-start: 1em;
 }

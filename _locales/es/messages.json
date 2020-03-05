@@ -1,0 +1,197 @@
+{
+  "extensionDescription": {
+    "message": "Recupera los antiguos \"marcadores dinámicos\" que tenían las versiones anteriores a Firefox 64"
+  },
+  "reloadLiveBookmark": {
+    "message": "Recargar el marcador dinámico"
+  },
+  "openSiteUrl": {
+    "message": "Abrir «$site$»",
+    "placeholders": {
+      "site" : {
+        "content" : "$1"
+      }
+    }
+  },
+  "subscribe": {
+    "message": "Subscribirse"
+  },
+  "subscribe_title": {
+    "message": "Previsualizar el canal"
+  },
+  "subscribe_addLivemark": {
+    "message": "Añadir marcador dinámico"
+  },
+  "subscribe_viewSource": {
+    "message": "Ver fuente"
+  },
+  "subscribe_failedToFetchFeed": {
+    "message": "Falló la vinculación al canal"
+  },
+  "subscribe_noEntriesFound": {
+    "message": "El canal no tiene contenido"
+  },
+  "subscribe_subscribed": {
+    "message": " $FOLDER$añadida, visite la página de opciones para editarla.",
+    "placeholders": {
+      "folder": {
+        "content": "$1"
+      }
+    }
+  },
+  "noItemsFound": {
+    "message": "No se han encontrado datos"
+  },
+  "yourLivemarks": {
+    "description": "Title of the 'Your livemarks' page",
+    "message": "Tus marcadores dinámicos"
+  },
+  "moreOptions": {
+    "message": "Más opciones"
+  },
+  "newLivemark": {
+    "message": "Nuevo marcador dinámico"
+  },
+  "enterFeedURL": {
+    "message": "Introducir URL del canal"
+  },
+  "settings_importExport_heading": {
+    "message": "Importar/Exportar"
+  },
+  "settings_importExport_description": {
+    "message": "Esta funcionalidad usa el formato OPML, que es usado por la mayoría de los lectores de canales de noticias."
+  },
+  "settings_importExport_importFeeds": {
+    "message": "Importar canales de noticias."
+  },
+  "settings_importExport_exportFeeds": {
+    "message": "Exportar canales de noticias"
+  },
+  "settings_importExport_successImport": {
+    "message": " $COUNT$ canales importados con éxito.",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "settings_importExport_errorImport": {
+    "message": "Ha habido un problema al importar el fichero OPML"
+  },
+  "settings_refreshInterval_heading": {
+    "message": "Intervalo de actualización"
+  },
+  "settings_refreshInterval_description": {
+    "message": "Determinar la periodicidad de actualización de los marcadores dinámicos."
+  },
+  "settings_refreshInterval_minutes": {
+    "description": "Shown as 'X minutes' in the settings dialog",
+    "message": "minutos"
+  },
+  "settings_defaultFolder_heading": {
+    "message": "Carpeta por defecto"
+  },
+  "settings_defaultFolder_description": {
+    "message": "Todos los marcadores dinámicos se guardarán en esta carpeta por defecto"
+  },
+  "settings_prefixes_heading": {
+    "message": "Prefijo de los marcadores"
+  },
+  "settings_prefixes_description": {
+    "message": "El texto suministrado se usará como prefijo  para indicar el estado."
+  },
+  "settings_prefixes_unread": {
+    "message": "Sin leer:"
+  },
+  "settings_prefixes_read": {
+    "message": "Leídas:"
+  },
+  "settings_prefixes_feed_folder": {
+    "message": "Mostrar en carpetas cuando todas las entradas estén leídas o sin leer"
+  },
+  "settings_prefixes_parent_folders": {
+    "message": "Mostrar en la carpeta padre cuando todas las carpetas hijas están leídas o sin leer"
+  },
+  "settings_feedPreview_heading": {
+    "message": "Previsualización del canal"
+  },
+  "settings_feedPreview_description": {
+    "message": "Activar la previsualización cuando se visita directamente un la URL de un canal"
+  },
+  "settings_extensionIcon_heading": {
+    "message": "Icono del complemento"
+  },
+  "settings_extensionIcon_description": {
+    "message": "Elija el icono del complemento que se ajuste mejor al tema que esté usando en su navegador."
+  },
+  "settings_extensionIcon_darkIcon": {
+    "message": "Icono oscuro"
+  },
+  "settings_extensionIcon_lightIcon": {
+    "message": "Icono claro"
+  },
+  "settings_extensionIcon_orangeIcon": {
+    "message": "Icono naranja"
+  },
+  "settings_about_heading": {
+    "message": "Acerca de"
+  },
+  "settings_about_description_authors": {
+    "message": "Este complemento fue desarrollado por:"
+  },
+  "settings_about_description_before_foxish": {
+    "description": "Between _before_foxish and _after_foxish there is a 'Foxish' HTML link",
+    "message": "Está basado en"
+  },
+  "settings_about_description_after_foxish": {
+    "message": "."
+  },
+  "settings_about_description_support": {
+    "message": "Usted puede apoyar al complemento con:"
+  },
+  "settings_about_donating": {
+    "message": "Donación"
+  },
+  "settings_about_reviewing": {
+    "message": "Comentarios positivos"
+  },
+  "settings_about_reporting": {
+    "message": "Informando sobre problemas"
+  },
+  "settings_about_translating": {
+    "message": "Ayudando en las traducciones a otros idiomas"
+  },
+  "settings_close": {
+    "message": "Cerrar"
+  },
+  "editLivemark_name": {
+    "message": "Nombre"
+  },
+  "editLivemark_remove": {
+    "message": "Eliminar este canal"
+  },
+  "editLivemark_feedURL": {
+    "message": "URL del canal"
+  },
+  "editLivemark_siteURL": {
+    "message": "URL del sitio web"
+  },
+  "editLivemark_parentFolder": {
+    "message": "Carpeta padre"
+  },
+  "editLivemark_maxItems": {
+    "message": "Máximo de entradas"
+  },
+  "editLivemark_cancel": {
+    "message": "Cancelar"
+  },
+  "editLivemark_save": {
+    "message": "Guardar"
+  },
+  "settings_brokenLivemark": {
+    "message": "Marcador dinámico estropeado"
+  },
+  "selectFolder_folder": {
+    "message": "Seleccione la carpeta usada por los canales estropeados"
+  }
+}

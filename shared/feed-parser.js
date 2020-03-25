@@ -106,7 +106,16 @@ const FeedParser = {
         }
       }
 
-      let url = getTextFromElement("link", item) || getTextFromElement("guid", item);
+      let url = getTextFromElement("link", item);
+      if (!url) {
+        url = getTextFromElement("guid:not([isPermaLink='false'])", item);
+      }
+      if (!url) {
+        const guid = getTextFromElement("guid[isPermaLink='false']", item);
+        if (guid) {
+          url = "?guid=" + encodeURIComponent(guid);
+        }
+      }
       try {
         url = new URL(url, siteUrl || undefined).href;
       } catch {}

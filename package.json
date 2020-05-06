@@ -5,7 +5,7 @@
     "eslint": "6.8.0",
     "eslint-plugin-html": "6.0.2",
     "eslint-plugin-mozilla": "2.4.0",
-    "eslint-plugin-no-unsanitized": "3.1.0"
+    "eslint-plugin-no-unsanitized": "3.1.1"
   },
   "devDependencies": {},
   "scripts": {

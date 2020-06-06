@@ -2,7 +2,7 @@
   "name": "Livemarks",
   "description": "This package file is for setup of ESLint only for editor integration.",
   "dependencies": {
-    "eslint": "7.1.0",
+    "eslint": "7.2.0",
     "eslint-plugin-html": "6.0.2",
     "eslint-plugin-mozilla": "2.4.0",
     "eslint-plugin-no-unsanitized": "3.1.1"

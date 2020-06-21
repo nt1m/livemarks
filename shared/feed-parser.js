@@ -111,6 +111,11 @@ const FeedParser = {
         url = getTextFromElement("guid:not([isPermaLink='false'])", item);
       }
       if (!url) {
+        if (media && media.length) {
+          url = media[0].url;
+        }
+      }
+      if (!url) {
         const guid = getTextFromElement("guid[isPermaLink='false']", item);
         if (guid) {
           url = "?guid=" + encodeURIComponent(guid);

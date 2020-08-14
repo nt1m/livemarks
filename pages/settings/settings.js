@@ -235,7 +235,14 @@ async function showSelectFolderDialog(feed) {
   toggleDialog(dialog.id, false);
 
   await populateFolderSelector(dialog.livemarkFolder, true);
-
+  
+  const deleteButton = dialog.querySelector(".delete");
+  deleteButton.onclick = async (e) => {
+    e.preventDefault();
+    toggleDialog(dialog.id, false);
+    await LivemarkStore.remove(feed.id);
+  };
+  
   dialog.onsubmit = async (e) => {
     e.preventDefault();
 

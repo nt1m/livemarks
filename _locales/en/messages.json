@@ -192,6 +192,6 @@
     "message": "Broken livemark"
   },
   "selectFolder_folder": {
-    "message": "Select folder used by broken livemark"
+    "message": "Select folder used by broken livemark, or remove this feed"
   }
 }

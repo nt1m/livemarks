@@ -39,7 +39,7 @@
     "default_popup": "popup/popup.html"
   },
   "permissions": ["storage", "bookmarks", "history", "webRequest", "webRequestBlocking", "<all_urls>", "tabs", "menus"],
-  "version": "2.8",
+  "version": "2.9",
   "web_accessible_resources": [
     "pages/subscribe/subscribe.html"
   ],

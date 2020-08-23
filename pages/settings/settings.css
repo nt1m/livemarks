@@ -72,7 +72,8 @@ main > * {
   margin-bottom: 0.5em;
 }
 
-#edit-livemark-dialog .flex > *:last-child {
+#edit-livemark-dialog .flex > *:last-child,
+#select-folder-dialog .flex > *:last-child {
   margin-left: 0.5em;
 }
 

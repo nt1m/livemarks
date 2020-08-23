@@ -139,15 +139,15 @@
   </form>
 
   <form class="card dialog" id="select-folder-dialog" hidden>
-    <div class="flex">
-      <div class="form-row grow">
-        <label for="livemarkFolder" data-i18n-text="selectFolder_folder"></label>
-        <select name="livemarkFolder" required></select>
+    <div class="form-row">
+      <label for="livemarkFolder" data-i18n-text="selectFolder_folder"></label>
+      <div class="flex">
+        <select name="livemarkFolder" class="grow" required></select>
+        <a href="#" data-i18n-title="editLivemark_remove" class="icon delete button"></a>
       </div>
     </div>
 
     <div class="dialog-footer">
-      <a href="#" data-i18n-title="editLivemark_remove" class="icon delete button"></a>
       <a class="button dialog-cancel" data-i18n-text="editLivemark_cancel"></a>
       <button type="submit" class="primary" data-i18n-text="editLivemark_save"></button>
     </div>

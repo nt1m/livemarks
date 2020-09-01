@@ -44,10 +44,10 @@
   },
   "yourLivemarks": {
     "description": "Title of the 'Your livemarks' page",
-    "message": "Deine Livemarks"
+    "message": "Ihre Livemarks"
   },
   "moreOptions": {
-    "message": "Weitere Optionen"
+    "message": "Optionen"
   },
   "newLivemark": {
     "message": "Neues Livemark"
@@ -59,7 +59,7 @@
     "message": "Import/Export"
   },
   "settings_importExport_description": {
-    "message": "Dieses Feature benutzt das OPML-Format, welches von den meisten RSS-Readern verwendet wird."
+    "message": "Dieses Feature benutzt das OPML-Format, das von den meisten RSS-Readern verwendet wird."
   },
   "settings_importExport_importFeeds": {
     "message": "Feeds importieren…"
@@ -122,7 +122,7 @@
     "message": "Erweiterungssymbol"
   },
   "settings_extensionIcon_description": {
-    "message": "Das Symbol wählen, welches am besten zum Browser-Theme passt."
+    "message": "Das Symbol wählen, das am besten zum Browser-Theme passt."
   },
   "settings_extensionIcon_darkIcon": {
     "message": "Dunkles Symbol"
@@ -189,9 +189,9 @@
     "message": "Speichern"
   },
   "settings_brokenLivemark": {
-    "message": "Beschädigte Livemark"
+    "message": "Beschädigtes Livemark"
   },
   "selectFolder_folder": {
-    "message": "Ordner für beschädigte Livemark auswählen."
+    "message": "Ordner für beschädigte Livemarks auswählen."
   }
 }

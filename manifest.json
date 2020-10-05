@@ -6,6 +6,7 @@
       "shared/feed-parser.js",
       "shared/settings.js",
       "shared/livemark-store.js",
+      "shared/db.js",
       "background/background.js"
     ]
   },

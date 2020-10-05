@@ -5,6 +5,9 @@
   "reloadLiveBookmark": {
     "message": "Reload Live Bookmark"
   },
+  "markAllAsRead": {
+    "message": "Mark all entries as read"
+  },
   "openSiteUrl": {
     "message": "Open \"$site$\"",
     "placeholders": {
@@ -12,6 +15,9 @@
         "content" : "$1"
       }
     }
+  },
+  "openAllUnreadEntries" : {
+    "message": "Open all unread in Tabs"
   },
   "subscribe": {
     "message": "Subscribe"

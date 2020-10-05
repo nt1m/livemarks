@@ -3,6 +3,7 @@
 /* import-globals-from ../shared/livemark-store.js */
 /* import-globals-from ../shared/settings.js */
 /* import-globals-from ../shared/feed-parser.js */
+/* import-globals-from ../shared/db.js */
 
 async function updateExtensionIcon(tabId) {
   const icon = await Settings.getExtensionIcon();
@@ -18,7 +19,13 @@ function hashString(str) {
   }
   return hash;
 }
-
+const getUnreadChildren = async (id) => {
+  const p = await Settings.getReadPrefix();
+  const feed = [...await browser.bookmarks.getChildren(id)]
+    .filter((e,i,arr) => !arr.slice(i).some(e => e.type==="separator"))
+    .filter(e => !PrefixUtils.hasPrefix(p, e.title));
+  return feed
+}
 const LivemarkUpdater = {
   async init() {
     await LivemarkStore.init();
@@ -51,7 +58,6 @@ const LivemarkUpdater = {
   async historyOnVisited(item) {
     const hash = hashString(item.url);
     const entry = this.itemURLHashToFeeds.get(hash);
-
     if (entry === undefined) {
       return;
     }
@@ -206,7 +212,7 @@ const LivemarkUpdater = {
 
       const itemTitle = item.title ? item.title : url;
       const title = PrefixUtils.addPrefix(
-        (visits > 0) ? readPrefix : unreadPrefix,
+        (visits > 0) || (await (await livemarksDB()).findURL(url)) ? readPrefix : unreadPrefix,
         itemTitle,
       );
       if (i < usableChildren.length) {
@@ -236,7 +242,7 @@ const LivemarkUpdater = {
 
     // Update the feed folder title prefix if all items have been read
     if (await Settings.getPrefixFeedFolderEnabled()) {
-      await this.setPrefix(folder, itemsReadCount == max);
+      await this.setPrefix(folder, (await getUnreadChildren(folder.id)).length < 1);
     }
 
     // Update the parent folders' title prefix title if all RSS feeds have been read
@@ -289,19 +295,50 @@ const LivemarkUpdater = {
 
 const ContextMenu = {
   async init() {
-    const createReloadItem = async () => {
+    const createItems = async () => {
       this.reloadItemId = await browser.menus.create({
         contexts: ["bookmark"],
         title: browser.i18n.getMessage("reloadLiveBookmark"),
+      });
+      this.openUnreadItemId = await browser.menus.create({
+        contexts: ["bookmark"],
+        title: browser.i18n.getMessage("openAllUnreadEntries"),
+        async onclick(e){
+          const unreadFeed = await getUnreadChildren(e.bookmarkId);
+          if (unreadFeed.length) {
+            unreadFeed.forEach(e => {
+              browser.tabs.create({url:e.url})
+            })
+          }
+        }
+      });
+      this.markAllAsReadItemId = await browser.menus.create({
+        contexts: ["bookmark"],
+        title: browser.i18n.getMessage("markAllAsRead"),
+        async onclick(e){
+          const unreadFeed = await getUnreadChildren(e.bookmarkId);
+          if (unreadFeed.length) {
+            unreadFeed.forEach(async e => {
+              (await (await livemarksDB()).addURL(e.url));
+            })
+            const feed = await LivemarkStore.getDetails(e.bookmarkId);
+            await LivemarkUpdater.updateLivemark(feed, {forceUpdate: true});
+          }
+        }
       });
     };
     browser.menus.onShown.addListener(async ({bookmarkId}) => {
       const isLivemarkFolder = await LivemarkStore.isLivemarkFolder(bookmarkId);
       if (!isLivemarkFolder) {
-        await browser.menus.remove(this.reloadItemId);
+        await browser.menus.removeAll();
         this.reloadItemId = null;
-      } else if (!this.reloadItemId) {
-        await createReloadItem();
+      } else {
+        if (!this.reloadItemId) {
+          await createItems();
+        }
+        browser.menus.update(this.openUnreadItemId,{
+          enabled: (await getUnreadChildren(bookmarkId)).length >= 1
+        });
       }
       await browser.menus.refresh();
     });
@@ -312,7 +349,7 @@ const ContextMenu = {
         await LivemarkUpdater.updateLivemark(feed, {forceUpdate: true});
       }
     });
-    createReloadItem();
+    createItems();
   }
 };
 

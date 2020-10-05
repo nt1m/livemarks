@@ -5,6 +5,9 @@
   "reloadLiveBookmark": {
     "message": "Actualiser les entrées"
   },
+  "markAllAsRead": {
+    "message": "Tout marquer comme lu"
+  },
   "openSiteUrl": {
     "message": "Ouvrir « $site$ »",
     "placeholders": {
@@ -12,6 +15,9 @@
         "content" : "$1"
       }
     }
+  },
+  "openAllUnreadEntries" : {
+    "message": "Ouvrir tous les non lus dans des onglets"
   },
   "subscribe": {
     "message": "S'abonner"

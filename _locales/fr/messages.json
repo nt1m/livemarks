@@ -5,6 +5,9 @@
   "reloadLiveBookmark": {
     "message": "Actualiser les entrées"
   },
+  "openAllUnreadPages": {
+    "message": "Ouvrir toutes les pages non lues dans des onglets"
+  },
   "openSiteUrl": {
     "message": "Ouvrir « $site$ »",
     "placeholders": {

@@ -289,32 +289,53 @@ const LivemarkUpdater = {
 
 const ContextMenu = {
   async init() {
-    const createReloadItem = async () => {
+    const getUnreadChildren = async (id) => {
+      let children = [...await browser.bookmarks.getChildren(id)];
+      const startIndex = children.some(e => e.type==="separator")?2:0;
+      children = children.slice(startIndex);
+      const visits = await Promise.all(children.map(e => browser.history.getVisits({url:e.url})));
+      return children.filter((v, i) => visits[i] < 1);
+    };
+    const createItems = async () => {
       this.reloadItemId = await browser.menus.create({
         contexts: ["bookmark"],
         title: browser.i18n.getMessage("reloadLiveBookmark"),
+        async onclick({bookmarkId}) {
+          const feed = await LivemarkStore.getDetails(bookmarkId);
+          await LivemarkUpdater.updateLivemark(feed, {forceUpdate: true});
+        }
+      });
+      this.openUnreadItemId = await browser.menus.create({
+        contexts: ["bookmark"],
+        title: browser.i18n.getMessage("openAllUnreadPages"),
+        async onclick(e) {
+          const unreadFeed = await getUnreadChildren(e.bookmarkId);
+          if (unreadFeed.length) {
+            unreadFeed.forEach(e => {
+              browser.tabs.create({url:e.url})
+            })
+          }
+        }
       });
     };
     browser.menus.onShown.addListener(async ({bookmarkId}) => {
       const isLivemarkFolder = await LivemarkStore.isLivemarkFolder(bookmarkId);
       if (!isLivemarkFolder) {
-        await browser.menus.remove(this.reloadItemId);
+        await browser.menus.removeAll();
         this.reloadItemId = null;
-      } else if (!this.reloadItemId) {
-        await createReloadItem();
+      } else {
+        if (!this.reloadItemId) {
+          await createItems();
+        }
+        browser.menus.update(this.openUnreadItemId,{
+          enabled: (await getUnreadChildren(bookmarkId)).length >= 1
+        });
       }
       await browser.menus.refresh();
     });
-    browser.menus.onClicked.addListener(async ({bookmarkId, menuItemId}) => {
-      const isLivemarkFolder = await LivemarkStore.isLivemarkFolder(bookmarkId);
-      if (isLivemarkFolder && menuItemId == this.reloadItemId) {
-        const feed = await LivemarkStore.getDetails(bookmarkId);
-        await LivemarkUpdater.updateLivemark(feed, {forceUpdate: true});
-      }
-    });
-    createReloadItem();
+    createItems();
   }
-};
+}
 
 function getSubscribeURL(feedUrl) {
   const url = chrome.extension.getURL("pages/subscribe/subscribe.html");

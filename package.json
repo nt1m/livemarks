@@ -9,7 +9,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "lint": "eslint ./",
-    "lint-fix": "eslint ./ --fix"
+    "lint": "eslint **/*.js",
+    "lint-fix": "eslint **/*.js --fix"
   }
 }

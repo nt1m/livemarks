@@ -297,7 +297,7 @@ const ContextMenu = {
 
       const getVisits = ({url}) => {
         return browser.history.getVisits({url});
-      }
+      };
 
       const visits = await Promise.all(children.map(getVisits));
       return children.filter((_, i) => visits[i] < 1);
@@ -346,7 +346,7 @@ const ContextMenu = {
 
     createItems();
   }
-}
+};
 
 function getSubscribeURL(feedUrl) {
   const url = chrome.extension.getURL("pages/subscribe/subscribe.html");

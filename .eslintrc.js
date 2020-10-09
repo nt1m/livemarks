@@ -201,7 +201,10 @@ module.exports = {
     "require-yield": "off",
 
     // No using var, instead of let/const
-    "no-var": "error"
+    "no-var": "error",
+
+    // Require semicolons
+    "semi": "error",
   },
 
   // To avoid bad interactions of the html plugin with the xml preprocessor in

@@ -199,6 +199,9 @@ module.exports = {
     // XXX Bug 1487642 - decide if we want to enable this or not.
     // Require generator functions to contain yield
     "require-yield": "off",
+
+    // No using var, instead of let/const
+    "no-var": "error"
   },
 
   // To avoid bad interactions of the html plugin with the xml preprocessor in

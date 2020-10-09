@@ -385,7 +385,7 @@ const FeedPreview = {
 
 // A dictionary keyed off of tabId that keeps track of data per tab (for
 // example what feedUrl was detected in the tab).
-var tabIdToFeeds = {};
+const tabIdToFeeds = {};
 
 browser.runtime.onMessage.addListener(async (request, sender) => {
   if (request.msg == "feeds") {

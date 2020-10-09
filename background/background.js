@@ -289,13 +289,20 @@ const LivemarkUpdater = {
 
 const ContextMenu = {
   async init() {
-    const getUnreadChildren = async (id) => {
-      let children = [...await browser.bookmarks.getChildren(id)];
-      const startIndex = children.some(e => e.type==="separator")?2:0;
-      children = children.slice(startIndex);
-      const visits = await Promise.all(children.map(e => browser.history.getVisits({url:e.url})));
-      return children.filter((v, i) => visits[i] < 1);
+    const getUnreadChildren = async (bookmarkId) => {
+      const feed = await LivemarkStore.getDetails(bookmarkId);
+      let children = await browser.bookmarks.getChildren(bookmarkId);
+      // Skip "Open <Site URL>" bookmark and separator.
+      children = children.slice(feed.siteUrl ? 2 : 0);
+
+      const getVisits = ({url}) => {
+        return browser.history.getVisits({url});
+      }
+
+      const visits = await Promise.all(children.map(getVisits));
+      return children.filter((_, i) => visits[i] < 1);
     };
+
     const createItems = async () => {
       this.reloadItemId = await browser.menus.create({
         contexts: ["bookmark"],
@@ -305,19 +312,19 @@ const ContextMenu = {
           await LivemarkUpdater.updateLivemark(feed, {forceUpdate: true});
         }
       });
+
       this.openUnreadItemId = await browser.menus.create({
         contexts: ["bookmark"],
         title: browser.i18n.getMessage("openAllUnreadPages"),
-        async onclick(e) {
-          const unreadFeed = await getUnreadChildren(e.bookmarkId);
-          if (unreadFeed.length) {
-            unreadFeed.forEach(e => {
-              browser.tabs.create({url:e.url})
-            })
+        async onclick({bookmarkId}) {
+          const unreadBookmarks = await getUnreadChildren(bookmarkId);
+          for (let bookmark of unreadBookmarks) {
+            browser.tabs.create({url: bookmark.url});
           }
         }
       });
     };
+
     browser.menus.onShown.addListener(async ({bookmarkId}) => {
       const isLivemarkFolder = await LivemarkStore.isLivemarkFolder(bookmarkId);
       if (!isLivemarkFolder) {
@@ -327,12 +334,16 @@ const ContextMenu = {
         if (!this.reloadItemId) {
           await createItems();
         }
-        browser.menus.update(this.openUnreadItemId,{
+
+        // Disable "Open all unread pages in tabs" if all feeds are already
+        // read/visited.
+        browser.menus.update(this.openUnreadItemId, {
           enabled: (await getUnreadChildren(bookmarkId)).length >= 1
         });
       }
       await browser.menus.refresh();
     });
+
     createItems();
   }
 }

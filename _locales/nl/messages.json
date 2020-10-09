@@ -5,6 +5,9 @@
   "reloadLiveBookmark": {
     "message": "Livebladwijzer opnieuw laden"
   },
+  "openAllUnreadPages": {
+    "message": "Alle ongelezen pagina’s openen in tabbladen"
+  },
   "openSiteUrl": {
     "message": "‘$site$’ openen",
     "placeholders": {

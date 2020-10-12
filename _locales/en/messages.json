@@ -6,7 +6,7 @@
     "message": "Reload Live Bookmark"
   },
   "openAllUnreadPages": {
-    "message": "Open all unread pages in tabs"
+    "message": "Open all unread pages"
   },
   "openSiteUrl": {
     "message": "Open \"$site$\"",

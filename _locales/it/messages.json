@@ -5,6 +5,9 @@
   "reloadLiveBookmark": {
     "message": "Ricarica Segnalibro live"
   },
+  "openAllUnreadPages": {
+    "message": "Apri tutte le pagine non lette"
+  },
   "openSiteUrl": {
     "message": "Apri \"$site$\"",
     "placeholders": {
@@ -192,6 +195,6 @@
     "message": "Segnalibro live non valido"
   },
   "selectFolder_folder": {
-    "message": "Selezionare la cartella utilizzata dal Segnalibro live non valido"
+    "message": "Selezionare la cartella per il segnalibro non funzionante"
   }
 }

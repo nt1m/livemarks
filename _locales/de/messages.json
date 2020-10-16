@@ -5,6 +5,9 @@
   "reloadLiveBookmark": {
     "message": "Dynamische Lesezeichen aktualisieren"
   },
+  "openAllUnreadPages": {
+    "message": "Alle ungelesenen Seiten öffnen"
+  },
   "openSiteUrl": {
     "message": "\"$site$\" öffnen",
     "placeholders": {
@@ -32,7 +35,7 @@
     "message": "Keine Feed-Einträge gefunden"
   },
   "subscribe_subscribed": {
-    "message": "Dem Ordner $FOLDER$ hinzugefügt. Einstellungen aufrufen, um das Lesezeichen zu bearbeiten.",
+    "message": "Livemark wurde dem Ordner $FOLDER$ hinzugefügt. In den Einstellungen können Sie das Lesezeichen bearbeiten.",
     "placeholders": {
       "folder": {
         "content": "$1"
@@ -95,10 +98,10 @@
     "message": "Alle zukünftigen Livemarks werden hier abgespeichert."
   },
   "settings_prefixes_heading": {
-    "message": "Lesezeichen-Präfixe"
+    "message": "Lesezeichen-Präfix"
   },
   "settings_prefixes_description": {
-    "message": "Die angegebenen Zeichenketten werden als Lesezeichen-Präfixe verwendet, um den jeweiligen Status anzuzeigen."
+    "message": "Die angegebenen Zeichenketten werden als Lesezeichen-Präfix verwendet, um den jeweiligen Status anzuzeigen."
   },
   "settings_prefixes_unread": {
     "message": "Ungelesen:"

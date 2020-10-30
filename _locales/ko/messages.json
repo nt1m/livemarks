@@ -5,6 +5,9 @@
   "reloadLiveBookmark": {
     "message": "라이브 북마크 새로고침"
   },
+  "openAllUnreadPages": {
+    "message": "읽지 않은 페이지 모두 열기"
+  },
   "openSiteUrl": {
     "message": "\"$site$\" 열기",
     "placeholders": {

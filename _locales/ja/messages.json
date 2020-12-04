@@ -5,6 +5,9 @@
   "reloadLiveBookmark": {
     "message": "ライブブックマークを再読み込み"
   },
+  "openAllUnreadPages": {
+    "message": "未読のページをすべて開く"
+  },
   "openSiteUrl": {
     "message": "\"$site$\"を開く",
     "placeholders": {

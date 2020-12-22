@@ -323,6 +323,17 @@ const ContextMenu = {
           }
         }
       });
+
+      this.markAllReadItemId = await browser.menus.create({
+        contexts: ["bookmark"],
+        title: browser.i18n.getMessage("markAllRead"),
+        async onclick({bookmarkId}) {
+          const unreadBookmarks = await getUnreadChildren(bookmarkId);
+          for (let bookmark of unreadBookmarks) {
+            browser.history.addUrl({url: bookmark.url});
+          }
+        }
+      });
     };
 
     browser.menus.onShown.addListener(async ({bookmarkId}) => {
@@ -335,9 +346,12 @@ const ContextMenu = {
           await createItems();
         }
 
-        // Disable "Open all unread pages in tabs" if all feeds are already
-        // read/visited.
+        // Disable "Open all unread pages in tabs" and "Mark all as read" 
+        // if all feeds are already read/visited.
         browser.menus.update(this.openUnreadItemId, {
+          enabled: (await getUnreadChildren(bookmarkId)).length >= 1
+        });
+        browser.menus.update(this.markAllReadItemId, {
           enabled: (await getUnreadChildren(bookmarkId)).length >= 1
         });
       }

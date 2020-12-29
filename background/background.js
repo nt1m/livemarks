@@ -346,13 +346,14 @@ const ContextMenu = {
           await createItems();
         }
 
+        const hasUnreadChildren = (await getUnreadChildren(bookmarkId)).length >= 1;
         // Disable "Open all unread pages in tabs" and "Mark all as read" 
         // if all feeds are already read/visited.
         browser.menus.update(this.openUnreadItemId, {
-          enabled: (await getUnreadChildren(bookmarkId)).length >= 1
+          enabled: hasUnreadChildren
         });
         browser.menus.update(this.markAllReadItemId, {
-          enabled: (await getUnreadChildren(bookmarkId)).length >= 1
+          enabled: hasUnreadChildren
         });
       }
       await browser.menus.refresh();

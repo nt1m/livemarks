@@ -1,3 +1,5 @@
+/* eslint-env node*/
+
 module.exports = {
   "env": {
     "es6": true,
@@ -213,4 +215,4 @@ module.exports = {
   settings: {
     "html/xml-extensions": [".xhtml"],
   },
-}
+};

@@ -4,7 +4,7 @@
   "dependencies": {
     "eslint": "7.17.0",
     "eslint-plugin-html": "6.1.1",
-    "eslint-plugin-mozilla": "2.9.1",
+    "eslint-plugin-mozilla": "2.9.2",
     "eslint-plugin-no-unsanitized": "3.1.4"
   },
   "devDependencies": {},

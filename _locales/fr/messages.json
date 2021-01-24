@@ -167,6 +167,9 @@
   "settings_close": {
     "message": "Fermer"
   },
+  "settings_editFeed": {
+    "message": "Modifier ce flux"
+  },
   "editLivemark_name": {
     "message": "Nom"
   },

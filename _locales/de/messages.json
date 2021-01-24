@@ -119,7 +119,7 @@
     "message": "Feed-Vorschau"
   },
   "settings_feedPreview_description": {
-    "message": "Feed-Vorschau aktivieren, wenn eine Feed-URL direkt besucht wird"
+    "message": "Feed-Vorschau aktivieren, wenn eine Feed-URL direkt besucht wird."
   },
   "settings_extensionIcon_heading": {
     "message": "Erweiterungssymbol"
@@ -166,6 +166,9 @@
   },
   "settings_close": {
     "message": "Schließen"
+  },
+  "settings_editFeed": {
+    "message": "Diesen Feed bearbeiten"
   },
   "editLivemark_name": {
     "message": "Name"

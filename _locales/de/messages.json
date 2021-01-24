@@ -167,6 +167,9 @@
   "settings_close": {
     "message": "Schließen"
   },
+  "settings_editFeed": {
+    "message": "Diesen Feed bearbeiten"
+  },
   "editLivemark_name": {
     "message": "Name"
   },

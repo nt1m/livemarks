@@ -179,6 +179,7 @@ function addFeedToList(feed, broken = false) {
   item.appendChild(feedUrl);
 
   const editIcon = document.createElement("button");
+  editIcon.title = I18N.getMessage("settings_editFeed");
   editIcon.className = "icon more feed-edit";
   editIcon.onclick = () => {
     if (!broken) {

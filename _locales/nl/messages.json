@@ -167,6 +167,9 @@
   "settings_close": {
     "message": "Sluiten"
   },
+  "settings_editFeed": {
+    "message": "Deze feed bewerken"
+  },
   "editLivemark_name": {
     "message": "Naam"
   },

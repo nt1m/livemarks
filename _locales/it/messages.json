@@ -6,7 +6,7 @@
     "message": "Ricarica Segnalibro live"
   },
   "openAllUnreadPages": {
-    "message": "Apri tutte le pagine non lette"
+    "message": "Apri pagine non lette"
   },
   "openSiteUrl": {
     "message": "Apri \"$site$\"",
@@ -166,6 +166,9 @@
   },
   "settings_close": {
     "message": "Chiudi"
+  },
+  "settings_editFeed": {
+    "message": "Modifica feed"
   },
   "editLivemark_name": {
     "message": "Nome"

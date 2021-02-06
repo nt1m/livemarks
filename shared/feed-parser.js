@@ -91,7 +91,7 @@ const FeedParser = {
         media = Array.from(allContent, content => {
           return {
             url: content.getAttribute("url"),
-            size: content.getAttribute("fileSize"),
+            size: parseInt(content.getAttribute("fileSize"), 10),
             type: content.getAttribute("type"),
           };
         });
@@ -100,7 +100,7 @@ const FeedParser = {
         if (enclosure) {
           media = [{
             url: enclosure.getAttribute("url"),
-            size: enclosure.getAttribute("length"),
+            size: parseInt(enclosure.getAttribute("length"), 10),
             type: enclosure.getAttribute("type"),
           }];
         }

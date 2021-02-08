@@ -178,6 +178,18 @@ const FeedParser = {
     };
 
     feed.items = [...doc.querySelectorAll("entry")].map(item => {
+      let media;
+      const allContent = item.getElementsByTagName("media:content");
+      if (allContent.length) {
+        media = Array.from(allContent, content => {
+          return {
+            url: content.getAttribute("url"),
+            size: parseInt(content.getAttribute("fileSize"), 10),
+            type: content.getAttribute("type"),
+          };
+        });
+      }
+
       return {
         title: getParsedTextFromElement("title", item),
         url: getHrefFromElement("link[rel=alternate]", item)
@@ -186,7 +198,8 @@ const FeedParser = {
                   || getTextFromElement("summary", item),
         updated: getTextFromElement("updated", item)
               || getTextFromElement("published", item),
-        id: getTextFromElement("id", item)
+        id: getTextFromElement("id", item),
+        media
       };
     });
 

@@ -13,7 +13,7 @@ async function setPreviewContent(html) {
   frame.classList.add("grow");
   // DANGER! The next line is security critical for this extension!
   // Without this sandbox, malicious feeds can trivially exploit us.
-  frame.sandbox = "allow-popups";
+  frame.sandbox = "allow-popups allow-popups-to-escape-sandbox";
 
   const sheetUrl = chrome.extension.getURL("pages/reader/reader.css");
   const response = await fetch(sheetUrl);

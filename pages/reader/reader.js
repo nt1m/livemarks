@@ -52,7 +52,6 @@ function getPreviewHTML({ items }) {
       anchor.href = item.url;
     }
     anchor.textContent = item.title;
-    anchor.target = "_blank";
     anchor.className = "item_title";
 
     const time = document.createElement("time");

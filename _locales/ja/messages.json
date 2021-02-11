@@ -167,6 +167,9 @@
   "settings_close": {
     "message": "閉じる"
   },
+  "settings_editFeed": {
+    "message": "このフィードを編集"
+  },
   "editLivemark_name": {
     "message": "名前"
   },

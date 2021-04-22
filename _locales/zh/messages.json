@@ -1,9 +1,12 @@
 {
   "extensionDescription": {
-    "message": "让 RSS 实时书签功能重回 Firefox 64 及更高版本。"
+    "message": "RSS 实时书签现已重回 Firefox 64 及更高版本。"
   },
   "reloadLiveBookmark": {
     "message": "重新载入实时书签"
+  },
+  "openAllUnreadPages": {
+    "message": "打开所有未读页面"
   },
   "openSiteUrl": {
     "message": "打开 \"$site$\"",
@@ -82,7 +85,7 @@
     "message": "刷新间隔"
   },
   "settings_refreshInterval_description": {
-    "message": "配置更新实时书签的频率"
+    "message": "配置实时书签的更新频率"
   },
   "settings_refreshInterval_minutes": {
     "description": "Shown as 'X minutes' in the settings dialog",
@@ -98,7 +101,7 @@
     "message": "书签前缀"
   },
   "settings_prefixes_description": {
-    "message": "提供的字符串将用作书签前缀，以标识状态。"
+    "message": "提供的字符串将用作书签前缀以标识状态。"
   },
   "settings_prefixes_unread": {
     "message": "未读："
@@ -116,7 +119,7 @@
     "message": "订阅源预览"
   },
   "settings_feedPreview_description": {
-    "message": "当直接访问订阅源 URL 时启用订阅源预览"
+    "message": "直接访问订阅源 URL 时启用订阅源预览"
   },
   "settings_extensionIcon_heading": {
     "message": "扩展图标"
@@ -164,6 +167,9 @@
   "settings_close": {
     "message": "关闭"
   },
+  "settings_editFeed": {
+    "message": "编辑此订阅源"
+  },
   "editLivemark_name": {
     "message": "名称"
   },
@@ -192,6 +198,6 @@
     "message": "已损坏实时书签"
   },
   "selectFolder_folder": {
-    "message": "选择已损坏实时书签使用的文件夹"
+    "message": "选择已损坏实时书签所使用的文件夹"
   }
 }

@@ -5,6 +5,9 @@
   "reloadLiveBookmark": {
     "message": "Обновить Живую закладку"
   },
+  "openAllUnreadPages": {
+    "message": "Открыть все непрочитанные страницы"
+  },
   "openSiteUrl": {
     "message": "Открыть \"$site$\"",
     "placeholders": {
@@ -106,11 +109,32 @@
   "settings_prefixes_read": {
     "message": "Читать:"
   },
+  "settings_prefixes_feed_folder": {
+    "message": "Отметить папку, если все элементы прочитаны"
+  },
+  "settings_prefixes_parent_folders": {
+    "message": "Отметить родительскую папку, когда все дочерние папки прочитаны"
+  },
   "settings_feedPreview_heading": {
     "message": "Предварительный просмотр ленты новостей"
   },
   "settings_feedPreview_description": {
     "message": "Включение предварительного просмотра новостной ленты при прямом просмотре URL- адреса канала."
+  },
+  "settings_extensionIcon_heading": {
+    "message": "Значок расширения"
+  },
+  "settings_extensionIcon_description": {
+    "message": "Выберите значок расширения, который лучше всего подходит к теме вашего браузера."
+  },
+  "settings_extensionIcon_darkIcon": {
+    "message": "Тёмный"
+  },
+  "settings_extensionIcon_lightIcon": {
+    "message": "Светлый"
+  },
+  "settings_extensionIcon_orangeIcon": {
+    "message": "Оранжевый"
   },
   "settings_about_heading": {
     "message": "О Livemarks"
@@ -143,6 +167,9 @@
   "settings_close": {
     "message": "Закрыть"
   },
+  "settings_editFeed": {
+    "message": "Редактировать эту ленту"
+  },
   "editLivemark_name": {
     "message": "Имя"
   },
@@ -171,6 +198,6 @@
     "message": "Сломанные Livemark"
   },
   "selectFolder_folder": {
-    "message": "Выберите папку для неправильной закладки"
+    "message": "Выбрать папку, используемую сломанным Livemark"
   }
 }

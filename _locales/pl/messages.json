@@ -167,6 +167,9 @@
   "settings_close": {
     "message": "Zamknij"
   },
+  "settings_editFeed": {
+    "message": "Edytuj ten kanał"
+  },
   "editLivemark_name": {
     "message": "Nazwa"
   },

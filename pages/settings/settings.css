@@ -16,6 +16,10 @@ main > * {
   margin-left: .5rem;
 }
 
+.button {
+  margin: 2px 0;
+}
+
 #feeds {
   flex: 1;
   overflow: auto;

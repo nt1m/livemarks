@@ -170,7 +170,8 @@ const FeedParser = {
 
     const feed = {
       type: "atom",
-      title: getParsedTextFromElement("title", channel),
+      title: getTextFromElement("title[type=text]", channel) ||
+        getParsedTextFromElement("title:not([type=text])", channel),
       url: getHrefFromElement("link[rel=alternate]", channel)
         || getHrefFromElement("link:not([rel=self])", channel),
       description: getParsedTextFromElement("subtitle", channel),
@@ -193,7 +194,8 @@ const FeedParser = {
       }
 
       return {
-        title: getParsedTextFromElement("title", item),
+        title: getTextFromElement("title[type=text]", item)
+          || getParsedTextFromElement("title:not([type=text])", item),
         url: getHrefFromElement("link[rel=alternate]", item)
           || getHrefFromElement("link", item),
         description: getTextFromElement("content", item)

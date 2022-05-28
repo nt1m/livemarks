@@ -5,6 +5,9 @@
   "reloadLiveBookmark": {
     "message": "Abonelikleri Güncelle"
   },
+  "openAllUnreadPages": {
+    "message": "Okunmamış tüm sayfaları aç"
+  },
   "openSiteUrl": {
     "message": "\"$site$\" Aç",
     "placeholders": {
@@ -163,6 +166,9 @@
   },
   "settings_close": {
     "message": "Kapat"
+  },
+  "settings_editFeed": {
+    "message": "Bu beslemeyi düzenle"
   },
   "editLivemark_name": {
     "message": "İsim"

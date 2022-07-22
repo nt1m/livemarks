@@ -1,15 +1,15 @@
 {
   "extensionDescription": {
-    "message": "يقوم باستعادة دعم علامة التوقف RSS لنظام Firefox 64 وأعلى. "
+    "message": "يعيد دعم الإشارات المرجعية الحية لـ RSS إلى Firefox 64 وما فوق."
   },
   "reloadLiveBookmark": {
-    "message": "علامة التوقف الخاصة باعادة التحميل "
+    "message": "إعادة تحميل Live Bookmark"
   },
   "openAllUnreadPages": {
-    "message": "فتح كل الصفحات التي لم يتم قراءتها "
+    "message": "فتح كافة الصفحات غير المقروءة"
   },
   "openSiteUrl": {
-    "message": "فتح \"$site$\" ",
+    "message": "فتح \"$site$\"",
     "placeholders": {
       "site" : {
         "content" : "$1"
@@ -17,10 +17,10 @@
     }
   },
   "subscribe": {
-    "message": "اشتراك "
+    "message": "اشتراك"
   },
   "subscribe_title": {
-    "message": "معاينة وحدة المعلومات المسترجعة "
+    "message": "معاينة الخلاصة"
   },
   "subscribe_addLivemark": {
     "message": "اضافة ليفتنمارك "
@@ -29,13 +29,13 @@
     "message": "مشاهدة المصدر "
   },
   "subscribe_failedToFetchFeed": {
-    "message": "فشل في احضار المعلومات المسترجعة "
+    "message": "فشل إحضار الخلاصة"
   },
   "subscribe_noEntriesFound": {
     "message": "لم يتم ايجاد ادخالات وحدة المعلومات المسترجعة "
   },
   "subscribe_subscribed": {
-    "message": "تم الاضافة الى $FOLDE$ ، قم بزيارة صفحة الاختيارات لتحريرها. ",
+    "message": "تمت الإضافة إلى $FOLDER$, قم بزيارة صفحة الخيارات لتعديلها",
     "placeholders": {
       "folder": {
         "content": "$1"
@@ -43,35 +43,35 @@
     }
   },
   "noItemsFound": {
-    "message": "لم يتم ايجاد بنود "
+    "message": "لم يتم العثور على عناصر"
   },
   "yourLivemarks": {
     "description": "Title of the 'Your livemarks' page",
-    "message": "الكافرات الخاصة بك "
+    "message": "علاماتك الحية"
   },
   "moreOptions": {
-    "message": "اختيارات أخرى "
+    "message": "مزيد من الخيارات"
   },
   "newLivemark": {
-    "message": "غطاء جديد "
+    "message": "علامة حية جديدة"
   },
   "enterFeedURL": {
-    "message": "أدخل عنوان URL للتغذية "
+    "message": "أدخل عنوان URL للخلاصة"
   },
   "settings_importExport_heading": {
-    "message": "استقبال / تصدير "
+    "message": "استيراد / تصدير"
   },
   "settings_importExport_description": {
-    "message": "تقوم هذه الخاصية باستخدام نسق OPML الذي يتم استخدامه بواسطة معظم وحدات قراءة RSS. "
+    "message": "تستخدم هذه الميزة تنسيق OPML الذي يستخدمه معظم برامج قراءة RSS."
   },
   "settings_importExport_importFeeds": {
-    "message": "استقبال وحدات المعلومات المسترجعة "
+    "message": "استيراد الخلاصات"
   },
   "settings_importExport_exportFeeds": {
-    "message": "تصدير وحدات المعلومات المسترجعة "
+    "message": "تصدير الخلاصات"
   },
   "settings_importExport_successImport": {
-    "message": "تم استقبال وحدات المعلومات المسترجعة $COUNT$ بنجاح. ",
+    "message": "تم استيراد خلاصات $COUNT$ بنجاح.",
     "placeholders": {
       "count": {
         "content": "$1"
@@ -79,122 +79,125 @@
     }
   },
   "settings_importExport_errorImport": {
-    "message": "خطأ في استقبال ملف OPML "
+    "message": "خطأ في استيراد ملف OPML"
   },
   "settings_refreshInterval_heading": {
-    "message": "تجديد الفترة الزمنية "
+    "message": "تحديث الفاصل الزمني"
   },
   "settings_refreshInterval_description": {
-    "message": "قم بتوصيف عدد المرات التي يتم فيها تعديل علامات livemarks. "
+    "message": "تكوين عدد مرات تحديث العلامات الحية."
   },
   "settings_refreshInterval_minutes": {
     "description": "Shown as 'X minutes' in the settings dialog",
     "message": "دقائق "
   },
   "settings_defaultFolder_heading": {
-    "message": "الحافظة المفترضة "
+    "message": "المجلد الافتراضي"
   },
   "settings_defaultFolder_description": {
-    "message": "سيتم حفظ كل قيم livemarks في المستقبل هنا افتراضيا "
+    "message": "سيتم حفظ جميع العلامات الحية المستقبلية هنا افتراضيًا"
   },
   "settings_prefixes_heading": {
-    "message": "بادئات علامة التوقف "
+    "message": "إشارات مرجعية البادئات"
   },
   "settings_prefixes_description": {
-    "message": "سيتم استخدام العبارات المحددة كتصحيحات لعلامات التوقف للاشارة الى الحالة. "
+    "message": "سيتم استخدام السلاسل المتوفرة كبادئات إشارات مرجعية للإشارة إلى الحالة."
   },
   "settings_prefixes_unread": {
-    "message": "غير مقروءة : "
+    "message": "غير مقروءة:"
   },
   "settings_prefixes_read": {
-    "message": "مقروء : "
+    "message": "قراءة:"
   },
   "settings_prefixes_feed_folder": {
-    "message": "عرض على الحافظات عندما تكون كل البنود الخاصة بهم قراءة / الغاء قراءة "
+    "message": "إظهار في المجلدات عندما تكون كل عناصرها مقروءة / غير مقروءة"
   },
   "settings_prefixes_parent_folders": {
-    "message": "عرض على الحافظة الرئيسية عندما تكون كل الحافظات الفرعية للقراءة / عدم القراءة "
+    "message": "إظهار في المجلد الأصل عندما تكون جميع المجلدات الفرعية مقروءة / غير مقروءة"
   },
   "settings_feedPreview_heading": {
-    "message": "معاينة وحدة المعلومات المسترجعة "
+    "message": "معاينة الخلاصة"
   },
   "settings_feedPreview_description": {
-    "message": "اتاحة معاينة وحدة المعلومات المسترجعة عندما يتم عرض عنوان URL لوحدة المعلومات المسترجعة مباشرة "
+    "message": "تمكين معاينة الخلاصة عند زيارة عنوان URL للخلاصة مباشرةً"
   },
   "settings_extensionIcon_heading": {
-    "message": "شارة اللاحقة "
+    "message": "رمز الإضافة"
   },
   "settings_extensionIcon_description": {
-    "message": "قم باختيار شارة الوصلة التي تتلائم مع النسق الرئيسي لبرنامج الاستعراض الخاص بك. "
+    "message": "اختر رمز الإضافة الذي يناسب مظهر متصفحك بشكل أفضل."
   },
   "settings_extensionIcon_darkIcon": {
-    "message": "شارة داكنة "
+    "message": "رمز غامق"
   },
   "settings_extensionIcon_lightIcon": {
-    "message": "شارة الضوء "
+    "message": "رمز فاتح"
   },
   "settings_extensionIcon_orangeIcon": {
-    "message": "شارة برتقالي "
+    "message": "رمز برتقالي"
   },
   "settings_about_heading": {
-    "message": "نبذة عن "
+    "message": "حول"
   },
   "settings_about_description_authors": {
-    "message": "تم بناء هذا البرنامج المساعد بواسطة : "
+    "message": "تم إنشاء هذه الوظيفة الإضافية بواسطة:"
   },
   "settings_about_description_before_foxish": {
     "description": "Between _before_foxish and _after_foxish there is a 'Foxish' HTML link",
-    "message": "إنه مبني على أساس   "
+    "message": "إنها تستند إلى"
   },
   "settings_about_description_after_foxish": {
     "message": ". "
   },
   "settings_about_description_support": {
-    "message": "يمكنك دعم البرنامج المساعد بواسطة : "
+    "message": "يمكنك دعم الوظيفة الإضافية من خلال:"
   },
   "settings_about_donating": {
-    "message": "التبرع "
+    "message": "تبرع"
   },
   "settings_about_reviewing": {
-    "message": "إعطاء استعراض جيد "
+    "message": "تقديم مراجعة جيدة"
   },
   "settings_about_reporting": {
-    "message": "مسائل الإبلاغ "
+    "message": "الإبلاغ عن المشكلات"
   },
   "settings_about_translating": {
-    "message": "ترجمات المشاركة "
+    "message": "المساهمة في الترجمات"
   },
   "settings_close": {
-    "message": "اغلاق "
+    "message": "إغلاق"
+  },
+  "settings_editFeed": {
+    "message": "تحرير هذا الموجز"
   },
   "editLivemark_name": {
-    "message": "الاسم "
+    "message": "الاسم"
   },
   "editLivemark_remove": {
-    "message": "ازالة وحدة المعلومات المسترجعة هذه "
+    "message": "إزالة هذا الموجز"
   },
   "editLivemark_feedURL": {
-    "message": "عنوان URL للتغذية "
+    "message": "موجز URL"
   },
   "editLivemark_siteURL": {
-    "message": "عنوان URL للموقع "
+    "message": "URL الموقع"
   },
   "editLivemark_parentFolder": {
-    "message": "الحافظة الرئيسية "
+    "message": "المجلد الأصل"
   },
   "editLivemark_maxItems": {
-    "message": "الحد الأقصى للبنود "
+    "message": "الحد الأقصى للعناصر"
   },
   "editLivemark_cancel": {
-    "message": "الغاء "
+    "message": "إلغاء"
   },
   "editLivemark_save": {
-    "message": "حفظ "
+    "message": "حفظ"
   },
   "settings_brokenLivemark": {
-    "message": "مفارك مفلس "
+    "message": "علامة حية معطلة"
   },
   "selectFolder_folder": {
-    "message": "حدد حافظة مستخدمة بواسطة livemark"
+    "message": "حدد المجلد الذي تستخدمه للعلامات الحية المعطلة"
   }
 }

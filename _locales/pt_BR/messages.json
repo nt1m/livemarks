@@ -1,0 +1,203 @@
+{
+  "extensionDescription": {
+    "message": "Restaura o suporte a marcadores RSS para o Firefox 64 e superior."
+  },
+  "reloadLiveBookmark": {
+    "message": "Recarregar Live Bookmark"
+  },
+  "openAllUnreadPages": {
+    "message": "Abrir todas as páginas não-lidas"
+  },
+  "openSiteUrl": {
+    "message": "Abrir \"$site$\"",
+    "placeholders": {
+      "site" : {
+        "content" : "$1"
+      }
+    }
+  },
+  "subscribe": {
+    "message": "Inscrever"
+  },
+  "subscribe_title": {
+    "message": "Visualização do feed"
+  },
+  "subscribe_addLivemark": {
+    "message": "Adicionar Livemark"
+  },
+  "subscribe_viewSource": {
+    "message": "Ver código fonte"
+  },
+  "subscribe_failedToFetchFeed": {
+    "message": "Falha ao buscar um feed"
+  },
+  "subscribe_noEntriesFound": {
+    "message": "Nenhuma entrada de feed encontrada"
+  },
+  "subscribe_subscribed": {
+    "message": "Adicionado a $FOLDER$, visite a página de opções para editá-lo.",
+    "placeholders": {
+      "folder": {
+        "content": "$1"
+      }
+    }
+  },
+  "noItemsFound": {
+    "message": "Nenhum item encontrado"
+  },
+  "yourLivemarks": {
+    "description": "Title of the 'Your livemarks' page",
+    "message": "Seus livemarks"
+  },
+  "moreOptions": {
+    "message": "Mais opções"
+  },
+  "newLivemark": {
+    "message": "Novo livemark"
+  },
+  "enterFeedURL": {
+    "message": "Insira um endereço de feed"
+  },
+  "settings_importExport_heading": {
+    "message": "Importar/Exportar"
+  },
+  "settings_importExport_description": {
+    "message": "Este recurso usa o formato OPML que é usado pela maioria dos leitores RSS."
+  },
+  "settings_importExport_importFeeds": {
+    "message": "Importar feeds"
+  },
+  "settings_importExport_exportFeeds": {
+    "message": "Exportar feeds"
+  },
+  "settings_importExport_successImport": {
+    "message": "$COUNT$ feeds importados com sucesso.",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "settings_importExport_errorImport": {
+    "message": "Erro importando arquivo OPML"
+  },
+  "settings_refreshInterval_heading": {
+    "message": "Intervalo de atualização"
+  },
+  "settings_refreshInterval_description": {
+    "message": "Configure a frequência que os livemarks são atualizados."
+  },
+  "settings_refreshInterval_minutes": {
+    "description": "Shown as 'X minutes' in the settings dialog",
+    "message": "minutos"
+  },
+  "settings_defaultFolder_heading": {
+    "message": "Pasta padrão"
+  },
+  "settings_defaultFolder_description": {
+    "message": "Todos os futuros livemarks serão salvos aqui por padrão."
+  },
+  "settings_prefixes_heading": {
+    "message": "Prefixos de favoritos"
+  },
+  "settings_prefixes_description": {
+    "message": "As strings fornecidas serão usadas como prefixos de favoritos para indicar o status."
+  },
+  "settings_prefixes_unread": {
+    "message": "Não lidas:"
+  },
+  "settings_prefixes_read": {
+    "message": "Lidas:"
+  },
+  "settings_prefixes_feed_folder": {
+    "message": "Exibir nos diretórios quando todos os itens estão lidos/não lidos"
+  },
+  "settings_prefixes_parent_folders": {
+    "message": "Mostrar na pasta raiz quando todas as pastas internas estão lidas/não lidas"
+  },
+  "settings_feedPreview_heading": {
+    "message": "Visualizar feed"
+  },
+  "settings_feedPreview_description": {
+    "message": "Habilita a pré-visualização de feed quando visitando diretamente a URL do feed"
+  },
+  "settings_extensionIcon_heading": {
+    "message": "Ícone de extensão"
+  },
+  "settings_extensionIcon_description": {
+    "message": "Escolha o ícone para a extensão que combine melhor com o tema do seu navegador."
+  },
+  "settings_extensionIcon_darkIcon": {
+    "message": "Ícone escuro"
+  },
+  "settings_extensionIcon_lightIcon": {
+    "message": "Ícone claro"
+  },
+  "settings_extensionIcon_orangeIcon": {
+    "message": "Ícone laranja"
+  },
+  "settings_about_heading": {
+    "message": "Sobre"
+  },
+  "settings_about_description_authors": {
+    "message": "Essa extensão foi feita por:"
+  },
+  "settings_about_description_before_foxish": {
+    "description": "Between _before_foxish and _after_foxish there is a 'Foxish' HTML link",
+    "message": "É baseada em"
+  },
+  "settings_about_description_after_foxish": {
+    "message": "."
+  },
+  "settings_about_description_support": {
+    "message": "Você pode suportar essa extensão:"
+  },
+  "settings_about_donating": {
+    "message": "Doações"
+  },
+  "settings_about_reviewing": {
+    "message": "Nos dê uma boa análise"
+  },
+  "settings_about_reporting": {
+    "message": "Reportando problemas"
+  },
+  "settings_about_translating": {
+    "message": "Contribuindo traduções"
+  },
+  "settings_close": {
+    "message": "Fechar"
+  },
+  "settings_editFeed": {
+    "message": "Editar este feed"
+  },
+  "editLivemark_name": {
+    "message": "Nome"
+  },
+  "editLivemark_remove": {
+    "message": "Remover este feed"
+  },
+  "editLivemark_feedURL": {
+    "message": "URL do feed"
+  },
+  "editLivemark_siteURL": {
+    "message": "URL do site"
+  },
+  "editLivemark_parentFolder": {
+    "message": "Diretório raíz"
+  },
+  "editLivemark_maxItems": {
+    "message": "Máximo de itens"
+  },
+  "editLivemark_cancel": {
+    "message": "Cancelar"
+  },
+  "editLivemark_save": {
+    "message": "Salvar"
+  },
+  "settings_brokenLivemark": {
+    "message": "Livemark quebrada"
+  },
+  "selectFolder_folder": {
+    "message": "Selecione a pasta usada por livemarks quebrados"
+  }
+}

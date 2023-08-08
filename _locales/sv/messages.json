@@ -1,0 +1,203 @@
+{
+  "extensionDescription": {
+    "message": "Återställer stöd för RSS-bokmärken till Firefox 64 och senare."
+  },
+  "reloadLiveBookmark": {
+    "message": "Ladda om Live Bookmark"
+  },
+  "openAllUnreadPages": {
+    "message": "Öppna alla olästa sidor"
+  },
+  "openSiteUrl": {
+    "message": "Öppna \"$site$\"",
+    "placeholders": {
+      "site" : {
+        "content" : "$1"
+      }
+    }
+  },
+  "subscribe": {
+    "message": "Prenumerera"
+  },
+  "subscribe_title": {
+    "message": "Förhandsvisning av flöde"
+  },
+  "subscribe_addLivemark": {
+    "message": "Lägg till Livemark"
+  },
+  "subscribe_viewSource": {
+    "message": "Visa källa"
+  },
+  "subscribe_failedToFetchFeed": {
+    "message": "Det gick inte att hämta flödet"
+  },
+  "subscribe_noEntriesFound": {
+    "message": "Inga flödesposter hittades"
+  },
+  "subscribe_subscribed": {
+    "message": "Tillagd till $FOLDER$, gå till inställningssidan för att redigera den.",
+    "placeholders": {
+      "folder": {
+        "content": "$1"
+      }
+    }
+  },
+  "noItemsFound": {
+    "message": "Hittade inga poster"
+  },
+  "yourLivemarks": {
+    "description": "Title of the 'Your livemarks' page",
+    "message": "Dina Livemarks"
+  },
+  "moreOptions": {
+    "message": "Fler inställningar"
+  },
+  "newLivemark": {
+    "message": "Ny Livemark"
+  },
+  "enterFeedURL": {
+    "message": "Ange flödes-URL"
+  },
+  "settings_importExport_heading": {
+    "message": "Import/Export"
+  },
+  "settings_importExport_description": {
+    "message": "Den här funktionen använder OPML-formatet som används av de flesta RSS-läsare."
+  },
+  "settings_importExport_importFeeds": {
+    "message": "Importera flöden"
+  },
+  "settings_importExport_exportFeeds": {
+    "message": "Exportera flöden"
+  },
+  "settings_importExport_successImport": {
+    "message": "$COUNT$ flöden har importerats.",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "settings_importExport_errorImport": {
+    "message": "Fel vid import av OPML-fil"
+  },
+  "settings_refreshInterval_heading": {
+    "message": "Uppdateringsintervall"
+  },
+  "settings_refreshInterval_description": {
+    "message": "Konfigurera hur ofta Livemarks uppdateras"
+  },
+  "settings_refreshInterval_minutes": {
+    "description": "Shown as 'X minutes' in the settings dialog",
+    "message": "minuter"
+  },
+  "settings_defaultFolder_heading": {
+    "message": "Standardmapp"
+  },
+  "settings_defaultFolder_description": {
+    "message": "Alla nya Livemarks kommer att sparas här"
+  },
+  "settings_prefixes_heading": {
+    "message": "Bokmärkesprefix"
+  },
+  "settings_prefixes_description": {
+    "message": "De angivna strängarna kommer att användas som bokmärkesprefix för att indikera status."
+  },
+  "settings_prefixes_unread": {
+    "message": "Olästa:"
+  },
+  "settings_prefixes_read": {
+    "message": "Lästa:"
+  },
+  "settings_prefixes_feed_folder": {
+    "message": "Visa på mappar när alla deras objekt är lästa/olästa"
+  },
+  "settings_prefixes_parent_folders": {
+    "message": "Visa på överordnad mapp när alla underordnade mappar är lästa/olästa"
+  },
+  "settings_feedPreview_heading": {
+    "message": "Förhandsvisning av flöde"
+  },
+  "settings_feedPreview_description": {
+    "message": "Aktivera förhandsgranskning av flöde när du direkt besöker en flödesadress"
+  },
+  "settings_extensionIcon_heading": {
+    "message": "Ikon"
+  },
+  "settings_extensionIcon_description": {
+    "message": "Välj den ikon som passar bäst med ditt webbläsartema."
+  },
+  "settings_extensionIcon_darkIcon": {
+    "message": "Mörk ikon"
+  },
+  "settings_extensionIcon_lightIcon": {
+    "message": "Ljus ikon"
+  },
+  "settings_extensionIcon_orangeIcon": {
+    "message": "Orange ikon"
+  },
+  "settings_about_heading": {
+    "message": "Om"
+  },
+  "settings_about_description_authors": {
+    "message": "Detta tillägg är byggt av:"
+  },
+  "settings_about_description_before_foxish": {
+    "description": "Between _before_foxish and _after_foxish there is a 'Foxish' HTML link",
+    "message": "Det är baserat på"
+  },
+  "settings_about_description_after_foxish": {
+    "message": "."
+  },
+  "settings_about_description_support": {
+    "message": "Du kan stödja tillägget via:"
+  },
+  "settings_about_donating": {
+    "message": "Donation"
+  },
+  "settings_about_reviewing": {
+    "message": "Ge en bra recension"
+  },
+  "settings_about_reporting": {
+    "message": "Rapportera problem"
+  },
+  "settings_about_translating": {
+    "message": "Bidra med översättning"
+  },
+  "settings_close": {
+    "message": "Stäng"
+  },
+  "settings_editFeed": {
+    "message": "Redigera detta flöde"
+  },
+  "editLivemark_name": {
+    "message": "Namn"
+  },
+  "editLivemark_remove": {
+    "message": "Ta bort detta flöde"
+  },
+  "editLivemark_feedURL": {
+    "message": "Flödes-URL"
+  },
+  "editLivemark_siteURL": {
+    "message": "Hemside-URL"
+  },
+  "editLivemark_parentFolder": {
+    "message": "Överliggande mapp"
+  },
+  "editLivemark_maxItems": {
+    "message": "Maximalt antal poster"
+  },
+  "editLivemark_cancel": {
+    "message": "Avbryt"
+  },
+  "editLivemark_save": {
+    "message": "Spara"
+  },
+  "settings_brokenLivemark": {
+    "message": "Trasig Livemark"
+  },
+  "selectFolder_folder": {
+    "message": "Välj mapp som används av trasig Livemark"
+  }
+}

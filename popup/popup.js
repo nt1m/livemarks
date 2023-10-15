@@ -53,7 +53,7 @@ async function main() {
         preview(url);
       });
       link.textContent = feed.title ? feed.title
-        : url.replace(/^https?:\/\//i,"");
+        : url.replace(/^https?:\/\//i, "");
       item.appendChild(link);
       feedList.appendChild(item);
     }

@@ -52,7 +52,8 @@ async function main() {
         e.preventDefault();
         preview(url);
       });
-      link.textContent = feed.title;
+      link.textContent = feed.title ? feed.title
+        : url.replace(/^https?:\/\//i, "");
       item.appendChild(link);
       feedList.appendChild(item);
     }

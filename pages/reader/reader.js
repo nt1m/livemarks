@@ -52,7 +52,7 @@ function getPreviewHTML({ items }) {
       anchor.href = item.url;
     }
     anchor.textContent = item.title ? item.title
-      : item.url.replace(/^https?:\/\//i,"");
+      : item.url.replace(/^https?:\/\//i, "");
     anchor.className = "item_title";
 
     const time = document.createElement("time");

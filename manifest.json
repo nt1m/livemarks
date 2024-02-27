@@ -40,9 +40,6 @@
   },
   "permissions": ["storage", "bookmarks", "history", "webRequest", "webRequestBlocking", "<all_urls>", "tabs", "menus"],
   "version": "3.6",
-  "web_accessible_resources": [
-    "pages/subscribe/subscribe.html"
-  ],
   "applications": {
     "gecko": {
       "id": "{c5867acc-54c9-4074-9574-04d8818d53e8}"

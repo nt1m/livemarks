@@ -453,9 +453,8 @@ chrome.webRequest.onHeadersReceived.addListener(details => {
   // Atom or RSS MIME type, redirect to preview page
   const type = header.value.toLowerCase().replace(/^\s+|\s*(?:;.*)?$/g, "");
   if (type == "application/rss+xml" || type == "application/atom+xml") {
-    return {
-      redirectUrl: getSubscribeURL(details.url),
-    };
+    FeedPreview.show(details.tabId, details.url);
+    return {cancel: true};
   }
 
   // XML MIME type, try sniffing for feed content

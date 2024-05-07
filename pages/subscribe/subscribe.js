@@ -77,7 +77,16 @@ async function main() {
         siteUrl
       });
       alert(I18N.getMessage("subscribe_subscribed", folderTitle));
+      
+      document.querySelector("#subscribe-button").disabled = true;
     });
+
+    // Disable Subscribe Button if the Feed is already in the Folder
+    const parentId = await Settings.getDefaultFolder();
+    const bookmarks = (await browser.bookmarks.search({title: title})).filter(node => node.parentId === parentId);
+    if (bookmarks.length > 0) {
+      document.querySelector("#subscribe-button").disabled = true;
+    }
 
     setPreviewContent(`<main>${getPreviewHTML(feed)}</main>`);
   } catch (e) {

@@ -83,7 +83,7 @@ async function main() {
 
     // Disable Subscribe Button if the Feed is already in the Folder
     const parentId = await Settings.getDefaultFolder();
-    const bookmarks = (await browser.bookmarks.search({title: title})).filter(node => node.parentId === parentId);
+    const bookmarks = (await LivemarkStore.getAll()).filter(x => x.parentId === parentId && x.feedUrl === feedUrl) 
     if (bookmarks.length > 0) {
       document.querySelector("#subscribe-button").disabled = true;
     }

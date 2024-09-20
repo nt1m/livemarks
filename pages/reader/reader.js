@@ -45,6 +45,7 @@ function getPreviewHTML({ items }) {
   for (const item of items) {
     const itemContainer = document.createElement("div");
     itemContainer.classList = "item";
+    itemContainer.setAttribute("dir", "auto");
 
     const anchor = item.url ? document.createElement("a") :
       document.createElement("strong");

@@ -8,6 +8,9 @@
   "openAllUnreadPages": {
     "message": "Open all unread pages"
   },
+  "markAllRead": {
+    "message": "Mark all as read"
+  },
   "openSiteUrl": {
     "message": "Open \"$site$\"",
     "placeholders": {

@@ -77,7 +77,16 @@ async function main() {
         siteUrl
       });
       alert(I18N.getMessage("subscribe_subscribed", folderTitle));
+      
+      document.querySelector("#subscribe-button").disabled = true;
     });
+
+    // Disable Subscribe Button if the Feed is already in the Folder
+    const parentId = await Settings.getDefaultFolder();
+    const bookmarks = (await LivemarkStore.getAll()).filter(x => x.parentId === parentId && x.feedUrl === feedUrl) 
+    if (bookmarks.length > 0) {
+      document.querySelector("#subscribe-button").disabled = true;
+    }
 
     setPreviewContent(`<main>${getPreviewHTML(feed)}</main>`);
   } catch (e) {

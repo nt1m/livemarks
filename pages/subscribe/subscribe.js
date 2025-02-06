@@ -70,6 +70,21 @@ async function main() {
     }
 
     document.querySelector("#subscribe-button").addEventListener("click", async () => {
+      
+      const parentId = await Settings.getDefaultFolder();
+      const bookmarks = (await LivemarkStore.getAll()).filter(x => x.parentId === parentId && x.feedUrl === feedUrl)
+      if (bookmarks.length > 0) {
+        const [folderProps] = await browser.bookmarks.get(parentId);
+        let formattedFolderTitle = folderProps.title;
+        const readPrefix = await Settings.getReadPrefix();
+        formattedFolderTitle = PrefixUtils.removePrefix(readPrefix, formattedFolderTitle);
+        const unreadPrefix = await Settings.getUnreadPrefix();
+        formattedFolderTitle = PrefixUtils.removePrefix(unreadPrefix, formattedFolderTitle);
+        if(!confirm(`Feed already found in ${formattedFolderTitle}. Are you sure you want to add it again?`)) {
+          return;
+        }
+      }
+
       const folderTitle = await browser.runtime.sendMessage({
         msg: "subscribe",
         title,
@@ -77,16 +92,7 @@ async function main() {
         siteUrl
       });
       alert(I18N.getMessage("subscribe_subscribed", folderTitle));
-      
-      document.querySelector("#subscribe-button").disabled = true;
     });
-
-    // Disable Subscribe Button if the Feed is already in the Folder
-    const parentId = await Settings.getDefaultFolder();
-    const bookmarks = (await LivemarkStore.getAll()).filter(x => x.parentId === parentId && x.feedUrl === feedUrl) 
-    if (bookmarks.length > 0) {
-      document.querySelector("#subscribe-button").disabled = true;
-    }
 
     setPreviewContent(`<main>${getPreviewHTML(feed)}</main>`);
   } catch (e) {

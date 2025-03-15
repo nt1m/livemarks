@@ -253,7 +253,7 @@ const LivemarkUpdater = {
       return;
     }
 
-    // Tab Stasher extension compatibility
+    // Tab Stash extension compatibility
     if (folder.title === "Tab Stash" && folder.parentId === "unfiled_____") {
       return;
     }

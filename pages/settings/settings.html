@@ -8,10 +8,17 @@
 </head>
 <body>
   <main>
-    <div class="toolbar flex">
+    <header class="toolbar flex">
       <h1 class="grow" data-i18n-text="yourLivemarks"></h1>
       <button data-i18n-text="moreOptions" class="icon settings float-right" id="settings-toggle"></button>
       <button data-i18n-text="newLivemark" class="icon new icon-white primary float-right" id="add"></button>
+    </header>
+    <div class="toolbar flex" id="selection-toolbar" hidden>
+      <input type="checkbox" id="select-all-checkbox">
+      <span id="select-status"></span>
+      <div class="grow"></div>
+      <button class="">Move to folder</button>
+      <button class="icon delete" id="delete-feed-selection">Delete</button>
     </div>
     <div class="empty-notice grow" id="feeds"></div>
   </main>

@@ -55,6 +55,17 @@ const LivemarkStore = {
     return all;
   },
 
+  async getSize() {
+    const livemarks = await browser.storage.sync.get();
+    let size = 0;
+    for (const key in livemarks) {
+      if (key.startsWith(PREFIX)) {
+        size++;
+      }
+    }
+    return size;
+  },
+
   async add(feed) {
     const { title, parentId } = feed;
     const bookmark = await browser.bookmarks.create({

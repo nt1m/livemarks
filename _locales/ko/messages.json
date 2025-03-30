@@ -167,6 +167,9 @@
   "settings_close": {
     "message": "닫기"
   },
+  "settings_editFeed": {
+    "message": "피드 수정"
+  },
   "editLivemark_name": {
     "message": "이름"
   },

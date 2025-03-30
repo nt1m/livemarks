@@ -253,6 +253,11 @@ const LivemarkUpdater = {
       return;
     }
 
+    // Tab Stash extension compatibility
+    if (folder.title === "Tab Stash" && folder.parentId === "unfiled_____") {
+      return;
+    }
+
     const children = await browser.bookmarks.getChildren(folder.id);
     if (!children || children.length == 0) {
       return;

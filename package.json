@@ -11,7 +11,7 @@
   "devDependencies": {
     "eslint": "8.57.1",
     "eslint-plugin-html": "8.1.2",
-    "eslint-plugin-mozilla": "3.7.5",
+    "eslint-plugin-mozilla": "4.2.1",
     "eslint-plugin-no-unsanitized": "4.1.2"
   },
   "scripts": {

@@ -6,8 +6,6 @@ const FeedParser = {
     return new Promise((resolve, reject) => {
       const request = new XMLHttpRequest();
       request.open("GET", url, true);
-      // Try to prevent caching.
-      request.setRequestHeader("Cache-Control", "no-store, max-age=0");
       request.timeout = 10000; // time in milliseconds
 
       request.addEventListener("load", (event) => {

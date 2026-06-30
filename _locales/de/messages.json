@@ -12,7 +12,7 @@
     "message": "Alle als gelesen markieren"
   },
   "openSiteUrl": {
-    "message": "\"$site$\" öffnen",
+    "message": "„$site$“ öffnen",
     "placeholders": {
       "site" : {
         "content" : "$1"

@@ -10,6 +10,7 @@ main > * {
 
 .toolbar {
   align-items: center;
+  padding-left: calc(1rem + 10px);
 }
 
 .toolbar button {
@@ -28,9 +29,14 @@ main > * {
 .feed {
   display: grid;
   padding: 10px;
-  grid-template-columns: 1fr min-content;
-  grid-template-areas: "title   edit"
-                       "siteUrl edit";
+  grid-template-columns: min-content 1fr min-content;
+  grid-template-areas: "checkbox title   edit"
+                       "checkbox siteUrl edit";
+  column-gap: 10px;
+}
+
+.feed:first-child {
+  margin-top: 0;
 }
 
 .broken {
@@ -49,6 +55,11 @@ main > * {
 
 .broken .feed-title {
   font-weight: bold;
+}
+
+.feed-checkbox {
+  grid-area: checkbox;
+  align-self: center;
 }
 
 .feed-title {
